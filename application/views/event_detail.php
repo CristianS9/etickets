@@ -8,16 +8,19 @@
 </head>
 <body>
     <h1>Nombre del evento: </h1>
-    <?php $datos[0]->nombre ?>
+    <?php echo($datos[0]->nombre) ?>
     <br>
     <br>
     <h3>Descripción del evento:</h3>
-    <br>
-    <p></p>
+    <p><?php echo($datos[0]->descripcion) ?></p>
 
     <br>
     <br>
     <p>Cantidad de entradas totales: </p>
+    <?php echo($datos[0]->cantidadTotal) ?>
+    <br>
+    <br>
+    <p>Entradas disponibles: <?php echo ($datos[0]->disponibles) ?> </p>
     <br>
     <br>
     <h2>Días del evento:</h2>

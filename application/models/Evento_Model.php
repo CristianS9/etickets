@@ -6,7 +6,7 @@ class Evento_Model extends CI_Model {
     }
 
     public function getEventDetails() {
-        $query = $this->db->query("CALL getSingleEventInfo()");
+        $query = $this->db->query("CALL getSingleEventInfo(3)");
         return $query->result();        
     }
 }
