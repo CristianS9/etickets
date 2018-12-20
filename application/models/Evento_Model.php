@@ -14,10 +14,16 @@ class Evento_Model extends CI_Model {
 
     public function getEventTickets() {
         $eventId = $this->uri->segment("2");
-
         $query = $this->db->query("CALL getEventDaysInfo(" . $eventId . ")");
         $this->db->close();
         return $query->result();
 
+    }
+
+    public function getEventComments() {
+        $eventId = $this->uri->segment("2");
+        $query = $this->db->query("CALL spGetEventComments(" . $eventId . ")");
+        $this->db->close();
+        return $query->result();
     }
 }

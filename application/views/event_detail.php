@@ -26,16 +26,39 @@
     <h2>Días del evento:</h2>
     <br>
         <?php
-            $contadorDia = 0;
-            foreach ($eventTickets as $ticket) {
+$contadorDia = 0;
+foreach ($eventTickets as $ticket) {
 
-                echo ("Día " . $contadorDia . " : " . $ticket->fecha);
-                if ($ticket->fecha == "") {
-                    echo ("Abono de todos los días");
-                }
+    echo ("Día " . $contadorDia . " : " . $ticket->fecha);
+    if ($ticket->fecha == "") {
+        echo ("Abono de todos los días");
+    }
 
+    echo ("<br>");
+    $contadorDia++;
+}
+?>
+        <br>
+        <br>
+        <h2>Comentarios:</h2>
+        <br>
+        <form action="">
+        <textarea name="pComent" id="pComent" cols="100" rows="10"></textarea>
+        <br>
+        <button type="submit">Enviar</button>
+        </form>
+        <br>
+        <h3>Comentarios de los usuarios:</h3>
+        <br>
+
+        <?php
+            $contadorComentarios = 0;
+            foreach ($eventComments as $comentario) {
+                echo ("<h4>Comentario de " . $comentario->usuario . ": </h4> ");
+                echo ($comentario->comentario);
                 echo ("<br>");
-                $contadorDia++;
+                echo ("-----------------------------");
+                echo ("<br>");
             }
         ?>
 </body>
