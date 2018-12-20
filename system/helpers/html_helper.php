@@ -334,6 +334,26 @@ if ( ! function_exists('link_tag'))
 }
 
 // ------------------------------------------------------------------------
+if( ! function_exists('script_tag'))
+{
+	/**
+	 * Link para ficheros css
+	 * 
+	 * Devuelve un link css ya creado con ficheor seleccionado
+	 * 
+	 * @param string $fichero
+	 * @return string
+	 */
+	function script_tag($fichero = '')
+	{
+		$CI =& get_instance();
+		$CI->load->helper("url");
+		return "<script src=\"". base_url()."$fichero\"></script>";
+	}
+}
+
+
+// ------------------------------------------------------------------------
 
 if ( ! function_exists('meta'))
 {
