@@ -19,9 +19,11 @@
                echo "<td>".$linea->id."</td>"; 
                echo "<td>".$linea->nombre."</td>"; 
                echo "<td>".$linea->entradasDisponibles." / ". $linea->totalEntradas ."</td>";
-               echo "<tr>"; 
+               echo "<td> <a href='detail/".$linea->id."'>Ver detalle</a></td>";
+               echo "<tr>";
             } 
          ?>
       </table> 
+      
 </body>
 </html>
