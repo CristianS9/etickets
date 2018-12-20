@@ -49,7 +49,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
+
+// No sé por qué sale al revés en los ejemplos de arriba, pero primero va la url recortada y después todo el mondongo.
 $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route["notificacion/(:any)/(:num)"] = "notificacion_controller/index/$1/$2";
+$route['detail/(:num)'] = 'EventDetail_Controller/eventDetails/$1';
+$route['home'] = 'Home_Controller';
