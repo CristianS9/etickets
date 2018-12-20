@@ -17,5 +17,14 @@ class Evento_Model extends CI_Model{
         $this->db->delete("eventos",$condicion);
     }
 
+    public function modificar($condicion,$nuevo){
+        // $tabla = la tabla en la que se hara el update
+        // $condicion =  Array con los parametros a cumplir para el update
+        // $nuevo = Array con los nuevos datos
+        $this->db->set($nuevo);
+        $this->db->where($condicion);
+        $this->db->update('eventos',$nuevo);
+        
+    }
 }
 ?>

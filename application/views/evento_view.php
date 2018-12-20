@@ -33,6 +33,7 @@
         echo "<td>". $aux->fecha_fin ."</td>";
         echo "<td>". $aux->idProvincia ."</td>";
         echo "<td>". $aux->sitio ."</td>";
+        echo "<td><a href=\"Evento_Controller/mod_evento_view/".$aux->id."/\">Editar</a></td>";
         echo "<td><a href=\"Evento_Controller/del_evento/".$aux->id."/\">Eliminar</a></td>";
         echo "</tr>";
     }
