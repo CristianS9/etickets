@@ -6,8 +6,18 @@ class Evento_Model extends CI_Model {
     }
 
     public function getEventDetails() {
-        $query = $this->db->query("CALL getSingleEventInfo(3)");
-        return $query->result();        
+        $eventId = $this->uri->segment("2");
+        $query = $this->db->query("CALL getSingleEventInfo(" . $eventId . ")");
+        $this->db->close();
+        return $query->result();
+    }
+
+    public function getEventTickets() {
+        $eventId = $this->uri->segment("2");
+
+        $query = $this->db->query("CALL getEventDaysInfo(" . $eventId . ")");
+        $this->db->close();
+        return $query->result();
+
     }
 }
-?>

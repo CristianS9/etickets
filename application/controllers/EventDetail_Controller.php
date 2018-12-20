@@ -11,7 +11,7 @@ class EventDetail_Controller extends CI_Controller {
         $this->load->model("Evento_Model");
 
         $data['datos'] = $this->Evento_Model->getEventDetails();
-
+        $data['eventTickets'] = $this->Evento_Model->getEventTickets();
         $this->load->helper("url");
         $this->load->view("event_detail", $data);
 
