@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+        <?php echo script_tag("lib/jquery-3.3.1.min.js"); ?>
+        <?php echo script_tag("js/event_detail.js"); ?>
 </head>
 <body>
     <h1>Nombre del evento: </h1>
@@ -42,11 +44,11 @@ foreach ($eventTickets as $ticket) {
         <br>
         <h2>Comentarios:</h2>
         <br>
-        <form action="">
-        <textarea name="pComent" id="pComent" cols="100" rows="10"></textarea>
-        <br>
-        <button type="submit">Enviar</button>
-        </form>
+     
+            <textarea name="pComent" id="pComent" cols="100" rows="10"></textarea>
+            <br>
+            <button id="sendButton">Enviar</button>
+        
         <br>
         <h3>Comentarios de los usuarios:</h3>
         <br>
