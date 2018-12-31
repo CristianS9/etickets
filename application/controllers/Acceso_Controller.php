@@ -5,8 +5,10 @@
            $this->load->helper("html");
            $this->load->helper("url");
            $this->load->database(); 
+           $this->load->library("session");
         }
         public function index(){
+            echo $this->session->userdata("usuario");
             $this->load->view("login_view"); 
         }
         public function login(){

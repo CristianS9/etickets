@@ -4,6 +4,7 @@
         function __construct() { 
             parent::__construct(); 
             $this->load->database(); 
+            $this->load->library("session");
             //$this->load->helper("url");
         } 
         public function getUsuarios(){
@@ -135,7 +136,14 @@
 
             if(!$query->row("usuario")){
                 redirect("/notificacion/error/20");
-            } 
+            } else {
+                $datos = [
+                    "id" => $query->row("id")
+                    ,"rango" => $query->row("rango")
+                    ,"usuario" => $query->row("usuario")
+                ]; 
+                $this->session->set_userdata($datos);
+            }
 
         }
     }
