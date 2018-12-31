@@ -6,10 +6,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => '192.168.32.118',
+	'hostname' => 'localhost',
 	'username' => 'root',
-	'password' => 'root1',
-	'database' => 'etickets2',
+	'password' => '',
+	'database' => 'etickets',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

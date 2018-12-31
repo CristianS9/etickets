@@ -4,9 +4,10 @@
            parent::__construct();
            $this->load->helper("html");
            $this->load->helper("url");
+           $this->load->database(); 
         }
         public function index(){
-            $this->load->view("login_view");
+        //   $this->load->view("login_view"); 
         }
         public function login(){
             $log_usuario = $this->input->post("log_usuario"); 
@@ -26,12 +27,13 @@
             $reg_email = $this->input->post("reg_email");
             $reg_telefono = $this->input->post("reg_telefono");
             
+            $this->Usuario_Model->minimos_registro($reg_usuario,$reg_contrasena,$reg_nombre,$reg_apellidos,$reg_email,$reg_telefono);
             $this->Usuario_Model->usuarioExiste($reg_usuario); 
             $this->Usuario_Model->emailExiste($reg_email);
             $this->Usuario_Model->contrasenaIgual($reg_contrasena,$reg_r_contrasena);
             
             // Si llega es que todo esta bien
-                
+            $this->Usuario_Model->registrar($reg_usuario,$reg_contrasena,$reg_nombre,$reg_apellidos,$reg_email,$reg_telefono);
             
        
             
