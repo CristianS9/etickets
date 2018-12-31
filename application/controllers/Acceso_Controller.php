@@ -7,12 +7,17 @@
            $this->load->database(); 
         }
         public function index(){
-        //   $this->load->view("login_view"); 
+            $this->load->view("login_view"); 
         }
         public function login(){
             $log_usuario = $this->input->post("log_usuario"); 
             $log_contrasena = $this->input->post("log_contrasena");
-            echo $usuario.$contrasena;
+            $this->load->model("Usuario_Model");
+            $this->Usuario_Model->login_correcto($log_usuario,$log_contrasena);
+
+            // Si llega significa que los datos son correctos
+            
+
         }
         public function registro_view(){
             $this->load->view("registro_view");
@@ -34,8 +39,8 @@
             
             // Si llega es que todo esta bien
             $this->Usuario_Model->registrar($reg_usuario,$reg_contrasena,$reg_nombre,$reg_apellidos,$reg_email,$reg_telefono);
-            
-       
+            echo "usuario registrado correctamente";            
+            redirect("/acceso_controller");
             
         }
     }

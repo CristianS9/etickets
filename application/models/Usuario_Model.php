@@ -122,6 +122,20 @@
                 "telefono" => $telefono,
             ];
             $this->db->insert("usuarios",$datos);
+        }
+        public function login_correcto($usuario,$contrasena){
+            $usuario = trim($usuario);
+            $contrasena = trim($contrasena);
+
+            $condicion = [
+                "usuario" => $usuario
+                ,"contrasena" => $contrasena
+            ];
+            $query = $this->db->get_where("usuarios",$condicion);
+
+            if(!$query->row("usuario")){
+                redirect("/notificacion/error/20");
+            } 
 
         }
     }

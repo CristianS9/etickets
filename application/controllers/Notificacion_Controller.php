@@ -28,7 +28,7 @@
                 ,17 => "El correo electronico intruducido no es valido"
                 ,18 => "El numero debe contener 9 numeros exactos"
                 ,19 => "El numero de telefono debe solo puede contener numeros"
-
+                ,20 => "Usuario o contraseña incorrectos"
             ];
             $mensaje["aviso"] =[];
 
