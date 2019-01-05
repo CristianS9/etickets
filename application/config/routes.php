@@ -55,3 +55,4 @@ $route['translate_uri_dashes'] = FALSE;
 // No sé por qué sale al revés en los ejemplos de arriba, pero primero va la url recortada y después todo el mondongo.
 $route['detail/(:num)'] = 'EventDetail_Controller/eventDetails/$1';
 $route['home'] = 'Home_Controller';
+$route['admin'] = 'AdminPanelController';
