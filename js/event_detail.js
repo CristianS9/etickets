@@ -1,7 +1,7 @@
 
 $(document).ready(function () {
 
-
+alert("Todo cargado");
 $("#sendButton").click(function () {
     var textAreaLength = $("#pComent").val().length;
     textAreaLength = $.trim(textAreaLength);
@@ -15,19 +15,21 @@ $("#sendButton").click(function () {
 
 function sendComment() {
     var commentValue = $("#pComent").val();
+    
     $.ajax({
-        url: "ajax/sendCommentAjax.php",
+        type: "GET",
+        url: "../Ajax_SendComment/sendComment",
         data: {
-            "id": id
+            "userId": 1,
+            "eventId":3,
+            "comentario": commentValue
         },
-        type: "POST",
-        dataType: "json",
         success: function (datos) {
-           
+           alert("Datos enviados correctamente");
             
         },
         error: function (error) {
-      
+      alert("Error al enviar los datos");
             
         }
     });

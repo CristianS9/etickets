@@ -47,8 +47,7 @@ foreach ($eventTickets as $ticket) {
      
             <textarea name="pComent" id="pComent" cols="100" rows="10"></textarea>
             <br>
-            <button id="sendButton">Enviar</button>
-        
+            <button id="sendButton">Enviar</button>        
         <br>
         <h3>Comentarios de los usuarios:</h3>
         <br>

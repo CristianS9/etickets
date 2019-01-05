@@ -26,4 +26,10 @@ class Evento_Model extends CI_Model {
         $this->db->close();
         return $query->result();
     }
+
+    public function newComment($userId, $eventId, $comment){
+        $this->db->query("CALL spInsertComment(".$userId.",".$eventId.",'".$comment."')");
+        $this->db->close();
+
+    }
 }
