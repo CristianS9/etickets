@@ -14,6 +14,7 @@ class Evento_Model extends CI_Model {
 
     public function getEventTickets() {
         $eventId = $this->uri->segment("2");
+        $_SESSION["eventId"] = $eventId;
         $query = $this->db->query("CALL getEventDaysInfo(" . $eventId . ")");
         $this->db->close();
         return $query->result();

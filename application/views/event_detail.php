@@ -10,6 +10,8 @@
 </head>
 <body>
     <h1>Nombre del evento: </h1>
+    
+    <input type="hidden" value="<?php echo($_SESSION['eventId']) ?>" id="eventId">
     <?php echo ($datos[0]->nombre) ?>
     <br>
     <br>

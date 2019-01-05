@@ -15,13 +15,14 @@ $("#sendButton").click(function () {
 
 function sendComment() {
     var commentValue = $("#pComent").val();
+    var eventId = $("#eventId").val();
     
     $.ajax({
-        type: "GET",
+        type: "POST",
         url: "../Ajax_SendComment/sendComment",
         data: {
             "userId": 1,
-            "eventId":3,
+            "eventId": eventId,
             "comentario": commentValue
         },
         success: function (datos) {
