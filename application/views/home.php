@@ -7,6 +7,9 @@
     <title>Document</title>
 </head>
 <body>
+<h1>Buscar:</h1><br>   
+<input type="text" class='mySearch' id="ls_query" placeholder="Type to start searching ...">
+<br><br>
           <table border = "1"> 
             <tr>
                 <td>Id</td>
