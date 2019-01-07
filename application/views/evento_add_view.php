@@ -9,7 +9,14 @@
     <script src="main.js"></script>
 </head>
 <body>
-<form action="<?php echo base_url(); ?>index.php/Evento_Controller/add_evento" method="post">
+
+<?php 
+    if (isset($error)) {
+        echo $error;
+    }
+
+    echo form_open_multipart("Evento_Controller/add_evento");
+?>
     
     <label for="nombre">Nombre: </label>
     <input name="nombre" type="text"><br>
@@ -40,9 +47,10 @@
 
     <label for="sitio">Sitio: </label>
     <input name="sitio" type="text"><br>
-
+    
+    <label for="imagen">Imagen: </label>
+    <input name="imagen" type="file">
     <br>
-
     <input type="submit">
 </form>
 </body>

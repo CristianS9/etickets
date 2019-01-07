@@ -2,7 +2,7 @@
 class Evento_Controller extends CI_Controller{
     public function __construct(){
         parent::__construct();
-        $this->load->helper('url'); 
+        $this->load->helper(['form', 'url']); 
         $this->load->database(); 
     }
     
@@ -34,12 +34,34 @@ class Evento_Controller extends CI_Controller{
             "provincia" => $this->input->post("provincia"),
             "sitio" => $this->input->post("sitio")
         ];
+        $this->subirImagen();
 
         $this->Evento_Model->insertar($datos);
         $query= $this->db->get("eventos");
         
-        redirect("Evento_Controller");
+        // redirect("Evento_Controller");
     }
+    
+    public function subirImagen(){
+                $config['upload_path']          = './fotos/';
+                $config['allowed_types']        = 'gif|jpg|png';
+                $config['max_size']             = 4096;
+                $config['max_width']            = 1024;
+                $config['max_height']           = 768;
+
+                $this->load->library('upload', $config);
+
+                if ( ! $this->upload->do_upload('imagen')){
+                        $error = array('error' => $this->upload->display_errors());
+
+                        $this->load->view('evento_add_view', $error);
+                }
+                else{
+                        $data = array('datos_img' => $this->upload->data());
+
+                        $this->load->view('correcto', $data);
+                }
+        }
     
     public function del_evento(){
         $this->load->model("Evento_Model");
