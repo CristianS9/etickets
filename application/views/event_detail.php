@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+
         <?php echo script_tag("lib/jquery-3.3.1.min.js"); ?>
         <?php echo script_tag("js/event_detail.js"); ?>
 </head>
@@ -30,10 +33,10 @@
     <h2>Días del evento:</h2>
     <br>
         <?php
-$contadorDia = 0;
+$contadorDia = 1;
 foreach ($eventTickets as $ticket) {
 
-    echo ("Día " . $contadorDia . " : " . $ticket->fecha);
+    echo ("Abono: " . $contadorDia . " : " . $ticket->fecha);
     if ($ticket->fecha == "") {
         echo ("Abono de todos los días");
     }

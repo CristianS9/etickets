@@ -18,13 +18,13 @@ class Config
         // ***** Database ***** //
         'dataSources'           => [
             'ls_query' => [
-                'host'               => 'localhost',
-                'database'           => 'live_search',
+                'host'               => '192.168.32.118',
+                'database'           => 'eticketsf',
                 'username'           => 'root',
-                'pass'               => 'root',
-                'table'              => 'live_search_table',
+                'pass'               => 'root1',
+                'table'              => 'eventos',
                 // specify the name of search columns
-                'searchColumns'      => ['name'],
+                'searchColumns'      => ['nombre'],
                 // specify order by column. This is optional
                 'orderBy'            => '',
                 // specify order direction e.g. ASC or DESC. This is optional

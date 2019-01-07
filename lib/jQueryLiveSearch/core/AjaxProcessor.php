@@ -2,7 +2,7 @@
 
 namespace AjaxLiveSearch\core;
 
-header('Access-Control-Allow-Origin: http://ajaxlivesearch.com');
+header('Access-Control-Allow-Origin: http://localhost');
 header('Access-Control-Allow-Methods: *');
 header('Content-Type: application/json');
 
