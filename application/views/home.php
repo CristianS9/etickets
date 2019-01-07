@@ -23,7 +23,7 @@ $handler->getJavascriptAntiBot();
 </head>
 <body>
 <h1>Buscar:</h1><br>   
-<input type="text" class='mySearch' id="ls_query" placeholder="Type to start searching ...">
+<input type="text" class='mySearch' id="ls_query" placeholder="Type to start searching ..." data-additionalData="hello world!">
 <br><br>
           <table border = "1"> 
             <tr>
