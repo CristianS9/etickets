@@ -30,4 +30,26 @@ $(document).ready(function() {
       }
     });
   }
-});
+
+
+
+  function addToCart() {
+    
+    $.ajax({
+      type: "POST",
+      url: "../Ajax_AddToCart/addItemToCart",
+      data: {
+        userId: 1,
+        eventId: eventId,
+        comentario: commentValue
+      },
+      success: function (datos) {
+        alert("Datos enviados correctamente");
+      },
+      error: function (error) {
+        alert("Error al enviar los datos");
+      }
+    });
+  }
+
+  });
