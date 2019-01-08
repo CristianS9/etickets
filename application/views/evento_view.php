@@ -10,8 +10,7 @@
 </head>
 <body>
     <a href = "<?php echo base_url(); ?>index.php/Evento_Controller/add_evento_view">Add</a><br><br>
-    <a href="<?php echo base_url(); ?>index.php/Evento_Controller/del_evento_view"></a>
-
+    
     <table border="1"> 
         <tr>
             <td>Id</td>
@@ -37,7 +36,7 @@
         echo "<td>". $aux->sitio ."</td>";
         echo "<td><img src=\"../fotos/".$aux->id.".png\"></td>";
         echo "<td><a href=\"Evento_Controller/mod_evento_view/".$aux->id."/\">Editar</a></td>";
-        echo "<td><a href=\"Evento_Controller/del_evento/".$aux->id."/\">Eliminar</a></td>";
+        echo "<td><a href=\"". base_url() ."index.php/Evento_Controller/del_evento/".$aux->id."/\">Eliminar</a></td>";
         echo "</tr>";
     }
     ?>

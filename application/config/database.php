@@ -6,9 +6,9 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => '192.168.32.118',
+	'hostname' => 'localhost',
 	'username' => 'root',
-	'password' => 'root1',
+	'password' => '',
 	'database' => 'eticketsf',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',

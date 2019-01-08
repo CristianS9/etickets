@@ -34,17 +34,20 @@ class Evento_Controller extends CI_Controller{
             "provincia" => $this->input->post("provincia"),
             "sitio" => $this->input->post("sitio")
         ];
-        $this->subirImagen();
+        
+        $lastId= $this->Evento_Model->insertar($datos);
 
-        $this->Evento_Model->insertar($datos);
+        $this->subirImagen($lastId);
+
         $query= $this->db->get("eventos");
         
         // redirect("Evento_Controller");
     }
     
-    public function subirImagen(){
+    public function subirImagen($fileName){
                 $config['upload_path']          = './fotos/';
-                $config['allowed_types']        = 'gif|jpg|png';
+                $config['allowed_types']        = 'png';
+                $config['file_name']            = $fileName;
                 $config['max_size']             = 4096;
                 $config['max_width']            = 1024;
                 $config['max_height']           = 768;
