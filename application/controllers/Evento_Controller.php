@@ -39,7 +39,7 @@ class Evento_Controller extends CI_Controller{
 
         $this->subirImagen($lastId);
 
-        $query= $this->db->get("eventos");
+        // $query= $this->db->get("eventos");
         
         // redirect("Evento_Controller");
     }

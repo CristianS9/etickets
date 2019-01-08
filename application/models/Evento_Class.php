@@ -5,6 +5,7 @@
         private $descripcion;
         private $fecha_inicio;
         private $fecha_fin;
+        
         public function __construct(){
 
         }
