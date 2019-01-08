@@ -8,5 +8,8 @@
 </head>
 <body>
     <h1>Shopping cart</h1>
+    <br>
+    <br>
+    
 </body>
 </html>
