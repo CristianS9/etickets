@@ -11,7 +11,8 @@ class Ajax_SendComment extends CI_Controller {
         $this->load->model("Evento_Model");
         $comentario = $this->input->post("comentario");
         $eventId = $this->input->post("eventId");
-        $userId = $this->input->post("userId");
+        // El userId tiene que sacarse de la sesión, hay que crearla al hacer login
+        $userId = 1;
         $this->Evento_Model->newComment($userId,$eventId,$comentario);
     }
 }

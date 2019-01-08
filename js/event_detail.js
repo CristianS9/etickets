@@ -1,5 +1,5 @@
-$(document).ready(function() {
-  $("#sendButton").click(function() {
+$(document).ready(function () {
+  $("#sendButton").click(function () {
     var textAreaLength = $("#pComent").val().length;
     textAreaLength = $.trim(textAreaLength);
 
@@ -10,6 +10,11 @@ $(document).ready(function() {
     }
   });
 
+  $(".addToCartButton").click(function () {
+    var id = $(this).attr('id');
+    addToCart(id);
+  });
+
   function sendComment() {
     var commentValue = $("#pComent").val();
     var eventId = $("#eventId").val();
@@ -18,28 +23,6 @@ $(document).ready(function() {
       type: "POST",
       url: "../Ajax_SendComment/sendComment",
       data: {
-        userId: 1,
-        eventId: eventId,
-        comentario: commentValue
-      },
-      success: function(datos) {
-        alert("Datos enviados correctamente");
-      },
-      error: function(error) {
-        alert("Error al enviar los datos");
-      }
-    });
-  }
-
-
-
-  function addToCart() {
-    
-    $.ajax({
-      type: "POST",
-      url: "../Ajax_AddToCart/addItemToCart",
-      data: {
-        userId: 1,
         eventId: eventId,
         comentario: commentValue
       },
@@ -52,4 +35,22 @@ $(document).ready(function() {
     });
   }
 
-  });
+
+
+  function addToCart(pentradaId) {
+    $.ajax({
+      type: "POST",
+      url: "../Ajax_AddToCart/addItemToCart",
+      data: {
+        entradaId: pentradaId
+      },
+      success: function (datos) {
+        alert("Añadido a la cesta");
+      },
+      error: function (error) {
+        alert("No añadido a la cesta");
+      }
+    });
+  }
+
+});

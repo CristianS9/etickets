@@ -28,7 +28,7 @@
     <br>
     <p>Entradas disponibles: <?php echo ($datos[0]->disponibles) ?> </p>
     <br>
-
+    
     <br>
     <h2>Días del evento:</h2>
     <br>
@@ -36,7 +36,7 @@
 $contadorDia = 1;
 foreach ($eventTickets as $ticket) {
 
-    echo ("Abono: " . $contadorDia . " : " . $ticket->fecha);
+    echo ("Abono: " . $contadorDia . " : " . $ticket->fecha . ".  Comprar-> <button class='addToCartButton' id='$ticket->id' >Añadir al carro</button>" );
     if ($ticket->fecha == "") {
         echo ("Abono de todos los días");
     }
