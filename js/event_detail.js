@@ -22,7 +22,7 @@ $(document).ready(function () {
 
     $.ajax({
       type: "POST",
-      url: "../Ajax_SendComment/sendComment",
+      url: "../ajax/EventDetail_Ajax/sendComment",
       data: {
         eventId: eventId,
         comentario: commentValue
@@ -41,7 +41,7 @@ $(document).ready(function () {
   function addToCart(pentradaId,pcantidad) {
     $.ajax({
       type: "POST",
-      url: "../Ajax_AddToCart/addItemToCart",
+      url: "../ajax/EventDetail_Ajax/addItemToCart",
       data: {
         entradaId: pentradaId,
         cantidad: pcantidad
