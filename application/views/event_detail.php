@@ -36,7 +36,15 @@
 $contadorDia = 1;
 foreach ($eventTickets as $ticket) {
 
-    echo ("Abono: " . $contadorDia . " : " . $ticket->fecha . ".  Comprar-> <button class='addToCartButton' id='$ticket->id' >Añadir al carro</button>" );
+    echo ("Abono: " . $contadorDia . " : " . $ticket->fecha);
+    
+    echo("<br>");
+    $idCantidad = $ticket->id. "cantidad";
+    //$ticket->idcantidad
+    echo("Cantidad: <input type='number' id='$idCantidad' name='tentacles' min='1' max='10'>");
+    echo ("<br>");
+
+    echo(" Comprar-> <button class='addToCartButton' id='$ticket->id' >Añadir al carro</button>");
     if ($ticket->fecha == "") {
         echo ("Abono de todos los días");
     }

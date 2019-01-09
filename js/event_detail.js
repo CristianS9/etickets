@@ -12,7 +12,8 @@ $(document).ready(function () {
 
   $(".addToCartButton").click(function () {
     var id = $(this).attr('id');
-    addToCart(id);
+    var cantidad = $("#"+id + "cantidad").val();
+    addToCart(id,cantidad);
   });
 
   function sendComment() {
@@ -37,12 +38,13 @@ $(document).ready(function () {
 
 
 
-  function addToCart(pentradaId) {
+  function addToCart(pentradaId,pcantidad) {
     $.ajax({
       type: "POST",
       url: "../Ajax_AddToCart/addItemToCart",
       data: {
-        entradaId: pentradaId
+        entradaId: pentradaId,
+        cantidad: pcantidad
       },
       success: function (datos) {
         alert("Añadido a la cesta");
