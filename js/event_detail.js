@@ -36,8 +36,6 @@ $(document).ready(function () {
     });
   }
 
-
-
   function addToCart(pentradaId,pcantidad) {
     $.ajax({
       type: "POST",
