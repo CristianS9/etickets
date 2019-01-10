@@ -8,10 +8,15 @@ $(document).ready(function () {
         }
     });
 
+    $(".deleteButton").click(function () {
+        var id = $(this).attr('id');
+        deleteFromCart(id);
+    });
+
     function changeQuantity(pcantidad,pid) {
         $.ajax({
             type: "POST",
-            url: "../index.php/ajax/EventDetail_Ajax/updateItemInCart",
+            url: "ajax/EventDetail_Ajax/updateItemInCart",
             data: {
                 cantidad: pcantidad,
                 idEntrada: pid
@@ -24,4 +29,20 @@ $(document).ready(function () {
             }
         });
     }
+  function deleteFromCart(pentradaId) {
+      alert(pentradaId);
+      $.ajax({
+          type: "POST",
+          url: "ajax/EventDetail_Ajax/deleteFromCart",
+          data: {
+              entradaId: pentradaId
+          },
+          success: function (datos) {
+              alert("Borrado");
+          },
+          error: function (error) {
+              alert("No borrado");
+          }
+      });
+  }
 });

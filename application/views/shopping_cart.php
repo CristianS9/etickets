@@ -26,9 +26,12 @@
         echo("<br>");
         echo ("Precio total: ".$elemento->precioTotal);
         echo("<br>");
+        echo ("Eliminar: <button class='deleteButton' id='$elemento->id'>Eliminar</button>");
+        echo("<br>");
         echo("<br>");
     }
     ?>
 </body>
 <h1>Total: </h1>
+
 </html>

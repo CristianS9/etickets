@@ -31,9 +31,6 @@
             $this->Usuario_Model->contrasenaIgual($reg_contrasena,$reg_r_contrasena);
             
             // Si llega es que todo esta bien
-                
-            
-       
             
         }
     }
