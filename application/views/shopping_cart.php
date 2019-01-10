@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
             <?php echo script_tag("lib/jquery-3.3.1.min.js"); ?>
+            <script src="<?php echo base_url() ?>lib/jquery-3.3.1.min.js"></script>
+            
         <?php echo script_tag("js/shopping_cart.js"); ?>
 </head>
 <body>
