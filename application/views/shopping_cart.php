@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="etickets" lang="en">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,14 +20,15 @@
         echo("<br>");
         echo ("Fecha: ".$elemento->fecha);
         echo("<br>");
-        echo ("Precio individual: ".$elemento->precioIndividual);
+        $precio = "precio".$elemento->id;
+        echo ("Precio individual: <precio class='$precio'>$elemento->precioIndividual</precio>");
         echo("<br>");
         echo ("Cantidad: ");
         echo("<input class='cantidad' id='$elemento->id' originalValue='$elemento->cantidad' type='number' name='' value='$elemento->cantidad'>");
         echo("<br>");
-        echo ("Precio total: ".$elemento->precioTotal);
-        echo("<br>");
-        echo ("Precio angular: {{precio}}</span>");
+        $precioTotal = "precioTotal" . $elemento->id;
+
+        echo ("Precio total: <precio class='$precioTotal precioTotal'>$elemento->precioTotal</precio>");
         echo("<br>");
         echo ("Eliminar: <button class='deleteButton' id='$elemento->id'>Eliminar</button>");
         echo("<br>");
@@ -35,6 +36,7 @@
     }
     ?>
 </body>
-<h1>Total: </h1>
+
+<h1 id="total">Total: </h1>
 
 </html>

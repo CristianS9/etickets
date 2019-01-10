@@ -1,28 +1,50 @@
-var etickets = angular.module("etickets", []);
-
-etickets.controller('eticketsController', function ($scope) {
-    $scope.precio = 'ferrefer';
-
-    $scope.SacarMensaje = function () {
-        $scope.test = '';
-    }
-});
-
 $(document).ready(function () {
-    $(".cantidad").focusout(function () {
-        var cantidad = $(this).val();
-        var cantidadInicial = $(this).attr("originalValue");
-        var id = $(this).attr('id');
-        if (cantidad != cantidadInicial) {
-            changeQuantity(cantidad, id);
-            recalcularPrecioPorCantidades(); //Terminar esto, tiene que recalcular los datos de ese artículo
-        }
-    });
+
+    // Funciones al cargar
+
+    changeCartTotal();
+
+    // Eventos
 
     $(".deleteButton").click(function () {
         var id = $(this).attr('id');
         deleteFromCart(id);
     });
+
+    $(".cantidad").focusout(function () {
+        var cantidad = $(this).val();
+        var id = $(this).attr('id');
+
+        // Ajax changeQuantity
+        changeQuantity(cantidad, id);
+
+        //Cambia el precio total de un elemento
+        changeItemTotalSum(id, cantidad);
+
+        //Total del carrito
+        changeCartTotal();
+
+    });
+
+    // Funciones
+
+    function changeItemTotalSum(pid, pcantidad) {
+        var precio = $(".precio" + pid).text();
+        var precioNuevo = pcantidad * precio;
+        $(".precioTotal" + pid).text(parseFloat(precioNuevo).toFixed(2));
+
+    }
+
+
+    function changeCartTotal() {
+        var sum = 0;
+        $('.precioTotal').each(function () {
+            sum += parseFloat($(this).text()); // Or this.innerHTML, this.innerText
+        });
+        $("#total").text(sum.toFixed(2));
+    }
+
+    // Ajax
 
     function changeQuantity(pcantidad, pid) {
         $.ajax({
@@ -33,7 +55,7 @@ $(document).ready(function () {
                 idEntrada: pid
             },
             success: function (datos) {
-                alert("Cantidad cambiada en la base de datos");
+                /* alert("Cantidad cambiada en la base de datos"); */
             },
             error: function (error) {
                 alert("Cantidd no cambiada en la base de datos");
@@ -56,9 +78,5 @@ $(document).ready(function () {
                 alert("No borrado");
             }
         });
-    }
-
-    function recalcularPrecioPorCantidades(){
-
     }
 });
