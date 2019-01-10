@@ -1587,5 +1587,8 @@ class CI_Form_validation {
 		$this->error_string = '';
 		return $this;
 	}
-
+	
+	public function setError($field, $error){
+        $this->_field_data[$field]['error'] = $error;
+    }
 }

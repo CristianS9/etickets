@@ -6,17 +6,20 @@ class Evento_Model extends CI_Model{
 
     public function cargarProvincias(){
         $query = $this->db->get("provincias");
+        $this->db->close();
         return $query->result();
     }
 
     public function insertar($datos){
-        $lastId = $this->db->query("CALL spInsertNewEvent('".$datos['nombre']."', '".$datos['descripcion']."', '".$datos['precio']."', '".$datos['fecha_inicio']."', '".$datos['fecha_fin']."', '".$datos['cantidad']."', '".$datos['provincia']."', '".$datos['sitio']."')")->row()->IDMAX;
-        
+        $linea= $this->db->query("CALL spInsertNewEvent('".$datos['nombre']."', '".$datos['descripcion']."', '".$datos['precio']."', '".$datos['fecha_inicio']."', '".$datos['fecha_fin']."', '".$datos['cantidad']."', '".$datos['provincia']."', '".$datos['sitio']."')")->row();
+        $this->db->close();
+        $lastId = $linea->IDMAX;
         return $lastId;
     }
     
     public function borrar($condicion){
         $this->db->delete("eventos",$condicion);
+        $this->db->close();
     }
 
     public function modificar($condicion,$nuevo){
@@ -26,7 +29,8 @@ class Evento_Model extends CI_Model{
         $this->db->set($nuevo);
         $this->db->where($condicion);
         $this->db->update('eventos',$nuevo);
-        
+        $this->db->close();
     }
+
 }
 ?>

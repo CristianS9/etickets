@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Evento</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script>
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" /> -->
+    <!-- <script src="main.js"></script> -->
 </head>
 <body>
     <a href = "<?php echo base_url(); ?>index.php/Evento_Controller/add_evento_view">Add</a><br><br>
@@ -34,7 +34,7 @@
         echo "<td>". $aux->fecha_fin ."</td>";
         echo "<td>". $aux->idProvincia ."</td>";
         echo "<td>". $aux->sitio ."</td>";
-        echo "<td><img src=\"../fotos/".$aux->id.".png\"></td>";
+        echo "<td><img src=\"". base_url() . "/fotos/" .$aux->id.".jpg\"></td>";
         echo "<td><a href=\"Evento_Controller/mod_evento_view/".$aux->id."/\">Editar</a></td>";
         echo "<td><a href=\"". base_url() ."index.php/Evento_Controller/del_evento/".$aux->id."/\">Eliminar</a></td>";
         echo "</tr>";
