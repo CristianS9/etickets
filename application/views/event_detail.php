@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,9 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+
+        <?php echo script_tag("lib/jquery-3.3.1.min.js"); ?>
+        <?php echo script_tag("js/event_detail.js"); ?>
 </head>
 <body>
     <h1>Nombre del evento: </h1>
+    
+    <input type="hidden" value="<?php echo($_SESSION['eventId']) ?>" id="eventId">
     <?php echo ($datos[0]->nombre) ?>
     <br>
     <br>
@@ -21,15 +28,23 @@
     <br>
     <p>Entradas disponibles: <?php echo ($datos[0]->disponibles) ?> </p>
     <br>
-
+    
     <br>
     <h2>Días del evento:</h2>
     <br>
         <?php
-$contadorDia = 0;
+$contadorDia = 1;
 foreach ($eventTickets as $ticket) {
 
-    echo ("Día " . $contadorDia . " : " . $ticket->fecha);
+    echo ("Abono: " . $contadorDia . " : " . $ticket->fecha);
+    
+    echo("<br>");
+    $idCantidad = $ticket->id. "cantidad";
+    //$ticket->idcantidad
+    echo("Cantidad: <input type='number' id='$idCantidad' name='tentacles' min='1' max='10'>");
+    echo ("<br>");
+
+    echo(" Comprar-> <button class='addToCartButton' id='$ticket->id' >Añadir al carro</button>");
     if ($ticket->fecha == "") {
         echo ("Abono de todos los días");
     }
@@ -42,11 +57,10 @@ foreach ($eventTickets as $ticket) {
         <br>
         <h2>Comentarios:</h2>
         <br>
-        <form action="">
-        <textarea name="pComent" id="pComent" cols="100" rows="10"></textarea>
-        <br>
-        <button type="submit">Enviar</button>
-        </form>
+     
+            <textarea name="pComent" id="pComent" cols="100" rows="10"></textarea>
+            <br>
+            <button id="sendButton">Enviar</button>        
         <br>
         <h3>Comentarios de los usuarios:</h3>
         <br>

@@ -57,3 +57,5 @@ $route['translate_uri_dashes'] = FALSE;
 $route["notificacion/(:any)/(:num)"] = "notificacion_controller/index/$1/$2";
 $route['detail/(:num)'] = 'EventDetail_Controller/eventDetails/$1';
 $route['home'] = 'Home_Controller';
+$route['admin'] = 'AdminPanelController';
+$route['cart'] = 'ShoppingCart_Controller/index';
