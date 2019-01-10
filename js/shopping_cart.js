@@ -4,7 +4,7 @@ etickets.controller('eticketsController', function ($scope) {
     $scope.precio = 'ferrefer';
 
     $scope.SacarMensaje = function () {
-        $scope.mensaje = "Hola " + $scope.nombre + "" + $scope.apellido;
+        $scope.test = '';
     }
 });
 
