@@ -11,7 +11,7 @@ $(document).ready(function () {
     function changeQuantity(pcantidad,pid) {
         $.ajax({
             type: "POST",
-            url: "../ajax/EventDetail_Ajax/updateItemInCart",
+            url: "../index.php/ajax/EventDetail_Ajax/updateItemInCart",
             data: {
                 cantidad: pcantidad,
                 idEntrada: pid
