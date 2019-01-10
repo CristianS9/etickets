@@ -24,5 +24,14 @@ class EventDetail_Ajax extends CI_Controller {
         // Aquí se recoge el id del usuario de la sesión, de momento va a ser 1 (usuario Cristian)
         $this->EntradasEvento_Model->addToShoppingCart($userId, $entradaEventoId, $cantidad);
     }
+
+    public function updateItemInCart() {
+        $this->load->model("ShoppingCart_Model");
+        $cantidad = $this->input->post("cantidad");
+        $idEntrada = $this->input->post("idEntrada");
+        //Aquí se recoge el id del usuario de la sesión, de momento va a ser 1
+        $userId = 1;
+        $this->ShoppingCart_Model->updateShoppingCart($userId, $idEntrada, $cantidad);
+    }
 }
 ?>

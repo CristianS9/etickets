@@ -22,7 +22,7 @@
         echo ("Precio individual: ".$elemento->precioIndividual);
         echo("<br>");
         echo ("Cantidad: ");
-        echo("<input type='number' name='' value='$elemento->cantidad'>");
+        echo("<input class='cantidad' id='$elemento->id' originalValue='$elemento->cantidad' type='number' name='' value='$elemento->cantidad'>");
         echo("<br>");
         echo ("Precio total: ".$elemento->precioTotal);
         echo("<br>");

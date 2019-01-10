@@ -11,4 +11,10 @@ class ShoppingCart_Model extends CI_Model {
         return $query->result();
 
     }
+
+    public function updateShoppingCart($userId, $entradaEventoId, $cantidad) {
+        $query = $this->db->query("CALL spUpdateTicketInUserCart($userId,$entradaEventoId,$cantidad)");
+        $this->db->close();
+
+    }
 }
