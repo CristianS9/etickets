@@ -94,11 +94,13 @@ class Evento_Controller extends CI_Controller {
         //Si no ha subido la imagen o ha habido algun error entra
         if (!$this->upload->do_upload('ev_imagen')) {
             $this->form_validation->setError('ev_imagen', $this->upload->display_errors());
+
             $this->load->model("Evento_Model");
             $condicion = [
                 "id" => $fileName
             ];
             $this->Evento_Model->borrar($condicion);
+
         } else {
             redirect("Evento_Controller");
         }
@@ -148,7 +150,7 @@ class Evento_Controller extends CI_Controller {
 
         // print_r($condicion);
         // print_r($nuevo);
-        $this->Evento_Model->modificar($condicion, $nuevo);
+        $this->Evento_Model->modificarEvento($condicion, $nuevo);
         redirect("Evento_Controller");
 
     }

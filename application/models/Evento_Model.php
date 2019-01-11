@@ -47,7 +47,7 @@ class Evento_Model extends CI_Model {
         $this->db->close();
     }
 
-    public function modificar($condicion, $nuevo) {
+    public function modificarEvento($condicion, $nuevo) {
         // $tabla = la tabla en la que se hara el update
         // $condicion =  Array con los parametros a cumplir para el update
         // $nuevo = Array con los nuevos datos
