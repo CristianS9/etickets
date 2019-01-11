@@ -43,7 +43,7 @@ class Evento_Model extends CI_Model {
     }
     
     public function borrar($condicion){
-        $this->db->delete("eventos",$condicion);
+        $this->db->query("CALL spBorrarEvento($condicion)");
         $this->db->close();
     }
 

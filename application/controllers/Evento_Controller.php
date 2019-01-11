@@ -50,9 +50,7 @@ class Evento_Controller extends CI_Controller {
             $this->form_validation->set_rules('ev_provincia', 'provincia', 'required');
             $this->form_validation->set_rules('ev_sitio', 'sitio', 'required|min_length[3]|max_length[50]');
 
-            if ($this->form_validation->run() == false) {
-
-            } else {
+            if (!$this->form_validation->run() == false) {
                 $this->load->model("Evento_Model");
                 $datos = [
                     "nombre" => $this->input->post("ev_nombre"),
@@ -63,46 +61,82 @@ class Evento_Controller extends CI_Controller {
                     "cantidad" => $this->input->post("ev_cantidad"),
                     "provincia" => $this->input->post("ev_provincia"),
                     "sitio" => $this->input->post("ev_sitio"),
+                    "imagen" => $this->input->post("ev_imagen"),
                 ];
 
                 $lastId = $this->Evento_Model->insertar($datos);
-                $this->subirImagen($lastId);
+                $this->subirImagen($lastId, $datos["imagen"]);
 
             }
 
         }
     }
 
-    public function subirImagen($fileName) {
+    public function subirImagen($fileName, $archivoImagen) {
         $config['upload_path'] = './fotos/';
         $config['allowed_types'] = 'jpg|png|jpeg';
 
-        $url = "fotos/" . $fileName . ".jpg";
-        $exists = file_exists($url);
+        // Obtener extensión del archivo
+        $path = $_FILES['ev_imagen']['name'];
+        $ext =".". pathinfo($path, PATHINFO_EXTENSION);
+
+        $url = "fotos/" . $fileName . $ext;
+
         //Si la imagen existe se borra para que no se escriba mal el nombre
         if (file_exists($url)) {
             unlink($url);
         }
 
-        $config['file_name'] = $fileName . ".jpg";
+        $config['file_name'] = $fileName . $ext;
         $config['max_size'] = 4096;
         $config['max_width'] = 1024;
         $config['max_height'] = 768;
 
         $this->load->library('upload', $config);
 
-        //Si no ha subido la imagen o ha habido algun error entra
-        if (!$this->upload->do_upload('ev_imagen')) {
+        // Hasta aquí funciona
+
+        $imagenSubida = $this->upload->do_upload('ev_imagen');
+        if (!$imagenSubida) {
             $this->form_validation->setError('ev_imagen', $this->upload->display_errors());
             $this->load->model("Evento_Model");
-            $condicion = [
-                "id" => $fileName
-            ];
-            $this->Evento_Model->borrar($condicion);
+            $this->Evento_Model->borrar($fileName);
         } else {
             redirect("Evento_Controller");
         }
+
     }
+    /*  public function subirImagen($fileName) {
+    $config['upload_path'] = './fotos/';
+    $config['allowed_types'] = 'jpg|png|jpeg';
+
+    $url = "fotos/" . $fileName . ".jpg";
+    $exists = file_exists($url);
+
+    //Si la imagen existe se borra para que no se escriba mal el nombre
+    if (file_exists($url)) {
+    unlink($url);
+    }
+
+    $config['file_name'] = $fileName . ".jpg";
+    $config['max_size'] = 4096;
+    $config['max_width'] = 1024;
+    $config['max_height'] = 768;
+
+    $this->load->library('upload', $config);
+
+    //Si no ha subido la imagen o ha habido algun error entra
+    if (!$this->upload->do_upload('ev_imagen')) {
+    $this->form_validation->setError('ev_imagen', $this->upload->display_errors());
+    $this->load->model("Evento_Model");
+    $condicion = [
+    "id" => $fileName,
+    ];
+    $this->Evento_Model->borrar($condicion);
+    } else {
+    redirect("Evento_Controller");
+    }
+    } */
 
     public function del_evento() {
         $this->load->model("Evento_Model");
