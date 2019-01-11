@@ -6,10 +6,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => '',
-	'database' => 'etickets',
+	'hostname' => 'raspberrymikel.ddns.net:143',
+	'username' => 'clase',
+	'password' => 'root1',
+	'database' => 'eticketsf',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
