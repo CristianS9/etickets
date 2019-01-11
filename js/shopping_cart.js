@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
     // Funciones al cargar
-
+    var 
     changeCartTotal();
 
     // Eventos
@@ -14,16 +14,19 @@ $(document).ready(function () {
     $(".cantidad").focusout(function () {
         var cantidad = $(this).val();
         var id = $(this).attr('id');
-
+        if(cantidad!=0){
         // Ajax changeQuantity
         changeQuantity(cantidad, id);
-
         //Cambia el precio total de un elemento
         changeItemTotalSum(id, cantidad);
-
         //Total del carrito
         changeCartTotal();
-
+        }else{
+            var eliminar = confirm("¿Seguro que quieres borrar este elemento?");
+            if(eliminar){
+                deleteFromCart(id);
+            }
+        }
     });
 
     // Funciones
@@ -31,8 +34,7 @@ $(document).ready(function () {
     function changeItemTotalSum(pid, pcantidad) {
         var precio = $(".precio" + pid).text();
         var precioNuevo = pcantidad * precio;
-        $(".precioTotal" + pid).text(parseFloat(precioNuevo).toFixed(2));
-
+        $(".precioTotal" + pid).text(precioNuevo.toFixed(2));
     }
 
 
