@@ -24,13 +24,12 @@
         echo ("Precio individual: <precio class='$precio'>$elemento->precioIndividual</precio>");
         echo("<br>");
         echo ("Cantidad: ");
-        echo("<input class='cantidad' id='$elemento->id' originalValue='$elemento->cantidad' type='number' name='' value='$elemento->cantidad'>");
+        echo("<cantidad>$elemento->cantidad</cantidad>");
         echo("<br>");
         $precioTotal = "precioTotal" . $elemento->id;
 
         echo ("Precio total: <precio class='$precioTotal precioTotal'>$elemento->precioTotal</precio>");
-        echo("<br>");
-        echo ("Eliminar: <button class='deleteButton' id='$elemento->id'>Eliminar</button>");
+
         echo("<br>");
         echo("<br>");
     }
@@ -38,7 +37,5 @@
 </body>
 
 <h1 id="total">Total: </h1>
-<br>
-<button><a href="cart/end">Tramitar pedido</a></button>
 
 </html>
