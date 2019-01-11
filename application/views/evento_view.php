@@ -34,7 +34,13 @@
         echo "<td>". $aux->fecha_fin ."</td>";
         echo "<td>". $aux->idProvincia ."</td>";
         echo "<td>". $aux->sitio ."</td>";
-        echo "<td><img src=\"". base_url() . "/fotos/" .$aux->id.".jpg\"></td>";
+        $url = "fotos/".$aux->id.".jpg";
+        if (file_exists($url)) {
+            echo "<td><img src=\"". base_url() . "fotos/" .$aux->id.".jpg\"></td>";
+        } else {
+            echo "<td><img src=\"". base_url() . "fotos/0.jpg\"></td>";
+        }
+
         echo "<td><a href=\"Evento_Controller/mod_evento_view/".$aux->id."/\">Editar</a></td>";
         echo "<td><a href=\"". base_url() ."index.php/Evento_Controller/del_evento/".$aux->id."/\">Eliminar</a></td>";
         echo "</tr>";
