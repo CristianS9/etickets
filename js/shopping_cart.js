@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
     // Funciones al cargar
-    var 
+     
     changeCartTotal();
 
     // Eventos

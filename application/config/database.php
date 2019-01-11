@@ -6,7 +6,7 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => '192.168.0.166',
+	'hostname' => 'raspberrymikel.ddns.net:143',
 	'username' => 'aitor',
 	'password' => '95761438',
 	'database' => 'eticketsf',
