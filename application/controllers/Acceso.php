@@ -54,6 +54,12 @@
 
             }
         }
+        public function confirmarRegistro($token){
+            $this->load->model("Usuario_Model");
+            $this->Usuario_Model->confirmarToken($token);
+            redirect("/acceso");
+
+        }
 
     }
 

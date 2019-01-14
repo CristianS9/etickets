@@ -19,8 +19,9 @@
         public function registro($usuario,$email,$token){
             $this->email->from("etickets_reto@outlook.es","Etickets");
             $this->email->to($email);
-            $this->email->subject("Bienvenido a la comunidad de Etickets!");
+            $this->email->subject(utf8_encode("Bienvenido a la comunidad de Etickets!"));
             $data["usuario"] =$usuario;
+            $data["token"] = $token;
             $mensaje = $this->load->view("email/registro",$data,true);
             $this->email->message($mensaje);
 
