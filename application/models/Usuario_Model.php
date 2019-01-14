@@ -11,14 +11,9 @@
             return $this->db->get("usuario")->result();
         }
         public function confirmarToken($token){
-            $this->db->trans_start();
-                $id = $this->db->query("CALL spDuenoToken(\"$token\")")->row()->idUsuario;
-                $this->db->close();
-                $this->db->query("CALL spConfirmarCorreo($id)");
-                $this->db->close();
-                $this->db->query("CALL spUsuarioConfirmado($id)");
-                $this->db->close();
-            $this->db->trans_complete();
+            $id = $this->db->query("CALL spConfirmarCorreo(\"$token\")");
+            $this->db->close();
+        
         }
       
     }
