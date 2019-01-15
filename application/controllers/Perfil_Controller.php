@@ -8,7 +8,11 @@ class Perfil_Controller extends CI_Controller {
         $this->load->library("session");
     }
     public function index() {
-        $this->load->view("perfil_view");
+        $result = $this->db->get("ventas");
+        $data["todo"] = $result->result();
+
+        
+        $this->load->view("perfil_view", $data);
     }
 }
 ?>

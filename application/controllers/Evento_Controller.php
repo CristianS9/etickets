@@ -13,7 +13,6 @@ class Evento_Controller extends CI_Controller {
         $query = $this->db->get("eventos");
         $data["todo"] = $query->result();
 
-        $this->load->helper("url");
         $this->load->view("evento_view", $data);
     }
 
@@ -22,7 +21,6 @@ class Evento_Controller extends CI_Controller {
         $this->load->model("Evento_Model");
         $data['provincias'] = $this->Evento_Model->cargarProvincias();
 
-        $this->load->helper("url");
         $this->load->view("evento_add_view", $data);
     }
 

@@ -11,16 +11,8 @@ body {
 .profile-sidebar {
     padding: 20px 0 10px 0;
     background: #fff;
-}
+    border-radius: 10px;
 
-.profile-userpic img {
-    float: none;
-    margin: 0 auto;
-    width: 50%;
-    height: 50%;
-    -webkit-border-radius: 50% !important;
-    -moz-border-radius: 50% !important;
-    border-radius: 50% !important;
 }
 
 .profile-usertitle {
@@ -62,6 +54,7 @@ body {
 
 .profile-usermenu {
     margin-top: 30px;
+
 }
 
 .profile-usermenu ul li {
@@ -104,4 +97,47 @@ body {
     padding: 20px;
     background: #fff;
     min-height: 460px;
+    border-radius: 10px;
+}
+
+input{
+    border-radius: 20px;
+}
+.formGrid{
+    display: grid;
+    position: relative;
+    /* grid-template-rows: repeat(6, 1fr); */
+    grid-row-gap:4%;
+}
+.contInput{
+    display: grid;
+    position: relative;
+    grid-template-columns: 45% 45%;
+}
+.contSubmit{
+    display: grid;
+    position: relative;
+    margin-top: 10px;
+    grid-template-columns: 30%;
+    justify-content: center;
+}
+.modUser{
+    display: none;
+}
+.verCompras>.container{
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 90%;
+}
+table,th,tr,td{
+    /* width:80%;
+    border: 1px solid black; */
+}
+
+
+@media only screen and (max-width: 768px) {
+    .contInput{
+        grid-template-columns: 90%;
+        justify-content: center
+    }
 }
