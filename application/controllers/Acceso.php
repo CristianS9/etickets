@@ -5,7 +5,8 @@
             $this->load->helper("html");
             $this->load->helper("url");
             $this->load->database(); 
-           $this->load->library('form_validation');
+            $this->load->library('form_validation');
+            $this->load->library("session");
         }
         public function index(){
             $this->load->view("acceso/login"); 
@@ -31,7 +32,14 @@
             $this->form_validation->set_rules('reg_email', 'Email', 'required|is_unique[usuarios.email]|min_length[4]|max_length[25]');
             $this->form_validation->set_rules('reg_telefono', 'Telefono', 'required|min_length[9]|max_length[9]'); 
             if ($this->form_validation->run() == FALSE){
-                $this->load->view("acceso/registro");
+                $data = [
+                    "usuario" => $this->input->post("reg_usuario"),
+                    "nombre" => $this->input->post("reg_nombre"),
+                    "apellidos" => $this->input->post("reg_apellidos"),
+                    "email" => $this->input->post("reg_email"),
+                    "telefono" => $this->input->post("reg_telefono")
+                ];
+                $this->load->view("acceso/registro",$data);
             } else {
                 $usuario = $this->input->post("reg_usuario");
                 $email = $this->input->post("reg_email");
@@ -51,9 +59,36 @@
                
                 $this->load->model("Correo");
                 $this->Correo->registro($usuario,$email,$token);
+                redirect("/acceso");
 
             }
         }
+        public function confirmarRegistro($token){
+            $this->load->model("Usuario_Model");
+            $this->Usuario_Model->confirmarToken($token);
+            redirect("/acceso");
+
+        }
+        public function login(){
+            if(!$this->input->post("log_usuario")){
+                redirect("acceso");
+            }
+            $usuario= $this->input->post("log_usuario");
+            $contrasena= $this->input->post("log_contrasena");
+            $this->load->model("Usuario_Model");
+            if($this->Usuario_Model->loginCorrecto($usuario,$contrasena)){
+                $this->session->set_userdata("id",$this->Usuario_Model->idUsuario($usuario));
+                $this->session->set_userdata("usuario",$usuario);
+                redirect("home");
+
+            }else {
+                $this->form_validation->setError('credenciales',"Credenciales de acceso incorrectos");
+                $data["usuario"] = $usuario;
+                $data["contrasena"] = $contrasena;
+                $this->load->view("acceso/login",$data); 
+            }
+        }
+       
 
     }
 
