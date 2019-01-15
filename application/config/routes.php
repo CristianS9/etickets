@@ -60,3 +60,5 @@ $route['home'] = 'Home_Controller';
 $route['admin'] = 'AdminPanelController';
 $route['cart'] = 'ShoppingCart_Controller/index';
 $route['cart/end'] = 'ShoppingCart_Controller/endCart';
+$route["login"] = "acceso";
+$route["registro"] = "acceso/registro";
