@@ -5,7 +5,8 @@
             $this->load->helper("html");
             $this->load->helper("url");
             $this->load->database(); 
-           $this->load->library('form_validation');
+            $this->load->library('form_validation');
+            $this->load->library("session");
         }
         public function index(){
             $this->load->view("acceso/login"); 
@@ -51,6 +52,7 @@
                
                 $this->load->model("Correo");
                 $this->Correo->registro($usuario,$email,$token);
+                redirect("/acceso");
 
             }
         }
@@ -60,6 +62,24 @@
             redirect("/acceso");
 
         }
+        public function login(){
+            if(!$this->input->post("log_usuario")){
+                redirect("acceso");
+            }
+            $usuario= $this->input->post("log_usuario");
+            $contrasena= $this->input->post("log_contrasena");
+            $this->load->model("Usuario_Model");
+            if($this->Usuario_Model->loginCorrecto($usuario,$contrasena)){
+                $this->session->set_userdata("id",$this->Usuario_Model->idUsuario($usuario));
+                $this->session->set_userdata("usuario",$usuario);
+                redirect("home");
+
+            }else {
+                $this->form_validation->setError('credenciales',"Credenciales de acceso incorrectos");
+                $this->load->view("acceso/login"); 
+            }
+        }
+       
 
     }
 

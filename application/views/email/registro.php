@@ -9,6 +9,6 @@
 <body>
     <h3>Bienvenido a eTickets</h3>
     <p>Confirma tu registro en el siguiente enlace :</p>
-    <a href="<?php echo base_url(); ?>acceso/confirmarRegistro/<?php echo $token;?>">Confirmar Correo </p>
+    <a href="<?php echo base_url(); ?>index.php/acceso/confirmarRegistro/<?php echo $token;?>">Confirmar Correo </p>
 </body>
 </html>

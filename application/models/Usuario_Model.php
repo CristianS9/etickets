@@ -15,6 +15,28 @@
             $this->db->close();
         
         }
+        public function loginCorrecto($usuario,$contrasena){
+            $condicion = [
+                "usuario" => $usuario
+            ];
+            $hash = $this->db->get_where("usuarios",$condicion)->row("contrasena");
+            return password_verify($contrasena,$hash);
+          
+        }
+        public function idUsuario($usuario){
+            $condicion = [
+                "usuario" => $usuario
+            ];
+            return $this->db->get_where("usuarios",$condicion)->row("id");
+        }
+        public function login_necesario(){
+            if(!isset($this->session->id)){
+                redirect("acceso");
+            };
+
+            
+
+        }
       
     }
 

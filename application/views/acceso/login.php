@@ -9,7 +9,9 @@
     <script src="<?php echo base_url();?>js/login.js"></script>
 </head>
 <body>
-    <form action="acceso" method="post">
+
+    <?php echo form_open('acceso/login'); ?>
+        <?php echo form_error('credenciales', '<div class="notificacion">', '</div>'); ?>
         <label>
             <h5>Usuario</h5>
             <input type="text" name="log_usuario">
@@ -20,6 +22,7 @@
         </label><br>
         <input type="submit" value="Login">
     </form>
-    <a href="<?php echo base_url();?>index.php/acceso/registro">Registro</a>
+    <?php echo anchor("acceso/registro","Registrarme");?>
+
 </body>
 </html>
