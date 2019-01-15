@@ -40,5 +40,12 @@ class EventDetail_Ajax extends CI_Controller {
         $userId = 1;
         $this->ShoppingCart_Model->deleteFromShoppingCart($userId, $idEntrada);
     }
+    public function completeShoppingCart() {
+        $this->load->model("ShoppingCart_Model");
+        //Aquí se recoge el id del usuario de la sesión, de momento va a ser 1
+        $userId = 1;
+        $this->ShoppingCart_Model->completarCompra($userId);
+
+    }
 }
 ?>

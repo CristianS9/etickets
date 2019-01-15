@@ -20,4 +20,14 @@ class ShoppingCart_Model extends CI_Model {
         $query = $this->db->query("CALL spDeleteFromShoppingCart($userId,$entradaEventoId)");
         $this->db->close();
     }
+    public function completarCompra($userId){
+
+        // Genera las ventas, pero no genera los identificadores.
+        $query = $this->db->query("CALL spGenerarVenta($userId)");
+
+        // Generar los identificadores.
+        
+
+        $this->db->close();
+    }
 }

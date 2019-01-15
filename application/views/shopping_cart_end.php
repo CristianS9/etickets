@@ -8,6 +8,7 @@
             <script src="<?php echo base_url() ?>lib/jquery-3.3.1.min.js"></script>
             <script src="<?php echo base_url() ?>lib/angular.min.js"></script>
             <script src="<?php echo base_url() ?>js/shopping_cart.js"></script>
+            <script src="<?php echo base_url() ?>js/shopping_cart_end.js"></script>
 </head>
 <body ng-controller="eticketsController">
     <h1>Shopping cart</h1>
@@ -37,5 +38,6 @@
 </body>
 
 <h1 id="total">Total: </h1>
-
+<br>
+<button id="completeShoppingCart">PAGAR</button>
 </html>
