@@ -14,7 +14,7 @@
         <?php echo form_error('credenciales', '<div class="notificacion">', '</div>'); ?>
         <label>
             <h5>Usuario</h5>
-            <input type="text" name="log_usuario">
+            <input type="text" name="log_usuario" value="<?php if(isset($usuario)){echo $usuario;};?>">
         </label>
         <label>
             <h5>Contraseña</h5>

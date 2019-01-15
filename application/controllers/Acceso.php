@@ -32,7 +32,14 @@
             $this->form_validation->set_rules('reg_email', 'Email', 'required|is_unique[usuarios.email]|min_length[4]|max_length[25]');
             $this->form_validation->set_rules('reg_telefono', 'Telefono', 'required|min_length[9]|max_length[9]'); 
             if ($this->form_validation->run() == FALSE){
-                $this->load->view("acceso/registro");
+                $data = [
+                    "usuario" => $this->input->post("reg_usuario"),
+                    "nombre" => $this->input->post("reg_nombre"),
+                    "apellidos" => $this->input->post("reg_apellidos"),
+                    "email" => $this->input->post("reg_email"),
+                    "telefono" => $this->input->post("reg_telefono")
+                ];
+                $this->load->view("acceso/registro",$data);
             } else {
                 $usuario = $this->input->post("reg_usuario");
                 $email = $this->input->post("reg_email");
@@ -76,7 +83,9 @@
 
             }else {
                 $this->form_validation->setError('credenciales',"Credenciales de acceso incorrectos");
-                $this->load->view("acceso/login"); 
+                $data["usuario"] = $usuario;
+                $data["contrasena"] = $contrasena;
+                $this->load->view("acceso/login",$data); 
             }
         }
        
