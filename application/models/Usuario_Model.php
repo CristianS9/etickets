@@ -34,8 +34,6 @@
                 redirect("acceso");
             };
 
-            ñ
-
         }
       
     }
