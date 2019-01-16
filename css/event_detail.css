@@ -63,10 +63,12 @@ widget {
     font-weight: bold;
     background-color: #5D9CEC;
     padding: 0 18px;
+    margin-left: 25%;
     line-height: 30px;
     border-radius: 15px;
     color: #fff;
     text-decoration: none;
+    
 }
 
  widget[type="ticket"] .rip {
