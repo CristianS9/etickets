@@ -117,7 +117,11 @@ foreach ($datos as $linea) {
                     <p><?php echo ($linea->sitio)?>, <br/> <?php echo ($linea->provincia)?></p>
                 </div>
                 <div class="fix"></div>
-                <button class="tickets">Tickets</button>
+                <?php
+                // Botón de comprar
+                echo("<a href='detail/".$linea->id."'><button class='tickets'>Comprar</button></a>");
+                ?>
+                
             </div> <!-- end item-right -->
         </div> <!-- end item -->
 <?php

@@ -22,7 +22,7 @@ div.contenido {
 .upcomming {
     font-size: 45px;
     text-transform: uppercase;
-    border-left: 14px solid rgba(255, 235, 59, 0.78);
+    border-left: 14px solid #777;
     padding-left: 12px;
     margin: 18px 8px;
 }
