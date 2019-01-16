@@ -10,7 +10,8 @@
     <!--===============================================================================================-->
       <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
     <!--===============================================================================================-->
-    <?php echo link_tag("lib/animate/animate.css");?>
+      <?php echo link_tag("lib/animate/animate.css");?>
+    <!--===============================================================================================-->
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <!--===============================================================================================-->
       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
@@ -28,7 +29,7 @@
       <?php echo link_tag("lib/daterangepicker/daterangepicker.css");?>
     <!--===============================================================================================-->
       <?php echo link_tag("css/acceso/util.css");?>
-      <?php echo link_tag("css/acceso/login.css"); ?>
+      <?php echo link_tag("css/acceso/acceso.css"); ?>
 	  <!--===============================================================================================-->
 		
 
@@ -45,14 +46,13 @@
     <!--===============================================================================================-->
       <script src="<?php echo base_url();?>lib/countdowntime/countdowntime.js"></script>
   	<!--===============================================================================================-->
-    	<script src="<?php echo base_url();?>js/acceso/login.js"></script>
+    	<script src="<?php echo base_url();?>js/acceso/acceso.js"></script>
 
 
 </head>
 <body>
-
 <div class="limiter">
-		<div class="container-login100" style="background-image: url('<?php echo base_url();?>fotos/acceso/bg-01.jpg');">
+		<div class="container-login100" style="background-image: url('<?php echo base_url();?>fotos/acceso/bg-login.jpg');">
 			<div class="wrap-login100 p-t-30 p-b-50">
 				<span class="login100-form-title p-b-41">
 					Inicio de Sesion
@@ -79,8 +79,8 @@
 							Login
 						</button>
 					</div>
-
 				</form>
+        <?php echo anchor("registro","Crear Cuenta")?>
 			</div>
 		</div>
 	</div>
