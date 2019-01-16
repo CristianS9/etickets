@@ -6,6 +6,7 @@ class Evento_Controller extends CI_Controller {
         $this->load->library('form_validation');
         $this->load->library('session');
 
+
         $this->load->database();
     }
 

@@ -34,8 +34,11 @@
                 redirect("acceso");
             };
 
-            ñ
-
+        }
+        public function modUser($datos){
+            $this->db->query("CALL spModUsuario('".$datos['id']."','".$datos['username']."','".$datos['nombre']."','".$datos['apellido']."','".$datos['correo']."','".$datos['telefono']."')");
+            $this->db->close();
+            redirect("Perfil_Controller");
         }
       
     }

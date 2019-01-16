@@ -58,28 +58,35 @@
                 <div class="profile-sidebar">
                     <div class="profile-usertitle">
                         <div class="profile-usertitle-name">
-                            Username
+                            <?php echo $this->session->usuario; ?>
                         </div>
                         <div class="profile-usertitle-job">
-                            Rango
+                            <?php 
+                                $rango = $this->session->rango;
+                                if ($rango == 1) {
+                                    echo "Administrador";
+                                } else {
+                                    echo "Usuario";
+                                }
+                            ?>
                         </div>
                     </div>
 
                     <div class="profile-usermenu">
                         <ul class="nav">
-                            <li class="ventana1">
+                            <li class="ventana" elemento="modUser">
                                 <a href="#">
                                     <i class="glyphicon glyphicon-home"></i>
                                     <p>Modificar Datos</p>
                                 </a>
                             </li>
-                            <li class="ventana2">
+                            <li class="ventana" elemento="verCompras">
                                 <a href="#">
                                     <i class="glyphicon glyphicon-user"></i>
                                     <p>Compras</p>
                                 </a>
                             </li>
-                            <li class="ventana3">
+                            <li class="ventana" elemento="logOut">
                                 <a href="#">
                                     <i class="glyphicon glyphicon-off"></i>
                                     <p>Salir</p>
@@ -91,10 +98,76 @@
             </div>
             <div class="col-md-9">
                 <div class="profile-content">
-                    <div class="jumbotron modUser">
+                    <div class="jumbotron modUser" id="modUser">
                         <div class="container modificar">
-                            <form action="" method="post" class="formGrid">
-                                <div class="contInput">
+                            <div class="linea">
+                                <div class="info" elemento="usuario">
+                                    Nombre de usuario:
+                                </div>
+                                <div class="data">
+                                    polla
+                                </div>
+                                <div class="botones">
+                                    <span class="glyphicon glyphicon-pencil boton editar"></span>
+                                </div>
+                            </div>
+                            <div class="linea">
+                                <div class="info" elemento="nombre">
+                                    Nombre:
+                                </div>
+                                <div class="data">
+                                    nombre
+                                </div>
+                                <div class="botones">
+                                    <span class="glyphicon glyphicon-pencil boton editar"></span>
+                                </div>
+                            </div>
+                            <div class="linea">
+                                <div class="info" elemento="apellidos">
+                                    Apellidos:
+                                </div>
+                                <div class="data">
+                                    username
+                                </div>
+                                <div class="botones">
+                                    <span class="glyphicon glyphicon-pencil boton editar"></span>
+                                </div>
+                            </div>
+                            <div class="linea">
+                                <div class="info" elemento="contrasena">
+                                    Contraseña:
+                                </div>
+                                <div class="data">
+                                    *******
+                                </div>
+                                <div class="botones">
+                                    <span class="glyphicon glyphicon-pencil boton editar"></span>
+                                </div>
+                            </div>
+                            <div class="linea">
+                                <div class="info" elemento="email">
+                                    Correo:
+                                </div>
+                                <div class="data">
+                                    Correo
+                                </div>
+                                <div class="botones">
+                                    <span class="glyphicon glyphicon-pencil boton editar"></span>
+                                </div>
+                            </div>
+                            <div class="linea">
+                                <div class="info" elemento="telefono">
+                                    Teléfono:
+                                </div>
+                                <div class="data">
+                                    telefono
+                                </div>
+                                <div class="botones">
+                                    <span class="glyphicon glyphicon-pencil boton editar"></span>
+                                </div>
+                            </div>
+                            <?php //echo form_open_multipart("Perfil_Controller/modUser",["class"=>"formGrid"]);?>
+                                <!-- <div class="contInput">
                                     <label for="">Nombre de Usuario</label>
                                     <input type="text" name="p_Username" id="">
                                 </div>
@@ -108,7 +181,7 @@
                                 </div>
                                 <div class="contInput">
                                     <label for="">Correo electrónico</label>
-                                    <input type="text" name="p_Coreeo" id="">
+                                    <input type="text" name="p_Correo" id="">
                                 </div>
                                 <div class="contInput">
                                     <label for="">Número de teléfono</label>
@@ -117,10 +190,10 @@
                                 <div class="contSubmit">
                                     <input type="submit" value="Enviar">
                                 </div>
-                            </form>
+                            </form> -->
                         </div>
                     </div>
-                    <div class="jumbotron verCompras">
+                    <div class="jumbotron verCompras" id="verCompras">
                         <div class="container">
                             <h2>Tus Entradas</h2>
                             <table class="table">
@@ -139,7 +212,7 @@
                             </table>
                         </div>
                     </div>
-                    <div class="jumbotron logOut">
+                    <div class="jumbotron logOut" id="logOut">
                         <div class="container">
                             <h2>Seguro que quieres cerrar sesión?</h2>
                         <?php   echo form_open_multipart("Perfil_Controller/logOut");?>
