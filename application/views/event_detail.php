@@ -10,10 +10,35 @@
 </head>
 
 <entrada>
+
+<?php
+$meses = array("01" => "Enero",
+    "02" => "Febrero",
+    "03" => "Marzo",
+    "04" => "Abril",
+    "05" => "Mayo",
+    "06" => "Junio",
+    "07" => "Julio",
+    "08" => "Agosto",
+    "09" => "Septiembre",
+    "10" => "Octubre",
+    "11" => "Noviebre",
+    "12" => "Diciembre",
+);
+
+$contadorDia = 1;
+foreach ($eventTickets as $ticket) {
+
+    // Coge la fecha como string chulísimo
+    $fecha = DateTime::createFromFormat("Y-m-d", $ticket->fecha);
+    $nombreMes = $meses[$fecha->format("m")];
+    $textoFecha = $fecha->format("d") . " de ". $nombreMes . " de ". $fecha->format("Y");
+?>
+
     <widget type="ticket" class="--flex-column">
         <div class="top --flex-column">
-            <div class="bandname -bold">Ghost Mice</div>
-            <div class="tourname">Home Tour</div>
+            <div class="bandname -bold"><?php echo $ticket->nombre; ?></div>
+            <div class="tourname"><?php echo $ticket->categoria; ?></div>
             <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/199011/concert.png" alt="" />
             <div class="deetz --flex-row-j!sb">
                 <div class="event --flex-column">
@@ -32,7 +57,14 @@
             <a class="buy" href="#">BUY TICKET</a>
         </div>
     </widget>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+
+
+<?php
+    $contadorDia++;
+}
+
+?>
+
 </entrada>
 
 </html>
