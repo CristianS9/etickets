@@ -30,10 +30,17 @@ $contadorDia = 1;
 foreach ($eventTickets as $ticket) {
 
     // Coge la fecha como string chulísimo
-    $fecha = DateTime::createFromFormat("Y-m-d", $ticket->fecha);
-    $nombreMes = $meses[$fecha->format("m")];
-    $textoFecha = $fecha->format("d") . " de ". $nombreMes . " de ". $fecha->format("Y");
-?>
+    $textoFecha = "Hola sinceramente";
+    if ($ticket->fecha != "" || $ticket->fecha != null) {
+        $fecha = DateTime::createFromFormat("Y-m-d", $ticket->fecha);
+        $nombreMes = $meses[$fecha->format("m")];
+        $textoFecha = $fecha->format("d") . " de " . $nombreMes . " de " . $fecha->format("Y");
+
+    } else {
+        $textoFecha = "Abono completo";
+    }
+
+    ?>
 
     <widget type="ticket" class="--flex-column">
         <div class="top --flex-column">
@@ -42,12 +49,12 @@ foreach ($eventTickets as $ticket) {
             <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/199011/concert.png" alt="" />
             <div class="deetz --flex-row-j!sb">
                 <div class="event --flex-column">
-                    <div class="date">3rd March 2017</div>
+                    <div class="date"><?php echo ($textoFecha); ?></div>
                     <div class="location -bold">Bloomington, Indiana</div>
                 </div>
                 <div class="price --flex-column">
                     <div class="label">Price</div>
-                    <div class="cost -bold">$30</div>
+                    <div class="cost -bold"><?php echo $ticket->precio; ?></div>
                 </div>
             </div>
         </div>
@@ -60,7 +67,7 @@ foreach ($eventTickets as $ticket) {
 
 
 <?php
-    $contadorDia++;
+$contadorDia++;
 }
 
 ?>

@@ -1,3 +1,16 @@
+<?php
+use AjaxLiveSearch\core\Config;
+
+use AjaxLiveSearch\core\Handler;
+
+if (session_id() == '') {
+    session_start();
+}
+
+$handler = new Handler();
+$handler->getJavascriptAntiBot();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,8 +25,20 @@
 
     <!-- Bootstrap core CSS -->
     <?php echo link_tag("lib/bootstrap.min.css"); ?>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css">
     <?php echo link_tag("css/heroic-features.css"); ?>
     <?php echo link_tag("css/home.css"); ?>
+
+    <script src="<?php echo base_url() ?>lib/jquery-3.3.1.min.js"></script>
+    <?php echo script_tag("js/home.js"); ?>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
+    <!-- Ajax Live Search -->
+        
+    <script src="<?php echo base_url() ?>lib/bootstrap.bundle.min.js"></script>
+        <?php echo link_tag("lib/css-ajax/ajaxlivesearch.min.css"); ?>
+    <script src="<?php echo base_url() ?>lib/css-ajax/ajaxlivesearch.min.js"></script>
     <!-- Custom styles for this template -->
 
 </head>
@@ -50,10 +75,11 @@
     </nav>
 
     <!-- Page Content -->
-    <!-- Prueba -->
+    
+
 
     <div class="contenido">
-        <h1 class="upcomming">Próximos eventos</h1>
+        <h1 class="upcomming animated fadeIn">Próximos eventos <i id="lupa" class="pl-4 fas fa-search"> </i> <i><input type="text" class='mySearch' id="ls_query" placeholder="Type to start searching ..." data-additionalData="hello world!"></i> </h1>
 
         <?php
 $meses = array("01" => "Ene",
@@ -140,9 +166,31 @@ foreach ($datos as $linea) {
     </footer>
 
     <!-- Bootstrap core JavaScript -->
-    <script src="<?php echo base_url() ?>lib/jquery-3.3.1.min.js"></script>
-    <script src="<?php echo base_url() ?>lib/bootstrap.bundle.min.js"></script>
 
+ 
+<script>
+      jQuery(".mySearch").ajaxlivesearch({
+    loaded_at: <?php echo time(); ?>,
+    token: <?php echo "'" . $handler->getToken() . "'"; ?>,
+    max_input: <?php echo Config::getConfig('maxInputLength'); ?>,
+    /* url:   <?php echo ('"'.base_url() . 'application/third_party/jQueryLiveSearch/core/AjaxProcessor.php'.'"') ?>, */
+    url:  "../application/third_party/jQueryLiveSearch/core/AjaxProcessor.php" ,
+    onResultClick: function(e, data) {
+        // get the index 1 (second column) value
+        var selectedOne = jQuery(data.selected).find('td').eq('1').text();
+        // set the input value
+        jQuery('#ls_query').val(selectedOne);
+        // hide the result
+        jQuery("#ls_query").trigger('ajaxlivesearch:hide_result');
+    },
+    onResultEnter: function(e, data) {
+        // do whatever you want
+        // jQuery("#ls_query").trigger('ajaxlivesearch:search', {query: 'test'});
+    },
+    onAjaxComplete: function(e, data) {
+    }
+});
+      </script>
 
 
 </body>
