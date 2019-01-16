@@ -1,30 +1,18 @@
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
 /*//////////////////////////////////////////////////////////////////
 [ FONT ]*/
-
+/* 
 @font-face {
-	font-family: Poppins-Regular;
-	src: url('../fonts/poppins/Poppins-Regular.ttf');
+	font-family: Ubuntu-Regular;
+	src: url('../fonts/ubuntu/Ubuntu-Regular.ttf');
 }
 
 @font-face {
-	font-family: Poppins-Medium;
-	src: url('../fonts/poppins/Poppins-Medium.ttf');
-}
+	font-family: Ubuntu-Bold;
+	src: url('../fonts/ubuntu/Ubuntu-Bold.ttf');
+} */
 
-@font-face {
-	font-family: Montserrat-Medium;
-	src: url('../fonts/montserrat/Montserrat-Medium.ttf');
-}
 
-@font-face {
-	font-family: Montserrat-SemiBold;
-	src: url('../fonts/montserrat/Montserrat-SemiBold.ttf');
-}
+
 
 /*//////////////////////////////////////////////////////////////////
 [ RESTYLE TAG ]*/
@@ -38,12 +26,14 @@
 body,
 html {
 	height: 100%;
-	font-family: Poppins-Regular, sans-serif;
+	font-family: Ubuntu, sans-serif;
+	font-weight: normal;
 }
 
 /*---------------------------------------------*/
 a {
-	font-family: Poppins-Regular;
+	font-family: Ubuntu, sans-serif;
+	font-weight: normal;
 	font-size: 14px;
 	line-height: 1.7;
 	color: #666666;
@@ -60,8 +50,7 @@ a:focus {
 
 a:hover {
 	text-decoration: none;
-	color: #fc00ff;
-	border-color: #fc00ff;
+	color: #fff;
 }
 
 /*---------------------------------------------*/
@@ -75,7 +64,8 @@ h6 {
 }
 
 p {
-	font-family: Poppins-Regular;
+	font-family: Ubuntu, sans-serif;
+	font-weight: normal;
 	font-size: 14px;
 	line-height: 1.7;
 	color: #666666;
@@ -170,8 +160,8 @@ textarea:-ms-input-placeholder {
 }
 
 label {
-	display: block;
 	margin: 0;
+	display: block;
 }
 
 /*---------------------------------------------*/
@@ -193,22 +183,12 @@ iframe {
 /*//////////////////////////////////////////////////////////////////
 [ Utility ]*/
 .txt1 {
-	font-family: Montserrat-SemiBold;
-	font-size: 16px;
-	color: #555555;
-	line-height: 1.5;
-}
-
-.txt2 {
 	font-family: Poppins-Regular;
-	font-size: 14px;
-	color: #999999;
+	font-size: 13px;
+	color: #e5e5e5;
 	line-height: 1.5;
 }
 
-.bo1 {
-	border-bottom: 1px solid #999999;
-}
 
 /*//////////////////////////////////////////////////////////////////
 [ login ]*/
@@ -231,45 +211,46 @@ iframe {
 	align-items: center;
 	padding: 15px;
 
+	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover;
-	background-repeat: no-repeat;
-	;
+	position: relative;
+	z-index: 1;
 }
 
+.container-login100::before {
+	content: "";
+	display: block;
+	position: absolute;
+	z-index: -1;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background-color: rgba(0, 0, 0, 0.65);
+}
 
 .wrap-login100 {
-	width: 680px;
-	background: #fff;
+	width: 390px;
 	border-radius: 10px;
-	position: relative;
+	overflow: hidden;
+
+	background: transparent;
 }
 
 
-/*==================================================================
+/*------------------------------------------------------------------
 [ Form ]*/
 
 .login100-form {
 	width: 100%;
+	border-radius: 10px;
+	background-color: #fff;
 }
 
-.login100-form-title {
-	width: 100%;
-	display: block;
-	font-family: Montserrat-Medium;
-	font-size: 39px;
-	color: #555555;
-	line-height: 1.2;
-	text-align: center;
-}
-
-/*------------------------------------------------------------------
-[ Button sign in with ]*/
-.btn-face,
-.btn-google {
-	font-family: Montserrat-SemiBold;
-	font-size: 18px;
-	line-height: 1.2;
+.login100-form-logo {
+	font-size: 60px;
+	color: #333333;
 
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -278,76 +259,23 @@ iframe {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	padding: 15px;
-	width: calc((100% - 20px) / 2);
-	height: 70px;
-	border-radius: 10px;
-	box-shadow: 0 1px 5px 0px rgba(0, 0, 0, 0.2);
-	-moz-box-shadow: 0 1px 5px 0px rgba(0, 0, 0, 0.2);
-	-webkit-box-shadow: 0 1px 5px 0px rgba(0, 0, 0, 0.2);
-	-o-box-shadow: 0 1px 5px 0px rgba(0, 0, 0, 0.2);
-	-ms-box-shadow: 0 1px 5px 0px rgba(0, 0, 0, 0.2);
-	-webkit-transition: all 0.4s;
-	-o-transition: all 0.4s;
-	-moz-transition: all 0.4s;
-	transition: all 0.4s;
-	position: relative;
-	z-index: 1;
-}
-
-.btn-google::before,
-.btn-face::before {
-	content: "";
-	display: block;
-	position: absolute;
-	z-index: -1;
-	width: 100%;
-	height: 100%;
-	border-radius: 10px;
-	top: 0;
-	left: 0;
-	background: #a64bf4;
-	background: -webkit-linear-gradient(45deg, #00dbde, #fc00ff);
-	background: -o-linear-gradient(45deg, #00dbde, #fc00ff);
-	background: -moz-linear-gradient(45deg, #00dbde, #fc00ff);
-	background: linear-gradient(45deg, #00dbde, #fc00ff);
-	opacity: 0;
-	-webkit-transition: all 0.4s;
-	-o-transition: all 0.4s;
-	-moz-transition: all 0.4s;
-	transition: all 0.4s;
-}
-
-.btn-face {
-	color: #fff;
-	background-color: #3b5998;
-}
-
-.btn-face i {
-	font-size: 30px;
-	margin-right: 17px;
-	padding-bottom: 3px;
-}
-
-.btn-google {
-	color: #555555;
+	width: 120px;
+	height: 120px;
+	border-radius: 50%;
 	background-color: #fff;
+	margin: 0 auto;
 }
 
-.btn-google img {
-	width: 30px;
-	margin-right: 15px;
-	padding-bottom: 3px;
-}
-
-.btn-face:hover:before,
-.btn-google:hover:before {
-	opacity: 1;
-}
-
-.btn-face:hover,
-.btn-google:hover {
+.login100-form-title {
+	font-family: Ubuntu, sans-serif;
+	font-weight: bold;
+	font-size: 28px;
 	color: #fff;
+	line-height: 1.2;
+	text-align: center;
+	text-transform: uppercase;
+
+	display: block;
 }
 
 
@@ -357,75 +285,103 @@ iframe {
 .wrap-input100 {
 	width: 100%;
 	position: relative;
-	background-color: #f7f7f7;
-	border: 1px solid #e6e6e6;
-	border-radius: 10px;
+	border-bottom: 1px solid #e6e6e6;
+	padding: 29px 0;
 }
 
-
-/*---------------------------------------------*/
 .input100 {
-	font-family: Poppins-Regular;
-	color: #333333;
+	font-family: Ubuntu, sans-serif;
+	font-weight: normal;
+	font-size: 20px;
+	color: #555555;
 	line-height: 1.2;
-	font-size: 18px;
 
 	display: block;
 	width: 100%;
+	height: 50px;
 	background: transparent;
-	height: 60px;
-	padding: 0 20px;
+	padding: 0 10px 0 80px;
+	-webkit-transition: all 0.4s;
+	-o-transition: all 0.4s;
+	-moz-transition: all 0.4s;
+	transition: all 0.4s;
 }
 
-/*------------------------------------------------------------------
-[ Focus Input ]*/
-
+/*---------------------------------------------*/
 .focus-input100 {
 	position: absolute;
 	display: block;
-	width: calc(100% + 2px);
-	height: calc(100% + 2px);
-	top: -1px;
-	left: -1px;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
 	pointer-events: none;
-	border: 1px solid #fc00ff;
-	border-radius: 10px;
+}
 
-	visibility: hidden;
-	opacity: 0;
+.focus-input100::before {
+	content: "";
+	display: block;
+	position: absolute;
+	bottom: -1px;
+	left: 0;
+	width: 0;
+	height: 1px;
 
 	-webkit-transition: all 0.4s;
 	-o-transition: all 0.4s;
 	-moz-transition: all 0.4s;
 	transition: all 0.4s;
 
-	-webkit-transform: scaleX(1.1) scaleY(1.3);
-	-moz-transform: scaleX(1.1) scaleY(1.3);
-	-ms-transform: scaleX(1.1) scaleY(1.3);
-	-o-transform: scaleX(1.1) scaleY(1.3);
-	transform: scaleX(1.1) scaleY(1.3);
+	background: #d41872;
+	background: -webkit-linear-gradient(left, #a445b2, #d41872, #fa4299);
+	background: -o-linear-gradient(left, #a445b2, #d41872, #fa4299);
+	background: -moz-linear-gradient(left, #a445b2, #d41872, #fa4299);
+	background: linear-gradient(left, #a445b2, #d41872, #fa4299);
 }
 
-.input100:focus+.focus-input100 {
-	visibility: visible;
-	opacity: 1;
+.focus-input100::after {
+	font-family: Linearicons-Free;
+	font-size: 18px;
+	color: #999999;
 
-	-webkit-transform: scale(1);
-	-moz-transform: scale(1);
-	-ms-transform: scale(1);
-	-o-transform: scale(1);
-	transform: scale(1);
+	content: attr(data-placeholder);
+	display: block;
+	width: 100%;
+	position: absolute;
+	top: 40px;
+	left: 35px;
+
+
+	-webkit-transition: all 0.4s;
+	-o-transition: all 0.4s;
+	-moz-transition: all 0.4s;
+	transition: all 0.4s;
 }
 
-.eff-focus-selection {
-	visibility: visible;
-	opacity: 1;
+.input100:focus {
+	padding-left: 60px;
+}
 
-	-webkit-transform: scale(1);
-	-moz-transform: scale(1);
-	-ms-transform: scale(1);
-	-o-transform: scale(1);
-	transform: scale(1);
+.input100:focus+.focus-input100::after {
+	left: 23px;
+	color: #d41872;
+}
+
+.input100:focus+.focus-input100::before {
+	width: 100%;
+}
+
+.has-val.input100+.focus-input100::after {
+	left: 23px;
+	color: #d41872;
+}
+
+.has-val.input100+.focus-input100::before {
+	width: 100%;
+}
+
+.has-val.input100 {
+	padding-left: 60px;
 }
 
 
@@ -439,9 +395,17 @@ iframe {
 	display: -ms-flexbox;
 	display: flex;
 	flex-wrap: wrap;
+	justify-content: center;
 }
 
 .login100-form-btn {
+	font-family: Ubuntu, sans-serif;
+	font-weight: bold;
+	font-size: 18px;
+	color: #fff;
+	line-height: 1.2;
+	text-transform: uppercase;
+
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -moz-box;
@@ -450,22 +414,22 @@ iframe {
 	justify-content: center;
 	align-items: center;
 	padding: 0 20px;
-	width: 100%;
-	height: 60px;
-	background-color: #333333;
-	border-radius: 10px;
+	min-width: 160px;
+	height: 42px;
+	border-radius: 21px;
 
-	font-family: Poppins-Medium;
-	font-size: 16px;
-	color: #fff;
-	line-height: 1.2;
+	background: #d41872;
+	background: -webkit-linear-gradient(left, #a445b2, #d41872, #fa4299);
+	background: -o-linear-gradient(left, #a445b2, #d41872, #fa4299);
+	background: -moz-linear-gradient(left, #a445b2, #d41872, #fa4299);
+	background: linear-gradient(left, #a445b2, #d41872, #fa4299);
+	position: relative;
+	z-index: 1;
 
 	-webkit-transition: all 0.4s;
 	-o-transition: all 0.4s;
 	-moz-transition: all 0.4s;
 	transition: all 0.4s;
-	position: relative;
-	z-index: 1;
 }
 
 .login100-form-btn::before {
@@ -475,24 +439,26 @@ iframe {
 	z-index: -1;
 	width: 100%;
 	height: 100%;
-	border-radius: 10px;
+	border-radius: 21px;
+	background-color: #555555;
 	top: 0;
 	left: 0;
-	background: #a64bf4;
-	background: -webkit-linear-gradient(45deg, #00dbde, #fc00ff);
-	background: -o-linear-gradient(45deg, #00dbde, #fc00ff);
-	background: -moz-linear-gradient(45deg, #00dbde, #fc00ff);
-	background: linear-gradient(45deg, #00dbde, #fc00ff);
 	opacity: 0;
+
 	-webkit-transition: all 0.4s;
 	-o-transition: all 0.4s;
 	-moz-transition: all 0.4s;
 	transition: all 0.4s;
 }
 
+.login100-form-btn:hover {
+	background-color: transparent;
+}
+
 .login100-form-btn:hover:before {
 	opacity: 1;
 }
+
 
 
 /*------------------------------------------------------------------
@@ -509,19 +475,20 @@ iframe {
 	background-color: #fff;
 	border: 1px solid #c80000;
 	border-radius: 2px;
-	padding: 4px 25px 5px 10px;
+	padding: 4px 25px 4px 10px;
 	top: 50%;
 	-webkit-transform: translateY(-50%);
 	-moz-transform: translateY(-50%);
 	-ms-transform: translateY(-50%);
 	-o-transform: translateY(-50%);
 	transform: translateY(-50%);
-	right: 12px;
+	right: 10px;
 	pointer-events: none;
 
-	font-family: Poppins-Regular;
+	font-family: Ubuntu, sans-serif;
+	font-weight: bold;
 	color: #c80000;
-	font-size: 14px;
+	font-size: 13px;
 	line-height: 1.4;
 	text-align: left;
 
@@ -537,17 +504,18 @@ iframe {
 .alert-validate::after {
 	content: "\f12a";
 	font-family: FontAwesome;
+	font-size: 16px;
+	color: #c80000;
+
 	display: block;
 	position: absolute;
-	color: #c80000;
-	font-size: 18px;
 	top: 50%;
 	-webkit-transform: translateY(-50%);
 	-moz-transform: translateY(-50%);
 	-ms-transform: translateY(-50%);
 	-o-transform: translateY(-50%);
 	transform: translateY(-50%);
-	right: 18px;
+	right: 15px;
 }
 
 .alert-validate:hover:before {
@@ -562,24 +530,11 @@ iframe {
 	}
 }
 
+.notificacion {
 
-/*//////////////////////////////////////////////////////////////////
-[ Responsive ]*/
-@media (max-width: 768px) {
-	.wrap-login100 {
-		padding-left: 60px;
-		padding-right: 60px;
-	}
+	text-align: center;
+	padding: 5px;
+	border-radius: 5px;
+	color: #e82f87;
 
-	@media (max-width: 576px) {
-		.wrap-login100 {
-			padding-left: 15px;
-			padding-right: 15px;
-		}
-
-		.btn-face,
-		.btn-google {
-			width: 100%;
-		}
-	}
 }
