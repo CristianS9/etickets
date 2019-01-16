@@ -6,6 +6,8 @@ class Perfil_Controller extends CI_Controller {
         $this->load->helper("url");
         $this->load->database();
         $this->load->library("session");
+        $this->load->model("Usuario_Model");
+        $this->Usuario_Model->login_necesario();
     }
     public function index() {
         $result = $this->db->get("ventas");
@@ -14,5 +16,9 @@ class Perfil_Controller extends CI_Controller {
         
         $this->load->view("perfil_view", $data);
     }
+    public function logOut(){
+        $this->session->unset_userdata('id');
+    }
+
 }
 ?>

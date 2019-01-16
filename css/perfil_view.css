@@ -122,6 +122,12 @@ input{
     justify-content: center;
 }
 .modUser{
+    /* display: none; */
+}
+.verCompras{
+    display: none;
+}
+.logOut{
     display: none;
 }
 .verCompras>.container{

@@ -17,7 +17,6 @@
 <body>
     <nav class="navbar navbar-default">
         <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
                     aria-expanded="false">
@@ -29,7 +28,6 @@
                 <a class="navbar-brand" href="#">Brand</a>
             </div>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
@@ -51,15 +49,13 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#">Link</a></li>
                 </ul>
-            </div><!-- /.navbar-collapse -->
-        </div><!-- /.container-fluid -->
+            </div>
+        </div>
     </nav>
     <div class="container">
         <div class="row profile">
             <div class="col-md-3">
                 <div class="profile-sidebar">
-                    <!-- END SIDEBAR USERPIC -->
-                    <!-- SIDEBAR USER TITLE -->
                     <div class="profile-usertitle">
                         <div class="profile-usertitle-name">
                             Username
@@ -68,24 +64,22 @@
                             Rango
                         </div>
                     </div>
-                    <!-- END SIDEBAR USER TITLE -->
 
-                    <!-- SIDEBAR MENU -->
                     <div class="profile-usermenu">
                         <ul class="nav">
-                            <li class="ventana">
+                            <li class="ventana1">
                                 <a href="#">
                                     <i class="glyphicon glyphicon-home"></i>
                                     <p>Modificar Datos</p>
                                 </a>
                             </li>
-                            <li class="ventana">
+                            <li class="ventana2">
                                 <a href="#">
                                     <i class="glyphicon glyphicon-user"></i>
                                     <p>Compras</p>
                                 </a>
                             </li>
-                            <li class="ventana">
+                            <li class="ventana3">
                                 <a href="#">
                                     <i class="glyphicon glyphicon-off"></i>
                                     <p>Salir</p>
@@ -93,7 +87,6 @@
                             </li>
                         </ul>
                     </div>
-                    <!-- END MENU -->
                 </div>
             </div>
             <div class="col-md-9">
@@ -146,10 +139,17 @@
                             </table>
                         </div>
                     </div>
+                    <div class="jumbotron logOut">
+                        <div class="container">
+                            <h2>Seguro que quieres cerrar sesión?</h2>
+                        <?php   echo form_open_multipart("Perfil_Controller/logOut");?>
+                                <input type="submit" value="Cerrar sesión">
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </body>
-
 </html>
