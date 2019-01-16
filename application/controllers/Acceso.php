@@ -9,7 +9,11 @@
             $this->load->library("session");
         }
         public function index(){
-            $this->load->view("acceso/login"); 
+            if($this->input->post("log_usuario") !=null){
+                $this->login();
+            } else {
+                $this->load->view("acceso/login"); 
+            }
         }
         public function registro(){
             $this->load->view("acceso/registro");
@@ -59,19 +63,19 @@
                
                 $this->load->model("Correo");
                 $this->Correo->registro($usuario,$email,$token);
-                redirect("/acceso");
+                redirect("/login");
 
             }
         }
         public function confirmarRegistro($token){
             $this->load->model("Usuario_Model");
             $this->Usuario_Model->confirmarToken($token);
-            redirect("/acceso");
+            redirect("/login");
 
         }
         public function login(){
             if(!$this->input->post("log_usuario")){
-                redirect("acceso");
+                redirect("/login");
             }
             $usuario= $this->input->post("log_usuario");
             $contrasena= $this->input->post("log_contrasena");

@@ -47,7 +47,7 @@
             <input type="number" name="reg_telefono" value="<?php if(isset($telefono)){echo $telefono;};?>">
         </label><br>
         <input type="submit" value="registrar">
-        <?php echo anchor("acceso","Ya tengo cuenta");?>
+        <?php echo anchor("login","Ya tengo cuenta");?>
     </form>
 </body>
 </html>
