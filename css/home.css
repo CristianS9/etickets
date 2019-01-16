@@ -1,0 +1,169 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #DDD;
+    font-family: 'Inknut Antiqua', serif;
+    font-family: 'Ravi Prakash', cursive;
+    font-family: 'Lora', serif;
+    font-family: 'Indie Flower', cursive;
+    font-family: 'Cabin', sans-serif;
+}
+
+div.contenido {
+    max-width: 1350px;
+    margin: 0 auto;
+    overflow: hidden
+}
+
+.upcomming {
+    font-size: 45px;
+    text-transform: uppercase;
+    border-left: 14px solid rgba(255, 235, 59, 0.78);
+    padding-left: 12px;
+    margin: 18px 8px;
+}
+
+.contenido .item {
+    width: 48%;
+    float: left;
+    padding: 0 20px;
+    background: #fff;
+    overflow: hidden;
+    margin: 10px
+}
+
+.contenido .item-right,
+.contenido .item-left {
+    float: left;
+    padding: 20px
+}
+
+.contenido .item-right {
+    padding: 79px 50px;
+    margin-right: 20px;
+    width: 25%;
+    position: relative;
+    height: 286px
+}
+
+.contenido .item-right .up-border,
+.contenido .item-right .down-border {
+    padding: 14px 15px;
+    background-color: #ddd;
+    border-radius: 50%;
+    position: absolute
+}
+
+.contenido .item-right .up-border {
+    top: -8px;
+    right: -35px;
+}
+
+.contenido .item-right .down-border {
+    bottom: -13px;
+    right: -35px;
+}
+
+.contenido .item-right .num {
+    font-size: 60px;
+    text-align: center;
+    color: #111
+}
+
+.contenido .item-right .day,
+.contenido .item-left .event {
+    color: #555;
+    font-size: 20px;
+    margin-bottom: 9px;
+}
+
+.contenido .item-right .day {
+    text-align: center;
+    font-size: 25px;
+}
+
+.contenido .item-left {
+    width: 71%;
+    padding: 34px 0px 19px 46px;
+    border-left: 3px dotted #999;
+}
+
+.contenido .item-left .title {
+    color: #111;
+    font-size: 34px;
+    margin-bottom: 12px
+}
+
+.contenido .item-left .sce {
+    margin-top: 5px;
+    display: block
+}
+
+.contenido .item-left .sce .icon,
+.contenido .item-left .sce p,
+.contenido .item-left .loc .icon,
+.contenido .item-left .loc p {
+    float: left;
+    word-spacing: 5px;
+    letter-spacing: 1px;
+    color: #888;
+    margin-bottom: 10px;
+}
+
+.contenido .item-left .sce .icon,
+.contenido .item-left .loc .icon {
+    margin-right: 10px;
+    font-size: 20px;
+    color: #666
+}
+
+.contenido .item-left .loc {
+    display: block
+}
+
+.fix {
+    clear: both
+}
+
+.contenido .item .tickets,
+.booked,
+.cancel {
+    color: #fff;
+    padding: 6px 14px;
+    float: right;
+    margin-top: 10px;
+    font-size: 18px;
+    border: none;
+    cursor: pointer
+}
+
+.contenido .item .tickets {
+    background: #777
+}
+
+.contenido .item .booked {
+    background: #3D71E9
+}
+
+.contenido .item .cancel {
+    background: #DF5454
+}
+
+.linethrough {
+    text-decoration: line-through
+}
+
+@media only screen and (max-width: 1150px) {
+    .contenido .item {
+        width: 100%;
+        margin-right: 20px
+    }
+
+    div.contenido {
+        margin: 0 20px auto
+    }
+}
