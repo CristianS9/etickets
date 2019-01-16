@@ -5,13 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Evento</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" /> -->
     <!-- <script src="main.js"></script> -->
 </head>
 <body>
     <a href = "<?php echo base_url(); ?>index.php/Evento_Controller/add_evento_view">Add</a><br><br>
-    
-    <table border="1"> 
+
+    <table border="1">
         <tr>
             <td>Id</td>
             <td>Nombre</td>
@@ -34,9 +35,17 @@
         echo "<td>". $aux->fecha_fin ."</td>";
         echo "<td>". $aux->idProvincia ."</td>";
         echo "<td>". $aux->sitio ."</td>";
-        $url = "fotos/".$aux->id.".jpg";
-        if (file_exists($url)) {
+
+        $url1 = "fotos/".$aux->id.".jpg";
+        $url2 = "fotos/".$aux->id.".png";
+        $url3 = "fotos/".$aux->id.".jpeg";
+
+        if (file_exists($url1)) {
             echo "<td><img src=\"". base_url() . "fotos/" .$aux->id.".jpg\"></td>";
+        } elseif (file_exists($url2)) {
+            echo "<td><img src=\"" . base_url() . "fotos/" . $aux->id . ".png\"></td>";
+        } elseif (file_exists($url3)) {
+            echo "<td><img src=\"" . base_url() . "fotos/" . $aux->id . ".jpeg\"></td>";
         } else {
             echo "<td><img src=\"". base_url() . "fotos/0.jpg\"></td>";
         }

@@ -13,7 +13,6 @@ class Evento_Controller extends CI_Controller {
         $query = $this->db->get("eventos");
         $data["todo"] = $query->result();
 
-        $this->load->helper("url");
         $this->load->view("evento_view", $data);
     }
 
@@ -22,7 +21,6 @@ class Evento_Controller extends CI_Controller {
         $this->load->model("Evento_Model");
         $data['provincias'] = $this->Evento_Model->cargarProvincias();
 
-        $this->load->helper("url");
         $this->load->view("evento_add_view", $data);
     }
 
@@ -142,14 +140,21 @@ class Evento_Controller extends CI_Controller {
         $this->load->model("Evento_Model");
         $id = $this->uri->segment("3");
 
-        $condicion = [
-            "id" => $id,
-        ];
-        $this->Evento_Model->borrar($condicion);
+        $this->Evento_Model->borrar($id);
         $this->load->helper("file");
 
-        //Este metodo borra la imagen con la id a borrar
-        unlink("fotos/$id.jpg");
+        $url1 = "fotos/$id.jpg";
+        $url2 = "fotos/$id.png";
+        $url3 = "fotos/$id.jpeg";
+
+        if (file_exists($url1)) {
+            unlink("fotos/$id.jpg");
+        } elseif (file_exists($url2)) {
+            unlink("fotos/$id.png");
+        } elseif (file_exists($url3)){
+            unlink("fotos/$id.jpeg");
+        }
+        
 
         redirect("Evento_Controller");
 
