@@ -33,7 +33,7 @@
             $condicion = [
                 "usuario" => $usuario
             ];
-            return $this->db->get_where("usuarios",$condicion);
+            return $this->db->get_where("usuarios",$condicion)->row();
             
         }
         public function login_necesario(){

@@ -14,16 +14,16 @@
                 $this->login();
             } else {
                 $this->load->view("acceso/login"); 
-            }
-            
+            } 
         }
         public function registro(){
-              if($this->input->post("reg_usuario") !=null){
+            echo get_cookie("ultimo-login");
+/*             if($this->input->post("reg_usuario") !=null){
                 $this->registrar();
             } else {
                 $this->load->view("acceso/registro");
             }
-        }
+ */        }
         public function registrar(){
 
             $this->form_validation->set_message("is_unique","{field} ya existe");
@@ -87,13 +87,21 @@
             $contrasena= $this->input->post("log_contrasena");
             $this->load->model("Usuario_Model");
             if($this->Usuario_Model->loginCorrecto($usuario,$contrasena)){
-                $datosLogin= $this->Usuario_Model->datosLogin($usuario);
+                $datosLogin = $this->Usuario_Model->datosLogin($usuario);
                 $this->session->set_userdata("id",$datosLogin->id);
                 $this->session->set_userdata("usuario",$usuario);
                 $this->session->set_userdata("rango",$datosLogin->rango);
-                $this->set_cookie("nombre",$datosLogin->nombre);
-                redirect("home");
 
+                set_cookie("nombre",$datosLogin->nombre);
+                $fecha = date("Y-m-d H:i:s"); 
+                $cookie = array(
+                        'name'   => 'ultimo-login',
+                        'value'  => $fecha,                            
+                        'expire' => '0',                                                                                   
+                        'secure' => TRUE
+                        );
+                set_cookie($cookie);
+                redirect("home");
             }else {
                 $this->form_validation->setError('credenciales',"Credenciales de acceso incorrectos");
                 $data["usuario"] = $usuario;
