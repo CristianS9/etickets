@@ -10,7 +10,7 @@
 </head>
 <body>
   
-    <?php echo form_open('acceso/registrar'); ?>
+    <?php echo form_open('registro'); ?>
         <label>
             <h5>Usuario</h5>
             <?php echo form_error('reg_usuario', '<div class="notificacion">', '</div>'); ?>

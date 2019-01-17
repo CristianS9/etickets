@@ -16,7 +16,11 @@
             }
         }
         public function registro(){
-            $this->load->view("acceso/registro");
+              if($this->input->post("reg_usuario") !=null){
+                $this->registrar();
+            } else {
+                $this->load->view("acceso/registro");
+            }
         }
         public function registrar(){
 

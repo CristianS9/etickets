@@ -80,7 +80,8 @@
 						</button>
 					</div>
 
-				</form>
+        </form>
+        <?php echo anchor("registro","Crear cuenta");?>
 			</div>
 		</div>
 	</div>
