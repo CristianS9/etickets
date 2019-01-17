@@ -33,9 +33,6 @@
             if(!isset($this->session->id)){
                 redirect("acceso");
             };
-
-            
-
         }
       
     }

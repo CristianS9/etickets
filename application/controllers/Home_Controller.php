@@ -12,8 +12,8 @@ class Home_Controller extends CI_Controller {
     public function index() {
         $this->load->model("Home_Model");
         $data['datos'] = $this->Home_Model->getHomeEvents();
-        require_once APPPATH . '../lib/jQueryLiveSearch/core/Handler.php';
-        require_once APPPATH . '../lib/jQueryLiveSearch/core/Config.php';
+        require_once APPPATH . 'third_party/jQueryLiveSearch/core/Handler.php';
+        require_once APPPATH . 'third_party/jQueryLiveSearch/core/Config.php';
         $this->load->view("home", $data);
     }
 }
