@@ -4,6 +4,7 @@
             parent::__construct();
             $this->load->helper("html");
             $this->load->helper("url");
+            $this->load->helper("cookie");
             $this->load->database(); 
             $this->load->library('form_validation');
             $this->load->library("session");
@@ -90,6 +91,7 @@
                 $this->session->set_userdata("id",$datosLogin->id);
                 $this->session->set_userdata("usuario",$usuario);
                 $this->session->set_userdata("rango",$datosLogin->rango);
+                $this->set_cookie("nombre",$datosLogin->nombre);
                 redirect("home");
 
             }else {
