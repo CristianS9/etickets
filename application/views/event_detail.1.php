@@ -11,7 +11,7 @@
     <title>Heroic Features - Start Bootstrap Template</title>
 
     <!-- Bootstrap core CSS -->
-     <?php echo link_tag("lib/bootstrap.min.css"); ?> 
+    <?php echo link_tag("lib/bootstrap.min.css"); ?>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css">
     <?php echo link_tag("css/heroic-features.css"); ?>
 
@@ -26,9 +26,10 @@
     <?php echo link_tag("css/event_detail.css"); ?>
     <?php echo script_tag("lib/jquery-3.3.1.min.js"); ?>
     <!-- Ajax Live Search -->
-    <script src="<?php echo base_url() ?>lib/bootstrap.bundle.min.js"></script>
     <?php echo link_tag("css/home.css"); ?>
 
+    <?php echo link_tag("css/home.css"); ?>
+    <script src="<?php echo base_url() ?>lib/bootstrap.bundle.min.js"></script>
 
     <!-- Custom styles for this template -->
 
@@ -75,83 +76,103 @@
 
     <div class="contenido">
         <h1 class="upcomming">Evento</h1>
-
-
-
         <div class="jumbo">
-            <div class="jumbotron">
-                <h1 class="display-4">
-                    <?php echo $eventTickets[0]->nombre; ?>
-                </h1>
-                <p class="lead">
-                    <?php echo $eventTickets[0]->descripcion; ?>
-                </p>
-                <hr class="my-4">
-                <p>Evento de
-                    <?php echo $eventTickets[0]->categoria; ?> en
-                    <?php echo $eventTickets[0]->provincia; ?>. Del
-                    <?php echo $eventTickets[0]->fechaIni; ?> al
-                    <?php echo $eventTickets[0]->fechaFin; ?>. </p>
-                <p class="lead">
-                    <a class="btn btn-primary btn-lg" href="#" role="button">Comprar sections</a>
-                </p>
-            </div>
+
+    <div class="jumbotron">
+        <h1 class="display-4">Hello, world!</h1>
+        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to
+            featured content or information.</p>
+        <hr class="my-4">
+        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+        <p class="lead">
+            <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+        </p>
+    </div>
         </div>
-        <div class="tarjetitas">
-            <div class="box">
-                <div class="prueba">
-                    <section>
-                        <widget type="ticket" class="--flex-column">
-                            <div class="top --flex-column">
-                                <div class="bandname -bold">Ghost Mice</div>
-                                <div class="tourname">Home Tour</div>
-                                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/199011/concert.png" alt="" />
-                                <div class="deetz --flex-row-j!sb">
-                                    <div class="event --flex-column">
-                                        <div class="date">3rd March 2017</div>
-                                        <div class="location -bold">Bloomington, Indiana</div>
-                                    </div>
-                                    <div class="price --flex-column">
-                                        <div class="label">Price</div>
-                                        <div class="cost -bold">$30</div>
-                                    </div>
+
+
+
+
+
+
+
+
+
+        <entrada>
+
+            <?php
+$meses = array("01" => "Enero",
+    "02" => "Febrero",
+    "03" => "Marzo",
+    "04" => "Abril",
+    "05" => "Mayo",
+    "06" => "Junio",
+    "07" => "Julio",
+    "08" => "Agosto",
+    "09" => "Septiembre",
+    "10" => "Octubre",
+    "11" => "Noviebre",
+    "12" => "Diciembre",
+);
+
+$contadorDia = 1;
+foreach ($eventTickets as $ticket) {
+
+    // Coge la fecha como string chulísimo
+    $textoFecha = "Hola sinceramente";
+    if ($ticket->fecha != "" || $ticket->fecha != null) {
+        $fecha = DateTime::createFromFormat("Y-m-d", $ticket->fecha);
+        $nombreMes = $meses[$fecha->format("m")];
+        $textoFecha = $fecha->format("d") . " de " . $nombreMes . " de " . $fecha->format("Y");
+
+    } else {
+        $textoFecha = "Abono completo";
+    }
+
+    ?>
+            <div class="item">
+                <widget type="ticket" class="--flex-column">
+                    <div class="top --flex-column">
+                        <div class="bandname -bold">
+                            <?php echo $ticket->nombre; ?>
+                        </div>
+                        <div class="tourname">
+                            <?php echo $ticket->categoria; ?>
+                        </div>
+                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/199011/concert.png" alt="" />
+                        <div class="deetz --flex-row-j!sb">
+                            <div class="event --flex-column">
+                                <div class="date">
+                                    <?php echo ($textoFecha); ?>
+                                </div>
+                                <div class="location -bold">
+                                    <?php echo $ticket->sitio . ", " . $ticket->provincia ?>
                                 </div>
                             </div>
-                        </widget>
-                    </section>
-                </div>
-            </div>
-            <div class="box">
-                <div class="prueba">
-                    <section>
-                        <widget type="ticket" class="--flex-column">
-                            <div class="top --flex-column">
-                                <div class="bandname -bold">Ghost Mice</div>
-                                <div class="tourname">Home Tour</div>
-                                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/199011/concert.png" alt="" />
-                                <div class="deetz --flex-row-j!sb">
-                                    <div class="event --flex-column">
-                                        <div class="date">3rd March 2017</div>
-                                        <div class="location -bold">Bloomington, Indiana</div>
-                                    </div>
-                                            <div class="price --flex-column">
-            <div class="label">Price</div>
-            <div class="cost -bold">$30</div>
-         </div> 
-      </div> 
-   </div>
-   <div class="rip"></div>
-   <div class="bottom --flex-row-j!sb">
-      <div class="barcode"></div>
-      <a class="buy" href="#">BUY TICKET</a>
-   </div>
-</widget>
-                    </section>
-                </div>
-            </div>
-        </div>
+                            <div class="price --flex-column">
+                                <div class="label">Precio</div>
+                                <div class="cost -bold">
+                                    <?php echo $ticket->precio . "€" ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="rip"></div>
+                    <div class="bottom --flex-row-j!sb">
+                        <!-- <div class="barcode"></div> -->
+                        <a class="buy" href="#">COMPRAR</a>
+                    </div>
+                </widget>
+                fweew
+            </div> <!-- end item -->
 
+            <?php
+$contadorDia++;
+}
 
+?>
+
+        </entrada>
 
 
 

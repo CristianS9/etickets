@@ -18,7 +18,7 @@ class Config
         // ***** Database ***** //
         'dataSources'           => [
             'ls_query' => [
-                'host'               => '192.168.0.166',
+                'host'               => 'raspberrymikel.ddns.net:143',
                 'database'           => 'eticketsf',
                 'username'           => 'clase',
                 'pass'               => 'root1',
