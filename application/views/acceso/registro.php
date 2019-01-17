@@ -53,7 +53,7 @@
 
                 <?php 
                     $atributos = ["class"=>"login100-form validate-form p-b-33 p-t-5"];
-                    echo form_open('acceso/registrar',$atributos); 
+                    echo form_open('registro',$atributos); 
 
                 ?> 
                     <?php echo form_error('reg_usuario', '<div class="notificacion">', '</div>'); ?>
