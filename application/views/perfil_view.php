@@ -8,6 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="<?php echo base_url();?>lib/jquery-3.3.1.min.js"></script>
+    <script src="<?php echo base_url();?>lib/bootstrap-notify.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <script src="<?php echo base_url();?>js/perfil_view.js"></script>
     <?php echo link_tag("css/perfil_view.css");?>
@@ -100,34 +102,15 @@
                 <div class="profile-content">
                     <div class="jumbotron modUser" id="modUser">
                         <div class="container modificar">
+                        <?php
+                            foreach ($usuario as $aux) { 
+                        ?>
                             <div class="linea">
                                 <div class="info" elemento="usuario">
                                     Nombre de usuario:
                                 </div>
                                 <div class="data">
-                                    polla
-                                </div>
-                                <div class="botones">
-                                    <span class="glyphicon glyphicon-pencil boton editar"></span>
-                                </div>
-                            </div>
-                            <div class="linea">
-                                <div class="info" elemento="nombre">
-                                    Nombre:
-                                </div>
-                                <div class="data">
-                                    nombre
-                                </div>
-                                <div class="botones">
-                                    <span class="glyphicon glyphicon-pencil boton editar"></span>
-                                </div>
-                            </div>
-                            <div class="linea">
-                                <div class="info" elemento="apellidos">
-                                    Apellidos:
-                                </div>
-                                <div class="data">
-                                    username
+                                    <?php echo $aux->usuario;?>
                                 </div>
                                 <div class="botones">
                                     <span class="glyphicon glyphicon-pencil boton editar"></span>
@@ -145,11 +128,33 @@
                                 </div>
                             </div>
                             <div class="linea">
+                                <div class="info" elemento="nombre">
+                                    Nombre:
+                                </div>
+                                <div class="data">
+                                    <?php echo $aux->nombre;?>
+                                </div>
+                                <div class="botones">
+                                    <span class="glyphicon glyphicon-pencil boton editar"></span>
+                                </div>
+                            </div>
+                            <div class="linea">
+                                <div class="info" elemento="apellidos">
+                                    Apellidos:
+                                </div>
+                                <div class="data">
+                                    <?php echo $aux->apellidos;?>
+                                </div>
+                                <div class="botones">
+                                    <span class="glyphicon glyphicon-pencil boton editar"></span>
+                                </div>
+                            </div>
+                            <div class="linea">
                                 <div class="info" elemento="email">
                                     Correo:
                                 </div>
                                 <div class="data">
-                                    Correo
+                                   <?php echo $aux->email;?>
                                 </div>
                                 <div class="botones">
                                     <span class="glyphicon glyphicon-pencil boton editar"></span>
@@ -160,37 +165,16 @@
                                     Teléfono:
                                 </div>
                                 <div class="data">
-                                    telefono
+                                    <?php echo $aux->telefono;?>
                                 </div>
                                 <div class="botones">
                                     <span class="glyphicon glyphicon-pencil boton editar"></span>
                                 </div>
                             </div>
-                            <?php //echo form_open_multipart("Perfil_Controller/modUser",["class"=>"formGrid"]);?>
-                                <!-- <div class="contInput">
-                                    <label for="">Nombre de Usuario</label>
-                                    <input type="text" name="p_Username" id="">
-                                </div>
-                                <div class="contInput">
-                                    <label for="">Nombre</label>
-                                    <input type="text" name="p_Nombre" id="">
-                                </div>
-                                <div class="contInput">
-                                    <label for="">Apellido</label>
-                                    <input type="text" name="p_Apellido" id="">
-                                </div>
-                                <div class="contInput">
-                                    <label for="">Correo electrónico</label>
-                                    <input type="text" name="p_Correo" id="">
-                                </div>
-                                <div class="contInput">
-                                    <label for="">Número de teléfono</label>
-                                    <input type="text" name="p_Telefono" id="">
-                                </div>
-                                <div class="contSubmit">
-                                    <input type="submit" value="Enviar">
-                                </div>
-                            </form> -->
+                            <?php
+                            }
+                            ?>
+
                         </div>
                     </div>
                     <div class="jumbotron verCompras" id="verCompras">

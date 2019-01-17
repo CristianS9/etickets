@@ -11,7 +11,9 @@ class Perfil_Controller extends CI_Controller {
     public function index() {
         $result = $this->db->get("ventas");
         $data["todo"] = $result->result();
-
+        $id = $this->session->id;
+        $usuario = $this->db->query("CALL spUsuarioPorId($id)");
+        $data["usuario"] = $usuario->result();
         
         $this->load->view("perfil_view", $data);
     }
@@ -20,15 +22,7 @@ class Perfil_Controller extends CI_Controller {
         redirect("Home_Controller");
     }
     public function modUser(){
-        $datos = [
-            "id" => $this->session->id,
-            "username" => $this->input->post("p_Username"),
-            "nombre" => $this->input->post("p_Nombre"),
-            "apellido" => $this->input->post("p_Apellido"),
-            "correo" => $this->input->post("p_Correo"),
-            "telefono" => $this->input->post("p_Telefono")
-        ];
-        $this->Usuario_Model->modUser($datos);
+        
     }
 
 }
