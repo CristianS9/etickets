@@ -11,7 +11,7 @@
     <title>Heroic Features - Start Bootstrap Template</title>
 
     <!-- Bootstrap core CSS -->
-     <?php echo link_tag("lib/bootstrap.min.css"); ?> 
+    <?php echo link_tag("lib/bootstrap.min.css"); ?>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css">
     <?php echo link_tag("css/heroic-features.css"); ?>
 
@@ -25,10 +25,11 @@
     <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Nunito:300,400,700'>
     <?php echo link_tag("css/event_detail.css"); ?>
     <?php echo script_tag("lib/jquery-3.3.1.min.js"); ?>
+    <?php echo script_tag("js/event_detail.js"); ?>
     <!-- Ajax Live Search -->
     <script src="<?php echo base_url() ?>lib/bootstrap.bundle.min.js"></script>
     <?php echo link_tag("css/home.css"); ?>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mouse0270-bootstrap-notify/3.1.7/bootstrap-notify.min.js"></script>
 
     <!-- Custom styles for this template -->
 
@@ -65,10 +66,6 @@
         </div>
     </nav>
 
-    <!-- Page Content -->
-
-
-
     <!-- JUMBOTRON -->
 
 
@@ -97,58 +94,76 @@
                 </p>
             </div>
         </div>
+
         <div class="tarjetitas">
-            <div class="box">
-                <div class="prueba">
-                    <section>
-                        <widget type="ticket" class="--flex-column">
-                            <div class="top --flex-column">
-                                <div class="bandname -bold">Ghost Mice</div>
-                                <div class="tourname">Home Tour</div>
-                                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/199011/concert.png" alt="" />
-                                <div class="deetz --flex-row-j!sb">
-                                    <div class="event --flex-column">
-                                        <div class="date">3rd March 2017</div>
-                                        <div class="location -bold">Bloomington, Indiana</div>
-                                    </div>
-                                    <div class="price --flex-column">
-                                        <div class="label">Price</div>
-                                        <div class="cost -bold">$30</div>
+           <!--  <div class="limite"> -->
+                <?php
+                    $meses = array("01" => "Enero",
+                        "02" => "Febrero",
+                        "03" => "Marzo",
+                        "04" => "Abril",
+                        "05" => "Mayo",
+                        "06" => "Junio",
+                        "07" => "Julio",
+                        "08" => "Agosto",
+                        "09" => "Septiembre",
+                        "10" => "Octubre",
+                        "11" => "Noviebre",
+                        "12" => "Diciembre",
+                    );
+    
+                                foreach ($eventTickets as $ticket){
+                    // Coge la fecha como string chulísimo
+                    $textoFecha = "Hola sinceramente";
+                    if ($ticket->fecha != "" || $ticket->fecha != null) {
+                        $fecha = DateTime::createFromFormat("Y-m-d", $ticket->fecha);
+                        $nombreMes = $meses[$fecha->format("m")];
+                        $textoFecha = $fecha->format("d") . " de " . $nombreMes . " de " . $fecha->format("Y");
+    
+                    } else {
+                        $textoFecha = "Abono completo";
+                    }
+                    $idCantidad = $ticket->id . "cantidad";
+                    $idContador = $ticket->id . "contador";
+
+                ?>
+                <div class="box">
+                    <div class="prueba">
+                        <section>
+                            <widget type="ticket" class="--flex-column">
+                                <div class="top --flex-column">
+                                    <div class="bandname -bold"><?php echo $ticket->nombre; ?></div>
+                                    <div class="tourname"><?php echo $ticket->categoria; ?></div>
+                                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/199011/concert.png" alt="" />
+                                    <div class="deetz --flex-row-j!sb">
+                                        <div class="event --flex-column">
+                                            <div class="date"><?php echo ($textoFecha); ?></div>
+                                            <div class="location -bold"><?php echo $ticket->sitio . ", " . $ticket->provincia ?></div>
+                                        </div>
+                                        <div class="price --flex-column">
+                                            <div class="label">Precio</div>
+                                            <div class="cost -bold"><?php echo $ticket->precio . "€" ?></div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </widget>
-                    </section>
+                                <div class="rip"></div>
+                                <div class="bottom --flex-row-j!sb">
+                                    <!-- <div class="barcode"></div> -->
+                                    <input type="number" placeholder=" Cant." class="inputCantidad" id="<?php echo $idCantidad ?>">
+                                    <!-- <p>12/33</p> -->
+                                    <div class="contadorCantidad <?php echo $idContador ?> " cantidadRestante="<?php echo $ticket->disponibles ?>" cantidadTotal="<?php echo $ticket->cantidadTotal ?>"><?php echo $ticket->disponibles . " / " . $ticket->cantidadTotal?></div>
+                                    <a class="buy addToCartButton" id='<?php echo $ticket->id ?>'>CESTA</a>
+                                </div>
+                            </widget>
+                        </section>
+                    </div>
                 </div>
-            </div>
-            <div class="box">
-                <div class="prueba">
-                    <section>
-                        <widget type="ticket" class="--flex-column">
-                            <div class="top --flex-column">
-                                <div class="bandname -bold">Ghost Mice</div>
-                                <div class="tourname">Home Tour</div>
-                                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/199011/concert.png" alt="" />
-                                <div class="deetz --flex-row-j!sb">
-                                    <div class="event --flex-column">
-                                        <div class="date">3rd March 2017</div>
-                                        <div class="location -bold">Bloomington, Indiana</div>
-                                    </div>
-                                            <div class="price --flex-column">
-            <div class="label">Price</div>
-            <div class="cost -bold">$30</div>
-         </div> 
-      </div> 
-   </div>
-   <div class="rip"></div>
-   <div class="bottom --flex-row-j!sb">
-      <div class="barcode"></div>
-      <a class="buy" href="#">BUY TICKET</a>
-   </div>
-</widget>
-                    </section>
-                </div>
-            </div>
+                <?php
+                    }
+                ?>
+
+          <!--   </div>     -->
+
         </div>
 
 
@@ -162,95 +177,6 @@
 
 
 
-        <div class="item">
-            <div class="item-right">
-                <h2 class="num">23</h2>
-                <p class="day">Feb</p>
-                <span class="up-border"></span>
-                <span class="down-border"></span>
-            </div> <!-- end item-right -->
-
-            <div class="item-left">
-                <p class="event">Music Event</p>
-                <h2 class="title">Live Been Corrage</h2>
-
-                <div class="sce">
-                    <div class="icon">
-                        <i class="fa fa-table"></i>
-                    </div>
-                    <p>Monday 15th 2016 <br /> 15:20Pm & 11:00Am</p>
-                </div>
-                <div class="fix"></div>
-                <div class="loc">
-                    <div class="icon">
-                        <i class="fa fa-map-marker"></i>
-                    </div>
-                    <p>North,Soth, United State , Amre <br /> Party Number 16,20</p>
-                </div>
-                <div class="fix"></div>
-                <button class="tickets">Tickets</button>
-            </div> <!-- end item-right -->
-        </div> <!-- end item -->
-
-        <div class="item">
-            <div class="item-right">
-                <h2 class="num">23</h2>
-                <p class="day">Feb</p>
-                <span class="up-border"></span>
-                <span class="down-border"></span>
-            </div> <!-- end item-right -->
-
-            <div class="item-left">
-                <p class="event">Music Kaboom</p>
-                <h2 class="title">Music Party</h2>
-
-                <div class="sce">
-                    <div class="icon">
-                        <i class="fa fa-table"></i>
-                    </div>
-                    <p>Monday 15th 2016 <br /> 15:20Pm & 11:00Am</p>
-                </div>
-                <div class="fix"></div>
-                <div class="loc">
-                    <div class="icon">
-                        <i class="fa fa-map-marker"></i>
-                    </div>
-                    <p>North,Soth, United State , Amre <br /> Party Number 16,20</p>
-                </div>
-                <div class="fix"></div>
-                <button class="booked">Booked</button>
-            </div> <!-- end item-right -->
-        </div> <!-- end item -->
-
-        <div class="item">
-            <div class="item-right">
-                <h2 class="num">23</h2>
-                <p class="day">Feb</p>
-                <span class="up-border"></span>
-                <span class="down-border"></span>
-            </div> <!-- end item-right -->
-
-            <div class="item-left">
-                <p class="event">Music Event</p>
-                <h2 class="title linethrough">Hello Dubail Visivle</h2>
-
-                <div class="sce">
-                    <div class="icon">
-                        <i class="fa fa-table"></i>
-                    </div>
-                    <p>Monday 15th 2016 <br /> 15:20Pm & 11:00Am</p>
-                </div>
-                <div class="fix"></div>
-                <div class="loc">
-                    <div class="icon">
-                        <i class="fa fa-map-marker"></i>
-                    </div>
-                    <p>North,Soth, United State , Amre <br /> Party Number 16,20</p>
-                </div>
-                <div class="fix"></div>
-                <button class="cancel">Cancele</button>
-            </div> <!-- end item-right -->
-        </div> <!-- end item -->
     </div>
 
 

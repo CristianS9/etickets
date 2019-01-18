@@ -78,7 +78,8 @@ section widget[type="ticket"] .bottom .buy {
     align-content: center;
     color: #fff;
     text-decoration: none;
-    cursor: pointer;
+
+
 }
 
 section widget[type="ticket"] .rip {
@@ -90,6 +91,7 @@ section widget[type="ticket"] .rip {
     background-position: center;
     position: relative;
     box-shadow: 0 1px 0 0 #fff, 0 -1px 0 0 #fff;
+    width:
 
 }
 
@@ -149,7 +151,7 @@ section widget .-bold {
 .tarjetitas {
     padding: 15px 0;
     display: grid;
-/*     background-color: red; */
+    /* background-color: red; */
     position: relative;
     display: grid;
     justify-content: flex-start;
@@ -176,24 +178,4 @@ section {
     display: grid;
     align-content: center;
     justify-content: center;
-}
-
-.inputCantidad {
-    width: 60px;
-    border-radius: 5px;
-    box-shadow: none;
-    border-style: solid;
-    border: 1px solid #bbbbbb;
-}
-.contadorCantidad{
-        display: grid;
-        font-size: 11px;
-        font-weight: bold;
-        background-color: rgb(236, 93, 93);
-        padding: 0 15px;
-        line-height: 30px;
-        border-radius: 15px;
-        align-content: center;
-        color: #fff;
-        text-decoration: none;
 }
