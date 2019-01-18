@@ -108,7 +108,7 @@
                 <div class="profile-content">
                     <div class="jumbotron modUser" id="modUser">
                         <div class="container modificar">
-                        <?php
+                            <?php
                             foreach ($usuario as $aux) { 
                         ?>
                             <div class="linea">
@@ -160,7 +160,7 @@
                                     Correo:
                                 </div>
                                 <div class="data">
-                                   <?php echo $aux->email;?>
+                                    <?php echo $aux->email;?>
                                 </div>
                                 <div class="botones">
                                     <span class="glyphicon glyphicon-pencil boton editar"></span>
@@ -191,7 +191,7 @@
                                     <th>Precio total</th>
                                     <th>Fecha</th>
                                 </tr>
-                            <?php
+                                <?php
                                 foreach ($todo as $aux) {
                                     echo "<tr>";
                                     echo "<td>".$aux->precio_total."</td>";
@@ -210,7 +210,7 @@
                                     <th>Precio total</th>
                                     <th>Fecha</th>
                                 </tr>
-                            <?php
+                                <?php
                                 foreach ($todo as $aux) {
                                     echo "<tr>";
                                     echo "<td>".$aux->precio_total."</td>";
@@ -224,8 +224,8 @@
                     <div class="jumbotron logOut" id="logOut">
                         <div class="container">
                             <h2>Seguro que quieres cerrar sesión?</h2>
-                        <?php   echo form_open_multipart("Perfil_Controller/logOut");?>
-                                <input type="submit" value="Cerrar sesión">
+                            <?php   echo form_open_multipart("Perfil_Controller/logOut");?>
+                            <input type="submit" value="Cerrar sesión">
                             </form>
                         </div>
                     </div>
@@ -234,4 +234,5 @@
         </div>
     </div>
 </body>
+
 </html>
