@@ -17,13 +17,13 @@
             } 
         }
         public function registro(){
-            echo get_cookie("ultimo-login");
-/*             if($this->input->post("reg_usuario") !=null){
+//            echo get_cookie("ultimo-login");
+            if($this->input->post("reg_usuario") !=null){
                 $this->registrar();
             } else {
                 $this->load->view("acceso/registro");
             }
- */        }
+        }
         public function registrar(){
 
             $this->form_validation->set_message("is_unique","{field} ya existe");
@@ -69,19 +69,19 @@
                
                 $this->load->model("Correo");
                 $this->Correo->registro($usuario,$email,$token);
-                redirect("/login");
+                redirect("login");
 
             }
         }
         public function confirmarRegistro($token){
             $this->load->model("Usuario_Model");
             $this->Usuario_Model->confirmarToken($token);
-            redirect("/login");
+            redirect("login");
 
         }
         public function login(){
             if(!$this->input->post("log_usuario")){
-                redirect("/login");
+                redirect("login");
             }
             $usuario= $this->input->post("log_usuario");
             $contrasena= $this->input->post("log_contrasena");
@@ -92,7 +92,7 @@
                 $this->session->set_userdata("usuario",$usuario);
                 $this->session->set_userdata("rango",$datosLogin->rango);
 
-                set_cookie("nombre",$datosLogin->nombre);
+              /*   set_cookie("nombre",$datosLogin->nombre);
                 $fecha = date("Y-m-d H:i:s"); 
                 $cookie = array(
                         'name'   => 'ultimo-login',
@@ -100,7 +100,7 @@
                         'expire' => '0',                                                                                   
                         'secure' => TRUE
                         );
-                set_cookie($cookie);
+                set_cookie($cookie); */
                 redirect("home");
             }else {
                 $this->form_validation->setError('credenciales',"Credenciales de acceso incorrectos");

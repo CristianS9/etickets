@@ -1,8 +1,7 @@
 <head>
-  <meta charset="UTF-8">
+
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title></title>
-  <link rel="stylesheet" href="registro.css">
+  <title>Document</title>
   <style type="text/css">
   img{
             -ms-interpolation-mode: bicubic;
@@ -50,11 +49,20 @@
           <tbody><tr>
             <td style="padding-top: 20px;padding-bottom: 45px; width: 100%; text-align: center; ">
             <a href="https://www.moo.com/us/?cvosrc=email.responsys.lifecycle-welcome-w1&amp;utm_campaign=lifecycle-welcome-w1&amp;utm_content=&amp;utm_medium=email&amp;utm_source=none" style="text-decoration: none;" target="_blank">
-              <img src="<?php echo base_url(); ?>foto/email/etickets_logo.png" style="display: block; width:135px; height:68px; margin:0 auto;" alt="">
+              <img src="https://www.moo.com/images/moologo.gif" style="display: block; width:135px; height:68px; margin:0 auto;" alt="">
               </a>
             </td>
           </tr>
         </tbody></table>
+
+        <table cellpadding="0" cellspacing="0" align="center" style="width: 100%; max-width:320px; border-collapse:collapse; margin:0 auto;">
+          <tbody><tr>
+            <td style="text-align: center; width:100%">
+              <img src="http://www.moo.com/email/images/lifecycle/warm_UK2.gif" style="display: block; max-width:320px; margin:0 auto;" alt="">
+            </td>
+          </tr>
+        </tbody></table>
+
         <table cellpadding="0" cellspacing="0" align="center" style="width: 100%; max-width:501px; border-collapse:collapse; margin:0 auto;">
           <tbody><tr>
             <td style="text-align: center; width:100%; padding-bottom: 20px;">
@@ -87,7 +95,8 @@
         <table cellpadding="0" cellspacing="0" align="center" style="width:100%; max-width: 570px;   background-color: #f5f5f5; margin:0 auto;">
           <tbody><tr>
             <td style="width:100%; max-width: 570px; text-align: center;  background-color: #f5f5f5; padding: 50px; font-family: verdana; font-size: 15px; color: #555555; line-height: 24px;">
-              <br><br>Juntos conseguiremos que visites los mayores eventos del mundo electronico. De momento, solo queremos decir, Bienvenido a e-Tickets! y estamos encantados de que hayas decidido confiar en nosotros. <br><br> Creemos que podremos ofrecer una variedad de increibles ofertas y eventos. Sabemos que estas iniciar y por ello solo te pedimos un ultimo paso. <br><br>Confirma tu cuenta y empieza a disfrutar!
+              Together we’re going to make some great stuff for your business. For now, we just want to say, welcome to MOO! and let you know how glad we are that you’ve found us. <br><br> We really do believe that design works wonders. That’s why we’re excited to bring you standout business stationery and promotional materials to help good things happen for you and your business. <br><br> Welcome, new friend.
+
 
               <table cellpadding="0" cellspacing="0" align="center" style="width:100%; margin:0 auto;">
                                             <tbody><tr>
@@ -95,8 +104,8 @@
                <table cellpadding="0" cellspacing="0" align="center">
                                             <tbody><tr>
                                                 <td width="100%" align="center" valign="top" style="font-size: 16px; font-family: verdana,sans-serif; color: #ffffff; padding: 10px; line-height: 18px; font-weight: 300; border-radius:6px;" bgcolor="#0086ff">
-                                                    <a href="<?php echo base_url(); ?>index.php/acceso/confirmarRegistro/<?php echo $token;?>" style="color: #ffffff; text-decoration: none;" target="_blank">
-                                                      Confirmar Correo
+                                                    <a href="https://www.moo.com/us/?cvosrc=email.responsys.lifecycle-welcome-w1&amp;utm_campaign=lifecycle-welcome-w1&amp;utm_content=&amp;utm_medium=email&amp;utm_source=none" style="color: #ffffff; text-decoration: none;" target="_blank">
+                                                      Take a look around
                                                     </a>
                                                 </td>
                                             </tr>
