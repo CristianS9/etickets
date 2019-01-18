@@ -21,9 +21,6 @@ class Perfil_Controller extends CI_Controller {
         $this->session->unset_userdata('id');
         redirect("Home_Controller");
     }
-    public function modUser(){
-        
-    }
 
 }
 ?>

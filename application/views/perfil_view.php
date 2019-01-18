@@ -88,6 +88,12 @@
                                     <p>Compras</p>
                                 </a>
                             </li>
+                            <li class="ventana" elemento="verEntradas">
+                                <a href="#">
+                                    <i class="glyphicon glyphicon-tags"></i>
+                                    <p>Entradas</p>
+                                </a>
+                            </li>
                             <li class="ventana" elemento="logOut">
                                 <a href="#">
                                     <i class="glyphicon glyphicon-off"></i>
@@ -121,7 +127,7 @@
                                     Contraseña:
                                 </div>
                                 <div class="data">
-                                    *******
+                                    &bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;
                                 </div>
                                 <div class="botones">
                                     <span class="glyphicon glyphicon-pencil boton editar"></span>
@@ -178,6 +184,25 @@
                         </div>
                     </div>
                     <div class="jumbotron verCompras" id="verCompras">
+                        <div class="container">
+                            <h2>Ultimas Compras</h2>
+                            <table class="table">
+                                <tr>
+                                    <th>Precio total</th>
+                                    <th>Fecha</th>
+                                </tr>
+                            <?php
+                                foreach ($todo as $aux) {
+                                    echo "<tr>";
+                                    echo "<td>".$aux->precio_total."</td>";
+                                    echo "<td>".$aux->fecha."</td>";
+                                    echo "</tr>";
+                                }    
+                            ?>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="jumbotron verEntradas" id="verEntradas">
                         <div class="container">
                             <h2>Tus Entradas</h2>
                             <table class="table">

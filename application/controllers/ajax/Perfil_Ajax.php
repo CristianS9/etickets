@@ -14,24 +14,46 @@ class Perfil_ajax extends CI_Controller {
         $dato = $this->input->post("dato");
         $columna = $this->input->post("columna");
 
-        $data = array(
-        $columna => $dato
-        );
+        if ($columna = "contrasena") {    
+            $hash = password_hash($dato,PASSWORD_BCRYPT);
 
-        echo "dato".$dato;
-        echo "columna".$columna;
-        print_r($data);
+            $data = array(
+                $columna => $hash
+            );        
 
-        $id = $this->session->id;
-        // $this->db->where('id', $id);
-        // $this->db->update('usuarios', $data);
+            $id = $this->session->id;
+            // Los datos que se van a escribir
+            $this->db->set($data);
+            // La clausula where, puede ser un array con las condiciones
+            $this->db->where("id",$id);
+            //La tabla donde se establecera y denuevo los datos
+            $this->db->update("usuarios",$data);
 
-        // Los datos que se van a escribir
-        $this->db->set($data);
-        // La clausula where, puede ser un array con las condiciones
-        $this->db->where("id",$id);
-        //La tabla donde se establecera y denuevo los datos
-        $this->db->update("usuarios",$data);
+
+        } else{
+            // if ($columna == "usuario") {
+            //     $resultado = $this->db->query("SELECT * FROM usuarios WHERE usuario = '$dato'");
+                
+            // }
+
+
+            $data = array(
+            $columna => $dato
+            );
+    
+            $id = $this->session->id;
+            // $this->db->where('id', $id);
+            // $this->db->update('usuarios', $data);
+            
+            $this->db->query();
+
+            // Los datos que se van a escribir
+            $this->db->set($data);
+            // La clausula where, puede ser un array con las condiciones
+            $this->db->where("id",$id);
+            //La tabla donde se establecera y denuevo los datos
+            $this->db->update("usuarios",$data);
+        }
 
     }
 }

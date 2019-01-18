@@ -91,7 +91,7 @@
                 $this->session->set_userdata("id",$datosLogin->id);
                 $this->session->set_userdata("usuario",$usuario);
                 $this->session->set_userdata("rango",$datosLogin->rango);
-                $this->set_cookie("nombre",$datosLogin->nombre);
+                // $this->set_cookie("nombre",$datosLogin->nombre);
                 redirect("home");
 
             }else {
