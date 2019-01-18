@@ -4,15 +4,25 @@
             parent::__construct();
             $this->load->helper("html");
             $this->load->helper("url");
+            $this->load->helper("cookie");
             $this->load->database(); 
             $this->load->library('form_validation');
             $this->load->library("session");
         }
         public function index(){
-            $this->load->view("acceso/login"); 
+            if($this->input->post("log_usuario") !=null){
+                $this->login();
+            } else {
+                $this->load->view("acceso/login"); 
+            }
+            
         }
         public function registro(){
-            $this->load->view("acceso/registro");
+              if($this->input->post("reg_usuario") !=null){
+                $this->registrar();
+            } else {
+                $this->load->view("acceso/registro");
+            }
         }
         public function registrar(){
 
@@ -25,7 +35,7 @@
             
             
             $this->form_validation->set_rules('reg_usuario', 'Usuario', 'required|is_unique[usuarios.nombre]|min_length[4]|max_length[20]');
-            $this->form_validation->set_rules('reg_contrasena', 'Contrasena', 'required|min_length[4]|max_length[20]|regex_match[/^\S*(?=\S{4,})(?=\S*[a-z])(?=\S*[\W])(?=\S*[A-Z])(?=\S*[\d])\S*$/]');
+            $this->form_validation->set_rules('reg_contrasena', 'Contraseña', 'required|min_length[4]|max_length[20]|regex_match[/^\S*(?=\S{4,})(?=\S*[a-z])(?=\S*[\W])(?=\S*[A-Z])(?=\S*[\d])\S*$/]');
             $this->form_validation->set_rules('reg_r_contrasena', 'Repetir Contraseña', 'matches[reg_contrasena]');
             $this->form_validation->set_rules('reg_nombre', 'Nombre', 'required|min_length[4]|max_length[20]');
             $this->form_validation->set_rules('reg_apellidos', 'Apellidos', 'required|min_length[4]|max_length[30]');
@@ -59,26 +69,29 @@
                
                 $this->load->model("Correo");
                 $this->Correo->registro($usuario,$email,$token);
-                redirect("/acceso");
+                redirect("/login");
 
             }
         }
         public function confirmarRegistro($token){
             $this->load->model("Usuario_Model");
             $this->Usuario_Model->confirmarToken($token);
-            redirect("/acceso");
+            redirect("/login");
 
         }
         public function login(){
             if(!$this->input->post("log_usuario")){
-                redirect("acceso");
+                redirect("/login");
             }
             $usuario= $this->input->post("log_usuario");
             $contrasena= $this->input->post("log_contrasena");
             $this->load->model("Usuario_Model");
             if($this->Usuario_Model->loginCorrecto($usuario,$contrasena)){
-                $this->session->set_userdata("id",$this->Usuario_Model->idUsuario($usuario));
+                $datosLogin= $this->Usuario_Model->datosLogin($usuario);
+                $this->session->set_userdata("id",$datosLogin->id);
                 $this->session->set_userdata("usuario",$usuario);
+                $this->session->set_userdata("rango",$datosLogin->rango);
+                $this->set_cookie("nombre",$datosLogin->nombre);
                 redirect("home");
 
             }else {

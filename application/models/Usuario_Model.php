@@ -29,13 +29,17 @@
             ];
             return $this->db->get_where("usuarios",$condicion)->row("id");
         }
+        public function datosLogin($usuario){
+            $condicion = [
+                "usuario" => $usuario
+            ];
+            return $this->db->get_where("usuarios",$condicion);
+            
+        }
         public function login_necesario(){
             if(!isset($this->session->id)){
                 redirect("acceso");
             };
-
-            ñ
-
         }
       
     }
