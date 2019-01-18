@@ -8,6 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="<?php echo base_url();?>lib/jquery-3.3.1.min.js"></script>
+    <script src="<?php echo base_url();?>lib/bootstrap-notify.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <script src="<?php echo base_url();?>js/perfil_view.js"></script>
     <?php echo link_tag("css/perfil_view.css");?>
@@ -58,28 +60,35 @@
                 <div class="profile-sidebar">
                     <div class="profile-usertitle">
                         <div class="profile-usertitle-name">
-                            Username
+                            <?php echo $this->session->usuario; ?>
                         </div>
                         <div class="profile-usertitle-job">
-                            Rango
+                            <?php 
+                                $rango = $this->session->rango;
+                                if ($rango == 1) {
+                                    echo "Administrador";
+                                } else {
+                                    echo "Usuario";
+                                }
+                            ?>
                         </div>
                     </div>
 
                     <div class="profile-usermenu">
                         <ul class="nav">
-                            <li class="ventana1">
+                            <li class="ventana" elemento="modUser">
                                 <a href="#">
                                     <i class="glyphicon glyphicon-home"></i>
                                     <p>Modificar Datos</p>
                                 </a>
                             </li>
-                            <li class="ventana2">
+                            <li class="ventana" elemento="verCompras">
                                 <a href="#">
                                     <i class="glyphicon glyphicon-user"></i>
                                     <p>Compras</p>
                                 </a>
                             </li>
-                            <li class="ventana3">
+                            <li class="ventana" elemento="logOut">
                                 <a href="#">
                                     <i class="glyphicon glyphicon-off"></i>
                                     <p>Salir</p>
@@ -91,36 +100,84 @@
             </div>
             <div class="col-md-9">
                 <div class="profile-content">
-                    <div class="jumbotron modUser">
+                    <div class="jumbotron modUser" id="modUser">
                         <div class="container modificar">
-                            <form action="" method="post" class="formGrid">
-                                <div class="contInput">
-                                    <label for="">Nombre de Usuario</label>
-                                    <input type="text" name="p_Username" id="">
+                        <?php
+                            foreach ($usuario as $aux) { 
+                        ?>
+                            <div class="linea">
+                                <div class="info" elemento="usuario">
+                                    Nombre de usuario:
                                 </div>
-                                <div class="contInput">
-                                    <label for="">Nombre</label>
-                                    <input type="text" name="p_Nombre" id="">
+                                <div class="data">
+                                    <?php echo $aux->usuario;?>
                                 </div>
-                                <div class="contInput">
-                                    <label for="">Apellido</label>
-                                    <input type="text" name="p_Apellido" id="">
+                                <div class="botones">
+                                    <span class="glyphicon glyphicon-pencil boton editar"></span>
                                 </div>
-                                <div class="contInput">
-                                    <label for="">Correo electrónico</label>
-                                    <input type="text" name="p_Coreeo" id="">
+                            </div>
+                            <div class="linea">
+                                <div class="info" elemento="contrasena">
+                                    Contraseña:
                                 </div>
-                                <div class="contInput">
-                                    <label for="">Número de teléfono</label>
-                                    <input type="text" name="p_Telefono" id="">
+                                <div class="data">
+                                    *******
                                 </div>
-                                <div class="contSubmit">
-                                    <input type="submit" value="Enviar">
+                                <div class="botones">
+                                    <span class="glyphicon glyphicon-pencil boton editar"></span>
                                 </div>
-                            </form>
+                            </div>
+                            <div class="linea">
+                                <div class="info" elemento="nombre">
+                                    Nombre:
+                                </div>
+                                <div class="data">
+                                    <?php echo $aux->nombre;?>
+                                </div>
+                                <div class="botones">
+                                    <span class="glyphicon glyphicon-pencil boton editar"></span>
+                                </div>
+                            </div>
+                            <div class="linea">
+                                <div class="info" elemento="apellidos">
+                                    Apellidos:
+                                </div>
+                                <div class="data">
+                                    <?php echo $aux->apellidos;?>
+                                </div>
+                                <div class="botones">
+                                    <span class="glyphicon glyphicon-pencil boton editar"></span>
+                                </div>
+                            </div>
+                            <div class="linea">
+                                <div class="info" elemento="email">
+                                    Correo:
+                                </div>
+                                <div class="data">
+                                   <?php echo $aux->email;?>
+                                </div>
+                                <div class="botones">
+                                    <span class="glyphicon glyphicon-pencil boton editar"></span>
+                                </div>
+                            </div>
+                            <div class="linea">
+                                <div class="info" elemento="telefono">
+                                    Teléfono:
+                                </div>
+                                <div class="data">
+                                    <?php echo $aux->telefono;?>
+                                </div>
+                                <div class="botones">
+                                    <span class="glyphicon glyphicon-pencil boton editar"></span>
+                                </div>
+                            </div>
+                            <?php
+                            }
+                            ?>
+
                         </div>
                     </div>
-                    <div class="jumbotron verCompras">
+                    <div class="jumbotron verCompras" id="verCompras">
                         <div class="container">
                             <h2>Tus Entradas</h2>
                             <table class="table">
@@ -139,7 +196,7 @@
                             </table>
                         </div>
                     </div>
-                    <div class="jumbotron logOut">
+                    <div class="jumbotron logOut" id="logOut">
                         <div class="container">
                             <h2>Seguro que quieres cerrar sesión?</h2>
                         <?php   echo form_open_multipart("Perfil_Controller/logOut");?>

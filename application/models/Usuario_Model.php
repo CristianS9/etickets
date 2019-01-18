@@ -41,7 +41,11 @@
                 redirect("acceso");
             };
         }
-      
+        public function modUser($datos){
+            
+            $this->db->close();
+            redirect("Perfil_Controller");
+        }      
     }
 
 ?>

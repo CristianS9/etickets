@@ -121,9 +121,37 @@ input{
     grid-template-columns: 30%;
     justify-content: center;
 }
-.modUser{
-    /* display: none; */
+
+.linea{
+    display: grid;
+    /* position: relative; */
+    grid-template-columns: 40% 40% 10% 10%;
+    margin-top: 10px;
 }
+.botones{
+    display:grid;
+    width:50%;
+}
+.boton{
+    display: grid;
+    justify-items: center;
+    align-items:center;
+    color:grey;
+}
+.boton:hover{
+    cursor:pointer;
+    color:black;
+}
+.boton{
+    border:1px solid black;
+    border-radius: 5px;
+}
+
+
+
+
+
+
 .verCompras{
     display: none;
 }
