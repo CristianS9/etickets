@@ -97,7 +97,7 @@
 
         <div class="tarjetitas">
            <!--  <div class="limite"> -->
-                <?php
+                                    <?php
                     $meses = array("01" => "Enero",
                         "02" => "Febrero",
                         "03" => "Marzo",
@@ -111,23 +111,36 @@
                         "11" => "Noviebre",
                         "12" => "Diciembre",
                     );
-    
-                                foreach ($eventTickets as $ticket){
-                    // Coge la fecha como string chulísimo
-                    $textoFecha = "Hola sinceramente";
-                    if ($ticket->fecha != "" || $ticket->fecha != null) {
-                        $fecha = DateTime::createFromFormat("Y-m-d", $ticket->fecha);
-                        $nombreMes = $meses[$fecha->format("m")];
-                        $textoFecha = $fecha->format("d") . " de " . $nombreMes . " de " . $fecha->format("Y");
-    
-                    } else {
-                        $textoFecha = "Abono completo";
-                    }
-                    $idCantidad = $ticket->id . "cantidad";
-                    $idContador = $ticket->id . "contador";
 
-                ?>
+                    foreach ($eventTickets as $ticket) {
+
+                        // Coge la fecha como string chulísimo
+                        $textoFecha;
+                        if ($ticket->fecha != "" || $ticket->fecha != null) {
+                            $fecha = DateTime::createFromFormat("Y-m-d", $ticket->fecha);
+                            $nombreMes = $meses[$fecha->format("m")];
+                            $textoFecha = $fecha->format("d") . " de " . $nombreMes . " de " . $fecha->format("Y");
+
+                        } else {
+                            $textoFecha = "Abono completo";
+                        }
+                        // Le pone una id diferente a cada uno de los botones de las entradas para saber a cuál le hemos dado click
+                        $idCantidad = $ticket->id . "cantidad";
+                        $idContador = $ticket->id . "contador";
+
+                        // Declara la variable cantidadDisponible para saber cuántas entradas puede comprar el usuario.
+                        $cantidadRestante = $ticket->cantidadTotal;
+
+                        // Comprueba si este ticket está en la cesta de la compra para restar a la cantidad total.
+                        foreach ($userCart as $lineaCarrito) {
+                            if ($lineaCarrito->entradasEventoId == $ticket->id) {
+                                $cantidadRestante = $cantidadRestante - $lineaCarrito->cantidad;
+                            }
+                        }
+
+                        ?>
                 <div class="box">
+
                     <div class="prueba">
                         <section>
                             <widget type="ticket" class="--flex-column">
@@ -151,7 +164,7 @@
                                     <!-- <div class="barcode"></div> -->
                                     <input type="number" placeholder=" Cant." class="inputCantidad" id="<?php echo $idCantidad ?>">
                                     <!-- <p>12/33</p> -->
-                                    <div class="contadorCantidad <?php echo $idContador ?> " cantidadRestante="<?php echo $ticket->disponibles ?>" cantidadTotal="<?php echo $ticket->cantidadTotal ?>"><?php echo $ticket->disponibles . " / " . $ticket->cantidadTotal?></div>
+                                    <div class="contadorCantidad <?php echo $idContador ?> " cantidadRestante="<?php echo $cantidadRestante ?>" cantidadTotal="<?php echo $ticket->cantidadTotal ?>"><?php echo $cantidadRestante . " / " . $ticket->cantidadTotal ?></div>
                                     <a class="buy addToCartButton" id='<?php echo $ticket->id ?>'>CESTA</a>
                                 </div>
                             </widget>
@@ -159,8 +172,8 @@
                     </div>
                 </div>
                 <?php
-                    }
-                ?>
+}
+?>
 
           <!--   </div>     -->
 
@@ -192,7 +205,9 @@
         </div>
         <!-- /.container -->
     </footer>
-
+<?php
+print_r($userCart);
+?>
 </body>
 
 </html>
