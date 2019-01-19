@@ -29,7 +29,7 @@ $(document).ready(function () {
     } else {
       if (cantidad > cantidadRestante) {
         var tipo = 'warning';
-        var texto = 'La cantidad de compras introducida es mayor a la cantidad disponible.';
+        var texto = 'La cantidad de entradas introducida es mayor a la cantidad disponible.';
         var titulo = '<strong>Error:</strong> <br>';
         showNotificacion(tipo, texto, titulo);
       } else {
