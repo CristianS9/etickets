@@ -10,7 +10,7 @@ class Perfil_Controller extends CI_Controller {
     }
     public function index() {
         $result = $this->db->get("ventas");
-        $data["todo"] = $result->result();
+        $data["ventas"] = $result->result();
         $id = $this->session->id;
         $usuario = $this->db->query("CALL spUsuarioPorId($id)");
         $data["usuario"] = $usuario->result();

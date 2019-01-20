@@ -189,20 +189,25 @@
                             <table class="table">
                                 <tr>
                                     <th>Precio total</th>
-                                    <th>Fecha</th>
+                                    <th colspan="2">Fecha</th>
                                 </tr>
                                 <?php
-                                foreach ($todo as $aux) {
-                                    echo "<tr>";
+                                foreach ($ventas as $aux) {
+                                    echo "<tr class=\"compra\">";
                                     echo "<td>".$aux->precio_total."</td>";
-                                    echo "<td>".$aux->fecha."</td>";
+                                    echo "<td colspan=\"2\">".$aux->fecha."</td>";
+                                    echo "</tr>";
+                                    echo "<tr class=\"entrada\">";
+                                    echo "<td>Aqui va la venta</td>";
+                                    echo "<td>Aqui va la venta</td>";
+                                    echo "<td>Aqui va la venta</td>";
                                     echo "</tr>";
                                 }    
                             ?>
                             </table>
                         </div>
                     </div>
-                    <div class="jumbotron verEntradas" id="verEntradas">
+                    <!-- <div class="jumbotron verEntradas" id="verEntradas">
                         <div class="container">
                             <h2>Tus Entradas</h2>
                             <table class="table">
@@ -211,16 +216,16 @@
                                     <th>Fecha</th>
                                 </tr>
                                 <?php
-                                foreach ($todo as $aux) {
-                                    echo "<tr>";
-                                    echo "<td>".$aux->precio_total."</td>";
-                                    echo "<td>".$aux->fecha."</td>";
-                                    echo "</tr>";
-                                }    
+                                // foreach ($todo as $aux) {
+                                //     echo "<tr>";
+                                //     echo "<td>".$aux->precio_total."</td>";
+                                //     echo "<td>".$aux->fecha."</td>";
+                                //     echo "</tr>";
+                                // }    
                             ?>
                             </table>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="jumbotron logOut" id="logOut">
                         <div class="container">
                             <h2>Seguro que quieres cerrar sesión?</h2>

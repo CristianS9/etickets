@@ -7,6 +7,11 @@ $(document).ready(function () {
         $('#' + elemento).fadeIn();
     });
 
+    $('.compra').click(function () {
+        var elemento = $(this).closest('tr').next('tr');
+        $(elemento).fadeToggle();
+    });
+
     $('.modificar').on('click', '.editar', function () {
         editar(this);
     });
@@ -16,6 +21,8 @@ $(document).ready(function () {
     $('.modificar').on('click', '.cancelar', function () {
         cancelar(this);
     });
+
+
 
     function validar(padre) {
         var linea = $(padre).parent();

@@ -151,7 +151,9 @@ input{
 
 
 
-
+.entrada{
+    display:none;
+}
 .verCompras{
     display: none;
 }
