@@ -34,7 +34,7 @@
             $this->form_validation->set_message("regex_match","La contraseña debe contener mayuscula,minuscula, un numero y un caracter especial");
             
             
-            $this->form_validation->set_rules('reg_usuario', 'Usuario', 'required|is_unique[usuarios.nombre]|min_length[4]|max_length[20]');
+            $this->form_validation->set_rules('reg_usuario', 'Usuario', 'required|is_unique[usuarios.usuario]|min_length[4]|max_length[20]');
             $this->form_validation->set_rules('reg_contrasena', 'Contraseña', 'required|min_length[4]|max_length[20]|regex_match[/^\S*(?=\S{4,})(?=\S*[a-z])(?=\S*[\W])(?=\S*[A-Z])(?=\S*[\d])\S*$/]');
             $this->form_validation->set_rules('reg_r_contrasena', 'Repetir Contraseña', 'matches[reg_contrasena]');
             $this->form_validation->set_rules('reg_nombre', 'Nombre', 'required|min_length[4]|max_length[20]');
@@ -69,6 +69,11 @@
                
                 $this->load->model("Correo");
                 $this->Correo->registro($usuario,$email,$token);
+                $datosLogin = $this->Usuario_Model->datosLogin($usuario);
+                $this->session->set_userdata("id",$datosLogin->id);
+                $this->session->set_userdata("usuario",$usuario);
+                $this->session->set_userdata("rango",$datosLogin->rango);
+
                 redirect("login");
 
             }
