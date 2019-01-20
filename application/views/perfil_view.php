@@ -110,7 +110,7 @@
                         <div class="container modificar">
                             <?php
                             foreach ($usuario as $aux) { 
-                        ?>
+                            ?>
                             <div class="linea">
                                 <div class="info" elemento="usuario">
                                     Nombre de usuario:
@@ -197,11 +197,13 @@
                                     echo "<td>".$aux->precio_total."</td>";
                                     echo "<td colspan=\"2\">".$aux->fecha."</td>";
                                     echo "</tr>";
-                                    echo "<tr class=\"entrada\">";
-                                    echo "<td>Aqui va la venta</td>";
-                                    echo "<td>Aqui va la venta</td>";
-                                    echo "<td>Aqui va la venta</td>";
-                                    echo "</tr>";
+                                    
+                                    $this->Usuario_Model->entradaPorVenta($aux->id);
+                                    // echo "<tr class=\"entrada\">";
+                                    // echo "<td>Aqui va la venta</td>";
+                                    // echo "<td>Aqui va la venta</td>";
+                                    // echo "<td>Aqui va la venta</td>";
+                                    // echo "</tr>";
                                 }    
                             ?>
                             </table>
@@ -216,12 +218,12 @@
                                     <th>Fecha</th>
                                 </tr>
                                 <?php
-                                // foreach ($todo as $aux) {
-                                //     echo "<tr>";
-                                //     echo "<td>".$aux->precio_total."</td>";
-                                //     echo "<td>".$aux->fecha."</td>";
-                                //     echo "</tr>";
-                                // }    
+                                foreach ($todo as $aux) {
+                                    echo "<tr>";
+                                    echo "<td>".$aux->precio_total."</td>";
+                                    echo "<td>".$aux->fecha."</td>";
+                                    echo "</tr>";
+                                }
                             ?>
                             </table>
                         </div>

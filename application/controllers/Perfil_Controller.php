@@ -14,6 +14,7 @@ class Perfil_Controller extends CI_Controller {
         $id = $this->session->id;
         $usuario = $this->db->query("CALL spUsuarioPorId($id)");
         $data["usuario"] = $usuario->result();
+        $this->db->close();
         
         $this->load->view("perfil_view", $data);
     }
@@ -21,6 +22,6 @@ class Perfil_Controller extends CI_Controller {
         $this->session->unset_userdata('id');
         redirect("Home_Controller");
     }
-
+    
 }
 ?>

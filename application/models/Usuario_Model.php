@@ -45,7 +45,19 @@
             
             $this->db->close();
             redirect("Perfil_Controller");
-        }      
+        }
+        public function entradaPorVenta($id){
+            $result = $this->db->query("CALL spEntradaPorEvento($id)");
+            $this->db->close();
+            $entradas = $result->result();
+
+            foreach ($entradas as $aux) {
+                echo "<tr class=\"entrada\">";
+                echo "<td>". $aux->identificador ."</td>";
+                echo "<td>".  $aux->idVenta ."</td>";
+                echo "</tr>";
+            }
+        }   
     }
 
 ?>
