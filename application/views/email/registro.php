@@ -87,7 +87,7 @@
         <table cellpadding="0" cellspacing="0" align="center" style="width:100%; max-width: 570px;   background-color: #f5f5f5; margin:0 auto;">
           <tbody><tr>
             <td style="width:100%; max-width: 570px; text-align: center;  background-color: #f5f5f5; padding: 50px; font-family: verdana; font-size: 15px; color: #555555; line-height: 24px;">
-              <br><br>Juntos conseguiremos que visites los mayores eventos del mundo electronico. De momento, solo queremos decir, Bienvenido a e-Tickets! y estamos encantados de que hayas decidido confiar en nosotros. <br><br> Creemos que podremos ofrecer una variedad de increibles ofertas y eventos. Sabemos que estas iniciar y por ello solo te pedimos un ultimo paso. <br><br>Confirma tu cuenta y empieza a disfrutar!
+              <br><br>Juntos conseguiremos que visites los mayores eventos del mundo electronico. De momento, solo queremos decir, Bienvenido a e-Tickets! y estamos encantados de que hayas decidido confiar en nosotros. <br><br> Creemos que podremos ofrecer una variedad de increibles ofertas y eventos. Sabemos que estas con ganas de iniciar y por ello solo te pedimos un ultimo paso. <br><br>Confirma tu cuenta y empieza a disfrutar!
 
               <table cellpadding="0" cellspacing="0" align="center" style="width:100%; margin:0 auto;">
                                             <tbody><tr>

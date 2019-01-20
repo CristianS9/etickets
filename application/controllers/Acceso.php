@@ -41,6 +41,7 @@
             $this->form_validation->set_rules('reg_apellidos', 'Apellidos', 'required|min_length[4]|max_length[30]');
             $this->form_validation->set_rules('reg_email', 'Email', 'required|is_unique[usuarios.email]|min_length[4]|max_length[25]');
             $this->form_validation->set_rules('reg_telefono', 'Telefono', 'required|min_length[9]|max_length[9]'); 
+
             if ($this->form_validation->run() == FALSE){
                 $data = [
                     "usuario" => $this->input->post("reg_usuario"),
@@ -97,6 +98,9 @@
                 $this->session->set_userdata("id",$datosLogin->id);
                 $this->session->set_userdata("usuario",$usuario);
                 $this->session->set_userdata("rango",$datosLogin->rango);
+                if($datosLogin->confirmado=="0"){
+                    redirect("confirmacionNecesaria");
+                }
 
               /*   set_cookie("nombre",$datosLogin->nombre);
                 $fecha = date("Y-m-d H:i:s"); 
@@ -115,7 +119,15 @@
                 $this->load->view("acceso/login",$data); 
             }
         }
-       
+        public function logout(){
+            $this->session->unset_userdata("id");
+            $this->session->unset_userdata("usuario");
+            $this->session->unset_userdata("rango");
+            redirect("home");
+        }
+        public function confirmacionNecesaria(){
+            $this->load->view("acceso/confirmacionNecesaria");
+        }
 
     }
 

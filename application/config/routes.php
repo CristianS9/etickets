@@ -63,3 +63,5 @@ $route['cart/end'] = 'ShoppingCart_Controller/endCart';
 $route['perfil'] = 'Perfil_Controller';
 $route["login"] = "acceso";
 $route["registro"] = "acceso/registro";
+$route["logout"] = "acceso/logout";
+$route["confirmacionNecesaria"] = "acceso/confirmacionNecesaria";
