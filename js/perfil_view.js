@@ -42,7 +42,7 @@ $(document).ready(function () {
         } else if ("telefono" == elemento) {
             correcto = checkTelefono();
         }
-        if(correcto){
+        if(true == correcto){
             enviar(padre);
         }else{
             notifError("El campo no cumple los requisitos.");
@@ -51,8 +51,9 @@ $(document).ready(function () {
 
     function checkUsername() {
         var username = $('.linea').find('input.data').val().trim();
-
-        if ("" == username || username.length < 4 || username.length > 20) {
+        var existe = ajaxUsername(username);
+        console.log("Existe: "+existe);
+        if ("" == username || username.length < 4 || username.length > 20 || 'true' == existe) {
             return false;
         } else {
             return true;
@@ -136,11 +137,31 @@ $(document).ready(function () {
             $(padre).find('span.enviar').after(cancelar);
         }
     }
-
+    function ajaxUsername(username) {
+        $.ajax({
+            type: "POST",
+            url: "ajax/Perfil_Ajax/checkUser",
+            data: {
+                username: username
+            },
+            success: function (datos) {
+                console.log("DATOS: "+datos);
+                return datos;
+            },
+            error: function (error) {
+                
+            }
+        });
+    }
+    function ajaxCorreo(correo) {
+        
+    }
     function enviar(padre) {
         var linea = $(padre).parent();
         var dato = $(linea).find('input.data').val().trim();
         var columna = $(linea).find('div.info').attr('elemento').trim();
+        // console.log("Dato: "+dato);
+        // console.log("Columna: "+columna);
         $.ajax({
             type: "POST",
             url: "ajax/Perfil_Ajax/modPerfil",

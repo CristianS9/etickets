@@ -5,6 +5,7 @@ class Perfil_ajax extends CI_Controller {
         $this->load->helper('url');
         $this->load->helper('html');
         $this->load->library("session");
+        $this->load->model("Usuario_Model");
         $this->load->database();
     }
 
@@ -14,7 +15,7 @@ class Perfil_ajax extends CI_Controller {
         $dato = $this->input->post("dato");
         $columna = $this->input->post("columna");
 
-        if ($columna = "contrasena") {    
+        if ("contrasena" == $columna) {    
             $hash = password_hash($dato,PASSWORD_BCRYPT);
 
             $data = array(
@@ -29,23 +30,20 @@ class Perfil_ajax extends CI_Controller {
             //La tabla donde se establecera y denuevo los datos
             $this->db->update("usuarios",$data);
 
-
         } else{
             // if ($columna == "usuario") {
             //     $resultado = $this->db->query("SELECT * FROM usuarios WHERE usuario = '$dato'");
                 
             // }
-
+            
 
             $data = array(
             $columna => $dato
             );
-    
+
             $id = $this->session->id;
             // $this->db->where('id', $id);
             // $this->db->update('usuarios', $data);
-            
-            $this->db->query();
 
             // Los datos que se van a escribir
             $this->db->set($data);
@@ -55,6 +53,19 @@ class Perfil_ajax extends CI_Controller {
             $this->db->update("usuarios",$data);
         }
 
+    }
+
+    public function checkUser(){
+        $username = $this->input->post("username");
+        
+        $existe = $this->Usuario_Model->datosLogin($username);
+
+        if (isset($existe->usuario)) {
+            echo "true";
+        } else {
+            echo "false";
+        }
+    
     }
 }
 ?>
