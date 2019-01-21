@@ -18,7 +18,7 @@ class Config
         // ***** Database ***** //
         'dataSources'           => [
             'ls_query' => [
-                'host'               => 'raspberrymikel.ddns.net:143',
+                'host'               => '192.168.0.166',
                 'database'           => 'eticketsf',
                 'username'           => 'clase',
                 'pass'               => 'root1',
@@ -33,7 +33,7 @@ class Config
                  * filter the result by entering table column names
                  * to get all the columns, remove filterResult or make it an empty array
                  */
-                'filterResult'       => ['nombre'],
+                'filterResult'       => ['nombre','id'],
                 /**
                  * specify search query comparison operator.
                  * possible values for comparison operators are: 'LIKE' and '='. this is required
@@ -53,7 +53,7 @@ class Config
                     'active' => true,
                     'mapper' => [
                         'name' => 'Name',
-//                        'your_second_column' => 'Your Desired Second Title'
+                //  'your_second_column' => 'Your Desired Second Title'
                     ]
                 ],
                 'type'               => 'mysql',
