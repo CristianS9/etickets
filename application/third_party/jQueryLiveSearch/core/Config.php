@@ -18,9 +18,9 @@ class Config
         // ***** Database ***** //
         'dataSources'           => [
             'ls_query' => [
-                'host'               => 'raspberrymikel.ddns.net:143',
+                'host'               => '192.168.0.166',
                 'database'           => 'eticketsf',
-                'username'           => 'root',
+                'username'           => 'clase',
                 'pass'               => 'root1',
                 'table'              => 'eventos',
                 // specify the name of search columns
@@ -33,7 +33,7 @@ class Config
                  * filter the result by entering table column names
                  * to get all the columns, remove filterResult or make it an empty array
                  */
-                'filterResult'       => [],
+                'filterResult'       => ['nombre','id'],
                 /**
                  * specify search query comparison operator.
                  * possible values for comparison operators are: 'LIKE' and '='. this is required
@@ -43,7 +43,7 @@ class Config
                  * searchPattern is used to specify how the query is searched.
                  * possible values are: 'q', '*q', 'q*', '*q*'. this is required
                  */
-                'searchPattern'      => 'q*',
+                'searchPattern'      => '*q*',
                 // specify search query case sensitivity
                 'caseSensitive'      => false,
                 // to limit the maximum number of result uncomment this:
@@ -53,7 +53,7 @@ class Config
                     'active' => true,
                     'mapper' => [
                         'name' => 'Name',
-//                        'your_second_column' => 'Your Desired Second Title'
+                //  'your_second_column' => 'Your Desired Second Title'
                     ]
                 ],
                 'type'               => 'mysql',

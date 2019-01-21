@@ -1,0 +1,2053 @@
+/*
+
+Copyright 2017 Atticus Koya
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+Documentation: https://flex.koya.io/
+https://i.koya.io/flex/1.1.0.scss
+
+*/
+*[class^='--flex'],
+*[class*=' --flex'],
+.--flex,
+*[class^='--inline-flex'],
+*[class*=' --inline-flex'],
+.--inline-flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+*[class^='--flex']*[class^='--inline-flex'], *[class^='--flex']*[class*=' --inline-flex'], *[class^='--flex'].--inline-flex,
+*[class*=' --flex']*[class^='--inline-flex'],
+*[class*=' --flex']*[class*=' --inline-flex'],
+*[class*=' --flex'].--inline-flex,
+.--flex*[class^='--inline-flex'],
+.--flex*[class*=' --inline-flex'],
+.--flex.--inline-flex,
+*[class^='--inline-flex']*[class^='--inline-flex'],
+*[class^='--inline-flex']*[class*=' --inline-flex'],
+*[class^='--inline-flex'].--inline-flex,
+*[class*=' --inline-flex']*[class^='--inline-flex'],
+*[class*=' --inline-flex']*[class*=' --inline-flex'],
+*[class*=' --inline-flex'].--inline-flex,
+.--inline-flex*[class^='--inline-flex'],
+.--inline-flex*[class*=' --inline-flex'],
+.--inline-flex.--inline-flex {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+*[class^='--flex'][class*='-row'], *[class^='--flex'][class*='-x'],
+*[class^='--flex'] .--row,
+*[class^='--flex'] .--x,
+*[class*=' --flex'][class*='-row'],
+*[class*=' --flex'][class*='-x'],
+*[class*=' --flex'] .--row,
+*[class*=' --flex'] .--x,
+.--flex[class*='-row'],
+.--flex[class*='-x'],
+.--flex .--row,
+.--flex .--x,
+*[class^='--inline-flex'][class*='-row'],
+*[class^='--inline-flex'][class*='-x'],
+*[class^='--inline-flex'] .--row,
+*[class^='--inline-flex'] .--x,
+*[class*=' --inline-flex'][class*='-row'],
+*[class*=' --inline-flex'][class*='-x'],
+*[class*=' --inline-flex'] .--row,
+*[class*=' --inline-flex'] .--x,
+.--inline-flex[class*='-row'],
+.--inline-flex[class*='-x'],
+.--inline-flex .--row,
+.--inline-flex .--x {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+*[class^='--flex'][class*='-row'][class*='-row-d!r'], *[class^='--flex'][class*='-row'][class*='-row-reverse'], *[class^='--flex'][class*='-row'][class*='-x-d!r'], *[class^='--flex'][class*='-row'][class*='-x-reverse'], *[class^='--flex'][class*='-x'][class*='-row-d!r'], *[class^='--flex'][class*='-x'][class*='-row-reverse'], *[class^='--flex'][class*='-x'][class*='-x-d!r'], *[class^='--flex'][class*='-x'][class*='-x-reverse'],
+*[class^='--flex'] .--row[class*='-row-d!r'],
+*[class^='--flex'] .--row[class*='-row-reverse'],
+*[class^='--flex'] .--row[class*='-x-d!r'],
+*[class^='--flex'] .--row[class*='-x-reverse'],
+*[class^='--flex'] .--x[class*='-row-d!r'],
+*[class^='--flex'] .--x[class*='-row-reverse'],
+*[class^='--flex'] .--x[class*='-x-d!r'],
+*[class^='--flex'] .--x[class*='-x-reverse'],
+*[class*=' --flex'][class*='-row'][class*='-row-d!r'],
+*[class*=' --flex'][class*='-row'][class*='-row-reverse'],
+*[class*=' --flex'][class*='-row'][class*='-x-d!r'],
+*[class*=' --flex'][class*='-row'][class*='-x-reverse'],
+*[class*=' --flex'][class*='-x'][class*='-row-d!r'],
+*[class*=' --flex'][class*='-x'][class*='-row-reverse'],
+*[class*=' --flex'][class*='-x'][class*='-x-d!r'],
+*[class*=' --flex'][class*='-x'][class*='-x-reverse'],
+*[class*=' --flex'] .--row[class*='-row-d!r'],
+*[class*=' --flex'] .--row[class*='-row-reverse'],
+*[class*=' --flex'] .--row[class*='-x-d!r'],
+*[class*=' --flex'] .--row[class*='-x-reverse'],
+*[class*=' --flex'] .--x[class*='-row-d!r'],
+*[class*=' --flex'] .--x[class*='-row-reverse'],
+*[class*=' --flex'] .--x[class*='-x-d!r'],
+*[class*=' --flex'] .--x[class*='-x-reverse'],
+.--flex[class*='-row'][class*='-row-d!r'],
+.--flex[class*='-row'][class*='-row-reverse'],
+.--flex[class*='-row'][class*='-x-d!r'],
+.--flex[class*='-row'][class*='-x-reverse'],
+.--flex[class*='-x'][class*='-row-d!r'],
+.--flex[class*='-x'][class*='-row-reverse'],
+.--flex[class*='-x'][class*='-x-d!r'],
+.--flex[class*='-x'][class*='-x-reverse'],
+.--flex .--row[class*='-row-d!r'],
+.--flex .--row[class*='-row-reverse'],
+.--flex .--row[class*='-x-d!r'],
+.--flex .--row[class*='-x-reverse'],
+.--flex .--x[class*='-row-d!r'],
+.--flex .--x[class*='-row-reverse'],
+.--flex .--x[class*='-x-d!r'],
+.--flex .--x[class*='-x-reverse'],
+*[class^='--inline-flex'][class*='-row'][class*='-row-d!r'],
+*[class^='--inline-flex'][class*='-row'][class*='-row-reverse'],
+*[class^='--inline-flex'][class*='-row'][class*='-x-d!r'],
+*[class^='--inline-flex'][class*='-row'][class*='-x-reverse'],
+*[class^='--inline-flex'][class*='-x'][class*='-row-d!r'],
+*[class^='--inline-flex'][class*='-x'][class*='-row-reverse'],
+*[class^='--inline-flex'][class*='-x'][class*='-x-d!r'],
+*[class^='--inline-flex'][class*='-x'][class*='-x-reverse'],
+*[class^='--inline-flex'] .--row[class*='-row-d!r'],
+*[class^='--inline-flex'] .--row[class*='-row-reverse'],
+*[class^='--inline-flex'] .--row[class*='-x-d!r'],
+*[class^='--inline-flex'] .--row[class*='-x-reverse'],
+*[class^='--inline-flex'] .--x[class*='-row-d!r'],
+*[class^='--inline-flex'] .--x[class*='-row-reverse'],
+*[class^='--inline-flex'] .--x[class*='-x-d!r'],
+*[class^='--inline-flex'] .--x[class*='-x-reverse'],
+*[class*=' --inline-flex'][class*='-row'][class*='-row-d!r'],
+*[class*=' --inline-flex'][class*='-row'][class*='-row-reverse'],
+*[class*=' --inline-flex'][class*='-row'][class*='-x-d!r'],
+*[class*=' --inline-flex'][class*='-row'][class*='-x-reverse'],
+*[class*=' --inline-flex'][class*='-x'][class*='-row-d!r'],
+*[class*=' --inline-flex'][class*='-x'][class*='-row-reverse'],
+*[class*=' --inline-flex'][class*='-x'][class*='-x-d!r'],
+*[class*=' --inline-flex'][class*='-x'][class*='-x-reverse'],
+*[class*=' --inline-flex'] .--row[class*='-row-d!r'],
+*[class*=' --inline-flex'] .--row[class*='-row-reverse'],
+*[class*=' --inline-flex'] .--row[class*='-x-d!r'],
+*[class*=' --inline-flex'] .--row[class*='-x-reverse'],
+*[class*=' --inline-flex'] .--x[class*='-row-d!r'],
+*[class*=' --inline-flex'] .--x[class*='-row-reverse'],
+*[class*=' --inline-flex'] .--x[class*='-x-d!r'],
+*[class*=' --inline-flex'] .--x[class*='-x-reverse'],
+.--inline-flex[class*='-row'][class*='-row-d!r'],
+.--inline-flex[class*='-row'][class*='-row-reverse'],
+.--inline-flex[class*='-row'][class*='-x-d!r'],
+.--inline-flex[class*='-row'][class*='-x-reverse'],
+.--inline-flex[class*='-x'][class*='-row-d!r'],
+.--inline-flex[class*='-x'][class*='-row-reverse'],
+.--inline-flex[class*='-x'][class*='-x-d!r'],
+.--inline-flex[class*='-x'][class*='-x-reverse'],
+.--inline-flex .--row[class*='-row-d!r'],
+.--inline-flex .--row[class*='-row-reverse'],
+.--inline-flex .--row[class*='-x-d!r'],
+.--inline-flex .--row[class*='-x-reverse'],
+.--inline-flex .--x[class*='-row-d!r'],
+.--inline-flex .--x[class*='-row-reverse'],
+.--inline-flex .--x[class*='-x-d!r'],
+.--inline-flex .--x[class*='-x-reverse'] {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+}
+*[class^='--flex'][class*='-column'], *[class^='--flex'][class*='-y'], *[class^='--flex'][class*='-mid'],
+*[class^='--flex'] .--column,
+*[class^='--flex'] .--y,
+*[class^='--flex'] .--mid,
+*[class*=' --flex'][class*='-column'],
+*[class*=' --flex'][class*='-y'],
+*[class*=' --flex'][class*='-mid'],
+*[class*=' --flex'] .--column,
+*[class*=' --flex'] .--y,
+*[class*=' --flex'] .--mid,
+.--flex[class*='-column'],
+.--flex[class*='-y'],
+.--flex[class*='-mid'],
+.--flex .--column,
+.--flex .--y,
+.--flex .--mid,
+*[class^='--inline-flex'][class*='-column'],
+*[class^='--inline-flex'][class*='-y'],
+*[class^='--inline-flex'][class*='-mid'],
+*[class^='--inline-flex'] .--column,
+*[class^='--inline-flex'] .--y,
+*[class^='--inline-flex'] .--mid,
+*[class*=' --inline-flex'][class*='-column'],
+*[class*=' --inline-flex'][class*='-y'],
+*[class*=' --inline-flex'][class*='-mid'],
+*[class*=' --inline-flex'] .--column,
+*[class*=' --inline-flex'] .--y,
+*[class*=' --inline-flex'] .--mid,
+.--inline-flex[class*='-column'],
+.--inline-flex[class*='-y'],
+.--inline-flex[class*='-mid'],
+.--inline-flex .--column,
+.--inline-flex .--y,
+.--inline-flex .--mid {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+*[class^='--flex'][class*='-column'][class*='-column-d!r'], *[class^='--flex'][class*='-column'][class*='-column-reverse'], *[class^='--flex'][class*='-column'][class*='-y-d!r'], *[class^='--flex'][class*='-column'][class*='-y-reverse'], *[class^='--flex'][class*='-y'][class*='-column-d!r'], *[class^='--flex'][class*='-y'][class*='-column-reverse'], *[class^='--flex'][class*='-y'][class*='-y-d!r'], *[class^='--flex'][class*='-y'][class*='-y-reverse'], *[class^='--flex'][class*='-mid'][class*='-column-d!r'], *[class^='--flex'][class*='-mid'][class*='-column-reverse'], *[class^='--flex'][class*='-mid'][class*='-y-d!r'], *[class^='--flex'][class*='-mid'][class*='-y-reverse'],
+*[class^='--flex'] .--column[class*='-column-d!r'],
+*[class^='--flex'] .--column[class*='-column-reverse'],
+*[class^='--flex'] .--column[class*='-y-d!r'],
+*[class^='--flex'] .--column[class*='-y-reverse'],
+*[class^='--flex'] .--y[class*='-column-d!r'],
+*[class^='--flex'] .--y[class*='-column-reverse'],
+*[class^='--flex'] .--y[class*='-y-d!r'],
+*[class^='--flex'] .--y[class*='-y-reverse'],
+*[class^='--flex'] .--mid[class*='-column-d!r'],
+*[class^='--flex'] .--mid[class*='-column-reverse'],
+*[class^='--flex'] .--mid[class*='-y-d!r'],
+*[class^='--flex'] .--mid[class*='-y-reverse'],
+*[class*=' --flex'][class*='-column'][class*='-column-d!r'],
+*[class*=' --flex'][class*='-column'][class*='-column-reverse'],
+*[class*=' --flex'][class*='-column'][class*='-y-d!r'],
+*[class*=' --flex'][class*='-column'][class*='-y-reverse'],
+*[class*=' --flex'][class*='-y'][class*='-column-d!r'],
+*[class*=' --flex'][class*='-y'][class*='-column-reverse'],
+*[class*=' --flex'][class*='-y'][class*='-y-d!r'],
+*[class*=' --flex'][class*='-y'][class*='-y-reverse'],
+*[class*=' --flex'][class*='-mid'][class*='-column-d!r'],
+*[class*=' --flex'][class*='-mid'][class*='-column-reverse'],
+*[class*=' --flex'][class*='-mid'][class*='-y-d!r'],
+*[class*=' --flex'][class*='-mid'][class*='-y-reverse'],
+*[class*=' --flex'] .--column[class*='-column-d!r'],
+*[class*=' --flex'] .--column[class*='-column-reverse'],
+*[class*=' --flex'] .--column[class*='-y-d!r'],
+*[class*=' --flex'] .--column[class*='-y-reverse'],
+*[class*=' --flex'] .--y[class*='-column-d!r'],
+*[class*=' --flex'] .--y[class*='-column-reverse'],
+*[class*=' --flex'] .--y[class*='-y-d!r'],
+*[class*=' --flex'] .--y[class*='-y-reverse'],
+*[class*=' --flex'] .--mid[class*='-column-d!r'],
+*[class*=' --flex'] .--mid[class*='-column-reverse'],
+*[class*=' --flex'] .--mid[class*='-y-d!r'],
+*[class*=' --flex'] .--mid[class*='-y-reverse'],
+.--flex[class*='-column'][class*='-column-d!r'],
+.--flex[class*='-column'][class*='-column-reverse'],
+.--flex[class*='-column'][class*='-y-d!r'],
+.--flex[class*='-column'][class*='-y-reverse'],
+.--flex[class*='-y'][class*='-column-d!r'],
+.--flex[class*='-y'][class*='-column-reverse'],
+.--flex[class*='-y'][class*='-y-d!r'],
+.--flex[class*='-y'][class*='-y-reverse'],
+.--flex[class*='-mid'][class*='-column-d!r'],
+.--flex[class*='-mid'][class*='-column-reverse'],
+.--flex[class*='-mid'][class*='-y-d!r'],
+.--flex[class*='-mid'][class*='-y-reverse'],
+.--flex .--column[class*='-column-d!r'],
+.--flex .--column[class*='-column-reverse'],
+.--flex .--column[class*='-y-d!r'],
+.--flex .--column[class*='-y-reverse'],
+.--flex .--y[class*='-column-d!r'],
+.--flex .--y[class*='-column-reverse'],
+.--flex .--y[class*='-y-d!r'],
+.--flex .--y[class*='-y-reverse'],
+.--flex .--mid[class*='-column-d!r'],
+.--flex .--mid[class*='-column-reverse'],
+.--flex .--mid[class*='-y-d!r'],
+.--flex .--mid[class*='-y-reverse'],
+*[class^='--inline-flex'][class*='-column'][class*='-column-d!r'],
+*[class^='--inline-flex'][class*='-column'][class*='-column-reverse'],
+*[class^='--inline-flex'][class*='-column'][class*='-y-d!r'],
+*[class^='--inline-flex'][class*='-column'][class*='-y-reverse'],
+*[class^='--inline-flex'][class*='-y'][class*='-column-d!r'],
+*[class^='--inline-flex'][class*='-y'][class*='-column-reverse'],
+*[class^='--inline-flex'][class*='-y'][class*='-y-d!r'],
+*[class^='--inline-flex'][class*='-y'][class*='-y-reverse'],
+*[class^='--inline-flex'][class*='-mid'][class*='-column-d!r'],
+*[class^='--inline-flex'][class*='-mid'][class*='-column-reverse'],
+*[class^='--inline-flex'][class*='-mid'][class*='-y-d!r'],
+*[class^='--inline-flex'][class*='-mid'][class*='-y-reverse'],
+*[class^='--inline-flex'] .--column[class*='-column-d!r'],
+*[class^='--inline-flex'] .--column[class*='-column-reverse'],
+*[class^='--inline-flex'] .--column[class*='-y-d!r'],
+*[class^='--inline-flex'] .--column[class*='-y-reverse'],
+*[class^='--inline-flex'] .--y[class*='-column-d!r'],
+*[class^='--inline-flex'] .--y[class*='-column-reverse'],
+*[class^='--inline-flex'] .--y[class*='-y-d!r'],
+*[class^='--inline-flex'] .--y[class*='-y-reverse'],
+*[class^='--inline-flex'] .--mid[class*='-column-d!r'],
+*[class^='--inline-flex'] .--mid[class*='-column-reverse'],
+*[class^='--inline-flex'] .--mid[class*='-y-d!r'],
+*[class^='--inline-flex'] .--mid[class*='-y-reverse'],
+*[class*=' --inline-flex'][class*='-column'][class*='-column-d!r'],
+*[class*=' --inline-flex'][class*='-column'][class*='-column-reverse'],
+*[class*=' --inline-flex'][class*='-column'][class*='-y-d!r'],
+*[class*=' --inline-flex'][class*='-column'][class*='-y-reverse'],
+*[class*=' --inline-flex'][class*='-y'][class*='-column-d!r'],
+*[class*=' --inline-flex'][class*='-y'][class*='-column-reverse'],
+*[class*=' --inline-flex'][class*='-y'][class*='-y-d!r'],
+*[class*=' --inline-flex'][class*='-y'][class*='-y-reverse'],
+*[class*=' --inline-flex'][class*='-mid'][class*='-column-d!r'],
+*[class*=' --inline-flex'][class*='-mid'][class*='-column-reverse'],
+*[class*=' --inline-flex'][class*='-mid'][class*='-y-d!r'],
+*[class*=' --inline-flex'][class*='-mid'][class*='-y-reverse'],
+*[class*=' --inline-flex'] .--column[class*='-column-d!r'],
+*[class*=' --inline-flex'] .--column[class*='-column-reverse'],
+*[class*=' --inline-flex'] .--column[class*='-y-d!r'],
+*[class*=' --inline-flex'] .--column[class*='-y-reverse'],
+*[class*=' --inline-flex'] .--y[class*='-column-d!r'],
+*[class*=' --inline-flex'] .--y[class*='-column-reverse'],
+*[class*=' --inline-flex'] .--y[class*='-y-d!r'],
+*[class*=' --inline-flex'] .--y[class*='-y-reverse'],
+*[class*=' --inline-flex'] .--mid[class*='-column-d!r'],
+*[class*=' --inline-flex'] .--mid[class*='-column-reverse'],
+*[class*=' --inline-flex'] .--mid[class*='-y-d!r'],
+*[class*=' --inline-flex'] .--mid[class*='-y-reverse'],
+.--inline-flex[class*='-column'][class*='-column-d!r'],
+.--inline-flex[class*='-column'][class*='-column-reverse'],
+.--inline-flex[class*='-column'][class*='-y-d!r'],
+.--inline-flex[class*='-column'][class*='-y-reverse'],
+.--inline-flex[class*='-y'][class*='-column-d!r'],
+.--inline-flex[class*='-y'][class*='-column-reverse'],
+.--inline-flex[class*='-y'][class*='-y-d!r'],
+.--inline-flex[class*='-y'][class*='-y-reverse'],
+.--inline-flex[class*='-mid'][class*='-column-d!r'],
+.--inline-flex[class*='-mid'][class*='-column-reverse'],
+.--inline-flex[class*='-mid'][class*='-y-d!r'],
+.--inline-flex[class*='-mid'][class*='-y-reverse'],
+.--inline-flex .--column[class*='-column-d!r'],
+.--inline-flex .--column[class*='-column-reverse'],
+.--inline-flex .--column[class*='-y-d!r'],
+.--inline-flex .--column[class*='-y-reverse'],
+.--inline-flex .--y[class*='-column-d!r'],
+.--inline-flex .--y[class*='-column-reverse'],
+.--inline-flex .--y[class*='-y-d!r'],
+.--inline-flex .--y[class*='-y-reverse'],
+.--inline-flex .--mid[class*='-column-d!r'],
+.--inline-flex .--mid[class*='-column-reverse'],
+.--inline-flex .--mid[class*='-y-d!r'],
+.--inline-flex .--mid[class*='-y-reverse'] {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
+}
+*[class^='--flex'][class*='-mid'] > *,
+*[class*=' --flex'][class*='-mid'] > *,
+.--flex[class*='-mid'] > *,
+*[class^='--inline-flex'][class*='-mid'] > *,
+*[class*=' --inline-flex'][class*='-mid'] > *,
+.--inline-flex[class*='-mid'] > * {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+*[class^='--flex'][class*='-x-mid'], *[class^='--flex'][class*='-y-mid'], *[class^='--flex'][class*='-row-mid'], *[class^='--flex'][class*='-column-mid'], *[class^='--flex'][class*='-mid'],
+*[class*=' --flex'][class*='-x-mid'],
+*[class*=' --flex'][class*='-y-mid'],
+*[class*=' --flex'][class*='-row-mid'],
+*[class*=' --flex'][class*='-column-mid'],
+*[class*=' --flex'][class*='-mid'],
+.--flex[class*='-x-mid'],
+.--flex[class*='-y-mid'],
+.--flex[class*='-row-mid'],
+.--flex[class*='-column-mid'],
+.--flex[class*='-mid'],
+*[class^='--inline-flex'][class*='-x-mid'],
+*[class^='--inline-flex'][class*='-y-mid'],
+*[class^='--inline-flex'][class*='-row-mid'],
+*[class^='--inline-flex'][class*='-column-mid'],
+*[class^='--inline-flex'][class*='-mid'],
+*[class*=' --inline-flex'][class*='-x-mid'],
+*[class*=' --inline-flex'][class*='-y-mid'],
+*[class*=' --inline-flex'][class*='-row-mid'],
+*[class*=' --inline-flex'][class*='-column-mid'],
+*[class*=' --inline-flex'][class*='-mid'],
+.--inline-flex[class*='-x-mid'],
+.--inline-flex[class*='-y-mid'],
+.--inline-flex[class*='-row-mid'],
+.--inline-flex[class*='-column-mid'],
+.--inline-flex[class*='-mid'] {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+*[class^='--flex'][class*='-w'], *[class^='--flex'][class*='-w!'], *[class^='--flex'].--wrap,
+*[class*=' --flex'][class*='-w'],
+*[class*=' --flex'][class*='-w!'],
+*[class*=' --flex'].--wrap,
+.--flex[class*='-w'],
+.--flex[class*='-w!'],
+.--flex.--wrap,
+*[class^='--inline-flex'][class*='-w'],
+*[class^='--inline-flex'][class*='-w!'],
+*[class^='--inline-flex'].--wrap,
+*[class*=' --inline-flex'][class*='-w'],
+*[class*=' --inline-flex'][class*='-w!'],
+*[class*=' --inline-flex'].--wrap,
+.--inline-flex[class*='-w'],
+.--inline-flex[class*='-w!'],
+.--inline-flex.--wrap {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+*[class^='--flex'][class*='-w!n'], *[class^='--flex'].--no-wrap, *[class^='--flex'].--nowrap,
+*[class*=' --flex'][class*='-w!n'],
+*[class*=' --flex'].--no-wrap,
+*[class*=' --flex'].--nowrap,
+.--flex[class*='-w!n'],
+.--flex.--no-wrap,
+.--flex.--nowrap,
+*[class^='--inline-flex'][class*='-w!n'],
+*[class^='--inline-flex'].--no-wrap,
+*[class^='--inline-flex'].--nowrap,
+*[class*=' --inline-flex'][class*='-w!n'],
+*[class*=' --inline-flex'].--no-wrap,
+*[class*=' --inline-flex'].--nowrap,
+.--inline-flex[class*='-w!n'],
+.--inline-flex.--no-wrap,
+.--inline-flex.--nowrap {
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+}
+*[class^='--flex'][class*='-w!r'], *[class^='--flex'].--wrap-reverse,
+*[class*=' --flex'][class*='-w!r'],
+*[class*=' --flex'].--wrap-reverse,
+.--flex[class*='-w!r'],
+.--flex.--wrap-reverse,
+*[class^='--inline-flex'][class*='-w!r'],
+*[class^='--inline-flex'].--wrap-reverse,
+*[class*=' --inline-flex'][class*='-w!r'],
+*[class*=' --inline-flex'].--wrap-reverse,
+.--inline-flex[class*='-w!r'],
+.--inline-flex.--wrap-reverse {
+  -ms-flex-wrap: wrap-reverse;
+      flex-wrap: wrap-reverse;
+}
+*[class^='--flex'][class*='-j!fs'], *[class^='--flex'].--j-flex-start,
+*[class*=' --flex'][class*='-j!fs'],
+*[class*=' --flex'].--j-flex-start,
+.--flex[class*='-j!fs'],
+.--flex.--j-flex-start,
+*[class^='--inline-flex'][class*='-j!fs'],
+*[class^='--inline-flex'].--j-flex-start,
+*[class*=' --inline-flex'][class*='-j!fs'],
+*[class*=' --inline-flex'].--j-flex-start,
+.--inline-flex[class*='-j!fs'],
+.--inline-flex.--j-flex-start {
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+*[class^='--flex'][class*='-j!fe'], *[class^='--flex'].--j-flex-end,
+*[class*=' --flex'][class*='-j!fe'],
+*[class*=' --flex'].--j-flex-end,
+.--flex[class*='-j!fe'],
+.--flex.--j-flex-end,
+*[class^='--inline-flex'][class*='-j!fe'],
+*[class^='--inline-flex'].--j-flex-end,
+*[class*=' --inline-flex'][class*='-j!fe'],
+*[class*=' --inline-flex'].--j-flex-end,
+.--inline-flex[class*='-j!fe'],
+.--inline-flex.--j-flex-end {
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+*[class^='--flex'][class*='-j!c'], *[class^='--flex'].--j-center,
+*[class*=' --flex'][class*='-j!c'],
+*[class*=' --flex'].--j-center,
+.--flex[class*='-j!c'],
+.--flex.--j-center,
+*[class^='--inline-flex'][class*='-j!c'],
+*[class^='--inline-flex'].--j-center,
+*[class*=' --inline-flex'][class*='-j!c'],
+*[class*=' --inline-flex'].--j-center,
+.--inline-flex[class*='-j!c'],
+.--inline-flex.--j-center {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+*[class^='--flex'][class*='-j!sb'], *[class^='--flex'].--j-space-between, *[class^='--flex'].--space-between,
+*[class*=' --flex'][class*='-j!sb'],
+*[class*=' --flex'].--j-space-between,
+*[class*=' --flex'].--space-between,
+.--flex[class*='-j!sb'],
+.--flex.--j-space-between,
+.--flex.--space-between,
+*[class^='--inline-flex'][class*='-j!sb'],
+*[class^='--inline-flex'].--j-space-between,
+*[class^='--inline-flex'].--space-between,
+*[class*=' --inline-flex'][class*='-j!sb'],
+*[class*=' --inline-flex'].--j-space-between,
+*[class*=' --inline-flex'].--space-between,
+.--inline-flex[class*='-j!sb'],
+.--inline-flex.--j-space-between,
+.--inline-flex.--space-between {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+*[class^='--flex'][class*='-j!sa'], *[class^='--flex'].--j-space-around, *[class^='--flex'].--space-around,
+*[class*=' --flex'][class*='-j!sa'],
+*[class*=' --flex'].--j-space-around,
+*[class*=' --flex'].--space-around,
+.--flex[class*='-j!sa'],
+.--flex.--j-space-around,
+.--flex.--space-around,
+*[class^='--inline-flex'][class*='-j!sa'],
+*[class^='--inline-flex'].--j-space-around,
+*[class^='--inline-flex'].--space-around,
+*[class*=' --inline-flex'][class*='-j!sa'],
+*[class*=' --inline-flex'].--j-space-around,
+*[class*=' --inline-flex'].--space-around,
+.--inline-flex[class*='-j!sa'],
+.--inline-flex.--j-space-around,
+.--inline-flex.--space-around {
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+*[class^='--flex'][class*='-ai!fs'], *[class^='--flex'].--ai-flex-start,
+*[class*=' --flex'][class*='-ai!fs'],
+*[class*=' --flex'].--ai-flex-start,
+.--flex[class*='-ai!fs'],
+.--flex.--ai-flex-start,
+*[class^='--inline-flex'][class*='-ai!fs'],
+*[class^='--inline-flex'].--ai-flex-start,
+*[class*=' --inline-flex'][class*='-ai!fs'],
+*[class*=' --inline-flex'].--ai-flex-start,
+.--inline-flex[class*='-ai!fs'],
+.--inline-flex.--ai-flex-start {
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+*[class^='--flex'][class*='-ai!fe'], *[class^='--flex'].--ai-flex-end,
+*[class*=' --flex'][class*='-ai!fe'],
+*[class*=' --flex'].--ai-flex-end,
+.--flex[class*='-ai!fe'],
+.--flex.--ai-flex-end,
+*[class^='--inline-flex'][class*='-ai!fe'],
+*[class^='--inline-flex'].--ai-flex-end,
+*[class*=' --inline-flex'][class*='-ai!fe'],
+*[class*=' --inline-flex'].--ai-flex-end,
+.--inline-flex[class*='-ai!fe'],
+.--inline-flex.--ai-flex-end {
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+*[class^='--flex'][class*='-ai!c'], *[class^='--flex'].--ai-center,
+*[class*=' --flex'][class*='-ai!c'],
+*[class*=' --flex'].--ai-center,
+.--flex[class*='-ai!c'],
+.--flex.--ai-center,
+*[class^='--inline-flex'][class*='-ai!c'],
+*[class^='--inline-flex'].--ai-center,
+*[class*=' --inline-flex'][class*='-ai!c'],
+*[class*=' --inline-flex'].--ai-center,
+.--inline-flex[class*='-ai!c'],
+.--inline-flex.--ai-center {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+*[class^='--flex'][class*='-ai!b'], *[class^='--flex'].--ai-baseline,
+*[class*=' --flex'][class*='-ai!b'],
+*[class*=' --flex'].--ai-baseline,
+.--flex[class*='-ai!b'],
+.--flex.--ai-baseline,
+*[class^='--inline-flex'][class*='-ai!b'],
+*[class^='--inline-flex'].--ai-baseline,
+*[class*=' --inline-flex'][class*='-ai!b'],
+*[class*=' --inline-flex'].--ai-baseline,
+.--inline-flex[class*='-ai!b'],
+.--inline-flex.--ai-baseline {
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+}
+*[class^='--flex'][class*='-ai!s'], *[class^='--flex'].--ai-stretch,
+*[class*=' --flex'][class*='-ai!s'],
+*[class*=' --flex'].--ai-stretch,
+.--flex[class*='-ai!s'],
+.--flex.--ai-stretch,
+*[class^='--inline-flex'][class*='-ai!s'],
+*[class^='--inline-flex'].--ai-stretch,
+*[class*=' --inline-flex'][class*='-ai!s'],
+*[class*=' --inline-flex'].--ai-stretch,
+.--inline-flex[class*='-ai!s'],
+.--inline-flex.--ai-stretch {
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+}
+*[class^='--flex'][class*='-ac!fs'], *[class^='--flex'].--ac-flex-start,
+*[class*=' --flex'][class*='-ac!fs'],
+*[class*=' --flex'].--ac-flex-start,
+.--flex[class*='-ac!fs'],
+.--flex.--ac-flex-start,
+*[class^='--inline-flex'][class*='-ac!fs'],
+*[class^='--inline-flex'].--ac-flex-start,
+*[class*=' --inline-flex'][class*='-ac!fs'],
+*[class*=' --inline-flex'].--ac-flex-start,
+.--inline-flex[class*='-ac!fs'],
+.--inline-flex.--ac-flex-start {
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+*[class^='--flex'][class*='-ac!fe'], *[class^='--flex'].--ac-flex-end,
+*[class*=' --flex'][class*='-ac!fe'],
+*[class*=' --flex'].--ac-flex-end,
+.--flex[class*='-ac!fe'],
+.--flex.--ac-flex-end,
+*[class^='--inline-flex'][class*='-ac!fe'],
+*[class^='--inline-flex'].--ac-flex-end,
+*[class*=' --inline-flex'][class*='-ac!fe'],
+*[class*=' --inline-flex'].--ac-flex-end,
+.--inline-flex[class*='-ac!fe'],
+.--inline-flex.--ac-flex-end {
+  -ms-flex-line-pack: end;
+      align-content: flex-end;
+}
+*[class^='--flex'][class*='-ac!c'], *[class^='--flex'].--ac-center,
+*[class*=' --flex'][class*='-ac!c'],
+*[class*=' --flex'].--ac-center,
+.--flex[class*='-ac!c'],
+.--flex.--ac-center,
+*[class^='--inline-flex'][class*='-ac!c'],
+*[class^='--inline-flex'].--ac-center,
+*[class*=' --inline-flex'][class*='-ac!c'],
+*[class*=' --inline-flex'].--ac-center,
+.--inline-flex[class*='-ac!c'],
+.--inline-flex.--ac-center {
+  -ms-flex-line-pack: center;
+      align-content: center;
+}
+*[class^='--flex'][class*='-ac!sb'], *[class^='--flex'].--ac-space-between,
+*[class*=' --flex'][class*='-ac!sb'],
+*[class*=' --flex'].--ac-space-between,
+.--flex[class*='-ac!sb'],
+.--flex.--ac-space-between,
+*[class^='--inline-flex'][class*='-ac!sb'],
+*[class^='--inline-flex'].--ac-space-between,
+*[class*=' --inline-flex'][class*='-ac!sb'],
+*[class*=' --inline-flex'].--ac-space-between,
+.--inline-flex[class*='-ac!sb'],
+.--inline-flex.--ac-space-between {
+  -ms-flex-line-pack: justify;
+      align-content: space-between;
+}
+*[class^='--flex'][class*='-ac!sa'], *[class^='--flex'].--ac-space-around,
+*[class*=' --flex'][class*='-ac!sa'],
+*[class*=' --flex'].--ac-space-around,
+.--flex[class*='-ac!sa'],
+.--flex.--ac-space-around,
+*[class^='--inline-flex'][class*='-ac!sa'],
+*[class^='--inline-flex'].--ac-space-around,
+*[class*=' --inline-flex'][class*='-ac!sa'],
+*[class*=' --inline-flex'].--ac-space-around,
+.--inline-flex[class*='-ac!sa'],
+.--inline-flex.--ac-space-around {
+  -ms-flex-line-pack: distribute;
+      align-content: space-around;
+}
+*[class^='--flex'][class*='-ac!sa'], *[class^='--flex'].--ac-stretch,
+*[class*=' --flex'][class*='-ac!sa'],
+*[class*=' --flex'].--ac-stretch,
+.--flex[class*='-ac!sa'],
+.--flex.--ac-stretch,
+*[class^='--inline-flex'][class*='-ac!sa'],
+*[class^='--inline-flex'].--ac-stretch,
+*[class*=' --inline-flex'][class*='-ac!sa'],
+*[class*=' --inline-flex'].--ac-stretch,
+.--inline-flex[class*='-ac!sa'],
+.--inline-flex.--ac-stretch {
+  -ms-flex-line-pack: stretch;
+      align-content: stretch;
+}
+*[class^='--flex'][class*='-as!fs'], *[class^='--flex'].--as-flex-start,
+*[class*=' --flex'][class*='-as!fs'],
+*[class*=' --flex'].--as-flex-start,
+.--flex[class*='-as!fs'],
+.--flex.--as-flex-start,
+*[class^='--inline-flex'][class*='-as!fs'],
+*[class^='--inline-flex'].--as-flex-start,
+*[class*=' --inline-flex'][class*='-as!fs'],
+*[class*=' --inline-flex'].--as-flex-start,
+.--inline-flex[class*='-as!fs'],
+.--inline-flex.--as-flex-start {
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+}
+*[class^='--flex'][class*='-as!fs@inside'] > *, *[class^='--flex'].--as-flex-start-inside > *,
+*[class*=' --flex'][class*='-as!fs@inside'] > *,
+*[class*=' --flex'].--as-flex-start-inside > *,
+.--flex[class*='-as!fs@inside'] > *,
+.--flex.--as-flex-start-inside > *,
+*[class^='--inline-flex'][class*='-as!fs@inside'] > *,
+*[class^='--inline-flex'].--as-flex-start-inside > *,
+*[class*=' --inline-flex'][class*='-as!fs@inside'] > *,
+*[class*=' --inline-flex'].--as-flex-start-inside > *,
+.--inline-flex[class*='-as!fs@inside'] > *,
+.--inline-flex.--as-flex-start-inside > * {
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+}
+*[class^='--flex'][class*='-as!fe'], *[class^='--flex'].--as-flex-end,
+*[class*=' --flex'][class*='-as!fe'],
+*[class*=' --flex'].--as-flex-end,
+.--flex[class*='-as!fe'],
+.--flex.--as-flex-end,
+*[class^='--inline-flex'][class*='-as!fe'],
+*[class^='--inline-flex'].--as-flex-end,
+*[class*=' --inline-flex'][class*='-as!fe'],
+*[class*=' --inline-flex'].--as-flex-end,
+.--inline-flex[class*='-as!fe'],
+.--inline-flex.--as-flex-end {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+}
+*[class^='--flex'][class*='-as!fe@inside'] > *, *[class^='--flex'].--as-flex-end-inside > *,
+*[class*=' --flex'][class*='-as!fe@inside'] > *,
+*[class*=' --flex'].--as-flex-end-inside > *,
+.--flex[class*='-as!fe@inside'] > *,
+.--flex.--as-flex-end-inside > *,
+*[class^='--inline-flex'][class*='-as!fe@inside'] > *,
+*[class^='--inline-flex'].--as-flex-end-inside > *,
+*[class*=' --inline-flex'][class*='-as!fe@inside'] > *,
+*[class*=' --inline-flex'].--as-flex-end-inside > *,
+.--inline-flex[class*='-as!fe@inside'] > *,
+.--inline-flex.--as-flex-end-inside > * {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+}
+*[class^='--flex'][class*='-as!c'], *[class^='--flex'].--as-center,
+*[class*=' --flex'][class*='-as!c'],
+*[class*=' --flex'].--as-center,
+.--flex[class*='-as!c'],
+.--flex.--as-center,
+*[class^='--inline-flex'][class*='-as!c'],
+*[class^='--inline-flex'].--as-center,
+*[class*=' --inline-flex'][class*='-as!c'],
+*[class*=' --inline-flex'].--as-center,
+.--inline-flex[class*='-as!c'],
+.--inline-flex.--as-center {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+*[class^='--flex'][class*='-as!c@inside'] > *, *[class^='--flex'].--as-center-inside > *,
+*[class*=' --flex'][class*='-as!c@inside'] > *,
+*[class*=' --flex'].--as-center-inside > *,
+.--flex[class*='-as!c@inside'] > *,
+.--flex.--as-center-inside > *,
+*[class^='--inline-flex'][class*='-as!c@inside'] > *,
+*[class^='--inline-flex'].--as-center-inside > *,
+*[class*=' --inline-flex'][class*='-as!c@inside'] > *,
+*[class*=' --inline-flex'].--as-center-inside > *,
+.--inline-flex[class*='-as!c@inside'] > *,
+.--inline-flex.--as-center-inside > * {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+*[class^='--flex'][class*='-as!b'], *[class^='--flex'].--as-baseline,
+*[class*=' --flex'][class*='-as!b'],
+*[class*=' --flex'].--as-baseline,
+.--flex[class*='-as!b'],
+.--flex.--as-baseline,
+*[class^='--inline-flex'][class*='-as!b'],
+*[class^='--inline-flex'].--as-baseline,
+*[class*=' --inline-flex'][class*='-as!b'],
+*[class*=' --inline-flex'].--as-baseline,
+.--inline-flex[class*='-as!b'],
+.--inline-flex.--as-baseline {
+  -ms-flex-item-align: baseline;
+      align-self: baseline;
+}
+*[class^='--flex'][class*='-as!b@inside'] > *, *[class^='--flex'].--as-baseline-inside > *,
+*[class*=' --flex'][class*='-as!b@inside'] > *,
+*[class*=' --flex'].--as-baseline-inside > *,
+.--flex[class*='-as!b@inside'] > *,
+.--flex.--as-baseline-inside > *,
+*[class^='--inline-flex'][class*='-as!b@inside'] > *,
+*[class^='--inline-flex'].--as-baseline-inside > *,
+*[class*=' --inline-flex'][class*='-as!b@inside'] > *,
+*[class*=' --inline-flex'].--as-baseline-inside > *,
+.--inline-flex[class*='-as!b@inside'] > *,
+.--inline-flex.--as-baseline-inside > * {
+  -ms-flex-item-align: baseline;
+      align-self: baseline;
+}
+*[class^='--flex'][class*='-as!s'], *[class^='--flex'].--as-stretch,
+*[class*=' --flex'][class*='-as!s'],
+*[class*=' --flex'].--as-stretch,
+.--flex[class*='-as!s'],
+.--flex.--as-stretch,
+*[class^='--inline-flex'][class*='-as!s'],
+*[class^='--inline-flex'].--as-stretch,
+*[class*=' --inline-flex'][class*='-as!s'],
+*[class*=' --inline-flex'].--as-stretch,
+.--inline-flex[class*='-as!s'],
+.--inline-flex.--as-stretch {
+  -ms-flex-item-align: stretch;
+      -ms-grid-row-align: stretch;
+      align-self: stretch;
+}
+*[class^='--flex'][class*='-as!s@inside'] > *, *[class^='--flex'].--as-stretch-inside > *,
+*[class*=' --flex'][class*='-as!s@inside'] > *,
+*[class*=' --flex'].--as-stretch-inside > *,
+.--flex[class*='-as!s@inside'] > *,
+.--flex.--as-stretch-inside > *,
+*[class^='--inline-flex'][class*='-as!s@inside'] > *,
+*[class^='--inline-flex'].--as-stretch-inside > *,
+*[class*=' --inline-flex'][class*='-as!s@inside'] > *,
+*[class*=' --inline-flex'].--as-stretch-inside > *,
+.--inline-flex[class*='-as!s@inside'] > *,
+.--inline-flex.--as-stretch-inside > * {
+  -ms-flex-item-align: stretch;
+      -ms-grid-row-align: stretch;
+      align-self: stretch;
+}
+*[class^='--flex'][class*='-fill'],
+*[class^='--flex'] > .--fill,
+*[class*=' --flex'][class*='-fill'],
+*[class*=' --flex'] > .--fill,
+.--flex[class*='-fill'],
+.--flex > .--fill,
+*[class^='--inline-flex'][class*='-fill'],
+*[class^='--inline-flex'] > .--fill,
+*[class*=' --inline-flex'][class*='-fill'],
+*[class*=' --inline-flex'] > .--fill,
+.--inline-flex[class*='-fill'],
+.--inline-flex > .--fill {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+*[class^='--flex'][class*='-fill@inside'] > *, *[class^='--flex'].--fill-inside > *,
+*[class*=' --flex'][class*='-fill@inside'] > *,
+*[class*=' --flex'].--fill-inside > *,
+.--flex[class*='-fill@inside'] > *,
+.--flex.--fill-inside > *,
+*[class^='--inline-flex'][class*='-fill@inside'] > *,
+*[class^='--inline-flex'].--fill-inside > *,
+*[class*=' --inline-flex'][class*='-fill@inside'] > *,
+*[class*=' --inline-flex'].--fill-inside > *,
+.--inline-flex[class*='-fill@inside'] > *,
+.--inline-flex.--fill-inside > * {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+*[class^='--flex'] .--grow[flex-grow="1"], *[class^='--flex'][class*='-grow'][flex-grow="1"],
+*[class*=' --flex'] .--grow[flex-grow="1"],
+*[class*=' --flex'][class*='-grow'][flex-grow="1"],
+.--flex .--grow[flex-grow="1"],
+.--flex[class*='-grow'][flex-grow="1"],
+*[class^='--inline-flex'] .--grow[flex-grow="1"],
+*[class^='--inline-flex'][class*='-grow'][flex-grow="1"],
+*[class*=' --inline-flex'] .--grow[flex-grow="1"],
+*[class*=' --inline-flex'][class*='-grow'][flex-grow="1"],
+.--inline-flex .--grow[flex-grow="1"],
+.--inline-flex[class*='-grow'][flex-grow="1"] {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+*[class^='--flex'] .--grow[flex-grow="2"], *[class^='--flex'][class*='-grow'][flex-grow="2"],
+*[class*=' --flex'] .--grow[flex-grow="2"],
+*[class*=' --flex'][class*='-grow'][flex-grow="2"],
+.--flex .--grow[flex-grow="2"],
+.--flex[class*='-grow'][flex-grow="2"],
+*[class^='--inline-flex'] .--grow[flex-grow="2"],
+*[class^='--inline-flex'][class*='-grow'][flex-grow="2"],
+*[class*=' --inline-flex'] .--grow[flex-grow="2"],
+*[class*=' --inline-flex'][class*='-grow'][flex-grow="2"],
+.--inline-flex .--grow[flex-grow="2"],
+.--inline-flex[class*='-grow'][flex-grow="2"] {
+  -webkit-box-flex: 2;
+      -ms-flex-positive: 2;
+          flex-grow: 2;
+}
+*[class^='--flex'] .--grow[flex-grow="3"], *[class^='--flex'][class*='-grow'][flex-grow="3"],
+*[class*=' --flex'] .--grow[flex-grow="3"],
+*[class*=' --flex'][class*='-grow'][flex-grow="3"],
+.--flex .--grow[flex-grow="3"],
+.--flex[class*='-grow'][flex-grow="3"],
+*[class^='--inline-flex'] .--grow[flex-grow="3"],
+*[class^='--inline-flex'][class*='-grow'][flex-grow="3"],
+*[class*=' --inline-flex'] .--grow[flex-grow="3"],
+*[class*=' --inline-flex'][class*='-grow'][flex-grow="3"],
+.--inline-flex .--grow[flex-grow="3"],
+.--inline-flex[class*='-grow'][flex-grow="3"] {
+  -webkit-box-flex: 3;
+      -ms-flex-positive: 3;
+          flex-grow: 3;
+}
+*[class^='--flex'] .--grow[flex-grow="4"], *[class^='--flex'][class*='-grow'][flex-grow="4"],
+*[class*=' --flex'] .--grow[flex-grow="4"],
+*[class*=' --flex'][class*='-grow'][flex-grow="4"],
+.--flex .--grow[flex-grow="4"],
+.--flex[class*='-grow'][flex-grow="4"],
+*[class^='--inline-flex'] .--grow[flex-grow="4"],
+*[class^='--inline-flex'][class*='-grow'][flex-grow="4"],
+*[class*=' --inline-flex'] .--grow[flex-grow="4"],
+*[class*=' --inline-flex'][class*='-grow'][flex-grow="4"],
+.--inline-flex .--grow[flex-grow="4"],
+.--inline-flex[class*='-grow'][flex-grow="4"] {
+  -webkit-box-flex: 4;
+      -ms-flex-positive: 4;
+          flex-grow: 4;
+}
+*[class^='--flex'] .--grow[flex-grow="5"], *[class^='--flex'][class*='-grow'][flex-grow="5"],
+*[class*=' --flex'] .--grow[flex-grow="5"],
+*[class*=' --flex'][class*='-grow'][flex-grow="5"],
+.--flex .--grow[flex-grow="5"],
+.--flex[class*='-grow'][flex-grow="5"],
+*[class^='--inline-flex'] .--grow[flex-grow="5"],
+*[class^='--inline-flex'][class*='-grow'][flex-grow="5"],
+*[class*=' --inline-flex'] .--grow[flex-grow="5"],
+*[class*=' --inline-flex'][class*='-grow'][flex-grow="5"],
+.--inline-flex .--grow[flex-grow="5"],
+.--inline-flex[class*='-grow'][flex-grow="5"] {
+  -webkit-box-flex: 5;
+      -ms-flex-positive: 5;
+          flex-grow: 5;
+}
+*[class^='--flex'] .--grow[flex-grow="6"], *[class^='--flex'][class*='-grow'][flex-grow="6"],
+*[class*=' --flex'] .--grow[flex-grow="6"],
+*[class*=' --flex'][class*='-grow'][flex-grow="6"],
+.--flex .--grow[flex-grow="6"],
+.--flex[class*='-grow'][flex-grow="6"],
+*[class^='--inline-flex'] .--grow[flex-grow="6"],
+*[class^='--inline-flex'][class*='-grow'][flex-grow="6"],
+*[class*=' --inline-flex'] .--grow[flex-grow="6"],
+*[class*=' --inline-flex'][class*='-grow'][flex-grow="6"],
+.--inline-flex .--grow[flex-grow="6"],
+.--inline-flex[class*='-grow'][flex-grow="6"] {
+  -webkit-box-flex: 6;
+      -ms-flex-positive: 6;
+          flex-grow: 6;
+}
+*[class^='--flex'] .--grow[flex-grow="7"], *[class^='--flex'][class*='-grow'][flex-grow="7"],
+*[class*=' --flex'] .--grow[flex-grow="7"],
+*[class*=' --flex'][class*='-grow'][flex-grow="7"],
+.--flex .--grow[flex-grow="7"],
+.--flex[class*='-grow'][flex-grow="7"],
+*[class^='--inline-flex'] .--grow[flex-grow="7"],
+*[class^='--inline-flex'][class*='-grow'][flex-grow="7"],
+*[class*=' --inline-flex'] .--grow[flex-grow="7"],
+*[class*=' --inline-flex'][class*='-grow'][flex-grow="7"],
+.--inline-flex .--grow[flex-grow="7"],
+.--inline-flex[class*='-grow'][flex-grow="7"] {
+  -webkit-box-flex: 7;
+      -ms-flex-positive: 7;
+          flex-grow: 7;
+}
+*[class^='--flex'] .--grow[flex-grow="8"], *[class^='--flex'][class*='-grow'][flex-grow="8"],
+*[class*=' --flex'] .--grow[flex-grow="8"],
+*[class*=' --flex'][class*='-grow'][flex-grow="8"],
+.--flex .--grow[flex-grow="8"],
+.--flex[class*='-grow'][flex-grow="8"],
+*[class^='--inline-flex'] .--grow[flex-grow="8"],
+*[class^='--inline-flex'][class*='-grow'][flex-grow="8"],
+*[class*=' --inline-flex'] .--grow[flex-grow="8"],
+*[class*=' --inline-flex'][class*='-grow'][flex-grow="8"],
+.--inline-flex .--grow[flex-grow="8"],
+.--inline-flex[class*='-grow'][flex-grow="8"] {
+  -webkit-box-flex: 8;
+      -ms-flex-positive: 8;
+          flex-grow: 8;
+}
+*[class^='--flex'] .--grow[flex-grow="9"], *[class^='--flex'][class*='-grow'][flex-grow="9"],
+*[class*=' --flex'] .--grow[flex-grow="9"],
+*[class*=' --flex'][class*='-grow'][flex-grow="9"],
+.--flex .--grow[flex-grow="9"],
+.--flex[class*='-grow'][flex-grow="9"],
+*[class^='--inline-flex'] .--grow[flex-grow="9"],
+*[class^='--inline-flex'][class*='-grow'][flex-grow="9"],
+*[class*=' --inline-flex'] .--grow[flex-grow="9"],
+*[class*=' --inline-flex'][class*='-grow'][flex-grow="9"],
+.--inline-flex .--grow[flex-grow="9"],
+.--inline-flex[class*='-grow'][flex-grow="9"] {
+  -webkit-box-flex: 9;
+      -ms-flex-positive: 9;
+          flex-grow: 9;
+}
+*[class^='--flex'] .--grow[flex-grow="10"], *[class^='--flex'][class*='-grow'][flex-grow="10"],
+*[class*=' --flex'] .--grow[flex-grow="10"],
+*[class*=' --flex'][class*='-grow'][flex-grow="10"],
+.--flex .--grow[flex-grow="10"],
+.--flex[class*='-grow'][flex-grow="10"],
+*[class^='--inline-flex'] .--grow[flex-grow="10"],
+*[class^='--inline-flex'][class*='-grow'][flex-grow="10"],
+*[class*=' --inline-flex'] .--grow[flex-grow="10"],
+*[class*=' --inline-flex'][class*='-grow'][flex-grow="10"],
+.--inline-flex .--grow[flex-grow="10"],
+.--inline-flex[class*='-grow'][flex-grow="10"] {
+  -webkit-box-flex: 10;
+      -ms-flex-positive: 10;
+          flex-grow: 10;
+}
+*[class^='--flex'] .--grow[flex-grow="11"], *[class^='--flex'][class*='-grow'][flex-grow="11"],
+*[class*=' --flex'] .--grow[flex-grow="11"],
+*[class*=' --flex'][class*='-grow'][flex-grow="11"],
+.--flex .--grow[flex-grow="11"],
+.--flex[class*='-grow'][flex-grow="11"],
+*[class^='--inline-flex'] .--grow[flex-grow="11"],
+*[class^='--inline-flex'][class*='-grow'][flex-grow="11"],
+*[class*=' --inline-flex'] .--grow[flex-grow="11"],
+*[class*=' --inline-flex'][class*='-grow'][flex-grow="11"],
+.--inline-flex .--grow[flex-grow="11"],
+.--inline-flex[class*='-grow'][flex-grow="11"] {
+  -webkit-box-flex: 11;
+      -ms-flex-positive: 11;
+          flex-grow: 11;
+}
+*[class^='--flex'] .--grow[flex-grow="12"], *[class^='--flex'][class*='-grow'][flex-grow="12"],
+*[class*=' --flex'] .--grow[flex-grow="12"],
+*[class*=' --flex'][class*='-grow'][flex-grow="12"],
+.--flex .--grow[flex-grow="12"],
+.--flex[class*='-grow'][flex-grow="12"],
+*[class^='--inline-flex'] .--grow[flex-grow="12"],
+*[class^='--inline-flex'][class*='-grow'][flex-grow="12"],
+*[class*=' --inline-flex'] .--grow[flex-grow="12"],
+*[class*=' --inline-flex'][class*='-grow'][flex-grow="12"],
+.--inline-flex .--grow[flex-grow="12"],
+.--inline-flex[class*='-grow'][flex-grow="12"] {
+  -webkit-box-flex: 12;
+      -ms-flex-positive: 12;
+          flex-grow: 12;
+}
+*[class^='--flex'] .--grow[flex-grow="13"], *[class^='--flex'][class*='-grow'][flex-grow="13"],
+*[class*=' --flex'] .--grow[flex-grow="13"],
+*[class*=' --flex'][class*='-grow'][flex-grow="13"],
+.--flex .--grow[flex-grow="13"],
+.--flex[class*='-grow'][flex-grow="13"],
+*[class^='--inline-flex'] .--grow[flex-grow="13"],
+*[class^='--inline-flex'][class*='-grow'][flex-grow="13"],
+*[class*=' --inline-flex'] .--grow[flex-grow="13"],
+*[class*=' --inline-flex'][class*='-grow'][flex-grow="13"],
+.--inline-flex .--grow[flex-grow="13"],
+.--inline-flex[class*='-grow'][flex-grow="13"] {
+  -webkit-box-flex: 13;
+      -ms-flex-positive: 13;
+          flex-grow: 13;
+}
+*[class^='--flex'] .--grow[flex-grow="14"], *[class^='--flex'][class*='-grow'][flex-grow="14"],
+*[class*=' --flex'] .--grow[flex-grow="14"],
+*[class*=' --flex'][class*='-grow'][flex-grow="14"],
+.--flex .--grow[flex-grow="14"],
+.--flex[class*='-grow'][flex-grow="14"],
+*[class^='--inline-flex'] .--grow[flex-grow="14"],
+*[class^='--inline-flex'][class*='-grow'][flex-grow="14"],
+*[class*=' --inline-flex'] .--grow[flex-grow="14"],
+*[class*=' --inline-flex'][class*='-grow'][flex-grow="14"],
+.--inline-flex .--grow[flex-grow="14"],
+.--inline-flex[class*='-grow'][flex-grow="14"] {
+  -webkit-box-flex: 14;
+      -ms-flex-positive: 14;
+          flex-grow: 14;
+}
+*[class^='--flex'] .--grow[flex-grow="15"], *[class^='--flex'][class*='-grow'][flex-grow="15"],
+*[class*=' --flex'] .--grow[flex-grow="15"],
+*[class*=' --flex'][class*='-grow'][flex-grow="15"],
+.--flex .--grow[flex-grow="15"],
+.--flex[class*='-grow'][flex-grow="15"],
+*[class^='--inline-flex'] .--grow[flex-grow="15"],
+*[class^='--inline-flex'][class*='-grow'][flex-grow="15"],
+*[class*=' --inline-flex'] .--grow[flex-grow="15"],
+*[class*=' --inline-flex'][class*='-grow'][flex-grow="15"],
+.--inline-flex .--grow[flex-grow="15"],
+.--inline-flex[class*='-grow'][flex-grow="15"] {
+  -webkit-box-flex: 15;
+      -ms-flex-positive: 15;
+          flex-grow: 15;
+}
+*[class^='--flex'] .--grow[flex-grow="16"], *[class^='--flex'][class*='-grow'][flex-grow="16"],
+*[class*=' --flex'] .--grow[flex-grow="16"],
+*[class*=' --flex'][class*='-grow'][flex-grow="16"],
+.--flex .--grow[flex-grow="16"],
+.--flex[class*='-grow'][flex-grow="16"],
+*[class^='--inline-flex'] .--grow[flex-grow="16"],
+*[class^='--inline-flex'][class*='-grow'][flex-grow="16"],
+*[class*=' --inline-flex'] .--grow[flex-grow="16"],
+*[class*=' --inline-flex'][class*='-grow'][flex-grow="16"],
+.--inline-flex .--grow[flex-grow="16"],
+.--inline-flex[class*='-grow'][flex-grow="16"] {
+  -webkit-box-flex: 16;
+      -ms-flex-positive: 16;
+          flex-grow: 16;
+}
+*[class^='--flex'] .--shrink[flex-shrink="1"], *[class^='--flex'][class*='-shrink'][flex-shrink="1"],
+*[class*=' --flex'] .--shrink[flex-shrink="1"],
+*[class*=' --flex'][class*='-shrink'][flex-shrink="1"],
+.--flex .--shrink[flex-shrink="1"],
+.--flex[class*='-shrink'][flex-shrink="1"],
+*[class^='--inline-flex'] .--shrink[flex-shrink="1"],
+*[class^='--inline-flex'][class*='-shrink'][flex-shrink="1"],
+*[class*=' --inline-flex'] .--shrink[flex-shrink="1"],
+*[class*=' --inline-flex'][class*='-shrink'][flex-shrink="1"],
+.--inline-flex .--shrink[flex-shrink="1"],
+.--inline-flex[class*='-shrink'][flex-shrink="1"] {
+  -ms-flex-negative: 1;
+      flex-shrink: 1;
+}
+*[class^='--flex'] .--shrink[flex-shrink="2"], *[class^='--flex'][class*='-shrink'][flex-shrink="2"],
+*[class*=' --flex'] .--shrink[flex-shrink="2"],
+*[class*=' --flex'][class*='-shrink'][flex-shrink="2"],
+.--flex .--shrink[flex-shrink="2"],
+.--flex[class*='-shrink'][flex-shrink="2"],
+*[class^='--inline-flex'] .--shrink[flex-shrink="2"],
+*[class^='--inline-flex'][class*='-shrink'][flex-shrink="2"],
+*[class*=' --inline-flex'] .--shrink[flex-shrink="2"],
+*[class*=' --inline-flex'][class*='-shrink'][flex-shrink="2"],
+.--inline-flex .--shrink[flex-shrink="2"],
+.--inline-flex[class*='-shrink'][flex-shrink="2"] {
+  -ms-flex-negative: 2;
+      flex-shrink: 2;
+}
+*[class^='--flex'] .--shrink[flex-shrink="3"], *[class^='--flex'][class*='-shrink'][flex-shrink="3"],
+*[class*=' --flex'] .--shrink[flex-shrink="3"],
+*[class*=' --flex'][class*='-shrink'][flex-shrink="3"],
+.--flex .--shrink[flex-shrink="3"],
+.--flex[class*='-shrink'][flex-shrink="3"],
+*[class^='--inline-flex'] .--shrink[flex-shrink="3"],
+*[class^='--inline-flex'][class*='-shrink'][flex-shrink="3"],
+*[class*=' --inline-flex'] .--shrink[flex-shrink="3"],
+*[class*=' --inline-flex'][class*='-shrink'][flex-shrink="3"],
+.--inline-flex .--shrink[flex-shrink="3"],
+.--inline-flex[class*='-shrink'][flex-shrink="3"] {
+  -ms-flex-negative: 3;
+      flex-shrink: 3;
+}
+*[class^='--flex'] .--shrink[flex-shrink="4"], *[class^='--flex'][class*='-shrink'][flex-shrink="4"],
+*[class*=' --flex'] .--shrink[flex-shrink="4"],
+*[class*=' --flex'][class*='-shrink'][flex-shrink="4"],
+.--flex .--shrink[flex-shrink="4"],
+.--flex[class*='-shrink'][flex-shrink="4"],
+*[class^='--inline-flex'] .--shrink[flex-shrink="4"],
+*[class^='--inline-flex'][class*='-shrink'][flex-shrink="4"],
+*[class*=' --inline-flex'] .--shrink[flex-shrink="4"],
+*[class*=' --inline-flex'][class*='-shrink'][flex-shrink="4"],
+.--inline-flex .--shrink[flex-shrink="4"],
+.--inline-flex[class*='-shrink'][flex-shrink="4"] {
+  -ms-flex-negative: 4;
+      flex-shrink: 4;
+}
+*[class^='--flex'] .--shrink[flex-shrink="5"], *[class^='--flex'][class*='-shrink'][flex-shrink="5"],
+*[class*=' --flex'] .--shrink[flex-shrink="5"],
+*[class*=' --flex'][class*='-shrink'][flex-shrink="5"],
+.--flex .--shrink[flex-shrink="5"],
+.--flex[class*='-shrink'][flex-shrink="5"],
+*[class^='--inline-flex'] .--shrink[flex-shrink="5"],
+*[class^='--inline-flex'][class*='-shrink'][flex-shrink="5"],
+*[class*=' --inline-flex'] .--shrink[flex-shrink="5"],
+*[class*=' --inline-flex'][class*='-shrink'][flex-shrink="5"],
+.--inline-flex .--shrink[flex-shrink="5"],
+.--inline-flex[class*='-shrink'][flex-shrink="5"] {
+  -ms-flex-negative: 5;
+      flex-shrink: 5;
+}
+*[class^='--flex'] .--shrink[flex-shrink="6"], *[class^='--flex'][class*='-shrink'][flex-shrink="6"],
+*[class*=' --flex'] .--shrink[flex-shrink="6"],
+*[class*=' --flex'][class*='-shrink'][flex-shrink="6"],
+.--flex .--shrink[flex-shrink="6"],
+.--flex[class*='-shrink'][flex-shrink="6"],
+*[class^='--inline-flex'] .--shrink[flex-shrink="6"],
+*[class^='--inline-flex'][class*='-shrink'][flex-shrink="6"],
+*[class*=' --inline-flex'] .--shrink[flex-shrink="6"],
+*[class*=' --inline-flex'][class*='-shrink'][flex-shrink="6"],
+.--inline-flex .--shrink[flex-shrink="6"],
+.--inline-flex[class*='-shrink'][flex-shrink="6"] {
+  -ms-flex-negative: 6;
+      flex-shrink: 6;
+}
+*[class^='--flex'] .--shrink[flex-shrink="7"], *[class^='--flex'][class*='-shrink'][flex-shrink="7"],
+*[class*=' --flex'] .--shrink[flex-shrink="7"],
+*[class*=' --flex'][class*='-shrink'][flex-shrink="7"],
+.--flex .--shrink[flex-shrink="7"],
+.--flex[class*='-shrink'][flex-shrink="7"],
+*[class^='--inline-flex'] .--shrink[flex-shrink="7"],
+*[class^='--inline-flex'][class*='-shrink'][flex-shrink="7"],
+*[class*=' --inline-flex'] .--shrink[flex-shrink="7"],
+*[class*=' --inline-flex'][class*='-shrink'][flex-shrink="7"],
+.--inline-flex .--shrink[flex-shrink="7"],
+.--inline-flex[class*='-shrink'][flex-shrink="7"] {
+  -ms-flex-negative: 7;
+      flex-shrink: 7;
+}
+*[class^='--flex'] .--shrink[flex-shrink="8"], *[class^='--flex'][class*='-shrink'][flex-shrink="8"],
+*[class*=' --flex'] .--shrink[flex-shrink="8"],
+*[class*=' --flex'][class*='-shrink'][flex-shrink="8"],
+.--flex .--shrink[flex-shrink="8"],
+.--flex[class*='-shrink'][flex-shrink="8"],
+*[class^='--inline-flex'] .--shrink[flex-shrink="8"],
+*[class^='--inline-flex'][class*='-shrink'][flex-shrink="8"],
+*[class*=' --inline-flex'] .--shrink[flex-shrink="8"],
+*[class*=' --inline-flex'][class*='-shrink'][flex-shrink="8"],
+.--inline-flex .--shrink[flex-shrink="8"],
+.--inline-flex[class*='-shrink'][flex-shrink="8"] {
+  -ms-flex-negative: 8;
+      flex-shrink: 8;
+}
+*[class^='--flex'] .--shrink[flex-shrink="9"], *[class^='--flex'][class*='-shrink'][flex-shrink="9"],
+*[class*=' --flex'] .--shrink[flex-shrink="9"],
+*[class*=' --flex'][class*='-shrink'][flex-shrink="9"],
+.--flex .--shrink[flex-shrink="9"],
+.--flex[class*='-shrink'][flex-shrink="9"],
+*[class^='--inline-flex'] .--shrink[flex-shrink="9"],
+*[class^='--inline-flex'][class*='-shrink'][flex-shrink="9"],
+*[class*=' --inline-flex'] .--shrink[flex-shrink="9"],
+*[class*=' --inline-flex'][class*='-shrink'][flex-shrink="9"],
+.--inline-flex .--shrink[flex-shrink="9"],
+.--inline-flex[class*='-shrink'][flex-shrink="9"] {
+  -ms-flex-negative: 9;
+      flex-shrink: 9;
+}
+*[class^='--flex'] .--shrink[flex-shrink="10"], *[class^='--flex'][class*='-shrink'][flex-shrink="10"],
+*[class*=' --flex'] .--shrink[flex-shrink="10"],
+*[class*=' --flex'][class*='-shrink'][flex-shrink="10"],
+.--flex .--shrink[flex-shrink="10"],
+.--flex[class*='-shrink'][flex-shrink="10"],
+*[class^='--inline-flex'] .--shrink[flex-shrink="10"],
+*[class^='--inline-flex'][class*='-shrink'][flex-shrink="10"],
+*[class*=' --inline-flex'] .--shrink[flex-shrink="10"],
+*[class*=' --inline-flex'][class*='-shrink'][flex-shrink="10"],
+.--inline-flex .--shrink[flex-shrink="10"],
+.--inline-flex[class*='-shrink'][flex-shrink="10"] {
+  -ms-flex-negative: 10;
+      flex-shrink: 10;
+}
+*[class^='--flex'] .--shrink[flex-shrink="11"], *[class^='--flex'][class*='-shrink'][flex-shrink="11"],
+*[class*=' --flex'] .--shrink[flex-shrink="11"],
+*[class*=' --flex'][class*='-shrink'][flex-shrink="11"],
+.--flex .--shrink[flex-shrink="11"],
+.--flex[class*='-shrink'][flex-shrink="11"],
+*[class^='--inline-flex'] .--shrink[flex-shrink="11"],
+*[class^='--inline-flex'][class*='-shrink'][flex-shrink="11"],
+*[class*=' --inline-flex'] .--shrink[flex-shrink="11"],
+*[class*=' --inline-flex'][class*='-shrink'][flex-shrink="11"],
+.--inline-flex .--shrink[flex-shrink="11"],
+.--inline-flex[class*='-shrink'][flex-shrink="11"] {
+  -ms-flex-negative: 11;
+      flex-shrink: 11;
+}
+*[class^='--flex'] .--shrink[flex-shrink="12"], *[class^='--flex'][class*='-shrink'][flex-shrink="12"],
+*[class*=' --flex'] .--shrink[flex-shrink="12"],
+*[class*=' --flex'][class*='-shrink'][flex-shrink="12"],
+.--flex .--shrink[flex-shrink="12"],
+.--flex[class*='-shrink'][flex-shrink="12"],
+*[class^='--inline-flex'] .--shrink[flex-shrink="12"],
+*[class^='--inline-flex'][class*='-shrink'][flex-shrink="12"],
+*[class*=' --inline-flex'] .--shrink[flex-shrink="12"],
+*[class*=' --inline-flex'][class*='-shrink'][flex-shrink="12"],
+.--inline-flex .--shrink[flex-shrink="12"],
+.--inline-flex[class*='-shrink'][flex-shrink="12"] {
+  -ms-flex-negative: 12;
+      flex-shrink: 12;
+}
+*[class^='--flex'] .--shrink[flex-shrink="13"], *[class^='--flex'][class*='-shrink'][flex-shrink="13"],
+*[class*=' --flex'] .--shrink[flex-shrink="13"],
+*[class*=' --flex'][class*='-shrink'][flex-shrink="13"],
+.--flex .--shrink[flex-shrink="13"],
+.--flex[class*='-shrink'][flex-shrink="13"],
+*[class^='--inline-flex'] .--shrink[flex-shrink="13"],
+*[class^='--inline-flex'][class*='-shrink'][flex-shrink="13"],
+*[class*=' --inline-flex'] .--shrink[flex-shrink="13"],
+*[class*=' --inline-flex'][class*='-shrink'][flex-shrink="13"],
+.--inline-flex .--shrink[flex-shrink="13"],
+.--inline-flex[class*='-shrink'][flex-shrink="13"] {
+  -ms-flex-negative: 13;
+      flex-shrink: 13;
+}
+*[class^='--flex'] .--shrink[flex-shrink="14"], *[class^='--flex'][class*='-shrink'][flex-shrink="14"],
+*[class*=' --flex'] .--shrink[flex-shrink="14"],
+*[class*=' --flex'][class*='-shrink'][flex-shrink="14"],
+.--flex .--shrink[flex-shrink="14"],
+.--flex[class*='-shrink'][flex-shrink="14"],
+*[class^='--inline-flex'] .--shrink[flex-shrink="14"],
+*[class^='--inline-flex'][class*='-shrink'][flex-shrink="14"],
+*[class*=' --inline-flex'] .--shrink[flex-shrink="14"],
+*[class*=' --inline-flex'][class*='-shrink'][flex-shrink="14"],
+.--inline-flex .--shrink[flex-shrink="14"],
+.--inline-flex[class*='-shrink'][flex-shrink="14"] {
+  -ms-flex-negative: 14;
+      flex-shrink: 14;
+}
+*[class^='--flex'] .--shrink[flex-shrink="15"], *[class^='--flex'][class*='-shrink'][flex-shrink="15"],
+*[class*=' --flex'] .--shrink[flex-shrink="15"],
+*[class*=' --flex'][class*='-shrink'][flex-shrink="15"],
+.--flex .--shrink[flex-shrink="15"],
+.--flex[class*='-shrink'][flex-shrink="15"],
+*[class^='--inline-flex'] .--shrink[flex-shrink="15"],
+*[class^='--inline-flex'][class*='-shrink'][flex-shrink="15"],
+*[class*=' --inline-flex'] .--shrink[flex-shrink="15"],
+*[class*=' --inline-flex'][class*='-shrink'][flex-shrink="15"],
+.--inline-flex .--shrink[flex-shrink="15"],
+.--inline-flex[class*='-shrink'][flex-shrink="15"] {
+  -ms-flex-negative: 15;
+      flex-shrink: 15;
+}
+*[class^='--flex'] .--shrink[flex-shrink="16"], *[class^='--flex'][class*='-shrink'][flex-shrink="16"],
+*[class*=' --flex'] .--shrink[flex-shrink="16"],
+*[class*=' --flex'][class*='-shrink'][flex-shrink="16"],
+.--flex .--shrink[flex-shrink="16"],
+.--flex[class*='-shrink'][flex-shrink="16"],
+*[class^='--inline-flex'] .--shrink[flex-shrink="16"],
+*[class^='--inline-flex'][class*='-shrink'][flex-shrink="16"],
+*[class*=' --inline-flex'] .--shrink[flex-shrink="16"],
+*[class*=' --inline-flex'][class*='-shrink'][flex-shrink="16"],
+.--inline-flex .--shrink[flex-shrink="16"],
+.--inline-flex[class*='-shrink'][flex-shrink="16"] {
+  -ms-flex-negative: 16;
+      flex-shrink: 16;
+}
+*[class^='--flex'] .--order[flex-order="-16"], *[class^='--flex'][class*='-order'][flex-order="-16"],
+*[class*=' --flex'] .--order[flex-order="-16"],
+*[class*=' --flex'][class*='-order'][flex-order="-16"],
+.--flex .--order[flex-order="-16"],
+.--flex[class*='-order'][flex-order="-16"],
+*[class^='--inline-flex'] .--order[flex-order="-16"],
+*[class^='--inline-flex'][class*='-order'][flex-order="-16"],
+*[class*=' --inline-flex'] .--order[flex-order="-16"],
+*[class*=' --inline-flex'][class*='-order'][flex-order="-16"],
+.--inline-flex .--order[flex-order="-16"],
+.--inline-flex[class*='-order'][flex-order="-16"] {
+  -webkit-box-ordinal-group: -15;
+      -ms-flex-order: -16;
+          order: -16;
+}
+*[class^='--flex'] .--order[flex-order="-15"], *[class^='--flex'][class*='-order'][flex-order="-15"],
+*[class*=' --flex'] .--order[flex-order="-15"],
+*[class*=' --flex'][class*='-order'][flex-order="-15"],
+.--flex .--order[flex-order="-15"],
+.--flex[class*='-order'][flex-order="-15"],
+*[class^='--inline-flex'] .--order[flex-order="-15"],
+*[class^='--inline-flex'][class*='-order'][flex-order="-15"],
+*[class*=' --inline-flex'] .--order[flex-order="-15"],
+*[class*=' --inline-flex'][class*='-order'][flex-order="-15"],
+.--inline-flex .--order[flex-order="-15"],
+.--inline-flex[class*='-order'][flex-order="-15"] {
+  -webkit-box-ordinal-group: -14;
+      -ms-flex-order: -15;
+          order: -15;
+}
+*[class^='--flex'] .--order[flex-order="-14"], *[class^='--flex'][class*='-order'][flex-order="-14"],
+*[class*=' --flex'] .--order[flex-order="-14"],
+*[class*=' --flex'][class*='-order'][flex-order="-14"],
+.--flex .--order[flex-order="-14"],
+.--flex[class*='-order'][flex-order="-14"],
+*[class^='--inline-flex'] .--order[flex-order="-14"],
+*[class^='--inline-flex'][class*='-order'][flex-order="-14"],
+*[class*=' --inline-flex'] .--order[flex-order="-14"],
+*[class*=' --inline-flex'][class*='-order'][flex-order="-14"],
+.--inline-flex .--order[flex-order="-14"],
+.--inline-flex[class*='-order'][flex-order="-14"] {
+  -webkit-box-ordinal-group: -13;
+      -ms-flex-order: -14;
+          order: -14;
+}
+*[class^='--flex'] .--order[flex-order="-13"], *[class^='--flex'][class*='-order'][flex-order="-13"],
+*[class*=' --flex'] .--order[flex-order="-13"],
+*[class*=' --flex'][class*='-order'][flex-order="-13"],
+.--flex .--order[flex-order="-13"],
+.--flex[class*='-order'][flex-order="-13"],
+*[class^='--inline-flex'] .--order[flex-order="-13"],
+*[class^='--inline-flex'][class*='-order'][flex-order="-13"],
+*[class*=' --inline-flex'] .--order[flex-order="-13"],
+*[class*=' --inline-flex'][class*='-order'][flex-order="-13"],
+.--inline-flex .--order[flex-order="-13"],
+.--inline-flex[class*='-order'][flex-order="-13"] {
+  -webkit-box-ordinal-group: -12;
+      -ms-flex-order: -13;
+          order: -13;
+}
+*[class^='--flex'] .--order[flex-order="-12"], *[class^='--flex'][class*='-order'][flex-order="-12"],
+*[class*=' --flex'] .--order[flex-order="-12"],
+*[class*=' --flex'][class*='-order'][flex-order="-12"],
+.--flex .--order[flex-order="-12"],
+.--flex[class*='-order'][flex-order="-12"],
+*[class^='--inline-flex'] .--order[flex-order="-12"],
+*[class^='--inline-flex'][class*='-order'][flex-order="-12"],
+*[class*=' --inline-flex'] .--order[flex-order="-12"],
+*[class*=' --inline-flex'][class*='-order'][flex-order="-12"],
+.--inline-flex .--order[flex-order="-12"],
+.--inline-flex[class*='-order'][flex-order="-12"] {
+  -webkit-box-ordinal-group: -11;
+      -ms-flex-order: -12;
+          order: -12;
+}
+*[class^='--flex'] .--order[flex-order="-11"], *[class^='--flex'][class*='-order'][flex-order="-11"],
+*[class*=' --flex'] .--order[flex-order="-11"],
+*[class*=' --flex'][class*='-order'][flex-order="-11"],
+.--flex .--order[flex-order="-11"],
+.--flex[class*='-order'][flex-order="-11"],
+*[class^='--inline-flex'] .--order[flex-order="-11"],
+*[class^='--inline-flex'][class*='-order'][flex-order="-11"],
+*[class*=' --inline-flex'] .--order[flex-order="-11"],
+*[class*=' --inline-flex'][class*='-order'][flex-order="-11"],
+.--inline-flex .--order[flex-order="-11"],
+.--inline-flex[class*='-order'][flex-order="-11"] {
+  -webkit-box-ordinal-group: -10;
+      -ms-flex-order: -11;
+          order: -11;
+}
+*[class^='--flex'] .--order[flex-order="-10"], *[class^='--flex'][class*='-order'][flex-order="-10"],
+*[class*=' --flex'] .--order[flex-order="-10"],
+*[class*=' --flex'][class*='-order'][flex-order="-10"],
+.--flex .--order[flex-order="-10"],
+.--flex[class*='-order'][flex-order="-10"],
+*[class^='--inline-flex'] .--order[flex-order="-10"],
+*[class^='--inline-flex'][class*='-order'][flex-order="-10"],
+*[class*=' --inline-flex'] .--order[flex-order="-10"],
+*[class*=' --inline-flex'][class*='-order'][flex-order="-10"],
+.--inline-flex .--order[flex-order="-10"],
+.--inline-flex[class*='-order'][flex-order="-10"] {
+  -webkit-box-ordinal-group: -9;
+      -ms-flex-order: -10;
+          order: -10;
+}
+*[class^='--flex'] .--order[flex-order="-9"], *[class^='--flex'][class*='-order'][flex-order="-9"],
+*[class*=' --flex'] .--order[flex-order="-9"],
+*[class*=' --flex'][class*='-order'][flex-order="-9"],
+.--flex .--order[flex-order="-9"],
+.--flex[class*='-order'][flex-order="-9"],
+*[class^='--inline-flex'] .--order[flex-order="-9"],
+*[class^='--inline-flex'][class*='-order'][flex-order="-9"],
+*[class*=' --inline-flex'] .--order[flex-order="-9"],
+*[class*=' --inline-flex'][class*='-order'][flex-order="-9"],
+.--inline-flex .--order[flex-order="-9"],
+.--inline-flex[class*='-order'][flex-order="-9"] {
+  -webkit-box-ordinal-group: -8;
+      -ms-flex-order: -9;
+          order: -9;
+}
+*[class^='--flex'] .--order[flex-order="-8"], *[class^='--flex'][class*='-order'][flex-order="-8"],
+*[class*=' --flex'] .--order[flex-order="-8"],
+*[class*=' --flex'][class*='-order'][flex-order="-8"],
+.--flex .--order[flex-order="-8"],
+.--flex[class*='-order'][flex-order="-8"],
+*[class^='--inline-flex'] .--order[flex-order="-8"],
+*[class^='--inline-flex'][class*='-order'][flex-order="-8"],
+*[class*=' --inline-flex'] .--order[flex-order="-8"],
+*[class*=' --inline-flex'][class*='-order'][flex-order="-8"],
+.--inline-flex .--order[flex-order="-8"],
+.--inline-flex[class*='-order'][flex-order="-8"] {
+  -webkit-box-ordinal-group: -7;
+      -ms-flex-order: -8;
+          order: -8;
+}
+*[class^='--flex'] .--order[flex-order="-7"], *[class^='--flex'][class*='-order'][flex-order="-7"],
+*[class*=' --flex'] .--order[flex-order="-7"],
+*[class*=' --flex'][class*='-order'][flex-order="-7"],
+.--flex .--order[flex-order="-7"],
+.--flex[class*='-order'][flex-order="-7"],
+*[class^='--inline-flex'] .--order[flex-order="-7"],
+*[class^='--inline-flex'][class*='-order'][flex-order="-7"],
+*[class*=' --inline-flex'] .--order[flex-order="-7"],
+*[class*=' --inline-flex'][class*='-order'][flex-order="-7"],
+.--inline-flex .--order[flex-order="-7"],
+.--inline-flex[class*='-order'][flex-order="-7"] {
+  -webkit-box-ordinal-group: -6;
+      -ms-flex-order: -7;
+          order: -7;
+}
+*[class^='--flex'] .--order[flex-order="-6"], *[class^='--flex'][class*='-order'][flex-order="-6"],
+*[class*=' --flex'] .--order[flex-order="-6"],
+*[class*=' --flex'][class*='-order'][flex-order="-6"],
+.--flex .--order[flex-order="-6"],
+.--flex[class*='-order'][flex-order="-6"],
+*[class^='--inline-flex'] .--order[flex-order="-6"],
+*[class^='--inline-flex'][class*='-order'][flex-order="-6"],
+*[class*=' --inline-flex'] .--order[flex-order="-6"],
+*[class*=' --inline-flex'][class*='-order'][flex-order="-6"],
+.--inline-flex .--order[flex-order="-6"],
+.--inline-flex[class*='-order'][flex-order="-6"] {
+  -webkit-box-ordinal-group: -5;
+      -ms-flex-order: -6;
+          order: -6;
+}
+*[class^='--flex'] .--order[flex-order="-5"], *[class^='--flex'][class*='-order'][flex-order="-5"],
+*[class*=' --flex'] .--order[flex-order="-5"],
+*[class*=' --flex'][class*='-order'][flex-order="-5"],
+.--flex .--order[flex-order="-5"],
+.--flex[class*='-order'][flex-order="-5"],
+*[class^='--inline-flex'] .--order[flex-order="-5"],
+*[class^='--inline-flex'][class*='-order'][flex-order="-5"],
+*[class*=' --inline-flex'] .--order[flex-order="-5"],
+*[class*=' --inline-flex'][class*='-order'][flex-order="-5"],
+.--inline-flex .--order[flex-order="-5"],
+.--inline-flex[class*='-order'][flex-order="-5"] {
+  -webkit-box-ordinal-group: -4;
+      -ms-flex-order: -5;
+          order: -5;
+}
+*[class^='--flex'] .--order[flex-order="-4"], *[class^='--flex'][class*='-order'][flex-order="-4"],
+*[class*=' --flex'] .--order[flex-order="-4"],
+*[class*=' --flex'][class*='-order'][flex-order="-4"],
+.--flex .--order[flex-order="-4"],
+.--flex[class*='-order'][flex-order="-4"],
+*[class^='--inline-flex'] .--order[flex-order="-4"],
+*[class^='--inline-flex'][class*='-order'][flex-order="-4"],
+*[class*=' --inline-flex'] .--order[flex-order="-4"],
+*[class*=' --inline-flex'][class*='-order'][flex-order="-4"],
+.--inline-flex .--order[flex-order="-4"],
+.--inline-flex[class*='-order'][flex-order="-4"] {
+  -webkit-box-ordinal-group: -3;
+      -ms-flex-order: -4;
+          order: -4;
+}
+*[class^='--flex'] .--order[flex-order="-3"], *[class^='--flex'][class*='-order'][flex-order="-3"],
+*[class*=' --flex'] .--order[flex-order="-3"],
+*[class*=' --flex'][class*='-order'][flex-order="-3"],
+.--flex .--order[flex-order="-3"],
+.--flex[class*='-order'][flex-order="-3"],
+*[class^='--inline-flex'] .--order[flex-order="-3"],
+*[class^='--inline-flex'][class*='-order'][flex-order="-3"],
+*[class*=' --inline-flex'] .--order[flex-order="-3"],
+*[class*=' --inline-flex'][class*='-order'][flex-order="-3"],
+.--inline-flex .--order[flex-order="-3"],
+.--inline-flex[class*='-order'][flex-order="-3"] {
+  -webkit-box-ordinal-group: -2;
+      -ms-flex-order: -3;
+          order: -3;
+}
+*[class^='--flex'] .--order[flex-order="-2"], *[class^='--flex'][class*='-order'][flex-order="-2"],
+*[class*=' --flex'] .--order[flex-order="-2"],
+*[class*=' --flex'][class*='-order'][flex-order="-2"],
+.--flex .--order[flex-order="-2"],
+.--flex[class*='-order'][flex-order="-2"],
+*[class^='--inline-flex'] .--order[flex-order="-2"],
+*[class^='--inline-flex'][class*='-order'][flex-order="-2"],
+*[class*=' --inline-flex'] .--order[flex-order="-2"],
+*[class*=' --inline-flex'][class*='-order'][flex-order="-2"],
+.--inline-flex .--order[flex-order="-2"],
+.--inline-flex[class*='-order'][flex-order="-2"] {
+  -webkit-box-ordinal-group: -1;
+      -ms-flex-order: -2;
+          order: -2;
+}
+*[class^='--flex'] .--order[flex-order="-1"], *[class^='--flex'][class*='-order'][flex-order="-1"],
+*[class*=' --flex'] .--order[flex-order="-1"],
+*[class*=' --flex'][class*='-order'][flex-order="-1"],
+.--flex .--order[flex-order="-1"],
+.--flex[class*='-order'][flex-order="-1"],
+*[class^='--inline-flex'] .--order[flex-order="-1"],
+*[class^='--inline-flex'][class*='-order'][flex-order="-1"],
+*[class*=' --inline-flex'] .--order[flex-order="-1"],
+*[class*=' --inline-flex'][class*='-order'][flex-order="-1"],
+.--inline-flex .--order[flex-order="-1"],
+.--inline-flex[class*='-order'][flex-order="-1"] {
+  -webkit-box-ordinal-group: 0;
+      -ms-flex-order: -1;
+          order: -1;
+}
+*[class^='--flex'] .--order[flex-order="0"], *[class^='--flex'][class*='-order'][flex-order="0"],
+*[class*=' --flex'] .--order[flex-order="0"],
+*[class*=' --flex'][class*='-order'][flex-order="0"],
+.--flex .--order[flex-order="0"],
+.--flex[class*='-order'][flex-order="0"],
+*[class^='--inline-flex'] .--order[flex-order="0"],
+*[class^='--inline-flex'][class*='-order'][flex-order="0"],
+*[class*=' --inline-flex'] .--order[flex-order="0"],
+*[class*=' --inline-flex'][class*='-order'][flex-order="0"],
+.--inline-flex .--order[flex-order="0"],
+.--inline-flex[class*='-order'][flex-order="0"] {
+  -webkit-box-ordinal-group: 1;
+      -ms-flex-order: 0;
+          order: 0;
+}
+*[class^='--flex'] .--order[flex-order="1"], *[class^='--flex'][class*='-order'][flex-order="1"],
+*[class*=' --flex'] .--order[flex-order="1"],
+*[class*=' --flex'][class*='-order'][flex-order="1"],
+.--flex .--order[flex-order="1"],
+.--flex[class*='-order'][flex-order="1"],
+*[class^='--inline-flex'] .--order[flex-order="1"],
+*[class^='--inline-flex'][class*='-order'][flex-order="1"],
+*[class*=' --inline-flex'] .--order[flex-order="1"],
+*[class*=' --inline-flex'][class*='-order'][flex-order="1"],
+.--inline-flex .--order[flex-order="1"],
+.--inline-flex[class*='-order'][flex-order="1"] {
+  -webkit-box-ordinal-group: 2;
+      -ms-flex-order: 1;
+          order: 1;
+}
+*[class^='--flex'] .--order[flex-order="2"], *[class^='--flex'][class*='-order'][flex-order="2"],
+*[class*=' --flex'] .--order[flex-order="2"],
+*[class*=' --flex'][class*='-order'][flex-order="2"],
+.--flex .--order[flex-order="2"],
+.--flex[class*='-order'][flex-order="2"],
+*[class^='--inline-flex'] .--order[flex-order="2"],
+*[class^='--inline-flex'][class*='-order'][flex-order="2"],
+*[class*=' --inline-flex'] .--order[flex-order="2"],
+*[class*=' --inline-flex'][class*='-order'][flex-order="2"],
+.--inline-flex .--order[flex-order="2"],
+.--inline-flex[class*='-order'][flex-order="2"] {
+  -webkit-box-ordinal-group: 3;
+      -ms-flex-order: 2;
+          order: 2;
+}
+*[class^='--flex'] .--order[flex-order="3"], *[class^='--flex'][class*='-order'][flex-order="3"],
+*[class*=' --flex'] .--order[flex-order="3"],
+*[class*=' --flex'][class*='-order'][flex-order="3"],
+.--flex .--order[flex-order="3"],
+.--flex[class*='-order'][flex-order="3"],
+*[class^='--inline-flex'] .--order[flex-order="3"],
+*[class^='--inline-flex'][class*='-order'][flex-order="3"],
+*[class*=' --inline-flex'] .--order[flex-order="3"],
+*[class*=' --inline-flex'][class*='-order'][flex-order="3"],
+.--inline-flex .--order[flex-order="3"],
+.--inline-flex[class*='-order'][flex-order="3"] {
+  -webkit-box-ordinal-group: 4;
+      -ms-flex-order: 3;
+          order: 3;
+}
+*[class^='--flex'] .--order[flex-order="4"], *[class^='--flex'][class*='-order'][flex-order="4"],
+*[class*=' --flex'] .--order[flex-order="4"],
+*[class*=' --flex'][class*='-order'][flex-order="4"],
+.--flex .--order[flex-order="4"],
+.--flex[class*='-order'][flex-order="4"],
+*[class^='--inline-flex'] .--order[flex-order="4"],
+*[class^='--inline-flex'][class*='-order'][flex-order="4"],
+*[class*=' --inline-flex'] .--order[flex-order="4"],
+*[class*=' --inline-flex'][class*='-order'][flex-order="4"],
+.--inline-flex .--order[flex-order="4"],
+.--inline-flex[class*='-order'][flex-order="4"] {
+  -webkit-box-ordinal-group: 5;
+      -ms-flex-order: 4;
+          order: 4;
+}
+*[class^='--flex'] .--order[flex-order="5"], *[class^='--flex'][class*='-order'][flex-order="5"],
+*[class*=' --flex'] .--order[flex-order="5"],
+*[class*=' --flex'][class*='-order'][flex-order="5"],
+.--flex .--order[flex-order="5"],
+.--flex[class*='-order'][flex-order="5"],
+*[class^='--inline-flex'] .--order[flex-order="5"],
+*[class^='--inline-flex'][class*='-order'][flex-order="5"],
+*[class*=' --inline-flex'] .--order[flex-order="5"],
+*[class*=' --inline-flex'][class*='-order'][flex-order="5"],
+.--inline-flex .--order[flex-order="5"],
+.--inline-flex[class*='-order'][flex-order="5"] {
+  -webkit-box-ordinal-group: 6;
+      -ms-flex-order: 5;
+          order: 5;
+}
+*[class^='--flex'] .--order[flex-order="6"], *[class^='--flex'][class*='-order'][flex-order="6"],
+*[class*=' --flex'] .--order[flex-order="6"],
+*[class*=' --flex'][class*='-order'][flex-order="6"],
+.--flex .--order[flex-order="6"],
+.--flex[class*='-order'][flex-order="6"],
+*[class^='--inline-flex'] .--order[flex-order="6"],
+*[class^='--inline-flex'][class*='-order'][flex-order="6"],
+*[class*=' --inline-flex'] .--order[flex-order="6"],
+*[class*=' --inline-flex'][class*='-order'][flex-order="6"],
+.--inline-flex .--order[flex-order="6"],
+.--inline-flex[class*='-order'][flex-order="6"] {
+  -webkit-box-ordinal-group: 7;
+      -ms-flex-order: 6;
+          order: 6;
+}
+*[class^='--flex'] .--order[flex-order="7"], *[class^='--flex'][class*='-order'][flex-order="7"],
+*[class*=' --flex'] .--order[flex-order="7"],
+*[class*=' --flex'][class*='-order'][flex-order="7"],
+.--flex .--order[flex-order="7"],
+.--flex[class*='-order'][flex-order="7"],
+*[class^='--inline-flex'] .--order[flex-order="7"],
+*[class^='--inline-flex'][class*='-order'][flex-order="7"],
+*[class*=' --inline-flex'] .--order[flex-order="7"],
+*[class*=' --inline-flex'][class*='-order'][flex-order="7"],
+.--inline-flex .--order[flex-order="7"],
+.--inline-flex[class*='-order'][flex-order="7"] {
+  -webkit-box-ordinal-group: 8;
+      -ms-flex-order: 7;
+          order: 7;
+}
+*[class^='--flex'] .--order[flex-order="8"], *[class^='--flex'][class*='-order'][flex-order="8"],
+*[class*=' --flex'] .--order[flex-order="8"],
+*[class*=' --flex'][class*='-order'][flex-order="8"],
+.--flex .--order[flex-order="8"],
+.--flex[class*='-order'][flex-order="8"],
+*[class^='--inline-flex'] .--order[flex-order="8"],
+*[class^='--inline-flex'][class*='-order'][flex-order="8"],
+*[class*=' --inline-flex'] .--order[flex-order="8"],
+*[class*=' --inline-flex'][class*='-order'][flex-order="8"],
+.--inline-flex .--order[flex-order="8"],
+.--inline-flex[class*='-order'][flex-order="8"] {
+  -webkit-box-ordinal-group: 9;
+      -ms-flex-order: 8;
+          order: 8;
+}
+*[class^='--flex'] .--order[flex-order="9"], *[class^='--flex'][class*='-order'][flex-order="9"],
+*[class*=' --flex'] .--order[flex-order="9"],
+*[class*=' --flex'][class*='-order'][flex-order="9"],
+.--flex .--order[flex-order="9"],
+.--flex[class*='-order'][flex-order="9"],
+*[class^='--inline-flex'] .--order[flex-order="9"],
+*[class^='--inline-flex'][class*='-order'][flex-order="9"],
+*[class*=' --inline-flex'] .--order[flex-order="9"],
+*[class*=' --inline-flex'][class*='-order'][flex-order="9"],
+.--inline-flex .--order[flex-order="9"],
+.--inline-flex[class*='-order'][flex-order="9"] {
+  -webkit-box-ordinal-group: 10;
+      -ms-flex-order: 9;
+          order: 9;
+}
+*[class^='--flex'] .--order[flex-order="10"], *[class^='--flex'][class*='-order'][flex-order="10"],
+*[class*=' --flex'] .--order[flex-order="10"],
+*[class*=' --flex'][class*='-order'][flex-order="10"],
+.--flex .--order[flex-order="10"],
+.--flex[class*='-order'][flex-order="10"],
+*[class^='--inline-flex'] .--order[flex-order="10"],
+*[class^='--inline-flex'][class*='-order'][flex-order="10"],
+*[class*=' --inline-flex'] .--order[flex-order="10"],
+*[class*=' --inline-flex'][class*='-order'][flex-order="10"],
+.--inline-flex .--order[flex-order="10"],
+.--inline-flex[class*='-order'][flex-order="10"] {
+  -webkit-box-ordinal-group: 11;
+      -ms-flex-order: 10;
+          order: 10;
+}
+*[class^='--flex'] .--order[flex-order="11"], *[class^='--flex'][class*='-order'][flex-order="11"],
+*[class*=' --flex'] .--order[flex-order="11"],
+*[class*=' --flex'][class*='-order'][flex-order="11"],
+.--flex .--order[flex-order="11"],
+.--flex[class*='-order'][flex-order="11"],
+*[class^='--inline-flex'] .--order[flex-order="11"],
+*[class^='--inline-flex'][class*='-order'][flex-order="11"],
+*[class*=' --inline-flex'] .--order[flex-order="11"],
+*[class*=' --inline-flex'][class*='-order'][flex-order="11"],
+.--inline-flex .--order[flex-order="11"],
+.--inline-flex[class*='-order'][flex-order="11"] {
+  -webkit-box-ordinal-group: 12;
+      -ms-flex-order: 11;
+          order: 11;
+}
+*[class^='--flex'] .--order[flex-order="12"], *[class^='--flex'][class*='-order'][flex-order="12"],
+*[class*=' --flex'] .--order[flex-order="12"],
+*[class*=' --flex'][class*='-order'][flex-order="12"],
+.--flex .--order[flex-order="12"],
+.--flex[class*='-order'][flex-order="12"],
+*[class^='--inline-flex'] .--order[flex-order="12"],
+*[class^='--inline-flex'][class*='-order'][flex-order="12"],
+*[class*=' --inline-flex'] .--order[flex-order="12"],
+*[class*=' --inline-flex'][class*='-order'][flex-order="12"],
+.--inline-flex .--order[flex-order="12"],
+.--inline-flex[class*='-order'][flex-order="12"] {
+  -webkit-box-ordinal-group: 13;
+      -ms-flex-order: 12;
+          order: 12;
+}
+*[class^='--flex'] .--order[flex-order="13"], *[class^='--flex'][class*='-order'][flex-order="13"],
+*[class*=' --flex'] .--order[flex-order="13"],
+*[class*=' --flex'][class*='-order'][flex-order="13"],
+.--flex .--order[flex-order="13"],
+.--flex[class*='-order'][flex-order="13"],
+*[class^='--inline-flex'] .--order[flex-order="13"],
+*[class^='--inline-flex'][class*='-order'][flex-order="13"],
+*[class*=' --inline-flex'] .--order[flex-order="13"],
+*[class*=' --inline-flex'][class*='-order'][flex-order="13"],
+.--inline-flex .--order[flex-order="13"],
+.--inline-flex[class*='-order'][flex-order="13"] {
+  -webkit-box-ordinal-group: 14;
+      -ms-flex-order: 13;
+          order: 13;
+}
+*[class^='--flex'] .--order[flex-order="14"], *[class^='--flex'][class*='-order'][flex-order="14"],
+*[class*=' --flex'] .--order[flex-order="14"],
+*[class*=' --flex'][class*='-order'][flex-order="14"],
+.--flex .--order[flex-order="14"],
+.--flex[class*='-order'][flex-order="14"],
+*[class^='--inline-flex'] .--order[flex-order="14"],
+*[class^='--inline-flex'][class*='-order'][flex-order="14"],
+*[class*=' --inline-flex'] .--order[flex-order="14"],
+*[class*=' --inline-flex'][class*='-order'][flex-order="14"],
+.--inline-flex .--order[flex-order="14"],
+.--inline-flex[class*='-order'][flex-order="14"] {
+  -webkit-box-ordinal-group: 15;
+      -ms-flex-order: 14;
+          order: 14;
+}
+*[class^='--flex'] .--order[flex-order="15"], *[class^='--flex'][class*='-order'][flex-order="15"],
+*[class*=' --flex'] .--order[flex-order="15"],
+*[class*=' --flex'][class*='-order'][flex-order="15"],
+.--flex .--order[flex-order="15"],
+.--flex[class*='-order'][flex-order="15"],
+*[class^='--inline-flex'] .--order[flex-order="15"],
+*[class^='--inline-flex'][class*='-order'][flex-order="15"],
+*[class*=' --inline-flex'] .--order[flex-order="15"],
+*[class*=' --inline-flex'][class*='-order'][flex-order="15"],
+.--inline-flex .--order[flex-order="15"],
+.--inline-flex[class*='-order'][flex-order="15"] {
+  -webkit-box-ordinal-group: 16;
+      -ms-flex-order: 15;
+          order: 15;
+}
+*[class^='--flex'] .--order[flex-order="16"], *[class^='--flex'][class*='-order'][flex-order="16"],
+*[class*=' --flex'] .--order[flex-order="16"],
+*[class*=' --flex'][class*='-order'][flex-order="16"],
+.--flex .--order[flex-order="16"],
+.--flex[class*='-order'][flex-order="16"],
+*[class^='--inline-flex'] .--order[flex-order="16"],
+*[class^='--inline-flex'][class*='-order'][flex-order="16"],
+*[class*=' --inline-flex'] .--order[flex-order="16"],
+*[class*=' --inline-flex'][class*='-order'][flex-order="16"],
+.--inline-flex .--order[flex-order="16"],
+.--inline-flex[class*='-order'][flex-order="16"] {
+  -webkit-box-ordinal-group: 17;
+      -ms-flex-order: 16;
+          order: 16;
+}
+*[class^='--flex'] .--order[flex-order="17"], *[class^='--flex'][class*='-order'][flex-order="17"],
+*[class*=' --flex'] .--order[flex-order="17"],
+*[class*=' --flex'][class*='-order'][flex-order="17"],
+.--flex .--order[flex-order="17"],
+.--flex[class*='-order'][flex-order="17"],
+*[class^='--inline-flex'] .--order[flex-order="17"],
+*[class^='--inline-flex'][class*='-order'][flex-order="17"],
+*[class*=' --inline-flex'] .--order[flex-order="17"],
+*[class*=' --inline-flex'][class*='-order'][flex-order="17"],
+.--inline-flex .--order[flex-order="17"],
+.--inline-flex[class*='-order'][flex-order="17"] {
+  -webkit-box-ordinal-group: 18;
+      -ms-flex-order: 17;
+          order: 17;
+}
+*[class^='--flex'] .--order[flex-order="18"], *[class^='--flex'][class*='-order'][flex-order="18"],
+*[class*=' --flex'] .--order[flex-order="18"],
+*[class*=' --flex'][class*='-order'][flex-order="18"],
+.--flex .--order[flex-order="18"],
+.--flex[class*='-order'][flex-order="18"],
+*[class^='--inline-flex'] .--order[flex-order="18"],
+*[class^='--inline-flex'][class*='-order'][flex-order="18"],
+*[class*=' --inline-flex'] .--order[flex-order="18"],
+*[class*=' --inline-flex'][class*='-order'][flex-order="18"],
+.--inline-flex .--order[flex-order="18"],
+.--inline-flex[class*='-order'][flex-order="18"] {
+  -webkit-box-ordinal-group: 19;
+      -ms-flex-order: 18;
+          order: 18;
+}
+*[class^='--flex'] .--order[flex-order="19"], *[class^='--flex'][class*='-order'][flex-order="19"],
+*[class*=' --flex'] .--order[flex-order="19"],
+*[class*=' --flex'][class*='-order'][flex-order="19"],
+.--flex .--order[flex-order="19"],
+.--flex[class*='-order'][flex-order="19"],
+*[class^='--inline-flex'] .--order[flex-order="19"],
+*[class^='--inline-flex'][class*='-order'][flex-order="19"],
+*[class*=' --inline-flex'] .--order[flex-order="19"],
+*[class*=' --inline-flex'][class*='-order'][flex-order="19"],
+.--inline-flex .--order[flex-order="19"],
+.--inline-flex[class*='-order'][flex-order="19"] {
+  -webkit-box-ordinal-group: 20;
+      -ms-flex-order: 19;
+          order: 19;
+}
+*[class^='--flex'] .--order[flex-order="20"], *[class^='--flex'][class*='-order'][flex-order="20"],
+*[class*=' --flex'] .--order[flex-order="20"],
+*[class*=' --flex'][class*='-order'][flex-order="20"],
+.--flex .--order[flex-order="20"],
+.--flex[class*='-order'][flex-order="20"],
+*[class^='--inline-flex'] .--order[flex-order="20"],
+*[class^='--inline-flex'][class*='-order'][flex-order="20"],
+*[class*=' --inline-flex'] .--order[flex-order="20"],
+*[class*=' --inline-flex'][class*='-order'][flex-order="20"],
+.--inline-flex .--order[flex-order="20"],
+.--inline-flex[class*='-order'][flex-order="20"] {
+  -webkit-box-ordinal-group: 21;
+      -ms-flex-order: 20;
+          order: 20;
+}
+*[class^='--flex'] .--order[flex-order="21"], *[class^='--flex'][class*='-order'][flex-order="21"],
+*[class*=' --flex'] .--order[flex-order="21"],
+*[class*=' --flex'][class*='-order'][flex-order="21"],
+.--flex .--order[flex-order="21"],
+.--flex[class*='-order'][flex-order="21"],
+*[class^='--inline-flex'] .--order[flex-order="21"],
+*[class^='--inline-flex'][class*='-order'][flex-order="21"],
+*[class*=' --inline-flex'] .--order[flex-order="21"],
+*[class*=' --inline-flex'][class*='-order'][flex-order="21"],
+.--inline-flex .--order[flex-order="21"],
+.--inline-flex[class*='-order'][flex-order="21"] {
+  -webkit-box-ordinal-group: 22;
+      -ms-flex-order: 21;
+          order: 21;
+}
+*[class^='--flex'] .--order[flex-order="22"], *[class^='--flex'][class*='-order'][flex-order="22"],
+*[class*=' --flex'] .--order[flex-order="22"],
+*[class*=' --flex'][class*='-order'][flex-order="22"],
+.--flex .--order[flex-order="22"],
+.--flex[class*='-order'][flex-order="22"],
+*[class^='--inline-flex'] .--order[flex-order="22"],
+*[class^='--inline-flex'][class*='-order'][flex-order="22"],
+*[class*=' --inline-flex'] .--order[flex-order="22"],
+*[class*=' --inline-flex'][class*='-order'][flex-order="22"],
+.--inline-flex .--order[flex-order="22"],
+.--inline-flex[class*='-order'][flex-order="22"] {
+  -webkit-box-ordinal-group: 23;
+      -ms-flex-order: 22;
+          order: 22;
+}
+*[class^='--flex'] .--order[flex-order="23"], *[class^='--flex'][class*='-order'][flex-order="23"],
+*[class*=' --flex'] .--order[flex-order="23"],
+*[class*=' --flex'][class*='-order'][flex-order="23"],
+.--flex .--order[flex-order="23"],
+.--flex[class*='-order'][flex-order="23"],
+*[class^='--inline-flex'] .--order[flex-order="23"],
+*[class^='--inline-flex'][class*='-order'][flex-order="23"],
+*[class*=' --inline-flex'] .--order[flex-order="23"],
+*[class*=' --inline-flex'][class*='-order'][flex-order="23"],
+.--inline-flex .--order[flex-order="23"],
+.--inline-flex[class*='-order'][flex-order="23"] {
+  -webkit-box-ordinal-group: 24;
+      -ms-flex-order: 23;
+          order: 23;
+}
+*[class^='--flex'] .--order[flex-order="24"], *[class^='--flex'][class*='-order'][flex-order="24"],
+*[class*=' --flex'] .--order[flex-order="24"],
+*[class*=' --flex'][class*='-order'][flex-order="24"],
+.--flex .--order[flex-order="24"],
+.--flex[class*='-order'][flex-order="24"],
+*[class^='--inline-flex'] .--order[flex-order="24"],
+*[class^='--inline-flex'][class*='-order'][flex-order="24"],
+*[class*=' --inline-flex'] .--order[flex-order="24"],
+*[class*=' --inline-flex'][class*='-order'][flex-order="24"],
+.--inline-flex .--order[flex-order="24"],
+.--inline-flex[class*='-order'][flex-order="24"] {
+  -webkit-box-ordinal-group: 25;
+      -ms-flex-order: 24;
+          order: 24;
+}
+*[class^='--flex'] .--order[flex-order="25"], *[class^='--flex'][class*='-order'][flex-order="25"],
+*[class*=' --flex'] .--order[flex-order="25"],
+*[class*=' --flex'][class*='-order'][flex-order="25"],
+.--flex .--order[flex-order="25"],
+.--flex[class*='-order'][flex-order="25"],
+*[class^='--inline-flex'] .--order[flex-order="25"],
+*[class^='--inline-flex'][class*='-order'][flex-order="25"],
+*[class*=' --inline-flex'] .--order[flex-order="25"],
+*[class*=' --inline-flex'][class*='-order'][flex-order="25"],
+.--inline-flex .--order[flex-order="25"],
+.--inline-flex[class*='-order'][flex-order="25"] {
+  -webkit-box-ordinal-group: 26;
+      -ms-flex-order: 25;
+          order: 25;
+}
+*[class^='--flex'] .--order[flex-order="26"], *[class^='--flex'][class*='-order'][flex-order="26"],
+*[class*=' --flex'] .--order[flex-order="26"],
+*[class*=' --flex'][class*='-order'][flex-order="26"],
+.--flex .--order[flex-order="26"],
+.--flex[class*='-order'][flex-order="26"],
+*[class^='--inline-flex'] .--order[flex-order="26"],
+*[class^='--inline-flex'][class*='-order'][flex-order="26"],
+*[class*=' --inline-flex'] .--order[flex-order="26"],
+*[class*=' --inline-flex'][class*='-order'][flex-order="26"],
+.--inline-flex .--order[flex-order="26"],
+.--inline-flex[class*='-order'][flex-order="26"] {
+  -webkit-box-ordinal-group: 27;
+      -ms-flex-order: 26;
+          order: 26;
+}
+*[class^='--flex'] .--order[flex-order="27"], *[class^='--flex'][class*='-order'][flex-order="27"],
+*[class*=' --flex'] .--order[flex-order="27"],
+*[class*=' --flex'][class*='-order'][flex-order="27"],
+.--flex .--order[flex-order="27"],
+.--flex[class*='-order'][flex-order="27"],
+*[class^='--inline-flex'] .--order[flex-order="27"],
+*[class^='--inline-flex'][class*='-order'][flex-order="27"],
+*[class*=' --inline-flex'] .--order[flex-order="27"],
+*[class*=' --inline-flex'][class*='-order'][flex-order="27"],
+.--inline-flex .--order[flex-order="27"],
+.--inline-flex[class*='-order'][flex-order="27"] {
+  -webkit-box-ordinal-group: 28;
+      -ms-flex-order: 27;
+          order: 27;
+}
+*[class^='--flex'] .--order[flex-order="28"], *[class^='--flex'][class*='-order'][flex-order="28"],
+*[class*=' --flex'] .--order[flex-order="28"],
+*[class*=' --flex'][class*='-order'][flex-order="28"],
+.--flex .--order[flex-order="28"],
+.--flex[class*='-order'][flex-order="28"],
+*[class^='--inline-flex'] .--order[flex-order="28"],
+*[class^='--inline-flex'][class*='-order'][flex-order="28"],
+*[class*=' --inline-flex'] .--order[flex-order="28"],
+*[class*=' --inline-flex'][class*='-order'][flex-order="28"],
+.--inline-flex .--order[flex-order="28"],
+.--inline-flex[class*='-order'][flex-order="28"] {
+  -webkit-box-ordinal-group: 29;
+      -ms-flex-order: 28;
+          order: 28;
+}
+*[class^='--flex'] .--order[flex-order="29"], *[class^='--flex'][class*='-order'][flex-order="29"],
+*[class*=' --flex'] .--order[flex-order="29"],
+*[class*=' --flex'][class*='-order'][flex-order="29"],
+.--flex .--order[flex-order="29"],
+.--flex[class*='-order'][flex-order="29"],
+*[class^='--inline-flex'] .--order[flex-order="29"],
+*[class^='--inline-flex'][class*='-order'][flex-order="29"],
+*[class*=' --inline-flex'] .--order[flex-order="29"],
+*[class*=' --inline-flex'][class*='-order'][flex-order="29"],
+.--inline-flex .--order[flex-order="29"],
+.--inline-flex[class*='-order'][flex-order="29"] {
+  -webkit-box-ordinal-group: 30;
+      -ms-flex-order: 29;
+          order: 29;
+}
+*[class^='--flex'] .--order[flex-order="30"], *[class^='--flex'][class*='-order'][flex-order="30"],
+*[class*=' --flex'] .--order[flex-order="30"],
+*[class*=' --flex'][class*='-order'][flex-order="30"],
+.--flex .--order[flex-order="30"],
+.--flex[class*='-order'][flex-order="30"],
+*[class^='--inline-flex'] .--order[flex-order="30"],
+*[class^='--inline-flex'][class*='-order'][flex-order="30"],
+*[class*=' --inline-flex'] .--order[flex-order="30"],
+*[class*=' --inline-flex'][class*='-order'][flex-order="30"],
+.--inline-flex .--order[flex-order="30"],
+.--inline-flex[class*='-order'][flex-order="30"] {
+  -webkit-box-ordinal-group: 31;
+      -ms-flex-order: 30;
+          order: 30;
+}
+*[class^='--flex'] .--order[flex-order="31"], *[class^='--flex'][class*='-order'][flex-order="31"],
+*[class*=' --flex'] .--order[flex-order="31"],
+*[class*=' --flex'][class*='-order'][flex-order="31"],
+.--flex .--order[flex-order="31"],
+.--flex[class*='-order'][flex-order="31"],
+*[class^='--inline-flex'] .--order[flex-order="31"],
+*[class^='--inline-flex'][class*='-order'][flex-order="31"],
+*[class*=' --inline-flex'] .--order[flex-order="31"],
+*[class*=' --inline-flex'][class*='-order'][flex-order="31"],
+.--inline-flex .--order[flex-order="31"],
+.--inline-flex[class*='-order'][flex-order="31"] {
+  -webkit-box-ordinal-group: 32;
+      -ms-flex-order: 31;
+          order: 31;
+}
+*[class^='--flex'] .--order[flex-order="32"], *[class^='--flex'][class*='-order'][flex-order="32"],
+*[class*=' --flex'] .--order[flex-order="32"],
+*[class*=' --flex'][class*='-order'][flex-order="32"],
+.--flex .--order[flex-order="32"],
+.--flex[class*='-order'][flex-order="32"],
+*[class^='--inline-flex'] .--order[flex-order="32"],
+*[class^='--inline-flex'][class*='-order'][flex-order="32"],
+*[class*=' --inline-flex'] .--order[flex-order="32"],
+*[class*=' --inline-flex'][class*='-order'][flex-order="32"],
+.--inline-flex .--order[flex-order="32"],
+.--inline-flex[class*='-order'][flex-order="32"] {
+  -webkit-box-ordinal-group: 33;
+      -ms-flex-order: 32;
+          order: 32;
+}

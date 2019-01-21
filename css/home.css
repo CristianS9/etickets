@@ -13,6 +13,10 @@ body {
     font-family: 'Cabin', sans-serif;
 }
 
+.mySearch {
+    display: none;
+}
+
 div.contenido {
     max-width: 1350px;
     margin: 0 auto;
@@ -64,7 +68,7 @@ div.contenido {
 }
 
 .contenido .item-right .down-border {
-    bottom: -13px;
+    bottom: -28px;
     right: -35px;
 }
 

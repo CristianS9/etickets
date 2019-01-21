@@ -8,7 +8,8 @@ $html = '';
 if (!empty($headers)) {
     $html .= '<tr>';
     foreach ($headers as $aHeader) {
-        $html .= "<th>{$aHeader}</th>";
+        $style = (strtolower($aHeader) === 'id') ? 'display: none;' : '';
+        $html .= "<th style='{$style}'>{$aHeader}</th>";
     }
     $html .= '</tr>';
 }
@@ -20,6 +21,8 @@ if (!empty($rows)) {
     foreach ($rows as $row) {
         $html .= '<tr>';
         foreach ($row as $columnName => $column) {
+            $style = (strtolower($columnName) === 'id') ? 'display: none;' : '';
+
             if (is_array($column)) {
                 $content = '';
                 foreach ($column as $aColumnKey => $aColumnValue) {
@@ -28,11 +31,11 @@ if (!empty($rows)) {
 
                 $content = htmlspecialchars($content);
 
-                $html .= "<td>{$content}</td>";
+                $html .= "<td style='{$style}'>{$content}</td>";
             } else {
                 $column = htmlspecialchars($column);
 
-                $html .= "<td>{$column}</td>";
+                $html .= "<td style='{$style}'>{$column}</td>";
             }
         }
         $html .= '</tr>';
