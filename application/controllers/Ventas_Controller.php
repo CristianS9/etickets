@@ -13,6 +13,12 @@ class Ventas_Controller extends CI_Controller{
         $this->load->helper("url");
         $this->load->view("ventas_view",$data);
     }
+    public function entradasCompra($id){
+        //$cambio =  base64_encode(base64_encode(base64_encode($id)));
+        $entradas = $this->db->query("CALL spDetallesEntradas($id)")->result();
+        $data["entradas"] = $entradas;
+        $this->load->view("entradasCompra",$data);
+    }
 }
 
 ?>
