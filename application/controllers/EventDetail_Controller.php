@@ -8,7 +8,6 @@ class EventDetail_Controller extends CI_Controller {
         $this->load->helper('html');
         $this->load->library('session');
 
-
     }
     public function eventDetails() {
 
@@ -17,7 +16,9 @@ class EventDetail_Controller extends CI_Controller {
 
         $data['datos'] = $this->Evento_Model->getEventDetails();
         $data['eventTickets'] = $this->Evento_Model->getEventTickets();
-        $data['userCart'] = $this->ShoppingCart_Model->getShoppingCart($this->session->id);
+        if (isset($this->session->id)) {
+            $data['userCart'] = $this->ShoppingCart_Model->getShoppingCart($this->session->id);
+        }
         $data['eventComments'] = $this->Evento_Model->getEventComments();
         $this->load->view("event_detail", $data);
 

@@ -110,9 +110,11 @@
                         $cantidadRestante = $ticket->cantidadTotal;
 
                         // Comprueba si este ticket está en la cesta de la compra para restar a la cantidad total.
-                        foreach ($userCart as $lineaCarrito) {
-                            if ($lineaCarrito->entradasEventoId == $ticket->id) {
-                                $cantidadRestante = $cantidadRestante - $lineaCarrito->cantidad;
+                        if(isset($userCart)){
+                            foreach ($userCart as $lineaCarrito) {
+                                if ($lineaCarrito->entradasEventoId == $ticket->id) {
+                                    $cantidadRestante = $cantidadRestante - $lineaCarrito->cantidad;
+                                }
                             }
                         }
 
@@ -141,7 +143,7 @@
                                 <div class="bottom --flex-row-j!sb">
                                     <input type="number" placeholder=" Cant." class="inputCantidad" id="<?php echo $idCantidad ?>">
                                     <div class="contadorCantidad <?php echo $idContador ?> " cantidadRestante="<?php echo $cantidadRestante ?>" cantidadTotal="<?php echo $ticket->cantidadTotal ?>"><?php echo $cantidadRestante . " / " . $ticket->cantidadTotal ?></div>
-                                    <a class="buy addToCartButton" id='<?php echo $ticket->id ?>'>CESTA</a>
+                                    <a class="buy addToCartButton" id='<?php echo $ticket->id ?>'>CESTA</a>                             
                                 </div>
                             </widget>
                         </section>
@@ -172,12 +174,7 @@
     <!-- /.container -->
 
     <!-- Footer -->
-    <footer class="py-5 bg-dark">
-        <div class="container">
-            <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
-        </div>
-        <!-- /.container -->
-    </footer>
+q
 </body>
 
 </html>

@@ -2,7 +2,7 @@
 class Ventas_Controller extends CI_Controller{
     public function __construct(){
         parent::__construct();
-        $this->load->helper(['url']); 
+        $this->load->helper(['url',"html"]); 
         $this->load->database(); 
     }
 
@@ -10,7 +10,6 @@ class Ventas_Controller extends CI_Controller{
         $query = $this->db->query("CALL spDatosVenta");
         $data["ventas"] = $query->result();
 
-        $this->load->helper("url");
         $this->load->view("ventas_view",$data);
     }
     public function entradasCompra($id){
