@@ -27,9 +27,11 @@ $(document).ready(function () {
     function validar(padre) {
         var linea = $(padre).parent();
         var elemento = $(linea).find("div.info").attr("elemento").trim();
-        var correcto;
+        var correcto = true;
+
         if ("usuario" == elemento) {
-            correcto = checkUsername();
+            ajaxUsername(elemento,padre);
+
         } else if ("contrasena" == elemento) {
             correcto = checkPass();
         } else if ("nombre" == elemento) {
@@ -38,25 +40,27 @@ $(document).ready(function () {
         } else if ("apellidos" == elemento) {
             correcto = checkApellido();
         } else if ("email" == elemento) {
-            correcto = checkCorreo();
+            ajaxCorreo();
         } else if ("telefono" == elemento) {
             correcto = checkTelefono();
         }
         if(true == correcto){
-            enviar(padre);
+            if ("email" != elemento || "usuario" != elemento) {
+                enviar(padre);
+            }
         }else{
             notifError("El campo no cumple los requisitos.");
         }
     }
 
-    function checkUsername() {
+    function checkUsername(existe,padre) {
         var username = $('.linea').find('input.data').val().trim();
-        var existe = ajaxUsername(username);
-        console.log("Existe: "+existe);
-        if ("" == username || username.length < 4 || username.length > 20 || 'true' == existe) {
-            return false;
+        console.log("username Pillado: "+username);
+
+        if ("" == username || username.length < 4 || username.length > 20 || "false" == existe) {
+            enviar(padre);
         } else {
-            return true;
+            console.log("Usuario no cumple los requisitos");
         }
     }
 
@@ -77,8 +81,8 @@ $(document).ready(function () {
         var nombre = $('.linea').find('input.data').val().trim();
         
         if ("" == nombre || nombre.length < 4 || nombre.length > 20) {
-            return false;
             
+            return false;
         } else{
             return true;
         }
@@ -137,7 +141,8 @@ $(document).ready(function () {
             $(padre).find('span.enviar').after(cancelar);
         }
     }
-    function ajaxUsername(username) {
+    function ajaxUsername(username,padre) {
+        
         $.ajax({
             type: "POST",
             url: "ajax/Perfil_Ajax/checkUser",
@@ -145,13 +150,13 @@ $(document).ready(function () {
                 username: username
             },
             success: function (datos) {
-                console.log("DATOS: "+datos);
-                return datos;
+                checkUsername(datos,padre);
             },
             error: function (error) {
                 
             }
         });
+        
     }
     function ajaxCorreo(correo) {
         

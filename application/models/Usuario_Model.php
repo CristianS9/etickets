@@ -33,9 +33,19 @@
             $condicion = [
                 "usuario" => $usuario
             ];
-            return $this->db->get_where("usuarios",$condicion)->row();
-            
+            return $this->db->get_where("usuarios",$condicion)->row();  
         }
+
+        public function getUsername($username){
+            $condicion = [
+                "usuario" => $username,
+            ];
+
+            $existe = $this->db->get_where("usuarios",$condicion)->row("usuario");
+            $this->db->close();
+            return $existe;
+        }
+
         public function login_necesario(){
             if(!isset($this->session->id)){
                 redirect("acceso");

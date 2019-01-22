@@ -57,13 +57,13 @@ class Perfil_ajax extends CI_Controller {
 
     public function checkUser(){
         $username = $this->input->post("username");
-        
-        $existe = $this->Usuario_Model->datosLogin($username);
+        $existe = $this->Usuario_Model->getUsername($username);
 
-        if (isset($existe->usuario)) {
-            echo "true";
-        } else {
+        
+        if ("" == $existe) {
             echo "false";
+        } else {
+            echo "true";
         }
     
     }
