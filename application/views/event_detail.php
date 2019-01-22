@@ -110,9 +110,11 @@
                         $cantidadRestante = $ticket->cantidadTotal;
 
                         // Comprueba si este ticket está en la cesta de la compra para restar a la cantidad total.
-                        foreach ($userCart as $lineaCarrito) {
-                            if ($lineaCarrito->entradasEventoId == $ticket->id) {
-                                $cantidadRestante = $cantidadRestante - $lineaCarrito->cantidad;
+                        if(isset($userCart)){
+                            foreach ($userCart as $lineaCarrito) {
+                                if ($lineaCarrito->entradasEventoId == $ticket->id) {
+                                    $cantidadRestante = $cantidadRestante - $lineaCarrito->cantidad;
+                                }
                             }
                         }
 
