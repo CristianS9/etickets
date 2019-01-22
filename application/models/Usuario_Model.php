@@ -36,12 +36,21 @@
             return $this->db->get_where("usuarios",$condicion)->row();  
         }
 
-        public function getUsername($usuario){
+        public function getUsuario($usuario){
             $condicion = [
                 "usuario" => $usuario,
             ];
 
             $existe = $this->db->get_where("usuarios",$condicion)->row("usuario");
+            $this->db->close();
+            return $existe;
+        }
+        public function getEmail($email){
+            $condicion = [
+                "email" => $email,
+            ];
+
+            $existe = $this->db->get_where("usuarios",$condicion)->row("email");
             $this->db->close();
             return $existe;
         }

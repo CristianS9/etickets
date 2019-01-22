@@ -57,7 +57,10 @@ class Perfil extends CI_Controller {
     public function modificarDato(){
         $elemento = $this->input->post("elemento");
         $dato = $this->input->post("dato");
-        
+        if($elemento=="contrasena"){
+            $dato = password_hash($dato,PASSWORD_BCRYPT);
+        }
+
         $datos = [
             $elemento => $dato
         ];
@@ -73,15 +76,23 @@ class Perfil extends CI_Controller {
     }
     public function usuarioExiste(){
         $usuario = $this->input->post("usuario");
-        $existe = $this->Usuario_Model->getUsername($usuario);
+        $existe = $this->Usuario_Model->getUsuario($usuario);
 
-        
         if ("" == $existe) {
             echo "false";
         } else {
             echo "true";
         }
     
+    }
+    public function emailExiste(){
+        $email = $this->input->post("email");
+        $existe = $this->Usuario_Model->getEmail($email);
+        if("" == $existe){
+            echo "false";
+        }else {
+            echo "true";
+        }
     }
 }
 ?>

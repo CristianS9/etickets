@@ -1,16 +1,17 @@
+// Variables globales
 var g = {};
 g.modificando = false;
-var cambiar = {};
+
+
+
 
 $(document).ready(function () {
     cambioPestañas_activo();
     verCompras_activo();
     botonesEdicion_activos();
-
-
-    
 });
 
+// Modifica las diferentes
 function cambioPestañas_activo(){
     $('.ventana').click(function () {
         var elemento = $(this).attr('elemento');
@@ -18,6 +19,7 @@ function cambioPestañas_activo(){
         $('#' + elemento).fadeIn();
     });
 }
+// ????
 function verCompras_activo(){
     $('.compra').click(function () {
         var elemento = $(this).closest('tr').next('tr');
@@ -36,6 +38,7 @@ function botonesEdicion_activos(){
     });
 }
 
+// Comprueba si hay una modificacion en curso y si no permite realizar una
 function editar(boton){
     if(!g.modificando){
         g.modificando = true;
@@ -43,6 +46,8 @@ function editar(boton){
   
     }
 }
+
+// Cambiar el formado del elemento seleccionado de una DIV a un INPUT
 function divEdicion(boton){
     // Obtiene los datos
     var padre = $(boton).parent().parent();
@@ -51,7 +56,9 @@ function divEdicion(boton){
 
     var elemento = $(padre).find('div.info').attr('elemento').trim();
     var dato = $(padre).find('div.data').html().trim();
-
+    if(elemento=="contrasena"){
+        dato = "";
+    }
 
     // Establece el tipo de input
     var type = "text";
@@ -79,18 +86,31 @@ function divEdicion(boton){
     $(padre).find('div.botones').append(cancelar); 
 }
 
+// Deja el formato del elemento selecciona en su original(DIV)
 function cancelar() {
     $(g.padre).html(g.seleccionado);
     g.modificando = false;
 }
+
+// Al hacer clic en enviar una modificacion obtiene los datos y llama a la funcion correspodiente para la edicion
 function enviar(boton){
     var padre = $(boton).parent().parent();
     g.elemento = $(padre).find("div.info").attr("elemento").trim();
     g.dato = $(padre).find('input.data').val().trim();    
+
     cambiar[g.elemento](g.dato);
 
 }
 
+
+  ////////////////////////////////////
+ /// COMPROBACIONES DE LOS INPUTS //
+//////////////////////////////////
+
+// Array que contiene las funciones de forma asociativa
+var cambiar = {};
+
+// Funciones
 cambiar["usuario"] = function(usuario) {
     $.ajax({
         type: "post",
@@ -112,29 +132,60 @@ cambiar["usuario"] = function(usuario) {
     }); 
 }
 
-cambiar["contrasena"] = function(dato) {
+cambiar["contrasena"] = function(contrasena) {
     var regPass = /^\S*(?=\S{4,})(?=\S*[a-z])(?=\S*[\W])(?=\S*[A-Z])(?=\S*[\d])\S*$/;
 
-    if ("" == dato || dato.length < 4 || dato.length > 20 || !dato.match(regPass)) {
-       return false;
+    if ("" == contrasena || contrasena.length < 4 || contrasena.length > 20 || !contrasena.match(regPass)) {
+       notificacion("La contraseña debe conterner entre 4 y 20 caracteres. Entre los cuales 1 Mayuscula,1 Minuscula 1 Numero y 1 Caracter Especial");
     } else {
-        return true;
+        modificarDato();
     } 
  
 }
-cambiar["nombre"] = function(dato) {
-    console.log(dato);
+cambiar["nombre"] = function(nombre) {
+    if ("" == nombre || nombre.length < 5 || nombre.length > 20) {
+        notificacion("El nombre debe contener de 5 a 20 caracteres");
+    } else {
+        modificarDato();
+    }
 }
-cambiar["appelidos"] = function(dato) {
-    console.log(dato);
+cambiar["apellidos"] = function (apellidos) {
+    if ("" == apellidos || apellidos.length < 4 || apellidos.length > 30) {
+        notificacion("Los apellidos debe contener de 4 a 30 caracteres");
+    } else {
+        modificarDato();
+    }
 }
-cambiar["email"] = function(dato) {
-    console.log(dato);
+cambiar["email"] = function(email) {
+    var filtro = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+    $.ajax({
+        type: "post",
+        url: "ajax/perfil/emailExiste",
+        data: {
+            "email": email
+        },
+        success: function (datos) {
+            var existe = JSON.parse(datos);
+            if ("" == email || email.length < 4 || email.length > 25 || !email.match(filtro)) {
+                notificacion("No es un formato de email valido");
+            } else if (existe) {
+                notificacion("Este correo electronico ya esta en uso");
+            } else {
+                modificarDato();
+            }
+        }
+    });
 }
-cambiar["telefono"] = function(dato) {
-    console.log(dato);
+cambiar["telefono"] = function(telefono) {
+    if ("" == telefono || telefono.length != 9) {
+        notificacion("El numero de telefono debe de contener 9 numeros");
+    } else {
+        modificarDato();
+    }
 }
 
+// Si la compobacion se realiza con existo se le llama a esta funcion para modificar el dato en la base de datos
 function modificarDato(){
      $.ajax({
          type: "post",
@@ -144,13 +195,21 @@ function modificarDato(){
              "dato": g.dato
          },
          success: function (respuesta) {
-            cancelar();                
-            actualizarDato();
+            var callbacks = $.Callbacks();
+            callbacks.add(cancelar);
+         
+            callbacks.add(actualizarDato);
+            callbacks.fire();
         }
      });
 }
+
+// Se ocupa de mostrar el nuevo datos cambiado en pantalla  
 function actualizarDato(){
-    $(g.padre).find("div."+g.elemento).html(g.dato);
+    // Se cambia todo menos la contraseña, la cual se deja con los simbolos para que este oculto
+    if(g.elemento != "contrasena"){
+        $(g.padre).find("div.data").html(g.dato);
+    }
 }
 
 
