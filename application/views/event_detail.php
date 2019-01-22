@@ -21,6 +21,7 @@
     <?php echo link_tag("css/event_detail.css"); ?>
     <script>var base_url = '<?php echo base_url() ?>';</script>
     <script>var ev_id = '<?php echo $eventTickets[0]->idEvento ?>';</script>
+    <script>var user_name = '<?php echo $userName ?>';</script>
 
     <!-- Links de JavaScript -->
     <script src="<?php echo base_url() ?>lib/jquery-3.3.1.min.js"></script>
@@ -181,23 +182,22 @@
             <?php
                 foreach ($eventComments as $comentario){
                     $dateMonth = DateTime::createFromFormat("Y-m-d", $comentario->fecha);
-$nombreMes = $meses[$fecha->format("m")];
-$textoFecha = "Comentado el " . $fecha->format("d") . " de " . $nombreMes . " de " . $fecha->format("Y") . ":";
-
+                    $nombreMes = $meses[$fecha->format("m")];
+                    $textoFecha = "Comentado el " . $fecha->format("d") . " de " . $nombreMes . " de " . $fecha->format("Y") . ":";
             ?>
 
             <div class="comentario">
                 <div class="usuarioComentario">
-                    <h4>
+                    <h4 id="h4user">
                         <?php echo $comentario->usuario ?>
                     </h4>
                     <?php echo  $textoFecha?>
                 </div>
-<div class="comentarioContenido usuarioComentario">
-<?php echo $comentario->comentario ?>
+                <div class="comentarioContenido usuarioComentario">
+                    <?php echo $comentario->comentario ?>
 
-</div>
-                
+                </div>
+
 
             </div>
 

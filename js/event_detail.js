@@ -28,19 +28,19 @@ $(document).ready(function () {
         showNotificacion(tipo, texto, titulo);
       } else {
         addToCart(id, cantidad);
-        cambiarContadorCantidad(id,cantidad);
+        cambiarContadorCantidad(id, cantidad);
       }
     }
   });
 
-  function cambiarContadorCantidad(id,cantidad) {
+  function cambiarContadorCantidad(id, cantidad) {
     var cantidadRestante = $("." + id + "contador").attr('cantidadRestante');
     var cantidadTotal = $("." + id + "contador").attr('cantidadTotal');
     $("." + id + "contador").attr('cantidadRestante', cantidadRestante - cantidad);
-    $("." + id + "contador").html((cantidadRestante-cantidad) + " / " + cantidadTotal);
-    
+    $("." + id + "contador").html((cantidadRestante - cantidad) + " / " + cantidadTotal);
+
   }
- 
+
 
   function showNotificacion(tipo, texto, titulo) {
     $.notify({
@@ -74,6 +74,9 @@ $(document).ready(function () {
         var texto = 'El comentario ha sido enviado correctamente.';
         var titulo = '<strong>Genial:</strong> <br>';
         showNotificacion(tipo, texto, titulo);
+        $(".comentario").clone().insertAfter(".comentario:first");
+        $("#h4user").first().text(user_name);
+        $(".comentarioContenido").first().text(commentValue);
       },
       error: function (error) {
         var tipo = 'danger';
@@ -103,12 +106,12 @@ $(document).ready(function () {
             exit: 'animated fadeOutRight'
           }
         }, {
-            allow_dismiss: "false",
-            type: "success",
-            placement: {
-              align: "center"
-            }
-          });
+          allow_dismiss: "false",
+          type: "success",
+          placement: {
+            align: "center"
+          }
+        });
       },
       error: function (error) {
         var tipo = 'danger';
