@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,7 +14,7 @@
 
     <?php echo link_tag("fonts/nunito.css"); ?>
     <?php echo link_tag("css/entradasCompra.css"); ?>
-    <?php echo link_tag("css/home_entradasCompra.css"); ?>
+    <?php echo link_tag("css/home.css"); ?>
 
     <!-- Links de JavaScript -->
     <script src="<?php echo base_url() ?>lib/jquery-3.3.1.min.js"></script>
@@ -25,57 +25,54 @@
     <script src="<?php echo base_url() ?>lib/bootstrap-notify/bootstrap-notify.min.js"></script>
 </head>
 <body>
-        <div class="tarjetitas">
+     <div class="tarjetitas">
             <?php
-                    $meses = array("01" => "Enero",
-                        "02" => "Febrero",
-                        "03" => "Marzo",
-                        "04" => "Abril",
-                        "05" => "Mayo",
-                        "06" => "Junio",
-                        "07" => "Julio",
-                        "08" => "Agosto",
-                        "09" => "Septiembre",
-                        "10" => "Octubre",
-                        "11" => "Noviebre",
-                        "12" => "Diciembre",
-                    );
-                    foreach ($entradas as $ticket) {
-                        // Coge la fecha como string chulísimo
-                        $textoFecha;
-                        if ($ticket->fecha != "" || $ticket->fecha != null) {
-                            $fecha = DateTime::createFromFormat("Y-m-d", $ticket->fecha);
-                            $nombreMes = $meses[$fecha->format("m")];
-                            $textoFecha = $fecha->format("d") . " de " . $nombreMes . " de " . $fecha->format("Y");
-                        } else {
-                            $textoFecha = "Abono completo";
-                        }
-
-                     
-                        ?>
+                $meses = array("01" => "Enero",
+                    "02" => "Febrero",
+                    "03" => "Marzo",
+                    "04" => "Abril",
+                    "05" => "Mayo",
+                    "06" => "Junio",
+                    "07" => "Julio",
+                    "08" => "Agosto",
+                    "09" => "Septiembre",
+                    "10" => "Octubre",
+                    "11" => "Noviebre",
+                    "12" => "Diciembre",
+                );
+                foreach ($entradas as $entrada) {
+                    // Coge la fecha como string chulísimo
+                    $textoFecha;
+                    if ($entrada->fecha != "" || $entrada->fecha != null) {
+                        $fecha = DateTime::createFromFormat("Y-m-d", $entrada->fecha);
+                        $nombreMes = $meses[$fecha->format("m")];
+                        $textoFecha = $fecha->format("d") . " de " . $nombreMes . " de " . $fecha->format("Y");
+                    } else {
+                        $textoFecha = "Abono completo";
+                    }
+                    ?>
                 <div class="box">
-
                     <div class="prueba">
                         <section>
-                            <widget type="ticket" class="--flex-column">
+                            <widget type="entrada" class="--flex-column">
                                 <div class="top --flex-column">
-                                    <div class="bandname -bold"><?php echo $ticket->nombre; ?></div>
-                                    <div class="tourname"><?php echo $ticket->categoria; ?></div>
+                                    <div class="bandname -bold"><?php echo $entrada->nombre; ?></div>
+                                    <div class="tourname"><?php echo $entrada->categoria; ?></div>
                                     <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/199011/concert.png" alt="" />
                                     <div class="deetz --flex-row-j!sb">
                                         <div class="event --flex-column">
                                             <div class="date"><?php echo ($textoFecha); ?></div>
-                                            <div class="location -bold"><?php echo $ticket->sitio . ", " . $ticket->provincia ?></div>
+                                            <div class="location -bold"><?php echo $entrada->sitio . ", " . $entrada->provincia ?></div>
                                         </div>
                                         <div class="price --flex-column">
                                             <div class="label">Precio</div>
-                                            <div class="cost -bold"><?php echo $ticket->precio . "€" ?></div>
+                                            <div class="cost -bold"><?php echo $entrada->precio . "€" ?></div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="rip"></div>
-                                <div class="bottom --flex-row-j!sb bajito">
-                                    <svg class="barrita" id="<?php echo $ticket->codigo?>"></svg>
+                                <div class="bottom --flex-row-j!sb">
+                                    <svg class="barrita" id="<?php echo $entrada->codigo?>"></svg>
                                 </div>
                             </widget>
                         </section>
@@ -84,10 +81,6 @@
                 <?php
                 }
                 ?>
-            </div>
-
     </div>
-
 </body>
-
 </html>

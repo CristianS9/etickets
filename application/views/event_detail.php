@@ -141,7 +141,7 @@
                                 <div class="bottom --flex-row-j!sb">
                                     <input type="number" placeholder=" Cant." class="inputCantidad" id="<?php echo $idCantidad ?>">
                                     <div class="contadorCantidad <?php echo $idContador ?> " cantidadRestante="<?php echo $cantidadRestante ?>" cantidadTotal="<?php echo $ticket->cantidadTotal ?>"><?php echo $cantidadRestante . " / " . $ticket->cantidadTotal ?></div>
-                                    <a class="buy addToCartButton" id='<?php echo $ticket->id ?>'>CESTA</a>
+                                    <a class="buy addToCartButton" id='<?php echo $ticket->id ?>'>CESTA</a>                             
                                 </div>
                             </widget>
                         </section>
