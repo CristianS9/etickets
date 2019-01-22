@@ -70,10 +70,16 @@ $(document).ready(function () {
         comentario: commentValue
       },
       success: function (datos) {
-        alert("Datos enviados correctamente");
+        var tipo = 'success';
+        var texto = 'El comentario ha sido enviado correctamente.';
+        var titulo = '<strong>Genial:</strong> <br>';
+        showNotificacion(tipo, texto, titulo);
       },
       error: function (error) {
-        alert("Error al enviar los datos");
+        var tipo = 'danger';
+        var texto = 'Ha habido un problema al enviar el comentario.';
+        var titulo = '<strong>Error:</strong> <br>';
+        showNotificacion(tipo, texto, titulo);
       }
     });
   }

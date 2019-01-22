@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Heroic Features - Start Bootstrap Template</title>
+    <title>
+        <?php echo $eventTickets[0]->nombre; ?>
+    </title>
 
     <!-- Links de CSS -->
     <?php echo link_tag("lib/bootstrap.min.css"); ?>
@@ -172,21 +174,31 @@
         </div>
         <div class="commentSection">
             <div class="sendCommentSection">
-                <h3>Comentarios</h3>
-                <textarea name="pComent" id="pComent" cols="100" rows="10"></textarea><br>
-                <button id="sendButton">Enviar</button>
+                <h1 class="upcomming">Comentarios</h1>
+                <textarea name="pComent" class="textAreaComment" id="pComent" cols="100" rows="10"></textarea><br>
+                <button class="sendButton" id="sendButton">Enviar</button>
             </div>
             <?php
                 foreach ($eventComments as $comentario){
+                    $dateMonth = DateTime::createFromFormat("Y-m-d", $comentario->fecha);
+$nombreMes = $meses[$fecha->format("m")];
+$textoFecha = "Comentado el " . $fecha->format("d") . " de " . $nombreMes . " de " . $fecha->format("Y") . ":";
+
             ?>
 
             <div class="comentario">
-                <p>Usuario:
-                    <?php echo $comentario->usuario ?>
-                </p>
-                <p>Comentario:
-                    <?php echo $comentario->comentario ?>
-                </p>
+                <div class="usuarioComentario">
+                    <h4>
+                        <?php echo $comentario->usuario ?>
+                    </h4>
+                    <?php echo  $textoFecha?>
+                </div>
+<div class="comentarioContenido usuarioComentario">
+<?php echo $comentario->comentario ?>
+
+</div>
+                
+
             </div>
 
             <?php
