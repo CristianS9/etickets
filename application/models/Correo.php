@@ -13,6 +13,7 @@
             
             
             $this->load->library("email",$config);
+            $this->load->database();
       
             //////////////////////////////////
             /// DIOS SE QUEDA AQUI//////////
@@ -36,6 +37,23 @@
             $this->email->send();
    
         
+        }
+        public function compra($idCompra){
+            $result = $this->db->query("CALL spCorreoPorVenta($idCompra)");
+            $email = $result->row("correo");
+            $this->db->close();
+
+            $this->email->from("etickets_reto@outlook.es","Etickets");
+            $this->email->to("glinfor046@gmail.com");
+            $this->email->subject("Gracias por tu compra!");
+
+            $data["idCompra"] = $idCompra;
+
+            // $this->load->view("email/compra",$data);
+            $mensaje = $this->load->view("email/compra",$data,true);
+            $this->email->message($mensaje);
+
+            $this->email->send();
         }
 
     }
