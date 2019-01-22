@@ -77,6 +77,7 @@ $(document).ready(function () {
         $(".comentario").clone().insertAfter(".comentario:first");
         $("#h4user").first().text(user_name);
         $(".comentarioContenido").first().text(commentValue);
+        $("#pComent").val("");
       },
       error: function (error) {
         var tipo = 'danger';
