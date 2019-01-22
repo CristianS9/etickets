@@ -12,7 +12,7 @@ $(document).ready(function () {
 
   $(".addToCartButton").click(function () {
     //Comparar la cantidad
-    var cantidadRestante = $(".contadorCantidad").attr('cantidadRestante');
+    var cantidadRestante = $("." + id + "contador").attr('cantidadRestante');
     var id = $(this).attr('id');
     var cantidad = $("#" + id + "cantidad").val();
     if (cantidad == null || cantidad == undefined || cantidad == "0" || cantidad == "") {
@@ -89,10 +89,21 @@ $(document).ready(function () {
       },
       success: function (datos) {
 
-        var tipo = 'success';
-        var texto = 'El producto ha sido añadido a la cesta de la compra.';
-        var titulo = '<strong>¡Hecho!</strong> <br>';
-        showNotificacion(tipo, texto, titulo);
+        $.notify({
+          title: "Hecho<br>",
+          message: "El producto ha sido añadido a la cesta de la compra. Haz click aquí para ver la cesta.",
+          url: base_url + '/index.php/cart',
+          animate: {
+            enter: 'animated fadeInRight',
+            exit: 'animated fadeOutRight'
+          }
+        }, {
+            allow_dismiss: "false",
+            type: "success",
+            placement: {
+              align: "center"
+            }
+          });
       },
       error: function (error) {
         var tipo = 'danger';

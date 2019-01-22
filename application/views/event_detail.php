@@ -16,6 +16,7 @@
     <?php echo link_tag("css/home.css"); ?>
     <?php echo link_tag("fonts/nunito.css"); ?>
     <?php echo link_tag("css/event_detail.css"); ?>
+    <script>var base_url = '<?php echo base_url() ?>';</script>
 
     <!-- Links de JavaScript -->
     <script src="<?php echo base_url() ?>lib/jquery-3.3.1.min.js"></script>
@@ -107,7 +108,7 @@
                         $idContador = $ticket->id . "contador";
 
                         // Declara la variable cantidadDisponible para saber cuántas entradas puede comprar el usuario.
-                        $cantidadRestante = $ticket->cantidadTotal;
+                        $cantidadRestante = $ticket->disponibles;
 
                         // Comprueba si este ticket está en la cesta de la compra para restar a la cantidad total.
                         if(isset($userCart)){
@@ -174,7 +175,7 @@
     <!-- /.container -->
 
     <!-- Footer -->
-q
+
 </body>
 
 </html>

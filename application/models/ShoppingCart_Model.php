@@ -51,6 +51,7 @@ class ShoppingCart_Model extends CI_Model {
         foreach ($filasCarritoCompra as $fila) {
             if ($fila->cantidad > 1) {
                 $consulta = "INSERT INTO entradas(idUsuario,idEntradaEvento,idVenta) VALUES ";
+                $consultaUpdateStock = "UPDATE entradasevento SET disponibles = (disponibles - $fila->cantidad) WHERE id = $fila->idEntradaEvento";
                 $contador = 1;
                 while ($contador <= $fila->cantidad) {
                     $consulta .= "($userId,$fila->idEntradaEvento,$idVenta) ";
@@ -61,8 +62,11 @@ class ShoppingCart_Model extends CI_Model {
                 }
             } else {
                 $consulta = "INSERT INTO entradas(idUsuario,idEntradaEvento,idVenta) VALUES ($userId,$fila->idEntradaEvento,$idVenta)";
+                $consultaUpdateStock = "UPDATE entradasevento SET disponibles = (disponibles - $fila->cantidad) WHERE id = $fila->idEntradaEvento";
             }
             $this->db->query($consulta);
+            $this->db->close();
+            $this->db->query($consultaUpdateStock);
 
         }
         $this->db->close();
