@@ -65,8 +65,8 @@
             </div>
             <div class="ticket__body">
                 <section class="ticket__section">
-                    <h3>Resumen</h3>
-                    <p>Este es el resumen de tu pedido. Las entradas se enviarán a través de correo electrónico.</p>
+                    <h3 id="resumen">Resumen</h3>
+                    <p id="descResumen">Este es el resumen de tu pedido. Las entradas se enviarán a través de correo electrónico.</p>
                 </section>
 
                 <?php
@@ -76,7 +76,7 @@
             $precioTotal = "precioTotal" . $elemento->id;
 
         ?>
-                <section class="ticket__section seccion<?php echo $seccionId ?>">
+                <section class="ticket__section seccionCompras seccion<?php echo $seccionId ?>">
                     <h3>
                         <?php echo ($elemento->nombre); ?>
                     </h3>
@@ -103,7 +103,16 @@
             <footer class="ticket__footer">
                <b> <span>Total</span></b>
                 <span id="total"></span> €
-
+                <br>
+                <br>
+                <?php
+                if(!empty($carrito)){
+                    echo ("<button class='buyButton'>Comprar</button>");
+                }else{
+                    echo "El carrito está vacío";
+                }
+                ?>
+                
             </footer>
         </article>
     </div>

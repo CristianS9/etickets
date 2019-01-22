@@ -130,12 +130,27 @@ body {
         color: #fff;
         text-decoration: none;
         cursor: pointer;
-        width: 21%;
+        width: 25%;
          border: 0;
         -webkit-border-radius: 15px;
         -moz-border-radius: 15px;
         -ms-border-radius: 15px;
         -o-border-radius: 15px;
+}
+.buyButton {
+        display: grid;
+        font-size: 12px;
+        font-weight: bold;
+        background-color: #3e8b58;
+        padding: 0 15px;
+        line-height: 30px;
+
+        align-content: center;
+        color: #fff;
+        text-decoration: none;
+        cursor: pointer;
+        width: 25%;
+         border: 0;
 }
 .ticket__header,
 .ticket__cart {

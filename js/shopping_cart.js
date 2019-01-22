@@ -44,6 +44,11 @@ $(document).ready(function () {
             sum += parseFloat($(this).text()); // Or this.innerHTML, this.innerText
         });
         $("#total").text(sum.toFixed(2));
+        if (sum.toFixed(2) == 0){
+            $(".buyButton").remove();
+                            $("#resumen").html("Carrito vacío.");
+                            $("#descResumen").html("No hay ningún artículo en tu carrito.");
+        }
     }
 
     // Ajax
@@ -57,7 +62,20 @@ $(document).ready(function () {
                 idEntrada: pid
             },
             success: function (datos) {
-                /* alert("Cantidad cambiada en la base de datos"); */
+                        $.notify({
+                            title: "<b>Hecho: </b><br>",
+                            message: "Cantidad actualizada.",
+                            animate: {
+                                enter: 'animated fadeInRight',
+                                exit: 'animated fadeOutRight'
+                            }
+                        }, {
+                            allow_dismiss: "true",
+                            type: "info",
+                            placement: {
+                                align: "right"
+                            }
+                        });
             },
             error: function (error) {
                 alert("Cantidd no cambiada en la base de datos");
@@ -81,13 +99,48 @@ $(document).ready(function () {
             }
         });
     }
-    function deleteCartSection(pid){
+    function restarAlEliminarArticulo(){
+        
+    }
+    function deleteCartSection(pid) {
         $("." + "seccionseccion" + pid).addClass('animated flipOutX');
         setTimeout(
             function () {
                 $("." + "seccionseccion" + pid).remove();
+                changeCartTotal();
             }, 1000);
-        
+
+    }
+    $(".buyButton").click(function () {
+        pagar();
+    });
+
+
+    function pagar() {
+        $.ajax({
+            type: "POST",
+            url: "ajax/EventDetail_Ajax/completeShoppingCart",
+
+            success: function (datos) {
+                var tipo = 'success';
+                var texto = 'Se han comprado los artículos seleccionados.';
+                var titulo = '<strong>Correcto:</strong> <br>';
+                showNotificacion(tipo, texto, titulo);
+
+                $(".seccionCompras").each(function (index) {
+                    $(this).remove();
+                });
+                $(".buyButton").remove();
+                $("#resumen").html("¡Hecho!");
+                $("#descResumen").html("Tu pedido se ha completado correctamente.");
+            },
+            error: function (error) {
+                var tipo = 'danger';
+                var texto = 'Ha habido un error al generar la venta. Contacta con el administrador.';
+                var titulo = '<strong>Error:</strong> <br>';
+                showNotificacion(tipo, texto, titulo);
+            }
+        });
     }
 
     function deleteFromCart(pentradaId) {
