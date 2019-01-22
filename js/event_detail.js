@@ -16,16 +16,10 @@ $(document).ready(function () {
     var id = $(this).attr('id');
     var cantidad = $("#" + id + "cantidad").val();
     if (cantidad == null || cantidad == undefined || cantidad == "0" || cantidad == "") {
-
-
-
       var tipo = 'warning';
       var texto = 'No has introducido ninguna cantidad.';
       var titulo = '<strong>Atención:</strong> <br>';
       showNotificacion(tipo, texto, titulo);
-
-
-
     } else {
       if (cantidad > cantidadRestante) {
         var tipo = 'warning';
@@ -43,8 +37,6 @@ $(document).ready(function () {
     var cantidadRestante = $("." + id + "contador").attr('cantidadRestante');
     var cantidadTotal = $("." + id + "contador").attr('cantidadTotal');
     $("." + id + "contador").attr('cantidadRestante', cantidadRestante - cantidad);
-
-
     $("." + id + "contador").html((cantidadRestante-cantidad) + " / " + cantidadTotal);
     
   }
