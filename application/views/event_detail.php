@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -17,14 +18,16 @@
     <?php echo link_tag("fonts/nunito.css"); ?>
     <?php echo link_tag("css/event_detail.css"); ?>
     <script>var base_url = '<?php echo base_url() ?>';</script>
+    <script>var ev_id = '<?php echo $eventTickets[0]->idEvento ?>';</script>
 
     <!-- Links de JavaScript -->
     <script src="<?php echo base_url() ?>lib/jquery-3.3.1.min.js"></script>
     <script src="<?php echo base_url() ?>js/event_detail.js"></script>
     <script src="<?php echo base_url() ?>lib/bootstrap.bundle.min.js"></script>
     <script src="<?php echo base_url() ?>lib/bootstrap-notify/bootstrap-notify.min.js"></script>
-    
+
 </head>
+
 <body>
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
@@ -118,54 +121,79 @@
                                 }
                             }
                         }
-
                         ?>
-                <div class="box">
+            <div class="box">
 
-                    <div class="prueba">
-                        <section>
-                            <widget type="ticket" class="--flex-column">
-                                <div class="top --flex-column">
-                                    <div class="bandname -bold"><?php echo $ticket->nombre; ?></div>
-                                    <div class="tourname"><?php echo $ticket->categoria; ?></div>
-                                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/199011/concert.png" alt="" />
-                                    <div class="deetz --flex-row-j!sb">
-                                        <div class="event --flex-column">
-                                            <div class="date"><?php echo ($textoFecha); ?></div>
-                                            <div class="location -bold"><?php echo $ticket->sitio . ", " . $ticket->provincia ?></div>
+                <div class="prueba">
+                    <section>
+                        <widget type="ticket" class="--flex-column">
+                            <div class="top --flex-column">
+                                <div class="bandname -bold">
+                                    <?php echo $ticket->nombre; ?>
+                                </div>
+                                <div class="tourname">
+                                    <?php echo $ticket->categoria; ?>
+                                </div>
+                                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/199011/concert.png" alt="" />
+                                <div class="deetz --flex-row-j!sb">
+                                    <div class="event --flex-column">
+                                        <div class="date">
+                                            <?php echo ($textoFecha); ?>
                                         </div>
-                                        <div class="price --flex-column">
-                                            <div class="label">Precio</div>
-                                            <div class="cost -bold"><?php echo $ticket->precio . "€" ?></div>
+                                        <div class="location -bold">
+                                            <?php echo $ticket->sitio . ", " . $ticket->provincia ?>
+                                        </div>
+                                    </div>
+                                    <div class="price --flex-column">
+                                        <div class="label">Precio</div>
+                                        <div class="cost -bold">
+                                            <?php echo $ticket->precio . "€" ?>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="rip"></div>
-                                <div class="bottom --flex-row-j!sb">
-                                    <input type="number" placeholder=" Cant." class="inputCantidad" id="<?php echo $idCantidad ?>">
-                                    <div class="contadorCantidad <?php echo $idContador ?> " cantidadRestante="<?php echo $cantidadRestante ?>" cantidadTotal="<?php echo $ticket->cantidadTotal ?>"><?php echo $cantidadRestante . " / " . $ticket->cantidadTotal ?></div>
-                                    <a class="buy addToCartButton" id='<?php echo $ticket->id ?>'>CESTA</a>
+                            </div>
+                            <div class="rip"></div>
+                            <div class="bottom --flex-row-j!sb">
+                                <input type="number" placeholder=" Cant." class="inputCantidad" id="<?php echo $idCantidad ?>">
+                                <div class="contadorCantidad <?php echo $idContador ?> " cantidadRestante="<?php echo $cantidadRestante ?>"
+                                    cantidadTotal="<?php echo $ticket->cantidadTotal ?>">
+                                    <?php echo $cantidadRestante . " / " . $ticket->cantidadTotal ?>
                                 </div>
-                            </widget>
-                        </section>
-                    </div>
+                                <a class="buy addToCartButton" id='<?php echo $ticket->id ?>'>CESTA</a>
+                            </div>
+                        </widget>
+                    </section>
                 </div>
-                <?php
+            </div>
+            <?php
                 }
                 ?>
+
+        </div>
+        <div class="commentSection">
+            <div class="sendCommentSection">
+                <h3>Comentarios</h3>
+                <textarea name="pComent" id="pComent" cols="100" rows="10"></textarea><br>
+                <button id="sendButton">Enviar</button>
+            </div>
+            <?php
+                foreach ($eventComments as $comentario){
+            ?>
+
+            <div class="comentario">
+                <p>Usuario:
+                    <?php echo $comentario->usuario ?>
+                </p>
+                <p>Comentario:
+                    <?php echo $comentario->comentario ?>
+                </p>
             </div>
 
+            <?php
+}
+?>
 
-
-
-
-
-
-
-
-
-
-
+        </div>
     </div>
 
 

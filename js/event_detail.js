@@ -61,13 +61,12 @@ $(document).ready(function () {
 
   function sendComment() {
     var commentValue = $("#pComent").val();
-    var eventId = $("#eventId").val();
 
     $.ajax({
       type: "POST",
       url: "../ajax/EventDetail_Ajax/sendComment",
       data: {
-        eventId: eventId,
+        eventId: ev_id,
         comentario: commentValue
       },
       success: function (datos) {
