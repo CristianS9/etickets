@@ -218,12 +218,12 @@
                                     <th>Fecha</th>
                                 </tr>
                                 <?php
-                                foreach ($todo as $aux) {
+                               /*  foreach ($todo as $aux) {
                                     echo "<tr>";
                                     echo "<td>".$aux->precio_total."</td>";
                                     echo "<td>".$aux->fecha."</td>";
                                     echo "</tr>";
-                                }
+                                } */
                             ?>
                             </table>
                         </div>

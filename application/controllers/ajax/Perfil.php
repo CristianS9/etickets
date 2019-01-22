@@ -1,5 +1,5 @@
   <?php
-class Perfil_ajax extends CI_Controller {
+class Perfil extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->helper('url');
@@ -55,9 +55,9 @@ class Perfil_ajax extends CI_Controller {
 
     }
 
-    public function checkUser(){
-        $username = $this->input->post("username");
-        $existe = $this->Usuario_Model->getUsername($username);
+    public function usuarioExiste(){
+        $usuario = $this->input->post("usuario");
+        $existe = $this->Usuario_Model->getUsername($usuario);
 
         
         if ("" == $existe) {

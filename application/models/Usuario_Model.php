@@ -36,9 +36,9 @@
             return $this->db->get_where("usuarios",$condicion)->row();  
         }
 
-        public function getUsername($username){
+        public function getUsername($usuario){
             $condicion = [
-                "usuario" => $username,
+                "usuario" => $usuario,
             ];
 
             $existe = $this->db->get_where("usuarios",$condicion)->row("usuario");

@@ -100,21 +100,24 @@ body {
     border-radius: 10px;
 }
 
-input{
+input {
     border-radius: 20px;
 }
-.formGrid{
+
+.formGrid {
     display: grid;
     position: relative;
     /* grid-template-rows: repeat(6, 1fr); */
-    grid-row-gap:4%;
+    grid-row-gap: 4%;
 }
-.contInput{
+
+.contInput {
     display: grid;
     position: relative;
     grid-template-columns: 45% 45%;
 }
-.contSubmit{
+
+.contSubmit {
     display: grid;
     position: relative;
     margin-top: 10px;
@@ -122,28 +125,31 @@ input{
     justify-content: center;
 }
 
-.linea{
+.linea {
     display: grid;
     /* position: relative; */
-    grid-template-columns: 40% 40% 10% 10%;
-    margin-top: 10px;
+    grid-template-columns: 1fr 1fr 100px;
 }
-.botones{
-    display:grid;
-    width:50%;
+
+.botones {
+    display: grid;
+
 }
-.boton{
+
+.boton {
     display: grid;
     justify-items: center;
-    align-items:center;
-    color:grey;
+    align-items: center;
+    color: grey;
 }
-.boton:hover{
-    cursor:pointer;
-    color:black;
+
+.boton:hover {
+    cursor: pointer;
+    color: black;
 }
-.boton{
-    border:1px solid black;
+
+.boton {
+    border: 1px solid black;
     border-radius: 5px;
 }
 
@@ -151,31 +157,50 @@ input{
 
 
 
-.entrada{
-    display:none;
-}
-.verCompras{
+.entrada {
     display: none;
 }
-.verEntradas{
+
+.verCompras {
     display: none;
 }
-.logOut{
+
+.verEntradas {
     display: none;
 }
-.verCompras>.container{
+
+.logOut {
+    display: none;
+}
+
+.verCompras>.container {
     display: grid;
     justify-content: center;
     grid-template-columns: 90%;
+
 }
-table,th,tr,td{
+
+table,
+th,
+tr,
+td {
     /* width:80%;
     border: 1px solid black; */
 }
 
+.modificar {
+    display: grid;
+    grid-gap: 10px;
+}
+
+.botones {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+}
 
 @media only screen and (max-width: 768px) {
-    .contInput{
+    .contInput {
         grid-template-columns: 90%;
         justify-content: center
     }
