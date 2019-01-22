@@ -54,7 +54,23 @@ class Perfil extends CI_Controller {
         }
 
     }
-
+    public function modificarDato(){
+        $elemento = $this->input->post("elemento");
+        $dato = $this->input->post("dato");
+        
+        $datos = [
+            $elemento => $dato
+        ];
+        $id = $this->session->id;
+        
+         // Los datos que se van a escribir
+        $this->db->set($datos);
+        // La clausula where, puede ser un array con las condiciones
+        $this->db->where("id",$id);
+        //La tabla donde se establecera y denuevo los datos
+        $this->db->update("usuarios",$datos);
+        
+    }
     public function usuarioExiste(){
         $usuario = $this->input->post("usuario");
         $existe = $this->Usuario_Model->getUsername($usuario);

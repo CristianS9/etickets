@@ -1,6 +1,6 @@
 var g = {};
 g.modificando = false;
-var comprobaciones = {};
+var cambiar = {};
 
 $(document).ready(function () {
     cambioPestañas_activo();
@@ -32,7 +32,7 @@ function botonesEdicion_activos(){
         enviar(this);
     });
     $('.modificar').on('click', '.cancelar', function () {
-        cancelar(this);
+        cancelar();
     });
 }
 
@@ -47,6 +47,7 @@ function divEdicion(boton){
     // Obtiene los datos
     var padre = $(boton).parent().parent();
     g.seleccionado = $(padre).html();
+    g.padre = padre;
 
     var elemento = $(padre).find('div.info').attr('elemento').trim();
     var dato = $(padre).find('div.data').html().trim();
@@ -78,46 +79,40 @@ function divEdicion(boton){
     $(padre).find('div.botones').append(cancelar); 
 }
 
-function cancelar(boton) {
-    $(boton).parent().parent().html(g.seleccionado);
+function cancelar() {
+    $(g.padre).html(g.seleccionado);
     g.modificando = false;
 }
 function enviar(boton){
     var padre = $(boton).parent().parent();
-    var elemento = $(padre).find("div.info").attr("elemento").trim();
-    var dato = $(padre).find('input.data').val().trim();
-
-
-
-    $.when(comprobaciones[elemento](dato)).then(function (data, textStatus, jqXHR) {
-        console.log(jqXHR);
-    });
-  
+    g.elemento = $(padre).find("div.info").attr("elemento").trim();
+    g.dato = $(padre).find('input.data').val().trim();    
+    cambiar[g.elemento](g.dato);
 
 }
 
-comprobaciones["usuario"] = function(dato) {
+cambiar["usuario"] = function(usuario) {
     $.ajax({
         type: "post",
         url: "ajax/perfil/usuarioExiste",
         data: {
-            "usuario": dato
+            "usuario": usuario
         },
         success: function (datos) {
-            datos = JSON.parse(datos);
-            console.log("no");
-            if ("" != dato && dato.length > 4 && dato.length < 20 && !datos) {
-                return true;
-            } else {
-                return false;
+            var existe = JSON.parse(datos);
+           
+            if (existe) {
+                notificacion("Este usuario ya existe"); 
+            } else if ("" == usuario || usuario.length < 5 || usuario.length > 20) {
+                notificacion("El nombre de usuario debde contener entre 5 y 20 caracteres");
+            }  else {
+                modificarDato();
             } 
         }
-    });
-  
-   
+    }); 
 }
-comprobaciones["contrasena"] = function(dato) {
-   
+
+cambiar["contrasena"] = function(dato) {
     var regPass = /^\S*(?=\S{4,})(?=\S*[a-z])(?=\S*[\W])(?=\S*[A-Z])(?=\S*[\d])\S*$/;
 
     if ("" == dato || dato.length < 4 || dato.length > 20 || !dato.match(regPass)) {
@@ -127,24 +122,37 @@ comprobaciones["contrasena"] = function(dato) {
     } 
  
 }
-comprobaciones["nombre"] = function(dato) {
+cambiar["nombre"] = function(dato) {
     console.log(dato);
 }
-comprobaciones["appelidos"] = function(dato) {
+cambiar["appelidos"] = function(dato) {
     console.log(dato);
 }
-comprobaciones["email"] = function(dato) {
+cambiar["email"] = function(dato) {
     console.log(dato);
 }
-comprobaciones["telefono"] = function(dato) {
+cambiar["telefono"] = function(dato) {
     console.log(dato);
 }
 
-function usuarioExiste(usuario){
-    
-    
-  
+function modificarDato(){
+     $.ajax({
+         type: "post",
+         url: "ajax/perfil/modificarDato",
+         data: {
+             "elemento": g.elemento,
+             "dato": g.dato
+         },
+         success: function (respuesta) {
+            cancelar();                
+            actualizarDato();
+        }
+     });
 }
+function actualizarDato(){
+    $(g.padre).find("div."+g.elemento).html(g.dato);
+}
+
 
 /*
 
@@ -314,9 +322,9 @@ function enviar(padre) {
     });
 }
 
+*/
 
-
-function notifError(texto) {
+function notificacion(texto) {
     $.notify({
         title: '<strong>Ha habido un problema!</strong>',
         message: texto,
@@ -328,4 +336,3 @@ function notifError(texto) {
             type: 'warning'
         });
 } 
-*/
