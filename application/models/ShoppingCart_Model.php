@@ -12,9 +12,23 @@ class ShoppingCart_Model extends CI_Model {
 
     }
 
-    public function updateShoppingCart($userId, $entradaEventoId, $cantidad) {
-        $query = $this->db->query("CALL spUpdateTicketInUserCart($userId,$entradaEventoId,$cantidad)");
+    public function updateShoppingCart($userId, $entradaEvento, $cantidad, $idEntradaEvento) {
+
+        $result = $this->db->query("CALL spGetDisponiblesEntradaEvento($idEntradaEvento)");
         $this->db->close();
+        $ret = $result->row("disponibles");
+
+        
+    if($ret >= $cantidad){
+            $query = $this->db->query("CALL spUpdateTicketInUserCart($userId,$entradaEvento,$cantidad)");
+            $this->db->close();
+
+        }else{
+            echo $ret;
+        }
+ 
+        
+        
     }
     public function deleteFromShoppingCart($userId, $entradaEventoId) {
         $query = $this->db->query("CALL spDeleteFromShoppingCart($userId,$entradaEventoId)");

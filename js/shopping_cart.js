@@ -14,9 +14,14 @@ $(document).ready(function () {
     $(".cantidad").focusout(function () {
         var cantidad = $(this).val();
         var id = $(this).attr('id');
+        var entradaEventoId = $(this).attr('entradaEventoId');
         if (cantidad != 0) {
+            // ajax comprueba si la cantidad de la base de datos es inferior
+
             // Ajax changeQuantity
-            changeQuantity(cantidad, id);
+            changeQuantity(cantidad, id, entradaEventoId);
+
+
             //Cambia el precio total de un elemento
             changeItemTotalSum(id, cantidad);
             //Total del carrito
@@ -31,6 +36,8 @@ $(document).ready(function () {
 
     // Funciones
 
+
+
     function changeItemTotalSum(pid, pcantidad) {
         var precio = $(".precio" + pid).text();
         var precioNuevo = pcantidad * precio;
@@ -44,43 +51,74 @@ $(document).ready(function () {
             sum += parseFloat($(this).text()); // Or this.innerHTML, this.innerText
         });
         $("#total").text(sum.toFixed(2));
-        if (sum.toFixed(2) == 0){
+        if (sum.toFixed(2) == 0) {
             $(".buyButton").remove();
-                            $("#resumen").html("Carrito vacío.");
-                            $("#descResumen").html("No hay ningún artículo en tu carrito.");
+            $("#resumen").html("Carrito vacío.");
+            $("#descResumen").html("No hay ningún artículo en tu carrito.");
         }
     }
 
     // Ajax
 
-    function changeQuantity(pcantidad, pid) {
+    function changeQuantity(pcantidad, pid, pEntradaEventoId) {
+        var returnDatos;
         $.ajax({
             type: "POST",
             url: "ajax/EventDetail_Ajax/updateItemInCart",
             data: {
                 cantidad: pcantidad,
-                idEntrada: pid
+                idEntrada: pid,
+                idEntradaEvento: pEntradaEventoId
             },
             success: function (datos) {
-                        $.notify({
-                            title: "<b>Hecho: </b><br>",
-                            message: "Cantidad actualizada.",
-                            animate: {
-                                enter: 'animated fadeInRight',
-                                exit: 'animated fadeOutRight'
-                            }
-                        }, {
-                            allow_dismiss: "true",
-                            type: "info",
-                            placement: {
-                                align: "right"
-                            }
-                        });
+
+                datos = datos.trim();
+                if (datos != "") {
+                    $.notify({
+                        title: "<b>Error: </b><br>",
+                        message: "La cantidad que has escogido supera el máximo de entradas disponibles. El máximo que puedes comprar es " + datos + ".",
+                        animate: {
+                            enter: 'animated fadeInRight',
+                            exit: 'animated fadeOutRight'
+                        }
+                    }, {
+                        allow_dismiss: "true",
+                        type: "danger",
+                        placement: {
+                            align: "right"
+                        }
+                    });
+                    $(".input" + pid).val("1");
+                    changeItemTotalSum(pid, 1);
+                    changeCartTotal();
+                } else {
+
+                    $.notify({
+                        title: "<b>Hecho: </b><br>",
+                        message: "Cantidad actualizada.",
+                        animate: {
+                            enter: 'animated fadeInRight',
+                            exit: 'animated fadeOutRight'
+                        }
+                    }, {
+                        allow_dismiss: "true",
+                        type: "info",
+                        placement: {
+                            align: "right"
+                        }
+                    });
+
+                }
             },
             error: function (error) {
-                alert("Cantidd no cambiada en la base de datos");
+
+                var tipo = 'danger';
+                var texto = 'Ha habido un error desconocido.';
+                var titulo = '<strong>Error:</strong> <br>';
+                showNotificacion(tipo, texto, titulo);
             }
         });
+        return returnDatos;
     }
 
     function showNotificacion(tipo, texto, titulo) {
@@ -99,9 +137,8 @@ $(document).ready(function () {
             }
         });
     }
-    function restarAlEliminarArticulo(){
-        
-    }
+
+
     function deleteCartSection(pid) {
         $("." + "seccionseccion" + pid).addClass('animated flipOutX');
         setTimeout(

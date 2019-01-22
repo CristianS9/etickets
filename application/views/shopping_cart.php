@@ -74,6 +74,8 @@
             $precio = "precio" . $elemento->id;
             $seccionId = "seccion" . $elemento->id;
             $precioTotal = "precioTotal" . $elemento->id;
+            $input = "input".$elemento->id;
+
 
         ?>
                 <section class="ticket__section seccionCompras seccion<?php echo $seccionId ?>">
@@ -88,7 +90,7 @@
                         <?php echo  $elemento->precioIndividual ?>
                     </precio>
                     <p><b>Cantidad:     </b>
-                    <?php echo ("<input class='cantidad' id='$elemento->id' originalValue='$elemento->cantidad' type='number' name='' value='$elemento->cantidad'> <br>");   ?>
+                    <?php echo ("<input class='cantidad $input' entradaEventoId='$elemento->entradasEventoId' id='$elemento->id' originalValue='$elemento->cantidad' type='number' name='' value='$elemento->cantidad'> <br>");   ?>
                     </p><precioTotalTitle><b>Precio total:</b></precioTotalTitle>
                     <?php echo ("<precioTotalArt class='$precioTotal precioTotal'>$elemento->precioTotal</precioTotalArt>");
                     echo ("<br><button class='deleteButton' data-toggle='modal' data-target='#myModal' id='$elemento->id'>Eliminar</button>");
