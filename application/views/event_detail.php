@@ -157,12 +157,23 @@
                             </div>
                             <div class="rip"></div>
                             <div class="bottom --flex-row-j!sb">
+                            <?php
+                            if(isset($this->session->id)){
+                              ?>
+
                                 <input type="number" placeholder=" Cant." class="inputCantidad" id="<?php echo $idCantidad ?>">
                                 <div class="contadorCantidad <?php echo $idContador ?> " cantidadRestante="<?php echo $cantidadRestante ?>"
                                     cantidadTotal="<?php echo $ticket->cantidadTotal ?>">
                                     <?php echo $cantidadRestante . " / " . $ticket->cantidadTotal ?>
                                 </div>
                                 <a class="buy addToCartButton" id='<?php echo $ticket->id ?>'>CESTA</a>
+                            <?php
+                            }else{
+                                $url = base_url();
+                                echo (" <a href='$url/index.php/login' class='buy addToCartButton' '>INICIAR SESIÓN</a>");
+                            }
+                            ?>
+
                             </div>
                         </widget>
                     </section>
@@ -174,11 +185,25 @@
 
         </div>
         <div class="commentSection">
+        <?php
+        if(isset($this->session->usuario)){
+            ?>
             <div class="sendCommentSection">
                 <h1 class="upcomming">Comentarios</h1>
                 <textarea name="pComent" class="textAreaComment" id="pComent" cols="100" rows="10"></textarea><br>
                 <button class="sendButton" id="sendButton">Enviar</button>
             </div>
+         <?php
+        }else{
+               ?>
+         <div class="sendCommentSection">
+                <h1 class="upcomming mb-0 pb-0">Comentarios</h1>
+
+            </div><?php
+
+        }
+        ?>
+
             <?php
                 foreach ($eventComments as $comentario){
                     $dateMonth = DateTime::createFromFormat("Y-m-d", $comentario->fecha);

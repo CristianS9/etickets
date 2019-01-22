@@ -12,14 +12,18 @@ $(document).ready(function () {
 
   $(".addToCartButton").click(function () {
     //Comparar la cantidad
-    var cantidadRestante = $("." + id + "contador").attr('cantidadRestante');
     var id = $(this).attr('id');
+    var cantidadRestante = $("." + id + "contador").attr('cantidadRestante');
+    
     var cantidad = $("#" + id + "cantidad").val();
     if (cantidad == null || cantidad == undefined || cantidad == "0" || cantidad == "") {
       var tipo = 'warning';
       var texto = 'No has introducido ninguna cantidad.';
       var titulo = '<strong>Atención:</strong> <br>';
       showNotificacion(tipo, texto, titulo);
+      if ( cantidad == "0"){
+        $(this).css("text-decoration", "line-through");
+      }
     } else {
       if (cantidad > cantidadRestante) {
         var tipo = 'warning';

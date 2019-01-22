@@ -327,3 +327,6 @@ section {
     max-width: 50%;
     margin-left: 7px;
 }
+.tachar{
+     text-decoration: line-through;
+}
