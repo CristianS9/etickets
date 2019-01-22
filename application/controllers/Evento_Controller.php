@@ -2,7 +2,7 @@
 class Evento_Controller extends CI_Controller {
     public function __construct() {
         parent::__construct();
-        $this->load->helper(['form', 'url']);
+        $this->load->helper(['form', 'url','html']);
         $this->load->library('form_validation');
         $this->load->library('session');
 
@@ -155,7 +155,6 @@ class Evento_Controller extends CI_Controller {
         } elseif (file_exists($url3)){
             unlink("fotos/$id.jpeg");
         }
-        
 
         redirect("Evento_Controller");
 
@@ -170,6 +169,7 @@ class Evento_Controller extends CI_Controller {
 
         $this->load->view("evento_update_view", $data);
     }
+    
     public function mod_evento() {
         $this->load->model("Evento_Model");
 
@@ -186,8 +186,7 @@ class Evento_Controller extends CI_Controller {
             "sitio" => $this->input->post("sitio"),
         ];
 
-        // print_r($condicion);
-        // print_r($nuevo);
+
         $this->Evento_Model->modificar($condicion, $nuevo);
         redirect("Evento_Controller");
 

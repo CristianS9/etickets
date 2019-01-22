@@ -46,8 +46,9 @@
 							<!--[if (mso)|(IE)]><table align="center" class="header" cellpadding="0" cellspacing="0" role="presentation"><tr><td style="width: 600px"><![endif]-->
 							<div class="logo emb-logo-margin-box" style="font-size: 26px;line-height: 32px;Margin-top: 6px;Margin-bottom: 20px;color: #c3ced9;font-family: Roboto,Tahoma,sans-serif;Margin-left: 20px;Margin-right: 20px;"
 							 align="center">
-								<div class="logo-center" align="center" id="emb-email-header"><img style="display: block;height: auto;width: 100%;border: 0;max-width: 211px;"
-									 src="<?php echo base_url();?>fotos/email/etickets_logo.png" alt="" width="211" /></div>
+								<div class="logo-center" align="center" id="emb-email-header">
+									<img style="display: block;height: auto;width: 100%;border: 0;max-width: 211px;" src="<?php echo base_url();?>index.php/fotos/email/etickets_logo.png" alt="" width="211" />
+								</div>
 							</div>
 							<!--[if (mso)|(IE)]></td></tr></table><![endif]-->
 						</div>
@@ -79,7 +80,8 @@
 										<div style="Margin-left: 20px;Margin-right: 20px;">
 											<div class="btn btn--flat btn--large" style="Margin-bottom: 20px;text-align: center;">
 												<![if !mso]><a style="border-radius: 4px;display: inline-block;font-size: 14px;font-weight: bold;line-height: 24px;padding: 12px 24px;text-align: center;text-decoration: none !important;transition: opacity 0.1s ease-in;color: #ffffff !important;background-color: #e31212;font-family: Avenir, sans-serif;"
-												 href="<?php echo base_url();?>index.php/ventas_Controller/entradasCompra/<?php echo $idCompra;?>">Ver mis entradas</a>
+												 href="<?php echo base_url();?>index.php/ventas_Controller/entradasCompra/<?php echo $idCompra;?>">Ver mis
+													entradas</a>
 												<![endif]>
 												<!--[if mso]><p style="line-height:0;margin:0;">&nbsp;</p><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" href="http://TODO LINK" style="width:160px" arcsize="9%" fillcolor="#E31212" stroke="f"><v:textbox style="mso-fit-shape-to-text:t" inset="0px,11px,0px,11px"><center style="font-size:14px;line-height:24px;color:#FFFFFF;font-family:Avenir,sans-serif;font-weight:bold;mso-line-height-rule:exactly;mso-text-raise:4px">Ver mis entradas</center></v:textbox></v:roundrect><![endif]-->
 											</div>
