@@ -133,6 +133,9 @@
         public function confirmacionNecesaria(){
             $this->load->view("acceso/confirmacionNecesaria");
         }
+        public function recuperacion(){
+            
+        }
 
     }
 
