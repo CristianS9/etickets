@@ -10,7 +10,6 @@ class EventDetail_Controller extends CI_Controller {
 
     }
     public function eventDetails() {
-
         $this->load->model("Evento_Model");
         $this->load->model("ShoppingCart_Model");
 
@@ -23,7 +22,6 @@ class EventDetail_Controller extends CI_Controller {
         $data['userName'] = $this->session->usuario;
 
         $this->load->view("event_detail", $data);
-
     }
 
 }
