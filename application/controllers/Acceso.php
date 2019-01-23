@@ -163,15 +163,19 @@
           
             if($id!="0"){
                 $codigo = $this->Usuario_Model->generarContrasenaTemporal($id);
-                echo $codigo;
-            } else {
-                redirect("home");
+                $this->load->model("Correo");
+                $this->Correo->recuperacion($email,$codigo);
+                
             } 
+            redirect("home");
+            
         }
         public function temporal($codigo){
             $this->load->model("Usuario_Model");
             $linea = $this->Usuario_Model->datosTemporal($codigo);
             if($linea != null){
+                $condicion = ["id"=>$linea->id];
+                $this->db->delete("recuperacion_contrasena",$condicion);
                 $datosLogin = $this->Usuario_Model->datosLoginId($linea->idUsuario);
                 $this->session->set_userdata("id",$datosLogin->id);
                 $this->session->set_userdata("usuario",$datosLogin->usuario);

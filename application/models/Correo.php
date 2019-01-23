@@ -55,6 +55,19 @@
 
             $this->email->send();
         }
+        public function recuperacion($email,$codigo){
+            $this->email->from("etickets_reto@outlook.es","Etickets");
+            $this->email->to("$email");
+            $this->email->subject("Recuperacion contraseña");
+
+            $data["codigo"] = $codigo;
+
+        
+            $mensaje = $this->load->view("email/recuperacion",$data,true);
+            $this->email->message($mensaje);
+
+            $this->email->send();
+        }
 
     }
 
