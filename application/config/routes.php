@@ -51,7 +51,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 
 // No sé por qué sale al revés en los ejemplos de arriba, pero primero va la url recortada y después todo el mondongo.
-$route['default_controller'] = 'home';
+$route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route["notificacion/(:any)/(:num)"] = "notificacion_controller/index/$1/$2";
