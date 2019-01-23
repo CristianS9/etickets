@@ -62,12 +62,16 @@ $meses = array("01" => "Ene",
     "11" => "Nov",
     "12" => "Dic",
 );
-
+$todaysDate = date("Y-m-d h:i:sa");
 foreach ($datos as $linea) {
     // Coger el primer día del evento
     $fechaini = $linea->fechaini;
     $date = DateTime::createFromFormat("Y-m-d", $fechaini);
-
+    $dateFin = DateTime::createFromFormat("Y-m-d", $linea->fechafin);
+    $eventExpired = false;
+    if($todaysDate > $dateFin){
+        $eventExpired = true;
+    }
     // Coger el mes del evento
     $dateMonth = DateTime::createFromFormat("Y-m-d", $linea->fechaini);
     $nombreMes = $meses[$dateMonth->format("m")];
@@ -87,12 +91,13 @@ foreach ($datos as $linea) {
             </div> <!-- end item-right -->
 
             <div class="item-left">
-                <p class="event">
+                <p class="event" expired="<?php echo $eventExpired ?>">
                     <?php echo ($linea->categoria) ?>
                 </p>
                 <h2 class="title">
                     <?php echo ($linea->nombre) ?>
                 </h2>
+ 
 
                 <div class="sce">
                     <div class="icon">
