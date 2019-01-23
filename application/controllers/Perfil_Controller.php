@@ -9,9 +9,11 @@ class Perfil_Controller extends CI_Controller {
         $this->Usuario_Model->login_necesario();
     }
     public function index() {
-        $result = $this->db->get("ventas");
-        $data["ventas"] = $result->result();
         $id = $this->session->id;
+        $query = $this->db->get_where('ventas', array('idUsuario' => $id));
+        $data["ventas"] = $query->result();
+        $this->db->close();
+
         $usuario = $this->db->query("CALL spUsuarioPorId($id)");
         $data["usuario"] = $usuario->result();
         $this->db->close();

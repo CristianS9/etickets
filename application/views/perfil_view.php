@@ -88,12 +88,6 @@
                                     <p>Compras</p>
                                 </a>
                             </li>
-                            <li class="ventana" elemento="verEntradas">
-                                <a href="#">
-                                    <i class="glyphicon glyphicon-tags"></i>
-                                    <p>Entradas</p>
-                                </a>
-                            </li>
                             <li class="ventana" elemento="logOut">
                                 <a href="#">
                                     <i class="glyphicon glyphicon-off"></i>
@@ -209,25 +203,6 @@
                             </table>
                         </div>
                     </div>
-                    <!-- <div class="jumbotron verEntradas" id="verEntradas">
-                        <div class="container">
-                            <h2>Tus Entradas</h2>
-                            <table class="table">
-                                <tr>
-                                    <th>Precio total</th>
-                                    <th>Fecha</th>
-                                </tr>
-                                <?php
-                               /*  foreach ($todo as $aux) {
-                                    echo "<tr>";
-                                    echo "<td>".$aux->precio_total."</td>";
-                                    echo "<td>".$aux->fecha."</td>";
-                                    echo "</tr>";
-                                } */
-                            ?>
-                            </table>
-                        </div>
-                    </div> -->
                     <div class="jumbotron logOut" id="logOut">
                         <div class="container">
                             <h2>Seguro que quieres cerrar sesión?</h2>

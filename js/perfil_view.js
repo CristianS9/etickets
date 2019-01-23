@@ -19,7 +19,7 @@ function cambioPestañas_activo(){
         $('#' + elemento).fadeIn();
     });
 }
-// ????
+// Te deja ver los tickets de cada compra
 function verCompras_activo(){
     $('.compra').click(function () {
         var elemento = $(this).closest('tr').next('tr');
