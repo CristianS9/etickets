@@ -135,6 +135,7 @@
         }
         public function recuperacion(){
             
+            $this->load->view("acceso/recuperacionContrasena");
         }
 
     }
