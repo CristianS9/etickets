@@ -65,3 +65,7 @@ $route["login"] = "acceso";
 $route["registro"] = "acceso/registro";
 $route["logout"] = "acceso/logout";
 $route["confirmacionNecesaria"] = "acceso/confirmacionNecesaria";
+$route["eventos"] = "Evento_Controller";
+$route["eventos/nuevo"] = "Evento_Controller/add_evento_view";
+$route["eventos/modificar/(:any)"] = "Evento_Controller/mod_evento_view/$1";
+$route["eventos/modificar/(:any)"] = "Evento_Controller/mod_evento_view/$1";

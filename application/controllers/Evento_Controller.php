@@ -11,10 +11,14 @@ class Evento_Controller extends CI_Controller {
     }
 
     public function index() {
-        $query = $this->db->get("eventos");
-        $data["todo"] = $query->result();
-
-        $this->load->view("evento_view", $data);
+        if($this->session->rango == 1){
+            $query = $this->db->get("eventos");
+            $data["todo"] = $query->result();
+        
+            $this->load->view("evento_view", $data);
+        }else {
+            redirect('/home');
+        }
     }
 
     public function add_evento_view() {
@@ -156,7 +160,7 @@ class Evento_Controller extends CI_Controller {
             unlink("fotos/$id.jpeg");
         }
 
-        redirect("Evento_Controller");
+        redirect("eventos");
 
     }
     public function mod_evento_view() {
@@ -188,7 +192,7 @@ class Evento_Controller extends CI_Controller {
 
 
         $this->Evento_Model->modificar($condicion, $nuevo);
-        redirect("Evento_Controller");
+        redirect("eventos");
 
     }
 }

@@ -66,7 +66,7 @@
                     <td>idProvincia</td>
                     <td>sitio</td>
                     <td>Imagen</td>
-                    <td><a href="<?php echo base_url(); ?>index.php/Evento_Controller/add_evento_view">Add</a></td>
+                    <td><a href="<?php echo base_url(); ?>index.php/eventos/nuevo">Add</a></td>
                 </tr>
             </thead>
             <tbody>
@@ -95,7 +95,7 @@
                         echo "<td><img src=\"". base_url() . "fotos/0.jpg\"></td>";
                     }
 
-                    echo "<td class=\"align-middle\"><a href=\"". base_url() ."index.php/Evento_Controller/mod_evento_view/".$aux->id."/\">Editar</a></td>";
+                    echo "<td class=\"align-middle\"><a href=\"". base_url() ."index.php/eventos/modificar/".$aux->id."/\">Editar</a></td>";
                     echo "<td class=\"align-middle\"><a href=\"". base_url() ."index.php/Evento_Controller/del_evento/".$aux->id."/\">Eliminar</a></td>";
                     echo "</tr>";
                 }
