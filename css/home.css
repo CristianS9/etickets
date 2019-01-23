@@ -34,10 +34,11 @@ div.contenido {
 .contenido .item {
     width: 48%;
     float: left;
-    padding: 0 20px;
+    padding: 0px 20px;
     background: #fff;
     overflow: hidden;
     margin: 10px
+    
 }
 
 .contenido .item-right,
@@ -181,4 +182,7 @@ footer {
     height: 100px;
     bottom: 0;
     width: 100%;
+}
+.item{
+    padding: 90%;
 }
