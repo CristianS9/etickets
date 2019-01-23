@@ -67,7 +67,7 @@ $(document).ready(function () {
   }
 
   function sendComment() {
-    var commentValue = $("#pComent").val();
+    var commentValue = $("#pComent").val().trim();
 
     $.ajax({
       type: "POST",

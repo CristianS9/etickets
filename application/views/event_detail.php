@@ -51,9 +51,7 @@
                     <?php echo $eventTickets[0]->provincia; ?>. Del
                     <?php echo $eventTickets[0]->fechaIni; ?> al
                     <?php echo $eventTickets[0]->fechaFin; ?>. </p>
-                <p class="lead">
-                    <a class="btn btn-primary btn-lg" href="#" role="button">Comprar sections</a>
-                </p>
+
             </div>
         </div>
 
@@ -152,8 +150,8 @@ foreach ($eventTickets as $ticket) {
                             <div class="rip"></div>
                             <div class="bottom --flex-row-j!sb">
                                 <?php
-if (isset($this->session->id)) {
-        ?>
+                                    if (isset($this->session->id)) {
+                                ?>
 
                                 <input type="number" placeholder=" Cant." class="inputCantidad" id="<?php echo $idCantidad ?>">
                                 <div class="contadorCantidad <?php echo $idContador ?> " cantidadRestante="<?php echo $cantidadRestante ?>"
@@ -162,12 +160,11 @@ if (isset($this->session->id)) {
                                 </div>
                                 <a class="buy addToCartButton" id='<?php echo $ticket->id ?>'>CESTA</a>
                                 <?php
-} else {
-        $url = base_url();
-        echo (" <a href='$url/index.php/login' class='buy addToCartButton' '>INICIAR SESIÓN</a>");
-    }
-    ?>
-
+                                    } else {
+                                            $url = base_url();
+                                            echo (" <a href='$url/index.php/login' class='buy addToCartButton' '>INICIAR SESIÓN</a>");
+                                        }
+                                ?>
                             </div>
                         </widget>
                     </section>
