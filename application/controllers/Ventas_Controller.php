@@ -16,7 +16,7 @@ class Ventas_Controller extends CI_Controller{
         //$cambio =  base64_encode(base64_encode(base64_encode($id)));
         $entradas = $this->db->query("CALL spDetallesEntradas($id)")->result();
         $data["entradas"] = $entradas;
-        $this->load->view("entradasCompra",$data);
+        $this->load->view("entradasCompra",$data); 
     }
 }
 

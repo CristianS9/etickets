@@ -218,6 +218,18 @@ iframe {
 	z-index: 1;
 }
 
+.links {
+	display: grid;
+	justify-items: stretch;
+	grid-auto-flow: column;
+	padding: 5px 10px;
+}
+
+.links>a {
+
+	text-align: center;
+}
+
 .container-login100::before {
 	content: "";
 	display: block;

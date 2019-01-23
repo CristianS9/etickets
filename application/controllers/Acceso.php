@@ -8,8 +8,10 @@
             $this->load->database(); 
             $this->load->library('form_validation');
             $this->load->library("session");
+            $this->load->model("Usuario_Model");
         }
         public function index(){
+            $this->Usuario_Model->sin_login();
             if($this->input->post("log_usuario") !=null){
                 $this->login();
             } else {
@@ -17,7 +19,8 @@
             } 
         }
         public function registro(){
-//            echo get_cookie("ultimo-login");
+            $this->Usuario_Model->sin_login();
+            //            echo get_cookie("ultimo-login");
             if($this->input->post("reg_usuario") !=null){
                 $this->registrar();
             } else {
@@ -25,7 +28,9 @@
             }
         }
         public function registrar(){
-
+            if(!$this->input->post("reg_usuario")){
+                redirect("registro");
+            }
             $this->form_validation->set_message("is_unique","{field} ya existe");
             $this->form_validation->set_message("required","Debes de introducir {field}");
             $this->form_validation->set_message("min_length","Debes introducir minimo {param}");
@@ -128,6 +133,10 @@
         }
         public function confirmacionNecesaria(){
             $this->load->view("acceso/confirmacionNecesaria");
+        }
+        public function recuperacion(){
+            
+            $this->load->view("acceso/recuperacionContrasena");
         }
 
     }

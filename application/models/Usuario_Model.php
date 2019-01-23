@@ -62,6 +62,11 @@
                 redirect("acceso");
             };
         }
+        public function sin_login(){
+            if(isset($this->session->id)){
+                redirect("home");
+            }
+        }
         public function modUser($datos){
             
             $this->db->close();
