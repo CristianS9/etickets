@@ -3,6 +3,7 @@ class ShoppingCart_Model extends CI_Model {
 
     public function __construct() {
         parent::__construct();
+        $this->load->model("Correo");
     }
 
     public function getShoppingCart($userId) {
@@ -95,6 +96,7 @@ class ShoppingCart_Model extends CI_Model {
             $this->db->query("$consulta");
             $this->db->close();
         }
+        $this->Correo->compra($idVenta);
     }
 
     public function generarIdentificador($length) {

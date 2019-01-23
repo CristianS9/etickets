@@ -44,7 +44,7 @@
             $this->db->close();
 
             $this->email->from("etickets_reto@outlook.es","Etickets");
-            $this->email->to("anderlarri14@gmail.com");
+            $this->email->to("$email");
             $this->email->subject("Gracias por tu compra!");
 
             $data["idCompra"] = $idCompra;
