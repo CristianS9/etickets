@@ -301,7 +301,7 @@ section {
     -moz-box-shadow: 6px 6px 15px -4px rgba(0, 0, 0, 0.75);
     box-shadow: 6px 6px 15px -4px rgba(0, 0, 0, 0.75);
     max-width: 50%;
-   height: 130px;
+    height: 130px;
 }
 
 .sendButton {
@@ -327,10 +327,12 @@ section {
     max-width: 50%;
     margin-left: 7px;
 }
-.tachar{
-     text-decoration: line-through;
+
+.tachar {
+    text-decoration: line-through;
 }
-.imagenEvento{
+
+.imagenEvento {
     max-width: 255px;
     max-height: 143px;
 }
