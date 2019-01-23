@@ -32,7 +32,7 @@ $handler->getJavascriptAntiBot();
     <!-- Links JS -->
 
     <script src="<?php echo base_url() ?>lib/jquery-3.3.1.min.js"></script>
-    <script src="<?php echo base_url() ?>js/home.js">
+    <script src="<?php echo base_url() ?>js/home.js"></script>
     <script src="<?php echo base_url() ?>lib/bootstrap.bundle.min.js"></script>
     <script src="<?php echo base_url() ?>lib/css-ajax/ajaxlivesearch.min.js"></script>
 

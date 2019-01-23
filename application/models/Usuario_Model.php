@@ -46,7 +46,7 @@
             $this->db->close();
             return $existe;
         }
-        
+
         public function getEmail($email){
             $condicion = [
                 "email" => $email,
