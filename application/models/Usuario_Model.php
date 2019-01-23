@@ -36,6 +36,13 @@
             return $this->db->get_where("usuarios",$condicion)->row();
             
         }
+        public function datosLoginId($id){
+            $condicion = [
+                "id" => $id
+            ];
+            return $this->db->get_where("usuarios",$condicion)->row();
+            
+        }
         public function login_necesario(){
             if(!isset($this->session->id)){
                 redirect("acceso");
@@ -51,6 +58,38 @@
             $this->db->close();
             redirect("Perfil_Controller");
         }      
+        public function elementoExiste($elemento,$dato){
+            $condicion = [
+                $elemento => $dato
+            ];
+            $existe = $this->db->get_where("usuarios",$condicion)->row($elemento);
+            if(isset($existe)){
+                return "1";
+            } else {
+                return "0";
+            }
+
+        }
+        public function recuperacionCorrecto($condicion){
+            $id = $this->db->get_where("usuarios",$condicion)->row("id");
+  
+            if(isset($id)){
+                return $id;
+            } else {
+                return "0";
+            } 
+        }
+        public function generarContrasenaTemporal($id){
+            $codigo = md5(uniqid(rand()+$id, true));
+            $this->db->query(" CALL `spNuevaContrasenaTemporal`($id, \"$codigo\")");
+            return $codigo;
+        }
+        public function datosTemporal($codigo){
+            $condicion = [
+                "codigo" => $codigo
+            ];
+            return $this->db->get_where("recuperacion_contrasena",$condicion)->row();
+        }
     }
 
 ?>

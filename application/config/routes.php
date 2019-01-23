@@ -66,3 +66,4 @@ $route["registro"] = "acceso/registro";
 $route["logout"] = "acceso/logout";
 $route["confirmacionNecesaria"] = "acceso/confirmacionNecesaria";
 $route["recuperacion"] = "acceso/recuperacion";
+$route["temporal/(:any)"] = "acceso/temporal/$1";
