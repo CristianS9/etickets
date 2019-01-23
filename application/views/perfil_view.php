@@ -178,7 +178,7 @@
                         </div>
                     </div>
                     <div class="jumbotron verCompras" id="verCompras">
-                        <div class="container">
+                        <div class="container-fluis">
                             <h2>Ultimas Compras</h2>
                             <div class="compra">
                                 <div class="datosCompra">

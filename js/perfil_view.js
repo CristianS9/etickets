@@ -34,7 +34,7 @@ function verCompras_activo(){
             // console.log("IdVenta :   "+idVenta);
 
             if ("venta"+idVenta == $(aux).attr('id')) {
-                $(aux).css('display', 'grid');
+                $(aux).slideDown("slow").css('display', 'grid');
             }
         });
 

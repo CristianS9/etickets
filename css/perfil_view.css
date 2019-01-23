@@ -207,7 +207,7 @@ input {
 .venta{
     display:grid;
     text-align: center;
-    grid-template-columns:repeat(3, 30%);
+    grid-template-columns:repeat(3, 1fr);
 }
 .datosTickets{
     display: none;
