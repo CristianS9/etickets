@@ -109,7 +109,7 @@ $(document).ready(function () {
         $.notify({
           title: "Hecho<br>",
           message: "El producto ha sido añadido a la cesta de la compra. Haz click aquí para ver la cesta.",
-          url: base_url + '/index.php/cart',
+          url: base_url + 'index.php/cart',
           animate: {
             enter: 'animated fadeInRight',
             exit: 'animated fadeOutRight'
