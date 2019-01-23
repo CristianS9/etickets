@@ -7,7 +7,7 @@
 /* Beginning of result div and table */
 .ls_result_div
 {
-    position: absolute;
+    position: relative;
     background-color: white;
     font-size: 17px;
     display: none;

@@ -5,8 +5,8 @@ class Home_Controller extends CI_Controller {
         $this->load->helper('url');
         $this->load->helper('html');
         $this->load->database();
-        $this->load->model("Usuario_Model");
-        $this->Usuario_Model->login_necesario();
+
+  
     }
 
     public function index() {

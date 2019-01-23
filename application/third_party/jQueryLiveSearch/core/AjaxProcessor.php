@@ -2,7 +2,7 @@
 
 namespace AjaxLiveSearch\core;
 
-header('Access-Control-Allow-Origin: http://localhost');
+header('Access-Control-Allow-Origin: http://localhost/etickets');
 header('Access-Control-Allow-Methods: *');
 header('Content-Type: application/json');
 
@@ -44,7 +44,7 @@ class AjaxProcessor
 
         // 3. Verify the token - CSRF protection
         if (!isset($_POST['ls_token']) || $this->handler->verifySessionValue('token', $_POST['ls_token']) !== true ||
-            !isset($_POST['ls_anti_bot']) ||
+            
             $this->handler->verifySessionValue('anti_bot', $_POST['ls_anti_bot']) !== true
         ) {
             // Tokens are not matched

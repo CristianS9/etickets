@@ -1,0 +1,18 @@
+body{
+    background-color: #dddddd;
+}
+img{
+    max-width: 250px;
+}
+td{
+    border: 1px solid black !important;
+}
+.rowMargen{
+    margin-top: 20px;
+}
+
+.submitNew {
+    text-align: center;
+    justify-items: center;
+    align-items: center;
+}

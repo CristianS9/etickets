@@ -33,7 +33,8 @@
             $condicion = [
                 "usuario" => $usuario
             ];
-            return $this->db->get_where("usuarios",$condicion)->row();  
+            return $this->db->get_where("usuarios",$condicion)->row();
+            
         }
 
         public function getUsername($usuario){

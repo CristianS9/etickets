@@ -11,10 +11,61 @@ $(document).ready(function () {
   });
 
   $(".addToCartButton").click(function () {
+    //Comparar la cantidad
+    var cantidadRestante = $(".contadorCantidad").attr('cantidadRestante');
     var id = $(this).attr('id');
-    var cantidad = $("#"+id + "cantidad").val();
-    addToCart(id,cantidad);
+    var cantidad = $("#" + id + "cantidad").val();
+    if (cantidad == null || cantidad == undefined || cantidad == "0" || cantidad == "") {
+
+
+
+      var tipo = 'warning';
+      var texto = 'No has introducido ninguna cantidad.';
+      var titulo = '<strong>Atención:</strong> <br>';
+      showNotificacion(tipo, texto, titulo);
+
+
+
+    } else {
+      if (cantidad > cantidadRestante) {
+        var tipo = 'warning';
+        var texto = 'La cantidad de entradas introducida es mayor a la cantidad disponible.';
+        var titulo = '<strong>Error:</strong> <br>';
+        showNotificacion(tipo, texto, titulo);
+      } else {
+        addToCart(id, cantidad);
+        cambiarContadorCantidad(id,cantidad);
+      }
+    }
   });
+
+  function cambiarContadorCantidad(id,cantidad) {
+    var cantidadRestante = $("." + id + "contador").attr('cantidadRestante');
+    var cantidadTotal = $("." + id + "contador").attr('cantidadTotal');
+    $("." + id + "contador").attr('cantidadRestante', cantidadRestante - cantidad);
+
+
+    $("." + id + "contador").html((cantidadRestante-cantidad) + " / " + cantidadTotal);
+    
+  }
+ 
+
+  function showNotificacion(tipo, texto, titulo) {
+    $.notify({
+      title: titulo,
+      message: texto,
+      animate: {
+        enter: 'animated fadeInRight',
+        exit: 'animated fadeOutRight'
+      }
+    }, {
+      allow_dismiss: "false",
+      type: tipo,
+      placement: {
+        align: "center"
+      }
+    });
+  }
 
   function sendComment() {
     var commentValue = $("#pComent").val();
@@ -36,7 +87,7 @@ $(document).ready(function () {
     });
   }
 
-  function addToCart(pentradaId,pcantidad) {
+  function addToCart(pentradaId, pcantidad) {
     $.ajax({
       type: "POST",
       url: "../ajax/EventDetail_Ajax/addItemToCart",
@@ -45,10 +96,17 @@ $(document).ready(function () {
         cantidad: pcantidad
       },
       success: function (datos) {
-        alert("Añadido a la cesta");
+
+        var tipo = 'success';
+        var texto = 'El producto ha sido añadido a la cesta de la compra.';
+        var titulo = '<strong>¡Hecho!</strong> <br>';
+        showNotificacion(tipo, texto, titulo);
       },
       error: function (error) {
-        alert("No añadido a la cesta");
+        var tipo = 'danger';
+        var texto = 'Ha habido un problema al añadir el producto a la cesta de la compra.';
+        var titulo = '<strong>Error:</strong> <br>';
+        showNotificacion(tipo, texto, titulo);
       }
     });
   }
