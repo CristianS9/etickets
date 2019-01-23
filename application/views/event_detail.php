@@ -216,7 +216,7 @@
                     <h4 id="h4user">
                         <?php echo $comentario->usuario ?>
                     </h4>
-                    <?php echo  $textoFecha?>
+                    <p id="fechaCom"><?php echo  $textoFecha?></p>
                 </div>
                 <div class="comentarioContenido usuarioComentario">
                     <?php echo $comentario->comentario ?>

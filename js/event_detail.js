@@ -6,7 +6,10 @@ $(document).ready(function () {
     if (textAreaLength >= 10) {
       sendComment();
     } else {
-      alert("El comentario tiene que tener como mínimo 10 caracteres");
+      var tipo = 'warning';
+      var texto = 'El comentario tiene que tener 10 caracteres como mínimo.';
+      var titulo = '<strong>Atención:</strong> <br>';
+      showNotificacion(tipo, texto, titulo);
     }
   });
 
@@ -81,6 +84,7 @@ $(document).ready(function () {
         $(".comentario").clone().insertAfter(".comentario:first");
         $("#h4user").first().text(user_name);
         $(".comentarioContenido").first().text(commentValue);
+        $("#fechaCom").first().text("Ahora mismo");
         $("#pComent").val("");
       },
       error: function (error) {
