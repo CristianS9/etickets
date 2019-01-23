@@ -27,10 +27,9 @@ $(document).ready(function () {
             //Total del carrito
             changeCartTotal();
         } else {
-            var eliminar = confirm("¿Seguro que quieres borrar este elemento?");
-            if (eliminar) {
+
                 deleteFromCart(id);
-            }
+            
         }
     });
 
@@ -149,6 +148,7 @@ $(document).ready(function () {
 
     }
     $(".buyButton").click(function () {
+        dfew7/ d
         pagar();
     });
 
