@@ -26,7 +26,7 @@ div.contenido {
 .upcomming {
     font-size: 45px;
     text-transform: uppercase;
-    border-left: 14px solid #777;
+    border-left: 14px solid #a445b2;
     padding-left: 12px;
     margin: 18px 8px;
 }
@@ -146,7 +146,12 @@ div.contenido {
 }
 
 .contenido .item .tickets {
-    background: #777
+    border-radius: 20px;
+    background: -webkit-linear-gradient(left, #a445b2, #d41872, #fa4299);
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
 }
 
 .contenido .item .booked {
@@ -170,4 +175,10 @@ div.contenido {
     div.contenido {
         margin: 0 20px auto
     }
+}
+footer {
+    position: fixed;
+    height: 100px;
+    bottom: 0;
+    width: 100%;
 }

@@ -133,12 +133,8 @@ foreach ($datos as $linea) {
 }
 ?>
     </div>
+<?php $this->load->view('elementos/footer'); ?>
 
-    <footer class="py-5 bg-dark">
-        <div class="container">
-            <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
-        </div>
-    </footer>
     <script>
         jQuery(".mySearch").ajaxlivesearch({
             loaded_at: <?php echo time(); ?>,
