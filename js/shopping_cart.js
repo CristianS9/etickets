@@ -16,20 +16,16 @@ $(document).ready(function () {
         var id = $(this).attr('id');
         var entradaEventoId = $(this).attr('entradaEventoId');
         if (cantidad != 0) {
-            // ajax comprueba si la cantidad de la base de datos es inferior
-
             // Ajax changeQuantity
             changeQuantity(cantidad, id, entradaEventoId);
 
-
             //Cambia el precio total de un elemento
             changeItemTotalSum(id, cantidad);
+
             //Total del carrito
             changeCartTotal();
         } else {
-
-                deleteFromCart(id);
-            
+            deleteFromCart(id);
         }
     });
 
@@ -148,7 +144,7 @@ $(document).ready(function () {
 
     }
     $(".buyButton").click(function () {
-        dfew7/ d
+        dfew7 / d
         pagar();
     });
 
