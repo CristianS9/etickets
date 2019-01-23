@@ -44,10 +44,8 @@ $handler->getJavascriptAntiBot();
 
 
     <div class="contenido">
-        <h1 class="upcomming animated fadeIn">Próximos eventos <i id="lupa" class="pl-4 fas fa-search"> </i> <i><input
-                    type="text" class='mySearch' id="ls_query" placeholder="Type to start searching ..."
-                    data-additionalData="hello world!"></i> </h1>
-
+        <h1 class="upcomming">Próximos eventos <i id="lupa" class="pl-4 fas fa-search"> </i> <i></i> </h1>
+<input type="text" class='mySearch' id="ls_query" placeholder="Escribe para buscar..." >
         <?php
 $meses = array("01" => "Ene",
     "02" => "Feb",
