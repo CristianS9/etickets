@@ -176,7 +176,6 @@ input {
 
 }
 
-
 .modificar {
     display: grid;
     grid-gap: 10px;
@@ -191,7 +190,7 @@ input {
 .compra{
     display: grid;
     position: relative;
-    border:1px solid red;
+    /* border:1px solid red; */
 }
 .datosCompra{
     display: grid;
@@ -221,11 +220,11 @@ input {
     text-align: center;
     grid-template-columns: repeat(8, 1fr);
 }
+
 .ticket{
-    display: grid;
+    display: none;
     grid-template-columns: repeat(8,1fr);
 }
-
 
 @media only screen and (max-width: 768px) {
     .contInput {

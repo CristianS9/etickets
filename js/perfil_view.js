@@ -23,15 +23,24 @@ function cambioPestañas_activo(){
 function verCompras_activo(){
     $('.venta').click(function () {
         //Pilla bien la id
-        var idVenta = $(this).find('span').html();
-        
+        var idVenta = $(this).find('span').html().trim();
+        var tickets = $('.ticket').toArray();
+
+        $('.ticket').css('display','none');
         $('.datosTickets').css('display','grid');
-        $('.titulo').css('display','grid');
 
+        tickets.forEach(aux => {
+            // console.log("Ticket id :   "+$(aux).attr('id'));
+            // console.log("IdVenta :   "+idVenta);
 
-        
+            if ("venta"+idVenta == $(aux).attr('id')) {
+                $(aux).css('display', 'grid');
+            }
+        });
+
     });
 }
+
 function botonesEdicion_activos(){
     $('.modificar').on('click', '.editar', function () {
         editar(this);

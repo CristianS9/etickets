@@ -35,8 +35,7 @@
                     <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
                     <li><a href="#">Link</a></li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                            aria-expanded="false">Dropdown <span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="#">Action</a></li>
                             <li><a href="#">Another action</a></li>
@@ -102,6 +101,7 @@
                 <div class="profile-content">
                     <div class="jumbotron modUser" id="modUser">
                         <div class="container modificar">
+                                <h2>Modifica tus datos</h2>
                             <?php
                             foreach ($usuario as $aux) { 
                             ?>
@@ -180,22 +180,6 @@
                     <div class="jumbotron verCompras" id="verCompras">
                         <div class="container">
                             <h2>Ultimas Compras</h2>
-                            <!-- <table class="table">
-                                <tr>
-                                    <th>Precio total</th>
-                                    <th colspan="2">Fecha</th>
-                                </tr>
-                                <?php
-                                // foreach ($ventas as $aux) {
-                                //     echo "<tr class=\"compra\">";
-                                //     echo "<td>".$aux->precio_total."</td>";
-                                //     echo "<td colspan=\"2\">".$aux->fecha."</td>";
-                                //     echo "</tr>";
-                                    
-                                //     $this->Usuario_Model->entradaPorVenta($aux->id);
-                                // }    
-                            ?>
-                            </table> -->
                             <div class="compra">
                                 <div class="datosCompra">
                                     <div class="tituloCompra">
@@ -231,8 +215,7 @@
                                     </div>
                                     <?php
                                     foreach ($tickets as $aux) {
-                                        echo "<div class=\"ticket\">";
-                                        echo "<span class=\"idVenta\">..</span>";
+                                        echo "<div class=\"ticket\" id=\"venta".$aux->idVenta."\">";
                                         echo "<span>".$aux->id."</span>";
                                         echo "<span>".$aux->nombre."</span>";
                                         echo "<span>".$aux->fecha."</span>";
