@@ -69,3 +69,5 @@ $route["eventos"] = "Evento_Controller";
 $route["eventos/nuevo"] = "Evento_Controller/add_evento_view";
 $route["eventos/modificar/(:any)"] = "Evento_Controller/mod_evento_view/$1";
 $route["eventos/modificar/(:any)"] = "Evento_Controller/mod_evento_view/$1";
+$route["recuperacion"] = "acceso/recuperacion";
+$route["temporal/(:any)"] = "acceso/temporal/$1";
