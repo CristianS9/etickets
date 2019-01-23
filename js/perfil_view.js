@@ -86,8 +86,8 @@ function divEdicion(boton){
 
     // prepara los elementos
     var input = '<input class="data" type="' + type + '" value="' + dato + '" name="' + elemento + '">';
-    var enviar = "<span class=\"glyphicon glyphicon-ok boton enviar\"></span>";
-    var cancelar = "<span class=\"glyphicon glyphicon-remove boton cancelar\"></span>";
+    var enviar = "<span class=\"fas fa-check boton enviar\"></span>";
+    var cancelar = "<span class=\"fas fa-times boton cancelar\"></span>";
  
 
     // Borra elementos

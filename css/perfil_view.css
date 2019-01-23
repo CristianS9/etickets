@@ -1,7 +1,13 @@
 body {
     background: #F1F3FA;
 }
-
+.navbar{
+    position: sticky !important;
+}
+.ventana:hover{
+    background-color: #e9ecef;
+    cursor: pointer;
+}
 /* Profile container */
 .profile {
     margin: 20px 0;
@@ -218,12 +224,12 @@ input {
     margin-bottom: 10px;
     display: grid;
     text-align: center;
-    grid-template-columns: repeat(8, 1fr);
+    grid-template-columns: repeat(7, 1fr);
 }
 
 .ticket{
     display: none;
-    grid-template-columns: repeat(8,1fr);
+    grid-template-columns: repeat(7,1fr);
 }
 
 @media only screen and (max-width: 768px) {
