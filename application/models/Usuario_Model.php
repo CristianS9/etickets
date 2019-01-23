@@ -33,9 +33,30 @@
             $condicion = [
                 "usuario" => $usuario
             ];
-            return $this->db->get_where("usuarios",$condicion)->row();
-            
+
+            return $this->db->get_where("usuarios",$condicion)->row();  
         }
+
+        public function getUsuario($usuario){
+            $condicion = [
+                "usuario" => $usuario,
+            ];
+
+            $existe = $this->db->get_where("usuarios",$condicion)->row("usuario");
+            $this->db->close();
+            return $existe;
+        }
+        
+        public function getEmail($email){
+            $condicion = [
+                "email" => $email,
+            ];
+
+            $existe = $this->db->get_where("usuarios",$condicion)->row("email");
+            $this->db->close();
+            return $existe;
+        }
+
         public function login_necesario(){
             if(!isset($this->session->id)){
                 redirect("acceso");
@@ -45,7 +66,19 @@
             
             $this->db->close();
             redirect("Perfil_Controller");
-        }      
+        }
+        public function entradaPorVenta($id){
+            $result = $this->db->query("CALL spEntradaPorEvento($id)");
+            $this->db->close();
+            $entradas = $result->result();
+
+            foreach ($entradas as $aux) {
+                echo "<tr class=\"entrada\">";
+                echo "<td>". $aux->identificador ."</td>";
+                echo "<td>".  $aux->idVenta ."</td>";
+                echo "</tr>";
+            }
+        }   
     }
 
 ?>

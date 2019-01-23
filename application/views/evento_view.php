@@ -50,7 +50,7 @@
             echo "<td><img src=\"". base_url() . "fotos/0.jpg\"></td>";
         }
 
-        echo "<td><a href=\"Evento_Controller/mod_evento_view/".$aux->id."/\">Editar</a></td>";
+        echo "<td><a href=\"". base_url() ."index.php/Evento_Controller/mod_evento_view/".$aux->id."/\">Editar</a></td>";
         echo "<td><a href=\"". base_url() ."index.php/Evento_Controller/del_evento/".$aux->id."/\">Eliminar</a></td>";
         echo "</tr>";
     }

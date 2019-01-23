@@ -102,9 +102,9 @@
                 <div class="profile-content">
                     <div class="jumbotron modUser" id="modUser">
                         <div class="container modificar">
-                        <?php
+                            <?php
                             foreach ($usuario as $aux) { 
-                        ?>
+                            ?>
                             <div class="linea">
                                 <div class="info" elemento="usuario">
                                     Nombre de usuario:
@@ -121,7 +121,7 @@
                                     Contraseña:
                                 </div>
                                 <div class="data">
-                                    *******
+                                    &bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;
                                 </div>
                                 <div class="botones">
                                     <span class="glyphicon glyphicon-pencil boton editar"></span>
@@ -154,7 +154,7 @@
                                     Correo:
                                 </div>
                                 <div class="data">
-                                   <?php echo $aux->email;?>
+                                    <?php echo $aux->email;?>
                                 </div>
                                 <div class="botones">
                                     <span class="glyphicon glyphicon-pencil boton editar"></span>
@@ -179,18 +179,25 @@
                     </div>
                     <div class="jumbotron verCompras" id="verCompras">
                         <div class="container">
-                            <h2>Tus Entradas</h2>
+                            <h2>Ultimas Compras</h2>
                             <table class="table">
                                 <tr>
                                     <th>Precio total</th>
-                                    <th>Fecha</th>
+                                    <th colspan="2">Fecha</th>
                                 </tr>
-                            <?php
-                                foreach ($todo as $aux) {
-                                    echo "<tr>";
+                                <?php
+                                foreach ($ventas as $aux) {
+                                    echo "<tr class=\"compra\">";
                                     echo "<td>".$aux->precio_total."</td>";
-                                    echo "<td>".$aux->fecha."</td>";
+                                    echo "<td colspan=\"2\">".$aux->fecha."</td>";
                                     echo "</tr>";
+                                    
+                                    $this->Usuario_Model->entradaPorVenta($aux->id);
+                                    // echo "<tr class=\"entrada\">";
+                                    // echo "<td>Aqui va la venta</td>";
+                                    // echo "<td>Aqui va la venta</td>";
+                                    // echo "<td>Aqui va la venta</td>";
+                                    // echo "</tr>";
                                 }    
                             ?>
                             </table>
@@ -199,8 +206,8 @@
                     <div class="jumbotron logOut" id="logOut">
                         <div class="container">
                             <h2>Seguro que quieres cerrar sesión?</h2>
-                        <?php   echo form_open_multipart("Perfil_Controller/logOut");?>
-                                <input type="submit" value="Cerrar sesión">
+                            <?php   echo form_open_multipart("Perfil_Controller/logOut");?>
+                            <input type="submit" value="Cerrar sesión">
                             </form>
                         </div>
                     </div>
@@ -209,4 +216,5 @@
         </div>
     </div>
 </body>
+
 </html>

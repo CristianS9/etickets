@@ -98,6 +98,7 @@
                 $this->session->set_userdata("id",$datosLogin->id);
                 $this->session->set_userdata("usuario",$usuario);
                 $this->session->set_userdata("rango",$datosLogin->rango);
+                
                 if($datosLogin->confirmado=="0"){
                     redirect("confirmacionNecesaria");
                 }
