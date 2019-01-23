@@ -21,10 +21,15 @@ function cambioPestañas_activo(){
 }
 // Te deja ver los tickets de cada compra
 function verCompras_activo(){
-    $('.compra').click(function () {
-        var elemento = $(this).closest('tr').next('tr');
-        console.log(elemento);
-        $(elemento).fadeToggle();
+    $('.venta').click(function () {
+        //Pilla bien la id
+        var idVenta = $(this).find('span').html();
+        
+        $('.datosTickets').css('display','grid');
+        $('.titulo').css('display','grid');
+
+
+        
     });
 }
 function botonesEdicion_activos(){

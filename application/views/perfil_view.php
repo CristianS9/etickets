@@ -198,18 +198,22 @@
                             </table> -->
                             <div class="compra">
                                 <div class="datosCompra">
-                                    <span>Nº</span>
-                                    <span>Precio total</span>
-                                    <span>Fecha</span>
+                                    <div class="tituloCompra">
+                                        <span>Nº</span>
+                                        <span>Precio total</span>
+                                        <span>Fecha</span>
+                                    </div>
                                     
                                     <?php 
                                     $cont = 1;
                                     foreach ($ventas as $aux) {
                                         
                                         $timestamp = strtotime($aux->fecha);
-                                        echo "<span>".$cont."</span>";
+                                        echo "<div class=\"venta\">";
+                                        echo "<span>".$aux->id."</span>";
                                         echo "<span>".$aux->precio_total."</span>";
                                         echo "<span>".date("d-m-Y", $timestamp)."</span>";
+                                        echo "</div>";
                                         $cont++;
                                     }
                                     ?>
@@ -228,6 +232,7 @@
                                     <?php
                                     foreach ($tickets as $aux) {
                                         echo "<div class=\"ticket\">";
+                                        echo "<span class=\"idVenta\">..</span>";
                                         echo "<span>".$aux->id."</span>";
                                         echo "<span>".$aux->nombre."</span>";
                                         echo "<span>".$aux->fecha."</span>";

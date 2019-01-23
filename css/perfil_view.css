@@ -195,14 +195,28 @@ input {
 }
 .datosCompra{
     display: grid;
-    grid-template-columns:repeat(3, 30%) ;
+    /* grid-template-columns:repeat(3, 30%) ; */
     text-align: center;
 }
-.datosTickets{
+.tituloCompra {
+    margin-top: 10px;
+    margin-bottom: 10px;
     display: grid;
+    text-align: center;
+    grid-template-columns: repeat(3, 1fr);
+}
+.venta{
+    display:grid;
+    text-align: center;
+    grid-template-columns:repeat(3, 30%);
+}
+.datosTickets{
+    display: none;
     text-align: center;
 }
 .titulo{
+    margin-top: 10px;
+    margin-bottom: 10px;
     display: grid;
     text-align: center;
     grid-template-columns: repeat(8, 1fr);
