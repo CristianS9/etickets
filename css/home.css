@@ -12,7 +12,15 @@ body {
     font-family: 'Indie Flower', cursive;
     font-family: 'Cabin', sans-serif;
 }
-
+.jumbotron{
+    background-color: white;
+    border-radius: 0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    -ms-border-radius: 0px;
+    -o-border-radius: 0px;
+    margin-left: 8px;
+}
 .mySearch {
     display: none;
 }
@@ -178,9 +186,10 @@ div.contenido {
     }
 }
 footer {
-    position: fixed;
+    position: sticky;
     height: 100px;
-    bottom: 0;
+    position:absolute;
+    bottom:0;
     width: 100%;
 }
 .item{

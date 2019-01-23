@@ -38,20 +38,19 @@
     <div class="contenido">
         <h1 class="upcomming">Evento</h1>
         <div class="jumbo">
-            <div class="jumbotron">
-                <h1 class="display-4">
+            <div class="jumbotron p-3">
+                <h1 class="tituloJumbo display-4">
                     <?php echo $eventTickets[0]->nombre; ?>
                 </h1>
                 <p class="lead">
-                    <?php echo $eventTickets[0]->descripcion; ?>
+                    <?php echo $eventTickets[0]->categoria; ?>
                 </p>
                 <hr class="my-4">
                 <p>Evento de
                     <?php echo $eventTickets[0]->categoria; ?> en
                     <?php echo $eventTickets[0]->provincia; ?>. Del
                     <?php echo $eventTickets[0]->fechaIni; ?> al
-                    <?php echo $eventTickets[0]->fechaFin; ?>. </p>
-
+                    <?php echo $eventTickets[0]->fechaFin . ". " . $eventTickets[0]->descripcion ?> </p>
             </div>
         </div>
 
@@ -189,10 +188,8 @@ if (isset($this->session->usuario)) {
     ?>
             <div class="sendCommentSection">
                 <h1 class="upcomming mb-0 pb-0">Comentarios</h1>
-
             </div>
             <?php
-
 }
 ?>
 
