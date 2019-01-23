@@ -142,7 +142,7 @@ $(document).ready(function () {
     function pagar() {
         $(".buyButton").hide();
                         var procesando = $.notify({
-                             title: "<b>Procesando... </b><br>",
+                             title: "<b>Procesando... <i class='fas fa-spinner-third fa-spin'></i></b><br>",
                              message: "Realizando compra...",
                              animate: {
                                  enter: 'animated zoomIn',
