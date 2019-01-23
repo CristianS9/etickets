@@ -153,10 +153,6 @@ input {
     border-radius: 5px;
 }
 
-
-
-
-
 .entrada {
     display: none;
 }
@@ -180,13 +176,6 @@ input {
 
 }
 
-table,
-th,
-tr,
-td {
-    /* width:80%;
-    border: 1px solid black; */
-}
 
 .modificar {
     display: grid;
@@ -198,6 +187,31 @@ td {
     grid-template-columns: 1fr 1fr;
 
 }
+
+.compra{
+    display: grid;
+    position: relative;
+    border:1px solid red;
+}
+.datosCompra{
+    display: grid;
+    grid-template-columns:repeat(3, 30%) ;
+    text-align: center;
+}
+.datosTickets{
+    display: grid;
+    text-align: center;
+}
+.titulo{
+    display: grid;
+    text-align: center;
+    grid-template-columns: repeat(8, 1fr);
+}
+.ticket{
+    display: grid;
+    grid-template-columns: repeat(8,1fr);
+}
+
 
 @media only screen and (max-width: 768px) {
     .contInput {

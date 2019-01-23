@@ -23,6 +23,7 @@ function cambioPestañas_activo(){
 function verCompras_activo(){
     $('.compra').click(function () {
         var elemento = $(this).closest('tr').next('tr');
+        console.log(elemento);
         $(elemento).fadeToggle();
     });
 }

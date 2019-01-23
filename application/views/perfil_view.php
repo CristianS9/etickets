@@ -180,27 +180,67 @@
                     <div class="jumbotron verCompras" id="verCompras">
                         <div class="container">
                             <h2>Ultimas Compras</h2>
-                            <table class="table">
+                            <!-- <table class="table">
                                 <tr>
                                     <th>Precio total</th>
                                     <th colspan="2">Fecha</th>
                                 </tr>
                                 <?php
-                                foreach ($ventas as $aux) {
-                                    echo "<tr class=\"compra\">";
-                                    echo "<td>".$aux->precio_total."</td>";
-                                    echo "<td colspan=\"2\">".$aux->fecha."</td>";
-                                    echo "</tr>";
+                                // foreach ($ventas as $aux) {
+                                //     echo "<tr class=\"compra\">";
+                                //     echo "<td>".$aux->precio_total."</td>";
+                                //     echo "<td colspan=\"2\">".$aux->fecha."</td>";
+                                //     echo "</tr>";
                                     
-                                    $this->Usuario_Model->entradaPorVenta($aux->id);
-                                    // echo "<tr class=\"entrada\">";
-                                    // echo "<td>Aqui va la venta</td>";
-                                    // echo "<td>Aqui va la venta</td>";
-                                    // echo "<td>Aqui va la venta</td>";
-                                    // echo "</tr>";
-                                }    
+                                //     $this->Usuario_Model->entradaPorVenta($aux->id);
+                                // }    
                             ?>
-                            </table>
+                            </table> -->
+                            <div class="compra">
+                                <div class="datosCompra">
+                                    <span>Nº</span>
+                                    <span>Precio total</span>
+                                    <span>Fecha</span>
+                                    
+                                    <?php 
+                                    $cont = 1;
+                                    foreach ($ventas as $aux) {
+                                        
+                                        $timestamp = strtotime($aux->fecha);
+                                        echo "<span>".$cont."</span>";
+                                        echo "<span>".$aux->precio_total."</span>";
+                                        echo "<span>".date("d-m-Y", $timestamp)."</span>";
+                                        $cont++;
+                                    }
+                                    ?>
+                                </div>
+                                <div class="datosTickets">
+                                    <div class="titulo">
+                                        <span>Id</span>
+                                        <span>Nombre</span>
+                                        <span>Fecha</span>
+                                        <span>Precio</span>
+                                        <span>Categoría</span>
+                                        <span>Código</span>
+                                        <span>Provincia</span>
+                                        <span>Sitio</span>
+                                    </div>
+                                    <?php
+                                    foreach ($tickets as $aux) {
+                                        echo "<div class=\"ticket\">";
+                                        echo "<span>".$aux->id."</span>";
+                                        echo "<span>".$aux->nombre."</span>";
+                                        echo "<span>".$aux->fecha."</span>";
+                                        echo "<span>".$aux->precio."</span>";
+                                        echo "<span>".$aux->categoria."</span>";
+                                        echo "<span>".$aux->codigo."</span>";
+                                        echo "<span>".$aux->provincia."</span>";
+                                        echo "<span>".$aux->sitio."</span>";
+                                        echo "</div>";
+                                    }
+                                    ?>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="jumbotron logOut" id="logOut">
