@@ -108,7 +108,50 @@ body {
     font-size: 1.125rem;
     margin-bottom: 0.5rem;
 }
+.cantidad{
+    height: 20px;
+    width: 20%;
+    border-radius: 15px;
+    border: 0;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+}
+.deleteButton {
+        display: grid;
+        font-size: 12px;
+        font-weight: bold;
+        background-color: #dc143c;
+        padding: 0 15px;
+        line-height: 30px;
+        border-radius: 15px;
+        align-content: center;
+        color: #fff;
+        text-decoration: none;
+        cursor: pointer;
+        width: 25%;
+         border: 0;
+        -webkit-border-radius: 15px;
+        -moz-border-radius: 15px;
+        -ms-border-radius: 15px;
+        -o-border-radius: 15px;
+}
+.buyButton {
+        display: grid;
+        font-size: 12px;
+        font-weight: bold;
+        background-color: #3e8b58;
+        padding: 0 15px;
+        line-height: 30px;
 
+        align-content: center;
+        color: #fff;
+        text-decoration: none;
+        cursor: pointer;
+        width: 25%;
+         border: 0;
+}
 .ticket__header,
 .ticket__cart {
     font-weight: bold;
@@ -120,4 +163,7 @@ body {
 .ticket__footer {
     border-top: 2px dashed #e9ebed;
     border-radius: 0 0 0.325rem 0.325rem;
+}
+p{
+        margin-bottom: 0px !important;
 }

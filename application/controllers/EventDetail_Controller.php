@@ -20,6 +20,8 @@ class EventDetail_Controller extends CI_Controller {
             $data['userCart'] = $this->ShoppingCart_Model->getShoppingCart($this->session->id);
         }
         $data['eventComments'] = $this->Evento_Model->getEventComments();
+        $data['userName'] = $this->session->usuario;
+
         $this->load->view("event_detail", $data);
 
     }
