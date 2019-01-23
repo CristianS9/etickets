@@ -22,7 +22,12 @@
                 <li class="nav-item">
                     <a class="nav-link" href="<?php echo base_url() ?>/index.php/logout">Cerrar sesión <i class="fas fa-sign-out-alt"></i></a>
                 </li>
-                <?php } ?>
+                <?php }else{?>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?php echo base_url() ?>/index.php/login">Cerrar sesión <i class="fas fa-sign-out-alt"></i></a>
+                </li>
+                <?php
+                } ?>
             </ul>
         </div>
     </div>
