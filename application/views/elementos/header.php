@@ -8,23 +8,23 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="<?php echo base_url() ?>/index.php/home">Home <i class="fas fa-home"></i></a>
+                    <a class="nav-link" href="<?php echo base_url() ?>index.php/home">Home <i class="fas fa-home"></i></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo base_url() ?>/index.php/cart">Carrito <i class="fas fa-shopping-cart"></i></a>
+                    <a class="nav-link" href="<?php echo base_url() ?>index.php/cart">Carrito <i class="fas fa-shopping-cart"></i></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo base_url() ?>/index.php/perfil">Perfil <i class="fas fa-user"></i></a>
+                    <a class="nav-link" href="<?php echo base_url() ?>index.php/perfil">Perfil <i class="fas fa-user"></i></a>
                 </li>
                 <?php
                     if (isset($this->session->id)){
                        ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo base_url() ?>/index.php/logout">Cerrar sesión <i class="fas fa-sign-out-alt"></i></a>
+                    <a class="nav-link" href="<?php echo base_url() ?>index.php/logout">Cerrar sesión <i class="fas fa-sign-out-alt"></i></a>
                 </li>
                 <?php }else{?>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo base_url() ?>/index.php/login">Cerrar sesión <i class="fas fa-sign-out-alt"></i></a>
+                    <a class="nav-link" href="<?php echo base_url() ?>index.php/login">Iniciar sesión <i class="fas fa-sign-in-alt"></i></a>
                 </li>
                 <?php
                 } ?>
