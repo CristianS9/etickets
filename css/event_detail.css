@@ -330,3 +330,7 @@ section {
 .tachar{
      text-decoration: line-through;
 }
+.imagenEvento{
+    max-width: 255px;
+    max-height: 143px;
+}
