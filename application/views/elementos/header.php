@@ -13,6 +13,16 @@
                 <li class="nav-item">
                     <a class="nav-link" href="<?php echo base_url() ?>index.php/cart">Carrito <i class="fas fa-shopping-cart"></i></a>
                 </li>
+
+                <?php
+                if (isset($this->session->rango)){
+                 ?> 
+                                 <li class="nav-item">
+                    <a class="nav-link" href="<?php echo base_url() ?>index.php/eventos">Eventos <i class="fas fa-calendar-day"></i></a>
+                </li>
+                 <?php
+                }
+                ?>
                 <li class="nav-item">
                     <a class="nav-link" href="<?php echo base_url() ?>index.php/perfil">Perfil <i class="fas fa-user"></i></a>
                 </li>
