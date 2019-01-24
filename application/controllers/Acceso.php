@@ -135,8 +135,55 @@
             $this->load->view("acceso/confirmacionNecesaria");
         }
         public function recuperacion(){
+            if($this->input->post("rec_email") !=null){
+                $this->recuperar();
+            } else {
+                $this->load->view("acceso/recuperacionContrasena");
+            }
+           
+        }
+        public function recuperar(){
+            $email = $this->input->post("rec_email");
+            $usuario = $this->input->post("rec_usuario");
+            $telefono = $this->input->post("rec_telefono");
+            if($usuario != null){
+                $elemento = "usuario";
+                $dato = $usuario;
+            } else if($telefono !=null){ 
+                $elemento ="telefono";
+                $dato = $telefono;
+            } 
+       
+            $this->load->model("Usuario_Model");
+            $condicion = [
+                "email" => $email,
+                $elemento => $dato
+            ];
+            $id = $this->Usuario_Model->recuperacionCorrecto($condicion);
+          
+            if($id!="0"){
+                $codigo = $this->Usuario_Model->generarContrasenaTemporal($id);
+                $this->load->model("Correo");
+                $this->Correo->recuperacion($email,$codigo);
+                
+            } 
+            redirect("home");
             
-            $this->load->view("acceso/recuperacionContrasena");
+        }
+        public function temporal($codigo){
+            $this->load->model("Usuario_Model");
+            $linea = $this->Usuario_Model->datosTemporal($codigo);
+            if($linea != null){
+                $condicion = ["id"=>$linea->id];
+                $this->db->delete("recuperacion_contrasena",$condicion);
+                $datosLogin = $this->Usuario_Model->datosLoginId($linea->idUsuario);
+                $this->session->set_userdata("id",$datosLogin->id);
+                $this->session->set_userdata("usuario",$datosLogin->usuario);
+                $this->session->set_userdata("rango",$datosLogin->rango);
+                redirect("perfil");
+            } else{
+                redirect("recuperacion");
+            }
         }
 
     }

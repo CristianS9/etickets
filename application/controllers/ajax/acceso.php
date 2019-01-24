@@ -11,9 +11,13 @@
         public function index(){
           echo "vacio :D";
         }
-        public function recuperacionExiste($elemento,$dato){
-         
-            echo "$elemento---$dato";
+        public function recuperacionExiste(){
+            $elemento = $this->input->post("elemento");
+            $dato = $this->input->post("dato");
+            $this->load->model("Usuario_Model");
+            $existe = $this->Usuario_Model->elementoExiste($elemento,$dato);
+            echo $existe;
         }
+
     }
 ?>
