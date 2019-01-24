@@ -1,13 +1,20 @@
 body {
-    background: #F1F3FA;
+    background-image: url("https://images.wallpaperscraft.com/image/assassins_creed_emblem_background_sign_21382_1920x1080.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    height: 100vh;
+    widht: 100%;
 }
-.navbar{
+
+.navbar {
     position: sticky !important;
 }
-.ventana:hover{
+
+.ventana:hover {
     background-color: #e9ecef;
     cursor: pointer;
 }
+
 /* Profile container */
 .profile {
     margin: 20px 0;
@@ -193,16 +200,18 @@ input {
 
 }
 
-.compra{
+.compra {
     display: grid;
     position: relative;
     /* border:1px solid red; */
 }
-.datosCompra{
+
+.datosCompra {
     display: grid;
     /* grid-template-columns:repeat(3, 30%) ; */
     text-align: center;
 }
+
 .tituloCompra {
     margin-top: 10px;
     margin-bottom: 10px;
@@ -210,16 +219,19 @@ input {
     text-align: center;
     grid-template-columns: repeat(3, 1fr);
 }
-.venta{
-    display:grid;
+
+.venta {
+    display: grid;
     text-align: center;
-    grid-template-columns:repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);
 }
-.datosTickets{
+
+.datosTickets {
     display: none;
     text-align: center;
 }
-.titulo{
+
+.titulo {
     margin-top: 10px;
     margin-bottom: 10px;
     display: grid;
@@ -227,9 +239,9 @@ input {
     grid-template-columns: repeat(7, 1fr);
 }
 
-.ticket{
+.ticket {
     display: none;
-    grid-template-columns: repeat(7,1fr);
+    grid-template-columns: repeat(7, 1fr);
 }
 
 @media only screen and (max-width: 768px) {
