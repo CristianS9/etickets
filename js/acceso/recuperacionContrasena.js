@@ -70,8 +70,8 @@ function aumentoBarra(){
         clearInterval(repeticion);
         $("form").submit();
     } 
-        
-    numero += 5/50;
+
+    numero += 5/50; 
     $(".barra").css("width",numero+"%");
    
 }

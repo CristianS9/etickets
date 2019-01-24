@@ -11,8 +11,14 @@ body {
     font-family: 'Lora', serif;
     font-family: 'Indie Flower', cursive;
     font-family: 'Cabin', sans-serif;
+    background-image: url("https://images.unsplash.com/photo-1543847398-a690912159af?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    /* filter: blur(5px); */
 }
-.jumbotron{
+
+.jumbotron {
     background-color: white;
     border-radius: 0px;
     -webkit-border-radius: 0px;
@@ -21,6 +27,7 @@ body {
     -o-border-radius: 0px;
     margin-left: 8px;
 }
+
 .mySearch {
     display: none;
 }
@@ -46,7 +53,6 @@ div.contenido {
     background: #fff;
     overflow: hidden;
     margin: 10px
-    
 }
 
 .contenido .item-right,
@@ -185,13 +191,15 @@ div.contenido {
         margin: 0 20px auto
     }
 }
+
 footer {
     position: sticky;
     height: 100px;
-    position:absolute;
-    bottom:0;
+    position: absolute;
+    bottom: 0;
     width: 100%;
 }
-.item{
+
+.item {
     padding: 90%;
 }

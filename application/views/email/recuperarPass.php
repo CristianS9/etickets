@@ -54,7 +54,7 @@
 						</div>
 					</div>
 					<div role="section">
-						<div style="background-color: #4b5462;background-position: 0px 0px;background-image: url(https://i1.createsend1.com/ei/j/77/9EC/ED4/210707/csfinal/e-sports1.jpg);background-repeat: repeat;">
+						<div style="background-color: #4b5462;background-position: 0px 0px;background-image: url(https://www.esports.com/upload/articles/371/image/Super-League-Gaming-adds-eSports-channel-back.jpg);background-repeat: repeat;">
 							<div class="layout one-col" style="Margin: 0 auto;max-width: 600px;min-width: 320px; width: 320px;width: calc(28000% - 167400px);overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;">
 								<div class="layout__inner" style="border-collapse: collapse;display: table;width: 100%;">
 									<!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" role="presentation"><tr class="layout-full-width" style="background-color: #4b5462;background-position: 0px 0px;background-image: url(https://i1.createsend1.com/ei/j/77/9EC/ED4/210707/csfinal/e-sports1.jpg);background-repeat: repeat;"><td class="layout__edges">&nbsp;</td><td style="width: 600px" class="w560"><![endif]-->
