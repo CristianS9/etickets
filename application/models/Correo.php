@@ -63,7 +63,7 @@
             $data["codigo"] = $codigo;
 
         
-            $mensaje = $this->load->view("email/recuperacion",$data,true);
+            $mensaje = $this->load->view("email/recuperarPass",$data,true);
             $this->email->message($mensaje);
 
             $this->email->send();
