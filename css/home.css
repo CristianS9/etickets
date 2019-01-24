@@ -194,7 +194,7 @@ footer {
 	justify-items: center;
 	width: 100%;
 	padding: 10px;
-
+	bottom:0;
 }
 
 .item {
