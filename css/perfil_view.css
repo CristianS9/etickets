@@ -1,7 +1,13 @@
 body {
     background: #F1F3FA;
 }
-
+.navbar{
+    position: sticky !important;
+}
+.ventana:hover{
+    background-color: #e9ecef;
+    cursor: pointer;
+}
 /* Profile container */
 .profile {
     margin: 20px 0;
@@ -153,10 +159,6 @@ input {
     border-radius: 5px;
 }
 
-
-
-
-
 .entrada {
     display: none;
 }
@@ -180,14 +182,6 @@ input {
 
 }
 
-table,
-th,
-tr,
-td {
-    /* width:80%;
-    border: 1px solid black; */
-}
-
 .modificar {
     display: grid;
     grid-gap: 10px;
@@ -197,6 +191,45 @@ td {
     display: grid;
     grid-template-columns: 1fr 1fr;
 
+}
+
+.compra{
+    display: grid;
+    position: relative;
+    /* border:1px solid red; */
+}
+.datosCompra{
+    display: grid;
+    /* grid-template-columns:repeat(3, 30%) ; */
+    text-align: center;
+}
+.tituloCompra {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: grid;
+    text-align: center;
+    grid-template-columns: repeat(3, 1fr);
+}
+.venta{
+    display:grid;
+    text-align: center;
+    grid-template-columns:repeat(3, 1fr);
+}
+.datosTickets{
+    display: none;
+    text-align: center;
+}
+.titulo{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: grid;
+    text-align: center;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.ticket{
+    display: none;
+    grid-template-columns: repeat(7,1fr);
 }
 
 @media only screen and (max-width: 768px) {

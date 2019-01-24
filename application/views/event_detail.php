@@ -38,22 +38,19 @@
     <div class="contenido">
         <h1 class="upcomming">Evento</h1>
         <div class="jumbo">
-            <div class="jumbotron">
-                <h1 class="display-4">
+            <div class="jumbotron p-3">
+                <h1 class="tituloJumbo display-4">
                     <?php echo $eventTickets[0]->nombre; ?>
                 </h1>
                 <p class="lead">
-                    <?php echo $eventTickets[0]->descripcion; ?>
+                    <?php echo $eventTickets[0]->categoria; ?>
                 </p>
                 <hr class="my-4">
                 <p>Evento de
                     <?php echo $eventTickets[0]->categoria; ?> en
                     <?php echo $eventTickets[0]->provincia; ?>. Del
                     <?php echo $eventTickets[0]->fechaIni; ?> al
-                    <?php echo $eventTickets[0]->fechaFin; ?>. </p>
-                <p class="lead">
-                    <a class="btn btn-primary btn-lg" href="#" role="button">Comprar sections</a>
-                </p>
+                    <?php echo $eventTickets[0]->fechaFin . ". " . $eventTickets[0]->descripcion ?> </p>
             </div>
         </div>
 
@@ -152,8 +149,8 @@ foreach ($eventTickets as $ticket) {
                             <div class="rip"></div>
                             <div class="bottom --flex-row-j!sb">
                                 <?php
-if (isset($this->session->id)) {
-        ?>
+                                    if (isset($this->session->id)) {
+                                ?>
 
                                 <input type="number" placeholder=" Cant." class="inputCantidad" id="<?php echo $idCantidad ?>">
                                 <div class="contadorCantidad <?php echo $idContador ?> " cantidadRestante="<?php echo $cantidadRestante ?>"
@@ -162,12 +159,11 @@ if (isset($this->session->id)) {
                                 </div>
                                 <a class="buy addToCartButton" id='<?php echo $ticket->id ?>'>CESTA</a>
                                 <?php
-} else {
-        $url = base_url();
-        echo (" <a href='$url/index.php/login' class='buy addToCartButton' '>INICIAR SESIÓN</a>");
-    }
-    ?>
-
+                                    } else {
+                                            $url = base_url();
+                                            echo (" <a href='$url/index.php/login' class='buy addToCartButton' '>INICIAR SESIÓN</a>");
+                                        }
+                                ?>
                             </div>
                         </widget>
                     </section>
@@ -192,10 +188,8 @@ if (isset($this->session->usuario)) {
     ?>
             <div class="sendCommentSection">
                 <h1 class="upcomming mb-0 pb-0">Comentarios</h1>
-
             </div>
             <?php
-
 }
 ?>
 

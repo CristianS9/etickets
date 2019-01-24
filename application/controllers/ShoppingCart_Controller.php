@@ -18,7 +18,7 @@ class ShoppingCart_Controller extends CI_Controller {
 
         $data['carrito'] = $this->ShoppingCart_Model->getShoppingCart($userId);
         $this->load->view("shopping_cart", $data);
-}
+        }
     }
 
     public function endCart() {

@@ -16,27 +16,20 @@ $(document).ready(function () {
         var id = $(this).attr('id');
         var entradaEventoId = $(this).attr('entradaEventoId');
         if (cantidad != 0) {
-            // ajax comprueba si la cantidad de la base de datos es inferior
-
             // Ajax changeQuantity
             changeQuantity(cantidad, id, entradaEventoId);
 
-
             //Cambia el precio total de un elemento
             changeItemTotalSum(id, cantidad);
+
             //Total del carrito
             changeCartTotal();
         } else {
-            var eliminar = confirm("¿Seguro que quieres borrar este elemento?");
-            if (eliminar) {
-                deleteFromCart(id);
-            }
+            deleteFromCart(id);
         }
     });
 
     // Funciones
-
-
 
     function changeItemTotalSum(pid, pcantidad) {
         var precio = $(".precio" + pid).text();
@@ -71,7 +64,6 @@ $(document).ready(function () {
                 idEntradaEvento: pEntradaEventoId
             },
             success: function (datos) {
-
                 datos = datos.trim();
                 if (datos != "") {
                     $.notify({
@@ -92,7 +84,6 @@ $(document).ready(function () {
                     changeItemTotalSum(pid, 1);
                     changeCartTotal();
                 } else {
-
                     $.notify({
                         title: "<b>Hecho: </b><br>",
                         message: "Cantidad actualizada.",
@@ -107,11 +98,9 @@ $(document).ready(function () {
                             align: "right"
                         }
                     });
-
                 }
             },
             error: function (error) {
-
                 var tipo = 'danger';
                 var texto = 'Ha habido un error desconocido.';
                 var titulo = '<strong>Error:</strong> <br>';
@@ -138,7 +127,6 @@ $(document).ready(function () {
         });
     }
 
-
     function deleteCartSection(pid) {
         $("." + "seccionseccion" + pid).addClass('animated flipOutX');
         setTimeout(
@@ -146,19 +134,32 @@ $(document).ready(function () {
                 $("." + "seccionseccion" + pid).remove();
                 changeCartTotal();
             }, 1000);
-
     }
     $(".buyButton").click(function () {
         pagar();
     });
 
-
     function pagar() {
+        $(".buyButton").hide();
+                        var procesando = $.notify({
+                             title: "<b>Procesando... <i class='fas fa-spinner-third fa-spin'></i></b><br>",
+                             message: "Realizando compra...",
+                             animate: {
+                                 enter: 'animated zoomIn',
+                                 exit: 'animated zoomOut'
+                             }
+                         }, {
+                             allow_dismiss: "true",
+                             type: "info",
+                             placement: {
+                                 align: "center"
+                             }
+                         });
         $.ajax({
             type: "POST",
             url: "ajax/EventDetail_Ajax/completeShoppingCart",
-
             success: function (datos) {
+                procesando.close();
                 var tipo = 'success';
                 var texto = 'Se han comprado los artículos seleccionados.';
                 var titulo = '<strong>Correcto:</strong> <br>';
@@ -172,6 +173,7 @@ $(document).ready(function () {
                 $("#descResumen").html("Tu pedido se ha completado correctamente.");
             },
             error: function (error) {
+                $(".buyButton").hide();
                 var tipo = 'danger';
                 var texto = 'Ha habido un error al generar la venta. Contacta con el administrador.';
                 var titulo = '<strong>Error:</strong> <br>';
@@ -182,8 +184,6 @@ $(document).ready(function () {
 
     function deleteFromCart(pentradaId) {
         if (confirm("¿Eliminar este artículo?")) {
-
-
             $.ajax({
                 type: "POST",
                 url: "ajax/EventDetail_Ajax/deleteFromCart",
@@ -196,7 +196,6 @@ $(document).ready(function () {
                     var titulo = '<strong>Correcto:</strong> <br>';
                     showNotificacion(tipo, texto, titulo);
                     deleteCartSection(pentradaId);
-
                 },
                 error: function (error) {
                     var tipo = 'danger';
@@ -205,9 +204,10 @@ $(document).ready(function () {
                     showNotificacion(tipo, texto, titulo);
                 }
             });
-
-
         } else {
+            $("." + "input" + pentradaId).val("1");
+            changeItemTotalSum(pentradaId, "1");
+            changeCartTotal();
             var tipo = 'warning';
             var texto = 'El artículo no se ha eliminado.';
             var titulo = '<strong>Atención:</strong> <br>';
