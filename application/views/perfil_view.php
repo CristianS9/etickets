@@ -227,7 +227,6 @@
                                     <?php
                                     foreach ($tickets as $aux) {
                                         echo "<div class=\"ticket\" id=\"venta".$aux->idVenta."\">";
-                                        //echo "<span>".$aux->id."</span>";
                                         echo "<span>".$aux->nombre."</span>";
                                         echo "<span>".$aux->fecha."</span>";
                                         echo "<span>".$aux->precio."</span>";
