@@ -96,14 +96,18 @@
             $contrasena= $this->input->post("log_contrasena");
             $this->load->model("Usuario_Model");
             if($this->Usuario_Model->loginCorrecto($usuario,$contrasena)){
-                $datosLogin = $this->Usuario_Model->datosLogin($usuario);
-                $this->session->set_userdata("id",$datosLogin->id);
-                $this->session->set_userdata("usuario",$usuario);
-                $this->session->set_userdata("rango",$datosLogin->rango);
-                
-                if($datosLogin->confirmado=="0"){
+            $datosLogin = $this->Usuario_Model->datosLogin($usuario);
+
+                if($datosLogin->confirmado=="1"){
+                    $this->session->set_userdata("id",$datosLogin->id);
+                    $this->session->set_userdata("usuario",$usuario);
+                    $this->session->set_userdata("rango",$datosLogin->rango);
+                } else if($datosLogin->confirmado=="0"){
                     redirect("confirmacionNecesaria");
+
                 }
+                
+                
 
               /*   set_cookie("nombre",$datosLogin->nombre);
                 $fecha = date("Y-m-d H:i:s"); 

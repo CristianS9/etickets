@@ -110,17 +110,17 @@
 
 					<div class="wrap-input100 validate-input" data-validate = "Introduce Correo">
 						<input class="input100" type="text" name="rec_email" placeholder="Email" ng-model="rec_email" ng-change="cambio('email')">
-						<span class="focus-input100" data-placeholder="&#xe82a;"></span>
+						<span class="focus-input100" data-placeholder="&#xe818;"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Introcue Usuario">
 						<input class="input100" type="text" name="rec_usuario" placeholder="Usuario" ng-model="rec_usuario" ng-change="cambio('usuario')" ng-click="vaciar('telefono')">
-						<span class="focus-input100" data-placeholder="&#xe80f;"></span>
+						<span class="focus-input100" data-placeholder="&#xe82a;"></span>
 					</div>
                     <span class="interseccion_o">Introduce cualquiera de estos 2 campos</span>
                 	<div class="wrap-input100 validate-input" data-validate = "Telefono">
 						<input class="input100" type="number" name="rec_telefono" placeholder="Telefono" ng-model="rec_telefono" ng-change="cambio('telefono')" ng-click="vaciar('usuario')">
-						<span class="focus-input100" data-placeholder="&#xe82a;"></span>
+						<span class="focus-input100" data-placeholder="&#xe830;"></span>
 					</div>
 
 					<div class="container-login100-form-btn m-t-32" ng-click="mostrarNotificacion()"ng-show="todoCorrecto">
