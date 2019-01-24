@@ -78,7 +78,7 @@
                 $this->load->model("Usuario_Model");
             
 
-                redirect("login");
+               /*  redirect("login"); */
 
             }
         }
