@@ -8,8 +8,10 @@
             $this->load->database(); 
             $this->load->library('form_validation');
             $this->load->library("session");
+            $this->load->model("Usuario_Model");
         }
         public function index(){
+            $this->Usuario_Model->sin_login();
             if($this->input->post("log_usuario") !=null){
                 $this->login();
             } else {
@@ -17,7 +19,8 @@
             } 
         }
         public function registro(){
-//            echo get_cookie("ultimo-login");
+            $this->Usuario_Model->sin_login();
+            //            echo get_cookie("ultimo-login");
             if($this->input->post("reg_usuario") !=null){
                 $this->registrar();
             } else {
@@ -25,7 +28,9 @@
             }
         }
         public function registrar(){
-
+            if(!$this->input->post("reg_usuario")){
+                redirect("registro");
+            }
             $this->form_validation->set_message("is_unique","{field} ya existe");
             $this->form_validation->set_message("required","Debes de introducir {field}");
             $this->form_validation->set_message("min_length","Debes introducir minimo {param}");
@@ -71,10 +76,7 @@
                 $this->load->model("Correo");
                 $this->Correo->registro($usuario,$email,$token);
                 $this->load->model("Usuario_Model");
-                $datosLogin = $this->Usuario_Model->datosLogin($usuario);
-                $this->session->set_userdata("id",$datosLogin->id);
-                $this->session->set_userdata("usuario",$usuario);
-                $this->session->set_userdata("rango",$datosLogin->rango);
+            
 
                 redirect("login");
 
@@ -128,6 +130,57 @@
         }
         public function confirmacionNecesaria(){
             $this->load->view("acceso/confirmacionNecesaria");
+        }
+        public function recuperacion(){
+            if($this->input->post("rec_email") !=null){
+                $this->recuperar();
+            } else {
+                $this->load->view("acceso/recuperacionContrasena");
+            }
+           
+        }
+        public function recuperar(){
+            $email = $this->input->post("rec_email");
+            $usuario = $this->input->post("rec_usuario");
+            $telefono = $this->input->post("rec_telefono");
+            if($usuario != null){
+                $elemento = "usuario";
+                $dato = $usuario;
+            } else if($telefono !=null){ 
+                $elemento ="telefono";
+                $dato = $telefono;
+            } 
+       
+            $this->load->model("Usuario_Model");
+            $condicion = [
+                "email" => $email,
+                $elemento => $dato
+            ];
+            $id = $this->Usuario_Model->recuperacionCorrecto($condicion);
+          
+            if($id!="0"){
+                $codigo = $this->Usuario_Model->generarContrasenaTemporal($id);
+                $this->load->model("Correo");
+                $this->Correo->recuperacion($email,$codigo);
+                
+            } 
+            redirect("home");
+            
+        }
+        public function temporal($codigo){
+            $this->load->model("Usuario_Model");
+            $linea = $this->Usuario_Model->datosTemporal($codigo);
+            if($linea != null){
+                $condicion = ["id"=>$linea->id];
+                $this->db->delete("recuperacion_contrasena",$condicion);
+                $datosLogin = $this->Usuario_Model->datosLoginId($linea->idUsuario);
+                $this->session->set_userdata("id",$datosLogin->id);
+                $this->session->set_userdata("usuario",$datosLogin->usuario);
+                $this->session->set_userdata("rango",$datosLogin->rango);
+                redirect("perfil");
+            } else{
+                redirect("recuperacion");
+            }
         }
 
     }

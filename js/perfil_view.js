@@ -21,11 +21,26 @@ function cambioPestañas_activo(){
 }
 // Te deja ver los tickets de cada compra
 function verCompras_activo(){
-    $('.compra').click(function () {
-        var elemento = $(this).closest('tr').next('tr');
-        $(elemento).fadeToggle();
+    $('.venta').click(function () {
+        //Pilla bien la id
+        var idVenta = $(this).find('span').html().trim();
+        var tickets = $('.ticket').toArray();
+
+        $('.ticket').css('display','none');
+        $('.datosTickets').css('display','grid');
+
+        tickets.forEach(aux => {
+            // console.log("Ticket id :   "+$(aux).attr('id'));
+            // console.log("IdVenta :   "+idVenta);
+
+            if ("venta"+idVenta == $(aux).attr('id')) {
+                $(aux).slideDown("slow").css('display', 'grid');
+            }
+        });
+
     });
 }
+
 function botonesEdicion_activos(){
     $('.modificar').on('click', '.editar', function () {
         editar(this);
@@ -71,8 +86,8 @@ function divEdicion(boton){
 
     // prepara los elementos
     var input = '<input class="data" type="' + type + '" value="' + dato + '" name="' + elemento + '">';
-    var enviar = "<span class=\"glyphicon glyphicon-ok boton enviar\"></span>";
-    var cancelar = "<span class=\"glyphicon glyphicon-remove boton cancelar\"></span>";
+    var enviar = "<span class=\"fas fa-check boton enviar\"></span>";
+    var cancelar = "<span class=\"fas fa-times boton cancelar\"></span>";
  
 
     // Borra elementos

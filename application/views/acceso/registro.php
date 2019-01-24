@@ -94,7 +94,7 @@
 
                     <?php echo form_error('reg_telefono', '<div class="notificacion">', '</div>'); ?>
                     <div class="wrap-input100 validate-input" data-validate="Telefono">
-                        <input class="input100" type="number" placeholder="Telefono" name="reg_telefono" value="<?php if(isset($telefono)){echo $telefono;};?>">
+                        <input class="input100" type="number" placeholder="Teléfono" name="reg_telefono" value="<?php if(isset($telefono)){echo $telefono;};?>">
                         <span class="focus-input100" data-placeholder="&#xe830;"></span>
                     </div>
 

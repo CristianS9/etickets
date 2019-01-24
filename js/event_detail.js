@@ -28,7 +28,7 @@ $(document).ready(function () {
         $(this).css("text-decoration", "line-through");
       }
     } else {
-      if (cantidad > cantidadRestante) {
+      if (parseInt(cantidad) > parseInt(cantidadRestante)) {
         var tipo = 'warning';
         var texto = 'La cantidad de entradas introducida es mayor a la cantidad disponible.';
         var titulo = '<strong>Error:</strong> <br>';
@@ -67,7 +67,7 @@ $(document).ready(function () {
   }
 
   function sendComment() {
-    var commentValue = $("#pComent").val();
+    var commentValue = $("#pComent").val().trim();
 
     $.ajax({
       type: "POST",

@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="#">E-TICKETS</a>
+        <a class="navbar-brand" href="<?php echo base_url() ?>index.php/home">E-TICKETS</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
             aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -13,6 +13,16 @@
                 <li class="nav-item">
                     <a class="nav-link" href="<?php echo base_url() ?>index.php/cart">Carrito <i class="fas fa-shopping-cart"></i></a>
                 </li>
+
+                <?php
+                if ($this->session->rango=="1"){
+                 ?> 
+                                 <li class="nav-item">
+                    <a class="nav-link" href="<?php echo base_url() ?>index.php/eventos">Eventos <i class="fas fa-calendar-day"></i></a>
+                </li>
+                 <?php
+                }
+                ?>
                 <li class="nav-item">
                     <a class="nav-link" href="<?php echo base_url() ?>index.php/perfil">Perfil <i class="fas fa-user"></i></a>
                 </li>

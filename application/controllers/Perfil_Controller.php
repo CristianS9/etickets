@@ -17,8 +17,15 @@ class Perfil_Controller extends CI_Controller {
         $usuario = $this->db->query("CALL spUsuarioPorId($id)");
         $data["usuario"] = $usuario->result();
         $this->db->close();
+        
+        $tickets = $this->db->query("CALL spDetallesAllEntradas()");
+        $data["tickets"] = $tickets->result();
+        $this->db->close();
+
         $this->load->view("perfil_view", $data);
+
     }
+
     public function logOut(){
         $this->session->unset_userdata('id');
         redirect("Home_Controller");

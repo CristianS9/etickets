@@ -24,11 +24,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <?php echo link_tag("css/evento_view.css");?>
+    <?php echo link_tag("css/fixedTop.css");?>
+    <?php echo link_tag("lib/fontAwesome/css/all.css"); ?>
+
     <title>Eventos</title>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <?php $this->load->view('elementos/header'); ?>
+    <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
         <div class="container">
             <a class="navbar-brand" href="<?php echo base_url(); ?>index.php/home/">etickets</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -53,7 +57,7 @@
                 </ul>
             </div>
         </div>
-    </nav>
+    </nav> -->
     <div class="container">
         <table class="table table-bordered rowMargen">
             <thead>
@@ -66,7 +70,7 @@
                     <td>idProvincia</td>
                     <td>sitio</td>
                     <td>Imagen</td>
-                    <td><a href="<?php echo base_url(); ?>index.php/Evento_Controller/add_evento_view">Add</a></td>
+                    <td><a href="<?php echo base_url(); ?>index.php/eventos/nuevo">Add</a></td>
                 </tr>
             </thead>
             <tbody>
@@ -95,7 +99,7 @@
                         echo "<td><img src=\"". base_url() . "fotos/0.jpg\"></td>";
                     }
 
-                    echo "<td class=\"align-middle\"><a href=\"". base_url() ."index.php/Evento_Controller/mod_evento_view/".$aux->id."/\">Editar</a></td>";
+                    echo "<td class=\"align-middle\"><a href=\"". base_url() ."index.php/eventos/modificar/".$aux->id."/\">Editar</a></td>";
                     echo "<td class=\"align-middle\"><a href=\"". base_url() ."index.php/Evento_Controller/del_evento/".$aux->id."/\">Eliminar</a></td>";
                     echo "</tr>";
                 }

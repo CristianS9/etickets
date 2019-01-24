@@ -11,7 +11,7 @@ body {
 	font-family: 'Lora', serif;
 	font-family: 'Indie Flower', cursive;
 	font-family: 'Cabin', sans-serif;
-	padding-top: 100px;
+
 }
 
 .mySearch {
@@ -179,3 +179,13 @@ div.contenido {
 		margin: 0 20px auto
 	}
 }
+
+@page {
+	margin: 25in;
+	padding: 0;
+
+}
+
+
+
+@media print and (min-height: 1024px) {}
