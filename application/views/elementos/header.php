@@ -15,7 +15,7 @@
                 </li>
 
                 <?php
-                if (isset($this->session->rango)){
+                if ($this->session->rango=="1"){
                  ?> 
                                  <li class="nav-item">
                     <a class="nav-link" href="<?php echo base_url() ?>index.php/eventos">Eventos <i class="fas fa-calendar-day"></i></a>

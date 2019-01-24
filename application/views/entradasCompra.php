@@ -18,7 +18,8 @@
 
     <!-- Links de JavaScript -->
     <script src="<?php echo base_url() ?>lib/jquery-3.3.1.min.js"></script>
-    <script src="<?php echo base_url() ?>lib/jsBarcode.all.min.js"></script>
+    <!-- <script src="<?php echo base_url() ?>lib/jsBarcode.all.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsbarcode/3.11.0/JsBarcode.all.min.js"></script>
     <script src="<?php echo base_url() ?>js/entradasCompra.js"></script>
 
     <script src="<?php echo base_url() ?>lib/bootstrap.bundle.min.js"></script>

@@ -76,10 +76,7 @@
                 $this->load->model("Correo");
                 $this->Correo->registro($usuario,$email,$token);
                 $this->load->model("Usuario_Model");
-                $datosLogin = $this->Usuario_Model->datosLogin($usuario);
-                $this->session->set_userdata("id",$datosLogin->id);
-                $this->session->set_userdata("usuario",$usuario);
-                $this->session->set_userdata("rango",$datosLogin->rango);
+            
 
                 redirect("login");
 
